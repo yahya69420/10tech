@@ -12,8 +12,13 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+// gets the index.php and returns to the '/shop' url
 Route::get('/', function () {
+    return redirect('/shop');
+});
+
+// default url that returns the 'home' page that is the shop
+Route::get('/shop', function () {
     return view('welcome');
 });
 
