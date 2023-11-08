@@ -1,67 +1,99 @@
-@extends('layouts.app')
-<!-- changed the Register Tab Title -->
-<title>Register</title>
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('../resources/css/registerPageFrontEnd.css') }}">
+    <!-- Added icon for website -->
+    <link rel="icon" href="{{ asset('icons8-register-16.png') }}" type="image/x-icon" />
+    <!-- Bootstrap CDN -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <!-- DaisyUI CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <!-- Roboto Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap" rel="stylesheet">
+    <!-- animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- BoxIcon CDN -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="../resources/js/registerPageFrontEndContinueButtonScript.js"></script>
+    <title>Register</title>
+</head>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email" >
-                                <small id="emailHelp" class="form-text text-muted">We pinky promise to never share your email with anyone</small>
-                                
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<body>
+    <div class="toggle-darkMode">
+        <label class="flex justify-center items-center" id="darkModeText"><input type="checkbox" class="toggle toggle-lg m-1" id= "darkToggle" checked> Dark Mode! </label>
     </div>
-</div>
-@endsection
+    <div class="registerCard p-5 ">
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
+            <!-- Card title -->
+            <h1 class="text-3xl font-bold text-center p-5 pb-0">Create an account</h1>
+            <p class="text-center font-semibold p-5 pt-0">Tech awaits you...</p>
+            <!-- Email field -->
+
+            <div class="form-control email-form-field">
+                <input type="email" id="email" autocomplete="on" class="border-1 rounded-full border m-5 border-black" placeholder="Enter your email..." required>
+                <i class='bx bxs-x-circle' id="clearEmailIcon"></i>
+            </div>
+            <p id="emailIssue" class="text-rose-600 font-bold m-2 hidden">Uh oh... That email doesn't look right!</p>
+
+
+            <!-- Continue Button -->
+
+            <div class="continueButton">
+                <button class="btn btn-info animate__animated animate__pulse animate__infinite" id="continue-button" disabled="disabled">
+                    <progress class="progress w-60 bg-green-500"></progress>
+                </button>
+            </div>
+
+            <!-- Password label/field -->
+
+            <div id="password-confirm-password" class="hidden form-control">
+                <!-- <label for="password" class="label label-text text-black">Password: </label> -->
+                <input type="password" id="password" class="border-1 rounded-full border m-5 border-black" name="password" placeholder="Enter your password..." required>
+                <i class='bx bxs-hide' id="showPassIcon"></i>
+
+                <!-- <label for="password-confirm" class="label label-text text-black">Confirm password: </label> -->
+                <!-- <input type="password-confirm" class="border-1 rounded-full border m-5 " id="password-confirm" name="password-confirm" placeholder="Confirm your password..." required /> -->
+            </div>
+            <div id="passwordErrorMessages">
+                <p id="lengthError" class="text-rose-600 font-bold m-2 hidden">You need a minimum of 8 characters</p>
+                <p id="lowerCaseError" class="text-rose-600 font-bold m-2 hidden">You need a lower case character</p>
+                <p id="upperCaseError" class="text-rose-600 font-bold m-2 hidden">You need an upper case character</p>
+                <p id="digitError" class="text-rose-600 font-bold m-2 hidden">You need a digit</p>
+                <p id="specialCharacterError" class="text-rose-600 font-bold m-2 hidden">You need a special character</p>
+            </div>
+
+
+            <!-- remember me toggle -->
+            <div class="remember-me hidden" id="remember-me-toggle">
+                <label class="flex justify-center items-center"><input type="checkbox" class="toggle toggle-info m-2" checked> Remember Me! </label>
+            </div>
+
+
+            <div id="registerButton" class="hidden form-control">
+                <!-- remove the disabled attribute if the validation passes and add an animation to the button when validation passes as it becomes active-->
+                <button type="submit" class="btn btn-active btn-accent" id="registerButtonTag" disabled="disabled">
+                    Register
+                </button>
+            </div>
+
+            <!-- login button if account exists -->
+            <div class="login-link text-center pt-2">
+                <p>Already have an account? <a href="login" class="font-bold">Log in</a></p>
+            </div>
+
+        </form>
+
+
+</body>
+<!-- link for dark mode abstarct bg image for attribtuon in the footer: <a href="https://www.freepik.com/free-vector/black-abstract-background_21173239.htm#query=dark%20mode%20abstract&position=4&from_view=search&track=ais">Image by pikisuperstar</a> on Freepik -->
+<!-- link for the abstract bg image for attribution in the footer: <a href="https://www.freepik.com/free-vector/abstract-banner-with-low-poly-plexus-network-communications-design_10135315.htm#query=website%20background%20technology&position=14&from_view=search&track=ais">Image by kjpargeter</a> on Freepik -->
+<!-- link for the icon recognition: <a target="_blank" href="https://icons8.com/icon/43970/add-user-male">Register</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a> -->
+
+</html>
