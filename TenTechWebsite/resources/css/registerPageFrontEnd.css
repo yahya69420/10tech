@@ -1,0 +1,119 @@
+/* remove any default padding and margins to avoid 
+any issues that are impossible to debug later; make this universal*/
+
+/* For clarity, use of tailwind utilities were chosen against here 
+so that the css was more easier to read and could be applied 
+universally as is the case here :) */
+
+/* default padding and border arithemetic is like so: 
+    - width = width + padding + border
+    - height = height + padding + border
+    border-box removes this for easier arithmetic and modifications when needed */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    font-family: "Roboto", sans-serif;
+    height: 100vh;
+    color: black;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../images/registerBgImageDark.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#darkModeText {
+    color: white;
+}
+
+.registerCard {
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.21);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.1px);
+    -webkit-backdrop-filter: blur(2.1px);
+    border: 1px solid rgba(255, 255, 255, 1);
+}
+
+.continueButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* applies to input inside of any form-control class */
+.form-control input {
+    padding: 8px;
+}
+
+.form-control input {
+    background: transparent;
+    font-size: 20px;
+}
+
+.form-control ::placeholder {
+    color: black;
+}
+
+#register-button {
+    color: black;
+}
+
+
+#password-confirm-password {
+    position: relative;
+}
+
+.bx.bxs-hide {
+    cursor: pointer;
+    position: absolute;
+    top: 43%;
+    right: 10%;
+}
+
+
+.bx.bxs-hide:hover {
+    border-radius: 50%;
+    border: 1px;
+    border-color: rgb(142, 141, 141);
+    box-shadow: 0 0 5px 5px grey;
+}
+
+
+.form-control.email-form-field {
+    position: relative;
+}
+
+
+.bx.bxs-x-circle {
+    cursor: pointer;
+    position: absolute;
+    top: 43%;
+    right: 10%;
+}
+
+.bx.bxs-x-circle:hover {
+    /* make it a circle */
+    border-radius: 50%;
+    border: 1px;
+    border-color: rgb(142, 141, 141);
+    box-shadow: 0 0 5px 5px grey;
+}
+
+
+.toggle-darkMode {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
