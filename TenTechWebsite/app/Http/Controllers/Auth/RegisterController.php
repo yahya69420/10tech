@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password;
 
 class RegisterController extends Controller
 {
@@ -51,7 +52,17 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
+            // the password needs to have a minimum of 8 chars, at least one letter, a mix of lower case
+            // and upper case letters and at least one digit
+            /** Interestingly, the JS file on the client-side will have the buttons disabeled 
+             * until the client-side validation passes but this controller is the 'backend' where 
+             * the server side validation of the form data is done and cannot be manipulated by the client 
+             * , however, under the assumption that the user does not sabotage the JS script
+             *  then this controller validation will always pass since the JS will have made sure that
+             * the entered password passes the validation logic of the controller, thereby reducing 
+             * server stress as less password attempts will be made
+             */
+            'password' => ['required', 'string', Password::min(8)->letters()->mixedCase()->numbers()],
         ]);
     }
 
