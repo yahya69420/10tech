@@ -37,7 +37,7 @@
             <!-- Email field -->
 
             <div class="form-control email-form-field">
-                <input type="email" id="email" autocomplete="on" class="border-1 rounded-full border m-5 border-black" placeholder="Enter your email..." required>
+                <input type="email" id="email" name ="email" autocomplete="on" class="border-1 rounded-full border m-5 border-black" placeholder="Enter your email..." required>
                 <i class='bx bxs-x-circle' id="clearEmailIcon"></i>
             </div>
             <p id="emailIssue" class="text-rose-600 font-bold m-2 hidden">Uh oh... That email doesn't look right!</p>
@@ -55,7 +55,7 @@
 
             <div id="password-confirm-password" class="hidden form-control">
                 <!-- <label for="password" class="label label-text text-black">Password: </label> -->
-                <input type="password" id="password" class="border-1 rounded-full border m-5 border-black" name="password" placeholder="Enter your password..." required>
+                <input type="password" id="password" name="password" class="border-1 rounded-full border m-5 border-black" placeholder="Enter your password..." required>
                 <i class='bx bxs-hide' id="showPassIcon"></i>
 
                 <!-- <label for="password-confirm" class="label label-text text-black">Confirm password: </label> -->
@@ -72,7 +72,7 @@
 
             <!-- remember me toggle -->
             <div class="remember-me hidden" id="remember-me-toggle">
-                <label class="flex justify-center items-center"><input type="checkbox" class="toggle toggle-info m-2" checked> Remember Me! </label>
+                <label class="flex justify-center items-center"><input type="checkbox" class="toggle toggle-info m-2" name="remember_me"checked> Remember Me! </label>
             </div>
 
 
