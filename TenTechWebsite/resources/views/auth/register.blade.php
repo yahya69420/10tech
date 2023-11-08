@@ -66,7 +66,7 @@
                 <p id="lowerCaseError" class="text-rose-600 font-bold m-2 hidden">You need a lower case character</p>
                 <p id="upperCaseError" class="text-rose-600 font-bold m-2 hidden">You need an upper case character</p>
                 <p id="digitError" class="text-rose-600 font-bold m-2 hidden">You need a digit</p>
-                <p id="specialCharacterError" class="text-rose-600 font-bold m-2 hidden">You need a special character</p>
+                <p id="capsLock" class="text-rose-600 font-bold m-2 hidden">Caps lock is ON</p>
             </div>
 
 
