@@ -161,10 +161,10 @@ a {
           </label>
         
           <nav class="menu1">
-            <a class="link1" href="">Our Models</a>
-            <a class="link1" href="">Specialties</a>
-            <a class="link1" href="">About</a>
-            <a class="link1" href="">Blog</a>
+            <a class="link1" href="">Laptops</a>
+            <a class="link1" href="">Smartphones</a>
+            <a class="link1" href="">Tablets</a>
+            <a class="link1" href="">Consoles</a>
             
           </nav>
         </nav>
