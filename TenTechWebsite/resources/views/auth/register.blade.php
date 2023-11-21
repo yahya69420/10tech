@@ -25,15 +25,15 @@
 </head>
 
 <body>
-    <div class="toggle-darkMode">
-        <label class="flex justify-center items-center" id="darkModeText"><input type="checkbox" class="toggle toggle-lg m-1" id= "darkToggle" checked> Dark Mode! </label>
-    </div>
-    <div class="registerCard p-5 ">
+    <!-- <div class="toggle-darkMode">
+        <label class="flex justify-center items-center" id="darkModeText"><label class="flex justify-center items-center" id="lightModeText">Light Mode!</label><input type="checkbox" class="toggle toggle-lg m-1" id= "darkToggle" checked> Dark Mode! </label>
+    </div> -->
+    <div class="registerCard p-5 rounded-md w-96">
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <!-- Card title -->
             <h1 class="text-3xl font-bold text-center p-5 pb-0">Create an account</h1>
-            <p class="text-center font-semibold p-5 pt-0">Tech awaits you...</p>
+            <p class="text-center font-semibold p-1">Tech awaits you...</p>
             <!-- Email field -->
 
             <div class="form-control email-form-field">
@@ -46,8 +46,8 @@
             <!-- Continue Button -->
 
             <div class="continueButton">
-                <button class="btn btn-info animate__animated animate__pulse animate__infinite" id="continue-button" disabled="disabled">
-                    <progress class="progress w-60 bg-green-500"></progress>
+                <button class="btn btn-neutral w-80" id="continue-button" disabled="disabled">
+                    Continue
                 </button>
             </div>
 
@@ -72,7 +72,7 @@
 
             <!-- remember me toggle -->
             <div class="remember-me hidden" id="remember-me-toggle">
-                <label class="flex justify-center items-center"><input type="checkbox" class="toggle toggle-info m-2" name="remember_me"checked> Remember Me! </label>
+                <label class="flex justify-center items-center"><input type="checkbox" class="toggle toggle-info m-2" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} checked> Remember Me! </label>
             </div>
 
 
