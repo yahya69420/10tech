@@ -27,9 +27,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('../images/registerBgImageDark.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
+    /* background: url('../images/registerBgImageDarkCancel.jpg') no-repeat; */
+    /* background-size: cover; */
+    /* background-position: center; */
+
+    /* change the background to default to light mode */
+    background-color: rgb(207, 204, 204);
+
 }
 
 #darkModeText {
@@ -37,19 +41,18 @@ body {
 }
 
 .registerCard {
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.21);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(2.1px);
-    -webkit-backdrop-filter: blur(2.1px);
-    border: 1px solid rgba(255, 255, 255, 1);
+    background-color: white;
+
 }
 
 .continueButton {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.continueButton.continue-button {
+    color:black;
 }
 
 /* applies to input inside of any form-control class */

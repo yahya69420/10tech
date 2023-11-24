@@ -14,13 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
     darkToggle.addEventListener("change", function () {
         if (darkToggle.checked) {
             document.body.style.background =
-                "url('../resources/images/registerBgImageDark.jpg') no-repeat";
+                "url('../resources/images/registerBgImageDarkCancel.jpg') no-repeat";
             document.body.style.backgroundSize = "cover";
             document.body.style.backgroundPosition = "center";
             document.getElementById("darkModeText").style.color = "white";
         } else {
             document.body.style.background =
-                "url('../resources/images/registerBgImage.jpg') no-repeat";
+                "url('../resources/images/registerBgImageCancel.jpg') no-repeat";
             document.body.style.backgroundSize = "cover";
             document.body.style.backgroundPosition = "center";
             document.getElementById("darkModeText").style.color = "black";
