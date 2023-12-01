@@ -55,7 +55,8 @@
                 <input type="email" id="email" name="email" autocomplete="on" class="border-1 rounded border mt-3 mx-5 mb-0 border-black" placeholder="Email" required>
                 <i class='bx bxs-x-circle' id="clearEmailIcon"></i>
                 <div class="email-strength-indicator mb-0" id="email-strength-indicator">
-                    <span class="email-indicator-circle" id="email-length-indicator"></span>Invalid email.
+                    <span class="email-indicator-circle" id="email-length-indicator"></span>
+                    <span id="email-validation-message">Invalid email!</span>
                 </div>
             </div>
 
