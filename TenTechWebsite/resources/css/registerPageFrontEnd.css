@@ -33,16 +33,12 @@ body {
 
     /* change the background to default to light mode */
     background-color: rgb(207, 204, 204);
-
 }
 
-#darkModeText {
-    color: white;
-}
 
 .registerCard {
     background-color: white;
-
+    
 }
 
 .continueButton {
@@ -51,9 +47,11 @@ body {
     align-items: center;
 }
 
-.continueButton.continue-button {
-    color:black;
+.continueButton #continue-button {
+    color: rgb(138, 136, 136);
 }
+
+
 
 /* applies to input inside of any form-control class */
 .form-control input {
@@ -66,7 +64,7 @@ body {
 }
 
 .form-control ::placeholder {
-    color: black;
+    color: rgb(152, 150, 150);
 }
 
 #register-button {
@@ -81,7 +79,7 @@ body {
 .bx.bxs-hide {
     cursor: pointer;
     position: absolute;
-    top: 43%;
+    top: 28%;
     right: 10%;
 }
 
@@ -102,7 +100,7 @@ body {
 .bx.bxs-x-circle {
     cursor: pointer;
     position: absolute;
-    top: 43%;
+    top: 38%;
     right: 10%;
 }
 
@@ -120,3 +118,39 @@ body {
     bottom: 20px;
     right: 20px;
 }
+
+.password-strength-indicator {
+    font-size: 12px;
+    margin-top: 5px;
+    color: rgb(75, 75, 75);
+}
+
+.indicator-circle {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+    background-color: rgb(203, 203, 203);
+}
+
+.email-strength-indicator {
+    font-size: 12px;
+    margin-top: 5px;
+    color: rgb(75, 75, 75);
+}
+
+.email-indicator-circle {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+    background-color: rgb(203, 203, 203);
+}
+
+.darkToggle.toggle-darkMode {
+    transform: scale(1.5);
+}
+
+
