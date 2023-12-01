@@ -1,41 +1,46 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // the continue button stored in var
     const continueButton = document.getElementById("continue-button");
+        // the password fields all-in-all stored in var
     const passwordFields = document.getElementById("password-confirm-password");
-    const passwordField = document.getElementById("password");
+    // the email field stored in var
     const emailField = document.getElementById("email");
+    // the clear email field icon stored in var to allow for clearing email field
     const clearIcon = document.getElementById("clearEmailIcon");
+        // the single password field stored in var
     const singlePassField = document.getElementById("password");
+    // the register button stored in var
     const registerButton = document.getElementById("registerButton");
-    const rememberMeToggle = document.getElementById("remember-me-toggle");
     // get the icon into JS
     const showPasswordIcon = document.getElementById("showPassIcon");
 
+    // get the toggle input into JS
     const darkToggle = document.getElementById("darkToggle");
     darkToggle.addEventListener("change", function () {
         if (darkToggle.checked) {
-            document.body.style.background =
-                "url('../resources/images/registerBgImageDarkCancel.jpg') no-repeat";
-            document.body.style.backgroundSize = "cover";
-            document.body.style.backgroundPosition = "center";
-            document.getElementById("darkModeText").style.color = "white";
+            document.body.style.backgroundColor = "rgb(40, 40, 40)"; 
         } else {
-            document.body.style.background =
-                "url('../resources/images/registerBgImageCancel.jpg') no-repeat";
-            document.body.style.backgroundSize = "cover";
-            document.body.style.backgroundPosition = "center";
-            document.getElementById("darkModeText").style.color = "black";
+            document.body.style.backgroundColor = "rgb(203, 203, 203)";
         }
     });
 
     continueButton.addEventListener("click", function () {
+        passwordFields.classList.add(
+            "animate__animated",
+            "animate__fadeInUp",
+            "animate-infinite");
         passwordFields.style.display = "flex";
         continueButton.style.display = "none";
         // get rid of ugly gap that was still present when continue was pressed
         continueButton.style.padding = "0px";
+        registerButton.classList.add(
+            "animate__animated",
+            "animate__fadeInUp",
+            "animate-infinite");
         registerButton.style.display = "flex";
 
-        // show the toggle only when the continue button is pressed
-        rememberMeToggle.style.display = "flex";
+        document.getElementById("login-link").classList.add("animate__animated", "animate__fadeInUp","animate-infinite");
+
 
         // when icon clicked, show password
         showPasswordIcon.addEventListener("click", function () {
@@ -52,103 +57,86 @@ document.addEventListener("DOMContentLoaded", function () {
         emailField.value = "";
     });
 
-    const emailIssue = document.getElementById("emailIssue");
+    const emailIssueIndicator = document.getElementById("email-strength-indicator");
+    const emailValidityMessage = document.getElementById("email-length-indicator");
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     function validateEmail() {
         const emailValue = emailField.value.trim();
         if (emailRegex.test(emailValue)) {
-            emailIssue.style.display = "none";
+            emailIssueIndicator.style.color = "green";
+            emailValidityMessage.style.backgroundColor = "green";
             continueButton.removeAttribute("disabled");
+            continueButton.style.color= "white";
         } else {
-            emailIssue.style.display = "block";
+            emailIssueIndicator.style.color = "red";
+            emailValidityMessage.style.backgroundColor = "red";
             continueButton.setAttribute("disabled", "disabled");
         }
     }
 
     function validatePassword() {
-        const passwordValue = passwordField.value;
-        let lengthIssue = false;
-        let upperCaseIssue = false;
-        let lowerCaseIssue = false;
-        let digitIssue = false;
-        const passwordErrorMessages = document.getElementById(
-            "passwordErrorMessages"
-        );
+        const passwordValue = singlePassField.value;
+        const passwordIndicator = document.getElementById("length-indicator");
+        const passwordErrorMessage = document.getElementById("password-strength-indicator");
         const registerButtonTag = document.getElementById("registerButtonTag");
 
-        if (passwordValue.length < 8) {
-            lengthIssue = true;
-        }
 
-        if (!/[A-Z]/.test(passwordValue)) {
-            upperCaseIssue = true;
-        }
+        const isLengthValid = passwordValue.length >= 8;
+        const isUpperCase = /[A-Z]/.test(passwordValue);
+        const isLowerCase = /[a-z]/.test(passwordValue);
+        const isDigitPresent = /[0-9]/.test(passwordValue);
 
-        if (!/[a-z]/.test(passwordValue)) {
-            lowerCaseIssue = true;
-        }
-
-        if (!/[0-9]/.test(passwordValue)) {
-            digitIssue = true;
-        }
-
-        if (!lengthIssue && !lowerCaseIssue && !upperCaseIssue && !digitIssue) {
-            passwordErrorMessages.style.display = "none";
+        if (isLengthValid && isUpperCase && isLowerCase && isDigitPresent) {
+            passwordIndicator.style.backgroundColor = "green";
+            passwordErrorMessage.style.color = "green"; 
             registerButtonTag.removeAttribute("disabled");
+            registerButtonTag.style.backgroundColor = "black";
+            registerButtonTag.style.color = "white";
             registerButton.classList.add(
                 "animate__animated",
                 "animate__flipInX",
-                "animate-infinite"
-            );
-            registerButton.addEventListener("animationend", function () {
-                registerButton.classList.remove(
-                    "animate__animated",
-                    "animate__flipInX",
-                    "animate-infinite"
-                );
-            });
-        } else {
-            passwordErrorMessages.style.display = "block";
-            passwordErrorMessages.innerHTML = "";
+                "animate-infinite");
+        }
+        else if (isLengthValid && (isUpperCase || isLowerCase || isDigitPresent)) {
+            passwordIndicator.style.backgroundColor = "orange";
+            passwordErrorMessage.style.color = "orange"; 
             registerButtonTag.setAttribute("disabled", "disabled");
-
-            if (lengthIssue) {
-                passwordErrorMessages.innerHTML +=
-                    '<p id="lengthError" class="text-rose-600 font-bold m-2">You need a minimum of 8 characters</p>';
-            }
-
-            if (lowerCaseIssue) {
-                passwordErrorMessages.innerHTML +=
-                    '<p id="lowerCaseError" class="text-rose-600 font-bold m-2">You need a lower case character</p>';
-            }
-
-            if (upperCaseIssue) {
-                passwordErrorMessages.innerHTML +=
-                    '<p id="upperCaseError" class="text-rose-600 font-bold m-2">You need an upper case character</p>';
-            }
-
-            if (digitIssue) {
-                passwordErrorMessages.innerHTML +=
-                    '<p id="digitError" class="text-rose-600 font-bold m-2">You need a digit</p>';
-            }
+            registerButtonTag.style.backgroundColor = "lightgrey";
+            registerButtonTag.style.color = "darkgrey";
+            registerButton.classList.remove(
+                "animate__animated",
+                "animate__flipInX",
+                "animate-infinite");
+        }
+        else {
+            passwordIndicator.style.backgroundColor = "red";
+            passwordErrorMessage.style.color = "red"; 
+            registerButtonTag.setAttribute("disabled", "disabled");
+            registerButtonTag.style.backgroundColor = "lightgrey";
+            registerButtonTag.style.color = "darkgrey";
+            registerButton.classList.remove(
+                "animate__animated",
+                "animate__flipInX",
+                "animate-infinite");
         }
     }
+
 
     // w3 schools - how to js detect caps lock
-    let capsLockState = false;
-    function capsLockCheck(event) {
-        if (event.getModifierState("CapsLock") && !capsLockState) {
-            passwordErrorMessages.innerHTML = '<p id="capsLock" class="text-rose-600 font-bold m-2">Caps lock is ON!</p>';
-            capsLockState = true;
-        } else  if (!event.getModifierState("CapsLock") && capsLockState){
-            passwordErrorMessages.innerHTML = '<p id="capsLock" class="text-rose-600 font-bold m-2 hidden">Caps lock is ON!</p>';
-            capsLockState = false;
-        }
-    }
+    // let capsLockState = false;
+    // function capsLockCheck(event) {
+    //     if (event.getModifierState("CapsLock") && !capsLockState) {
+    //         passwordIndicator.innerHTML = '<p id="capsLock" class="text-rose-600 font-bold m-2">Caps lock is ON!</p>';
+    //         capsLockState = true;
+    //     } else  if (!event.getModifierState("CapsLock") && capsLockState){
+    //         passwordIndicator.innerHTML = '<p id="capsLock" class="text-rose-600 font-bold m-2 hidden">Caps lock is ON!</p>';
+    //         capsLockState = false;
+    //     }
+    // }
 
     emailField.addEventListener("input", validateEmail);
-    passwordField.addEventListener("input", validatePassword);
-    passwordField.addEventListener("keydown", capsLockCheck);
+    singlePassField.addEventListener("input", validatePassword);
+    // singlePassField.addEventListener("keydown", capsLockCheck);
 });
