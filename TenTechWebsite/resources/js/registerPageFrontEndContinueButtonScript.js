@@ -57,21 +57,23 @@ document.addEventListener("DOMContentLoaded", function () {
         emailField.value = "";
     });
 
-    const emailIssueIndicator = document.getElementById("email-strength-indicator");
-    const emailValidityMessage = document.getElementById("email-length-indicator");
+    const emailIssueIndicator = document.getElementById("email-length-indicator");
+    const emailValidityMessage = document.getElementById("email-validation-message");
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     function validateEmail() {
         const emailValue = emailField.value.trim();
         if (emailRegex.test(emailValue)) {
-            emailIssueIndicator.style.color = "green";
-            emailValidityMessage.style.backgroundColor = "green";
+            emailValidityMessage.style.color = "green";
+            emailIssueIndicator.style.backgroundColor = "green";
+            emailValidityMessage.textContent = 'Valid email';
             continueButton.removeAttribute("disabled");
             continueButton.style.color= "white";
         } else {
-            emailIssueIndicator.style.color = "red";
-            emailValidityMessage.style.backgroundColor = "red";
+            emailValidityMessage.style.color = "red";
+            emailIssueIndicator.style.backgroundColor = "red";
+            emailValidityMessage.textContent = 'Invalid email';
             continueButton.setAttribute("disabled", "disabled");
         }
     }
