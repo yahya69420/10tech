@@ -6,40 +6,66 @@
     <title>10tech</title>
     <style>
         
+        body {
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Add a default font-family */
+}
+
 .header {
     display: flex;
-    justify-content: left;
-    align-items:baseline;
+    justify-content: space-between; /* Adjusted justify-content */
+    align-items: center;
     padding: 20px;
     background-color: gray;
 }
 
-.search{
-    justify-content: center;
-    align-self:baseline;
-    position: relative;
-    top: 14px;
-    margin-right: 275px;
+.search {
+    display: flex;
+    align-items: baseline;
+    position: absolute;
+    left: 150px;
+    top: 26px;
+    
 }
+
 .logo {
-   
-    justify-content: center;
-    align-self:center;
-    margin-right: 350px;
+    margin-right: auto; /* Adjusted margin-right */
+    margin-left: auto; /* Center the logo horizontally */
 }
+
 .navigation ul {
     display: flex;
     list-style: none;
+    margin: 0; /* Remove default margin */
 }
 
 .navigation ul li {
     margin-left: 20px;
     margin-right: 20px;
-    position: relative;
-
 }
 
-a {
+/* Add styles for Profile and Basket */
+.navigation ul li:last-child {
+    margin-left: 5px; /* Add a margin to create a gap */
+    margin-right: 15px; /* Push Basket to the right */
+}
+
+
+/* Optional: Style the input for search */
+.search input {
+    padding: 5px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .logo {
+        display: none; /* Hide the logo on smaller screens if needed */
+    }
+}
+
+
+
+  a {
     color: #fff;
     text-decoration: none;
   }
@@ -142,7 +168,55 @@ a {
     transition: all 0.3s ease;
   }
 
+      /* Style The Dropdown Button */
+      .dropbtn {
+    background-color: gray;
+    justify-content: right;
+    align-self: right;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
 
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(61, 61, 61);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+    background-color: rgb(61, 61, 61);
+  }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="TenTechWebsite\resources\css\headerstyle.css">
@@ -178,9 +252,16 @@ a {
     </div>
     <nav class="navigation">
         <ul>
-            <li>Profile</li>
-            <li>Basket</li>
-            
+            <li class = "dropdown"><button class="dropbtn">Profile</button>
+              <div class="dropdown-content">
+                <a href="login">Login</a>
+                <a href="register">Register</a>
+              </div></li>
+              <li class = "dropdown"><button class="dropbtn">Basket</button>
+              <div class="dropdown-content">
+                <a href="basket">Basket</a>
+                <a href="checkout">Checkout</a>
+              </div></li>
         </ul>
     </nav>
 </header>
