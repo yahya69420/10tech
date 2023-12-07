@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!--TODO: kulim park font still doesnt work, need to look into it. -->
+<!--TODO: kulim park font still doesn't work, need to look into it. -->
 
 <head>
     <meta charset="utf-8">
@@ -68,7 +68,8 @@
             height: 284px;
             top: 116px;
             left: 0;
-            background-color: #D9D9D9;
+            background-image: url('pexels-photomix-company-1038628.jpg');
+            background-size: cover;
             box-shadow: 0px 4px 4px 0px #00000040;
         }
 
@@ -79,7 +80,7 @@
             left: 555px;
             font-family: "Kulim Park";
             font-weight: 700;
-            color: #000000;
+            color: #D9D9D9;
             font-size: 40px;
             text-align: center;
             letter-spacing: 0;
@@ -92,7 +93,8 @@
             height: 459px;
             top: 452px;
             left: 967px;
-            background-color: #D9D9D9;
+            background-image: url('pexels-format-1029757.jpg');
+            background-size: cover;
             box-shadow: 0px 4px 4px 0px #00000040;
         }
 
@@ -103,7 +105,7 @@
             left: 59px;
             font-family: "Kulim Park";
             font-weight: 700;
-            color: #000000;
+            color: #D9D9D9;
             font-size: 40px;
             text-align: center;
             letter-spacing: 0;
@@ -114,18 +116,13 @@
 @include('header')
 <div class="about-us">
     <div class="div">
-        <div class="text-wrapper-3">Who We Are (1)</div>
+        <div class="text-wrapper-3">Who We Are</div>
         <p class="p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-            est laborum.
+            Welcome to TenTech! We are a team of students that are committed to providing you the latest technology products.
+
         </p>
-        <div class="div-wrapper"><p class="text-wrapper-4">Simple static banner, no carousel</p></div>
-        <div class="simple-static-image-wrapper">
-            <div class="simple-static-image">Simple static image<br />1</div>
-        </div>
+        <div class="div-wrapper"></div>
+        <div class="simple-static-image-wrapper"></div>
     </div>
 </div>
 </body>
