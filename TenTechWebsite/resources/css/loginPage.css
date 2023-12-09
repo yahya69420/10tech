@@ -11,7 +11,7 @@ body {
 .content {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     height: 100vh;
 }
 
@@ -22,7 +22,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 400px;
-    margin-top: 180px;
+    margin-top: 20px; /* Adjust the margin-top as needed */
     margin-bottom: 20px;
 }
 
