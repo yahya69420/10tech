@@ -26,6 +26,22 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/mobile', function () {
+    return view('mobile');
+});
+Route::get('/Laptop', function () {
+    return view('Laptop');
+});
+Route::get('/Monitor', function () {
+    return view('Monitor');
+});
+Route::get('/Tablet', function () {
+    return view('Tablet');
+});
+Route::get('/Console', function () {
+    return view('Console');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

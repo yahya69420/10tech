@@ -7,30 +7,32 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <style>
-    body {
+        body {
   background-color: #f5f5f7;
 }
-#carouselss {
-    height: 50vh;
-    
-  }
+    .hero {
+      height: 50vh;
+      background-color: #f5f5f7;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .heroescontent {
+      text-align: center;
+      color: black;
+    }
 
-  .carousel-item {
-    height: 300px;
+    .hero h1 {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
 
-  }
-
-  .carousel-item img {
-    width: 100%;
-  height: 100%; 
-  object-fit: cover; 
-  }
-
-  .carousel-item:nth-child(1) {
-    background-image: url('istockphoto-1188616804-612x612.jpg');
-    background-size: contain;
-  }
-  
+    .hero p {
+      font-size: 24px;
+    }
 
   .our-product {
     text-align: center;
@@ -73,7 +75,7 @@ align-items: center;
 
   .category .image {
     position: relative;
-    width: 110%;
+    width: 100%;
     height: 150px; 
     overflow: hidden;
   }
@@ -100,6 +102,7 @@ align-items: center;
 }
 
 
+
   .category:hover .image {
   cursor: pointer;
 }
@@ -107,9 +110,6 @@ align-items: center;
     text-decoration: none; 
     color: inherit;
 }
-.price-highlight {
-    color: red; /* This will set the text color to red */
-  }
      
   </style>
         
@@ -118,8 +118,11 @@ align-items: center;
         </style>
 
 
+<title>Laptop</title>
+
     </head>
     
+
 
     <body>
       @include('header')
@@ -129,232 +132,135 @@ align-items: center;
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
      
       
-              
-              
-      
-      
-              <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-              <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-              <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-      
-      <div id="carouselss" class="carousel slide" data-ride="carousel">
-         
-         <div id="carousels" class="carousel slide" data-ride="carousel">
-           <ol class="carousel-indicators">
-             <li data-target="#carousels" data-slide-to="0" class=""></li>
-             <li data-target="#carousels" data-slide-to="1" class="active"></li>
-             <li data-target="#carousels" data-slide-to="2" class=""></li>
-             <li data-target="#carousels" data-slide-to="3" class=""></li>
-             <li data-target="#carousels" data-slide-to="4" class=""></li>
-      
-           </ol>
-           <div class="carousel-inner">
-             <div class="carousel-item">
-               <img class="d-block w-100" src="caro1.png" alt="First slide">
-             </div>
-             <div class="carousel-item active">
-               <img class="d-block w-100" src="pexels-orhan-pergel-18980943.jpg" alt="Second slide">
-             </div>
-             <div class="carousel-item">
-               <img class="d-block w-100" src="pexels-fauxels-3184451.jpg" alt="Third slide">
-             </div>
-             <div class="carousel-item">
-               <img class="d-block w-100" src="pexels-orhan-pergel-18980943 (1) (1).jpg" alt="fourth slide">
-             </div>
-             <div class="carousel-item">
-               <img class="d-block w-100" src="pexels-photomix-company-1038628.jpg" alt="fifth slide">
-             </div>
-           </div>
-           <a class="carousel-control-prev" href="#carousels" role="button" data-slide="prev">
-             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-             <span class="sr-only">Previous</span>
-           </a>
-           <a class="carousel-control-next" href="#carousels" role="button" data-slide="next">
-             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-             <span class="sr-only">Next</span>
-           </a>
-         </div>
+          <div class="hero">
+            <div class="heroescontent">
+              <h1>Laptops</h1>
+              <p>Tablets</p>
+            </div>
+          </div>
       
        </div>
-       <div class="our-product">
-             Our Product
-         </div>
-         <div class="affordable-cutting-edge">
-             Affordable &amp; Cutting Edge
-         </div>
-         
+
          <header style="color: black; padding: 10px;  font-weight: bold; padding-top:50px;">
             <h2>Categories</h2>
         </header>
       
          <div class="categories-section">
           <div class="category">
-            <a class="link2" href="Console">
+            <a class="link1" href="laptop.php">
               <div class="image">
-                  <img src="console.png" alt="Product 1">
+                  <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
               </div>
               <div class="product-details">
-                  <h3>Console</h3>
-                  <p class="price-highlight">From ONLY $409.99</p>
-
+                  <h3>Product Name 1</h3>
+                  <p>$19.99</p>
               </div>
             </a>
           </div>
           <div class="category">
-            <a class="link2" href="mobile">
-              <div class="image">
-                    <img src="Phones.png" alt="Product 1">
+            <a class="link1" href="Mobile">
+                <div class="image">
+                    <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
                 </div>
                 <div class="product-details">
                     <h3>Mobile Phones</h3>
-                    <p class="price-highlight">From ONLY $109.99</p>
+                    <p>$109.99</p>
                 </div>
             </a>
         </div>
           <div class="category">
-            <a class="link2" href="Laptop">
+            <a href="laptop.php" class="category-link">
               <div class="image">
-                  <img src="laptop.png" alt="Product 1">
+                  <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
                 </div>
               <div class="product-details">
                   <h3>Laptops</h3>
-                  <p class="price-highlight">From ONLY $199.99</p>
+                  <p>$199.99</p>
               </div>
             </a>
           </div>
           <div class="category">
-            <a class="link2" href="Tablet">
+            <a href="Tablet.php" >
               <div class="image">
-                  <img src="tablet.png" alt="Product 1">
+                  <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
               </div>
               <div class="product-details">
                   <h3>Tablets</h3>
-                  <p class="price-highlight">From ONLY $199.99</p>
+                  <p>$199.99</p>
               </div>
             </a>
           </div>
           <div class="category">
-            <a class="link2" href="Monitor">
-            <div class="image">
-                  <img src="monitor.png" alt="Product 1">
+            <a href="Mobile.php" >
+              <div class="image">
+                  <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
               </div>
               <div class="product-details">
                   <h3>monitors</h3>
-                  <p class="price-highlight">From ONLY $199.99</p>
+                  <p>$199.99</p>
               </div>
             </a>
           </div>
       </div>
-      <header style="color: rgb(225, 30, 30); padding: 10px;  font-weight: bold; padding-top:50px;">
-        <h2>Popular Products</h2>
-      </header>
+
+      </div>
       <div class="categories-section">
         <div class="category">
-          <a class="link2" href="">
+          <a class="link1" href="laptop.php">
             <div class="image">
                 <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
             </div>
             <div class="product-details">
-                <h3>iApple</h3>
-                <p>$1999.99</p>
+                <h3>Product Name 1</h3>
+                <p>$19.99</p>
             </div>
           </a>
         </div>
         <div class="category">
-          <a class="link2" href="">
+          <a class="link1" href="Mobile">
+              <div class="image">
+                  <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
+              </div>
+              <div class="product-details">
+                  <h3>Mobile Phones</h3>
+                  <p>$109.99</p>
+              </div>
+          </a>
+      </div>
+        <div class="category">
+          <a href="laptop.php" class="category-link">
             <div class="image">
                 <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-            </div>
+              </div>
             <div class="product-details">
-                <h3>Samsong</h3>
+                <h3>Laptops</h3>
                 <p>$199.99</p>
             </div>
           </a>
         </div>
         <div class="category">
-          <a class="link2" href="">
+          <a href="Tablet.php" >
             <div class="image">
                 <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
             </div>
             <div class="product-details">
-                <h3>Mars Tab 2</h3>
-                <p>$229.99</p>
-            </div>
-          </a>
-        </div>
-        <div class="category">
-          <a class="link2" href="">
-            <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-            </div>
-            <div class="product-details">
-                <h3>PS22</h3>
-                <p>$569.99</p>
-            </div>
-          </a>
-        </div>
-      </div>
-      <header style="color: black; padding: 10px;  font-weight: bold; padding-top:50px;">
-        <h2>Whats New</h2>
-      </header>
-      <div class="categories-section">
-        <div class="category">
-          <a class="link2" href="Console">
-            <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-            </div>
-            <div class="product-details">
-                <h3>Monitor 32"</h3>
+                <h3>Tablets</h3>
                 <p>$199.99</p>
             </div>
           </a>
         </div>
         <div class="category">
-          <a class="link2" href="Console">
+          <a href="Mobile.php" >
             <div class="image">
                 <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
             </div>
             <div class="product-details">
-                <h3>ITouch 24</h3>
-                <p>$300.99</p>
+                <h3>monitors</h3>
+                <p>$199.99</p>
             </div>
           </a>
         </div>
-        <div class="category">
-          <a class="link2" href="Console">
-            <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-            </div>
-            <div class="product-details">
-                <h3>Console</h3>
-                <p>$19.99</p>
-            </div>
-          </a>
-        </div>
-        <div class="category">
-          <a class="link2" href="Console">
-            <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-            </div>
-            <div class="product-details">
-                <h3>Console</h3>
-                <p>$19.99</p>
-            </div>
-          </a>
-        </div>
-        <div class="category">
-          <a class="link2" href="Console">
-            <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-            </div>
-            <div class="product-details">
-                <h3>Console</h3>
-                <p>$19.99</p>
-            </div>
-          </a>
-        </div>
-      </div>
-        
+    </div>
       
       
       
@@ -367,4 +273,3 @@ align-items: center;
 </body>
 
 </html>
-
