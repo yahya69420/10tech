@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>10tech</title>
+    <link rel="stylesheet" href="{{ asset('/resources/css/registerPageFrontEnd.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        
+
+
         body {
     margin: 0;
     font-family: 'Arial', sans-serif; /* Add a default font-family */
@@ -15,7 +19,6 @@
     display: flex;
     justify-content: space-between; /* Adjusted justify-content */
     align-items: center;
-    padding: 20px;
     background-color: gray;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -48,7 +51,7 @@
 /* Add styles for Profile and Basket */
 .navigation ul li:last-child {
     margin-left: 5px; /* Add a margin to create a gap */
-    margin-right: 15px; /* Push Basket to the right */
+    margin-right: 50px; /* Push Basket to the right */
 }
 
 
@@ -70,25 +73,25 @@
     color: #fff;
     text-decoration: none;
   }
-  
+
   .p-menu1{
      align-self: baseline;
   }
-  
-  
-  
-  
-  /* Hamburger */
-  .hamburger1 {
-    height: 35px;
-    
-    display: -ms-grid;
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    justify-items: center;
-    z-index: 120;
-  }
-  
+
+
+/* Hamburger */
+.hamburger1 {
+  height: 35px;
+  position: absolute;
+  left: 70px;
+  top: 15px;
+  display: -ms-grid;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  justify-items: center;
+  z-index: 120;
+}
+
   .hamburger1 div {
     background-color: rgb(61, 61, 61);
     position: relative;
@@ -98,70 +101,71 @@
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
   }
-  
+
   #toggle1 {
     display: none;
   }
-  
+
   #toggle1:checked + .hamburger1 .top {
     -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
     margin-top: 22.5px;
   }
-  
+
   #toggle1:checked + .hamburger1 .meat {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
     margin-top: -5px;
   }
-  
+
   #toggle1:checked + .hamburger1 .bottom {
     -webkit-transform: scale(0);
             transform: scale(0);
   }
-  
+
   #toggle1:checked ~ .menu1 {
     height: 300px;
   }
-  
-  
+
+
   /* Menu */
   .menu1 {
-    width: 100%;
-    background-color: gray;
-    margin: 0;
-    display: -ms-grid;
-    display: grid;
-    grid-template-rows: 1fr repeat(4, 0.5fr);
-    grid-row-gap: 25px;
-    padding: 0;
-    list-style: none;
-    clear: both;
-    width: auto;
-    text-align: center;
-    height: 0px;
-    overflow: hidden;
-    transition: height .4s ease;
-    z-index: 120;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-  }
-  
+  width: 100%;
+  background-color: gray;
+  margin: 0;
+  display: -ms-grid;
+  display: grid;
+  grid-template-rows: 1fr repeat(4, 0.5fr);
+  grid-row-gap: 25px;
+  padding: 20px;
+  padding-left: 20px;
+  list-style: none;
+  clear: both;
+  width: auto;
+  text-align: center;
+  height: 0px;
+  overflow: hidden;
+  transition: height .4s ease;
+  z-index: 120;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
   .menu1 a:first-child {
     margin-top: 40px;
   }
-  
+
   .menu1 a:last-child {
     margin-bottom: 40px;
   }
-  
+
   .link1 {
     width: 100%;
     margin: 0;
     padding: 10px 0;
     font: 700 20px 'Oswald', sans-serif;
   }
-  
+
   .link1:hover {
     background-color: #fff;
     color: rgb(61, 61, 61);
@@ -218,13 +222,16 @@
   .dropdown:hover .dropbtn {
     background-color: rgb(61, 61, 61);
   }
+
+  .account{
+    height: 50px;
+  }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="TenTechWebsite\resources\css\headerstyle.css">
+
 
 </head>
 <body>
-    
+
 <header class="header">
     <section class="p-menu1">
         <nav id="navbar" class="navigation" role="navigation">
@@ -234,7 +241,7 @@
             <div class="meat"></div>
             <div class="bottom"></div>
           </label>
-        
+
           <nav class="menu1">
             <a class="link1" href="Laptop">Laptops</a>
             <a class="link1" href="mobile">Smartphones</a>
@@ -243,22 +250,22 @@
             
           </nav>
         </nav>
-        
+
       </section>
     <div class = "search">
-        <input type="search">   
+        <input type="search" placeholder = "Search...">
     </div>
     <div class="logo">
-        <h1>Logo</h1>
+        <h1>TenTech</h1>
     </div>
     <nav class="navigation">
         <ul>
-            <li class = "dropdown"><button class="dropbtn">Profile</button>
+            <li class = "dropdown"><button class="dropbtn"><img src = "account.png" class = "account"></button>
               <div class="dropdown-content">
                 <a href="login">Login</a>
                 <a href="register">Register</a>
               </div></li>
-              <li class = "dropdown"><button class="dropbtn">Basket</button>
+              <li class = "dropdown"><button class="dropbtn"><img src = "shopping-basket.png" class = "account"></button>
               <div class="dropdown-content">
                 <a href="basket">Basket</a>
                 <a href="checkout">Checkout</a>

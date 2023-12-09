@@ -26,6 +26,19 @@ Route::get('/about', function () {
     return view('about');
 });
 
+
+Route::get('/checkout', function(){
+    return view('checkout');
+});
+
+Route::get('/header', function(){
+    return view('header');
+});
+
+Route::get('/complete', function(){
+    return view('complete');
+});
+
 Route::get('/mobile', function () {
     return view('mobile');
 });
