@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>10tech</title>
-    <link rel="stylesheet" href="{{ asset('../resources/css/registerPageFrontEnd.css') }}">
+    <link rel="stylesheet" href="{{ asset('/resources/css/registerPageFrontEnd.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-      
-        
+
+
         body {
     margin: 0;
     font-family: 'Arial', sans-serif; /* Add a default font-family */
@@ -73,12 +73,12 @@
     color: #fff;
     text-decoration: none;
   }
-  
+
   .p-menu1{
      align-self: baseline;
   }
-  
-  
+
+
 /* Hamburger */
 .hamburger1 {
   height: 35px;
@@ -91,7 +91,7 @@
   justify-items: center;
   z-index: 120;
 }
-  
+
   .hamburger1 div {
     background-color: rgb(61, 61, 61);
     position: relative;
@@ -101,33 +101,33 @@
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
   }
-  
+
   #toggle1 {
     display: none;
   }
-  
+
   #toggle1:checked + .hamburger1 .top {
     -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
     margin-top: 22.5px;
   }
-  
+
   #toggle1:checked + .hamburger1 .meat {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
     margin-top: -5px;
   }
-  
+
   #toggle1:checked + .hamburger1 .bottom {
     -webkit-transform: scale(0);
             transform: scale(0);
   }
-  
+
   #toggle1:checked ~ .menu1 {
     height: 300px;
   }
-  
-  
+
+
   /* Menu */
   .menu1 {
   width: 100%;
@@ -150,22 +150,22 @@
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-  
+
   .menu1 a:first-child {
     margin-top: 40px;
   }
-  
+
   .menu1 a:last-child {
     margin-bottom: 40px;
   }
-  
+
   .link1 {
     width: 100%;
     margin: 0;
     padding: 10px 0;
     font: 700 20px 'Oswald', sans-serif;
   }
-  
+
   .link1:hover {
     background-color: #fff;
     color: rgb(61, 61, 61);
@@ -231,7 +231,7 @@
 
 </head>
 <body>
-    
+
 <header class="header">
     <section class="p-menu1">
         <nav id="navbar" class="navigation" role="navigation">
@@ -241,19 +241,19 @@
             <div class="meat"></div>
             <div class="bottom"></div>
           </label>
-        
+
           <nav class="menu1">
             <a class="link1" href="">Laptops</a>
             <a class="link1" href="">Smartphones</a>
             <a class="link1" href="">Tablets</a>
             <a class="link1" href="">Consoles</a>
-            
+
           </nav>
         </nav>
-        
+
       </section>
     <div class = "search">
-        <input type="search" placeholder = "Search...">   
+        <input type="search" placeholder = "Search...">
     </div>
     <div class="logo">
         <h1>TenTech</h1>

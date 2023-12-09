@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('../resources/css/registerPageFrontEnd.css') }}">
+    <link rel="stylesheet" href="{{ asset('/registerPageFrontEnd.css') }}">
     <!-- Added icon for website -->
     <link rel="icon" href="{{ asset('icons8-register-16.png') }}" type="image/x-icon" />
     <!-- Bootstrap CDN -->
@@ -21,7 +21,7 @@
     <!-- BoxIcon CDN -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- JavaScript for register page -->
-    <script src="../resources/js/registerPageFrontEndContinueButtonScript.js"></script>
+    <script src="registerPageFrontEndContinueButtonScript.js"></script>
     <title>Register</title>
 </head>
 
