@@ -26,6 +26,7 @@ Route::get('/about', function () {
     return view('about');
 });
 
+
 Route::get('/checkout', function(){
     return view('checkout');
 });
@@ -36,6 +37,22 @@ Route::get('/header', function(){
 
 Route::get('/complete', function(){
     return view('complete');
+});
+
+Route::get('/mobile', function () {
+    return view('mobile');
+});
+Route::get('/Laptop', function () {
+    return view('Laptop');
+});
+Route::get('/Monitor', function () {
+    return view('Monitor');
+});
+Route::get('/Tablet', function () {
+    return view('Tablet');
+});
+Route::get('/Console', function () {
+    return view('Console');
 });
 
 Auth::routes();

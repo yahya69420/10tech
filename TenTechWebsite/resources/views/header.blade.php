@@ -20,11 +20,11 @@
           </label>
 
           <nav class="menu1">
-            <a class="link1" href="">Laptops</a>
-            <a class="link1" href="">Smartphones</a>
-            <a class="link1" href="">Tablets</a>
-            <a class="link1" href="">Consoles</a>
-
+            <a class="link1" href="Laptop">Laptops</a>
+            <a class="link1" href="mobile">Smartphones</a>
+            <a class="link1" href="Tablet">Tablets</a>
+            <a class="link1" href="Console">Console</a>
+            
           </nav>
         </nav>
 
