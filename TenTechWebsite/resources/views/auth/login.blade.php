@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="{{ asset('../resources/css/loginPage.css') }}">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -18,18 +17,18 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="{{ old('email') }}" required>
+            <label for="email"></label>
+            <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Enter your Email" required>
 
             <div class="password-section" style="display: none;">
-                <label for="password">Password:</label>
+                <label for="password"></label>
                 <div class="password-wrapper">
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
                     <i class='bx bxs-hide' id="passwordicon" onclick="togglePasswordVisibility()"></i>
                 </div>
             </div>
 
-            <button type="button" onclick="showPasswordSection()" style="margin-bottom: 10px;">Continue</button>
+            <button type="button" onclick="showPasswordSection()">Continue</button>
 
             <button type="submit" style="display: none;">Login</button>
         </form>
