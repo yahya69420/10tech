@@ -3,43 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>10tech</title>
+    <link rel="stylesheet" href="{{ asset('../resources/css/registerPageFrontEnd.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
+      
         
-.header {
-    display: flex;
-    justify-content: left;
-    align-items:baseline;
-    padding: 20px;
-    background-color: gray;
+        body {
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Add a default font-family */
 }
 
-.search{
-    justify-content: center;
-    align-self:baseline;
-    position: relative;
-    top: 14px;
-    margin-right: 275px;
+.header {
+    display: flex;
+    justify-content: space-between; /* Adjusted justify-content */
+    align-items: center;
+    background-color: gray;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.search {
+    display: flex;
+    align-items: baseline;
+    position: absolute;
+    left: 150px;
+    top: 26px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .logo {
-   
-    justify-content: center;
-    align-self:center;
-    margin-right: 350px;
+    margin-right: auto; /* Adjusted margin-right */
+    margin-left: auto; /* Center the logo horizontally */
 }
+
 .navigation ul {
     display: flex;
     list-style: none;
+    margin: 0; /* Remove default margin */
 }
 
 .navigation ul li {
     margin-left: 20px;
     margin-right: 20px;
-    position: relative;
-
 }
 
-a {
+/* Add styles for Profile and Basket */
+.navigation ul li:last-child {
+    margin-left: 5px; /* Add a margin to create a gap */
+    margin-right: 50px; /* Push Basket to the right */
+}
+
+
+/* Optional: Style the input for search */
+.search input {
+    padding: 5px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .logo {
+        display: none; /* Hide the logo on smaller screens if needed */
+    }
+}
+
+
+
+  a {
     color: #fff;
     text-decoration: none;
   }
@@ -49,18 +79,18 @@ a {
   }
   
   
-  
-  
-  /* Hamburger */
-  .hamburger1 {
-    height: 35px;
-    
-    display: -ms-grid;
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    justify-items: center;
-    z-index: 120;
-  }
+/* Hamburger */
+.hamburger1 {
+  height: 35px;
+  position: absolute;
+  left: 70px;
+  top: 15px;
+  display: -ms-grid;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  justify-items: center;
+  z-index: 120;
+}
   
   .hamburger1 div {
     background-color: rgb(61, 61, 61);
@@ -100,25 +130,26 @@ a {
   
   /* Menu */
   .menu1 {
-    width: 100%;
-    background-color: gray;
-    margin: 0;
-    display: -ms-grid;
-    display: grid;
-    grid-template-rows: 1fr repeat(4, 0.5fr);
-    grid-row-gap: 25px;
-    padding: 0;
-    list-style: none;
-    clear: both;
-    width: auto;
-    text-align: center;
-    height: 0px;
-    overflow: hidden;
-    transition: height .4s ease;
-    z-index: 120;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-  }
+  width: 100%;
+  background-color: gray;
+  margin: 0;
+  display: -ms-grid;
+  display: grid;
+  grid-template-rows: 1fr repeat(4, 0.5fr);
+  grid-row-gap: 25px;
+  padding: 20px;
+  padding-left: 20px;
+  list-style: none;
+  clear: both;
+  width: auto;
+  text-align: center;
+  height: 0px;
+  overflow: hidden;
+  transition: height .4s ease;
+  z-index: 120;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
   
   .menu1 a:first-child {
     margin-top: 40px;
@@ -142,10 +173,61 @@ a {
     transition: all 0.3s ease;
   }
 
+      /* Style The Dropdown Button */
+      .dropbtn {
+    background-color: gray;
+    justify-content: right;
+    align-self: right;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
 
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(61, 61, 61);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+    background-color: rgb(61, 61, 61);
+  }
+
+  .account{
+    height: 50px;
+  }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="TenTechWebsite\resources\css\headerstyle.css">
+
 
 </head>
 <body>
@@ -171,16 +253,23 @@ a {
         
       </section>
     <div class = "search">
-        <input type="search">   
+        <input type="search" placeholder = "Search...">   
     </div>
     <div class="logo">
-        <h1>Logo</h1>
+        <h1>TenTech</h1>
     </div>
     <nav class="navigation">
         <ul>
-            <li>Profile</li>
-            <li>Basket</li>
-            
+            <li class = "dropdown"><button class="dropbtn"><img src = "account.png" class = "account"></button>
+              <div class="dropdown-content">
+                <a href="login">Login</a>
+                <a href="register">Register</a>
+              </div></li>
+              <li class = "dropdown"><button class="dropbtn"><img src = "shopping-basket.png" class = "account"></button>
+              <div class="dropdown-content">
+                <a href="basket">Basket</a>
+                <a href="checkout">Checkout</a>
+              </div></li>
         </ul>
     </nav>
 </header>
