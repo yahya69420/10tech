@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>10tech</title>
-    <link rel="stylesheet" href="{{ asset('/css/headerStyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/headerstyle.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
@@ -24,7 +24,7 @@
             <a class="link1" href="mobile">Smartphones</a>
             <a class="link1" href="Tablet">Tablets</a>
             <a class="link1" href="Console">Console</a>
-            
+
           </nav>
         </nav>
 
