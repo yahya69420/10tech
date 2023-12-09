@@ -7,7 +7,6 @@ body {
   display: flex;
   justify-content: space-between; /* Adjusted justify-content */
   align-items: center;
-  padding: 20px;
   background-color: gray;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -40,7 +39,7 @@ body {
 /* Add styles for Profile and Basket */
 .navigation ul li:last-child {
   margin-left: 5px; /* Add a margin to create a gap */
-  margin-right: 15px; /* Push Basket to the right */
+  margin-right: 50px; /* Push Basket to the right */
 }
 
 
@@ -68,17 +67,17 @@ a {
 }
 
 
-
-
 /* Hamburger */
 .hamburger1 {
-  height: 35px;
-  
-  display: -ms-grid;
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  justify-items: center;
-  z-index: 120;
+height: 35px;
+position: absolute;
+left: 70px;
+top: 15px;
+display: -ms-grid;
+display: grid;
+grid-template-rows: repeat(3, 1fr);
+justify-items: center;
+z-index: 120;
 }
 
 .hamburger1 div {
@@ -119,24 +118,25 @@ a {
 
 /* Menu */
 .menu1 {
-  width: 100%;
-  background-color: gray;
-  margin: 0;
-  display: -ms-grid;
-  display: grid;
-  grid-template-rows: 1fr repeat(4, 0.5fr);
-  grid-row-gap: 25px;
-  padding: 0;
-  list-style: none;
-  clear: both;
-  width: auto;
-  text-align: center;
-  height: 0px;
-  overflow: hidden;
-  transition: height .4s ease;
-  z-index: 120;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+width: 100%;
+background-color: gray;
+margin: 0;
+display: -ms-grid;
+display: grid;
+grid-template-rows: 1fr repeat(4, 0.5fr);
+grid-row-gap: 25px;
+padding: 20px;
+padding-left: 20px;
+list-style: none;
+clear: both;
+width: auto;
+text-align: center;
+height: 0px;
+overflow: hidden;
+transition: height .4s ease;
+z-index: 120;
+-webkit-transition: all 0.3s ease;
+transition: all 0.3s ease;
 }
 
 .menu1 a:first-child {
@@ -209,4 +209,8 @@ a {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background-color: rgb(61, 61, 61);
+}
+
+.account{
+  height: 50px;
 }
