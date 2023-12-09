@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="{{ asset('../resources/css/loginPage.css') }}">
 
-
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
 
@@ -20,25 +20,17 @@
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" value="{{ old('email') }}" required>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-
-            <div class="show-password-wrapper">
-                <label for="show-password">Show Password</label>
-                <input type="checkbox" id="show-password" onclick="togglePasswordVisibility()">
+            <div class="password-section" style="display: none;">
+                <label for="password">Password:</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" required>
+                    <i class='bx bxs-hide' id="passwordicon" onclick="togglePasswordVisibility()"></i>
+                </div>
             </div>
-            <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
+            <button type="button" onclick="showPasswordSection()">Continue</button>
 
-            <button type="submit">Login</button>
+            <button type="submit" style="display: none;">Login</button>
         </form>
         <p>Don't have an account? <a href="{{ route('register') }}">Sign up</a></p>
     </div>
@@ -46,11 +38,20 @@
 
 <!-- JavaScript -->
 <script>
+    function showPasswordSection() {
+        const passwordSection = document.querySelector(".password-section");
+        const continueButton = document.querySelector("button[onclick='showPasswordSection()']");
+        const loginButton = document.querySelector("button[type='submit']");
+
+        passwordSection.style.display = "block";
+        continueButton.style.display = "none";
+        loginButton.style.display = "block";
+    }
+
     function togglePasswordVisibility() {
         const passwordInput = document.getElementById("password");
-        const showPasswordCheckbox = document.getElementById("show-password");
 
-        if (showPasswordCheckbox.checked) {
+        if (passwordInput.type === "password") {
             passwordInput.type = "text";
         } else {
             passwordInput.type = "password";
