@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="{{ asset('../resources/css/loginPage.css') }}">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -28,7 +29,7 @@
                 </div>
             </div>
 
-            <button type="button" onclick="showPasswordSection()">Continue</button>
+            <button type="button" onclick="showPasswordSection()" style="margin-bottom: 10px;">Continue</button>
 
             <button type="submit" style="display: none;">Login</button>
         </form>

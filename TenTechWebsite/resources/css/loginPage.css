@@ -47,6 +47,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .signin-form .show-password-wrapper {
@@ -65,4 +66,9 @@ body {
     position: absolute;
     top: 48%;
     right: 37%;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
 }
