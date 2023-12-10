@@ -141,18 +141,11 @@ align-items: center;
       
        </div>
 
-<<<<<<< Updated upstream
          <header style="color: black; padding: 10px;  font-weight: bold; padding-top:50px;">
             <h2>Products</h2>
         </header>
       
-=======
-         <!-- <header style="color: black; padding: 10px;  font-weight: bold; padding-top:50px;">
-            <h2>Categories</h2>
-        </header> -->
-<!--       
->>>>>>> Stashed changes
-         <div class="categories-section">
+         <!-- <div class="categories-section">
           <div class="category">
             <a href="">
               <div class="image">
@@ -162,13 +155,8 @@ align-items: center;
                   <h3>Monitor 1</h3>
                   <p>$199.99</p>
               </div>
-            </a>
-<<<<<<< Updated upstream
-          </div>
-          <div class="category">
-            <a href="">
-=======
-          </div> -->
+            </a> -->
+          <!-- </div> -->
 
 
 
@@ -191,7 +179,6 @@ align-items: center;
 
           <!-- <div class="category">
             <a class="link1" href="Mobile">
->>>>>>> Stashed changes
                 <div class="image">
                     <img src="monitor2.png" alt="Product 1">
                 </div>
