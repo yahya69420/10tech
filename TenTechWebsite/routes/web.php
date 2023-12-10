@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +19,7 @@ Route::get('/', function () {
 });
 
 // default url that returns the 'home' page that is the shop
-Route::get('/shop', [ProductController::class, 'index']);
+Route::get('/shop', [App\Http\Controllers\ProductController::class, 'index']);
 
 Route::get('/about', function () {
     return view('about');
@@ -37,6 +38,7 @@ Route::get('/complete', function(){
     return view('complete');
 });
 
+<<<<<<< Updated upstream
 Route::get('/mobile', function () {
     return view('Mobile');
 });
@@ -55,13 +57,25 @@ Route::get('/Console', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+=======
+Route::get('/Laptop', [App\Http\Controllers\ProductController::class, 'showAllLaptops'])->name('laptop');
+
+Route::get('/Tablet', [App\Http\Controllers\ProductController::class, 'showAllTablets'])->name('tablet');
+
+Route::get('/Console', [App\Http\Controllers\ProductController::class, 'showAllConsoles'])->name('console');
+
+Route::get('/Mobile', [App\Http\Controllers\ProductController::class, 'showAllMobiles'])->name('mobile');
+
+Route::get('/Monitor', [App\Http\Controllers\ProductController::class, 'showAllMonitors'])->name('monitor');
+>>>>>>> Stashed changes
 
 Auth::routes();
 
+// basket route
+// Route::get('/basket', [App\Http\Controllers\BasketController::class, 'index'])->name('basket');
 
-
-Route::get('/products/{id}', [ProductController::class, 'productDetail'])->name('productdetail');
-
+// product detail route
+Route::get('/productdetail/{id}', [App\Http\Controllers\ProductController::class, 'productDetail'])->name('productdetail');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

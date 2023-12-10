@@ -6,13 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('/css/productdetail.css') }}">
-    <title>Your Page Title</title>
+    <title>{{ $product->name }}</title>
 </head>
 <body>
     @include('header')
     <div class="product-container">
         <div class="product-image">
-            <img src="{{ $product->gallery }}" alt="{{ $product->name }}">
+            <img src="{{ $product->image }}" alt="{{ $product->name }}">
         </div>
         <div class="product-details">
             <h2>{{ $product->name }}</h2>

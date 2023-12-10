@@ -118,7 +118,7 @@ align-items: center;
         </style>
 
 
-<title>Laptop</title>
+<title>Tablets</title>
 
     </head>
     
@@ -134,17 +134,28 @@ align-items: center;
           <div class="hero">
             <div class="heroescontent">
               <h1>Tablets</h1>
+<<<<<<< Updated upstream
               <p>Discover the latest Tablets for the best prices</p>
+=======
+              <p>Discover the latest tablets for the best prices</p>
+>>>>>>> Stashed changes
             </div>
           </div>
       
        </div>
 
+<<<<<<< Updated upstream
 
          <header style="color: black; padding: 10px;  font-weight: bold; padding-top:50px;">
             <h2>Products</h2>
         </header>
       
+=======
+         <!-- <header style="color: black; padding: 10px;  font-weight: bold; padding-top:50px;">
+            <h2>Categories</h2>
+        </header> -->
+<!--       
+>>>>>>> Stashed changes
          <div class="categories-section">
           <div class="category">
             <a href="">
@@ -156,9 +167,35 @@ align-items: center;
                   <p>$109.99</p>
               </div>
             </a>
+<<<<<<< Updated upstream
           </div>
           <div class="category">
             <a href="">
+=======
+          </div> -->
+
+
+
+          <div class="categories-section">
+        @foreach ($tablets as $tablet)
+        <div class="category">
+            <a class="link2" href="{{ route('productdetail', ['id' => $tablet->id]) }}">
+            <div class="image">
+              <img src="{{ $tablet->image }}" alt="Product 1">
+            </div>
+            <div class="product-details">
+                <h3>{{ $tablet->name }}</h3>
+                <p>£{{ $tablet->price }}</p>
+            </div>
+          </a>
+        </div>
+        @endforeach 
+      </div>
+
+
+          <!-- <div class="category">
+            <a class="link1" href="Mobile">
+>>>>>>> Stashed changes
                 <div class="image">
                     <img src="Tablet2.png" alt="Product 1">
                 </div>
@@ -206,7 +243,7 @@ align-items: center;
       </div>
      
     </div>
-      
+       -->
       
       
       

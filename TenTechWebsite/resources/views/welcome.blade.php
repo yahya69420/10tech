@@ -178,7 +178,7 @@ align-items: center;
        </div>
 
        <div class="our-product">
-             Our Product
+             Our Products
          </div>
          <div class="affordable-cutting-edge">
              Affordable &amp; Cutting Edge
@@ -188,15 +188,15 @@ align-items: center;
             <h2>Categories</h2>
         </header>
          <div class="categories-section">
-         @foreach ($products as $product)
+          @foreach ($categories as $category)
           <div class="category">
-            <a class="link2" href="Console">
+            <a class="link2" href="{{ $category->name }}">
               <div class="image">
-                  <img src="Phones.png" alt="Product 1">
+                <img src="{{ $category->image }}" alt="Product 1">
               </div>
               <div class="product-details">
-                  <h3>{{ $product->category }}</h3>
-                  <p class="price-highlight">From ONLY ${{ $product->price }}</p>
+                  <h3>{{ $category->name }}</h3>
+                  <p class="price-highlight">From ONLY £{{ $category->price }}</p>
               </div>
             </a>
             
@@ -208,15 +208,15 @@ align-items: center;
         <h2>Popular Products</h2>
       </header>
       <div class="categories-section">
-        @foreach ($products as $product)
+      @foreach ($products->shuffle()->take(7) as $product)
         <div class="category">
             <a class="link2" href="{{ route('productdetail', ['id' => $product->id]) }}">
             <div class="image">
-              <img src="{{ $product->gallery }}" alt="Product 1">
+              <img src="{{ $product->image }}" alt="Product 1">
             </div>
             <div class="product-details">
                 <h3>{{ $product->name }}</h3>
-                <p>{{ $product->price }}</p>
+                <p>£{{ $product->price }}</p>
             </div>
           </a>
         </div>
@@ -227,15 +227,15 @@ align-items: center;
         <h2>Whats New</h2>
       </header>
       <div class="categories-section">
-        @foreach ($products as $product)
+      @foreach ($products->shuffle()->take(7) as $product)
         <div class="category">
-          <a class="link2" href="">
+        <a class="link2" href="{{ route('productdetail', ['id' => $product->id]) }}">
             <div class="image">
-              <img src="{{ $product->gallery }}" alt="Product 1">
+              <img src="{{ $product->image }}" alt="Product 1">
             </div>
             <div class="product-details">
                 <h3>{{ $product->name }}</h3>
-                <p>{{ $product->price }}</p>
+                <p>£{{ $product->price }}</p>
             </div>
           </a>
         </div>

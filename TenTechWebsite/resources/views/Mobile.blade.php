@@ -118,7 +118,7 @@ align-items: center;
         </style>
 
 
-<title>Laptop</title>
+<title>Mobiles</title>
 
     </head>
     
@@ -134,17 +134,24 @@ align-items: center;
       
           <div class="hero">
             <div class="heroescontent">
-              <h1>Mobile phones</h1>
+              <h1>Mobile Phones</h1>
               <p>Discover the latest phones for the best prices</p>
             </div>
           </div>
       
        </div>
 
+<<<<<<< Updated upstream
          <header style="color: black; padding: 10px;  font-weight: bold; padding-top:50px;">
             <h2>Products</h2>
         </header>
       
+=======
+         <!-- <header style="color: black; padding: 10px;  font-weight: bold; padding-top:50px;">
+            <h2>Categories</h2>
+        </header> -->
+<!--       
+>>>>>>> Stashed changes
          <div class="categories-section">
           <div class="category">
             <a href="">
@@ -156,9 +163,35 @@ align-items: center;
                   <p>$19.99</p>
               </div>
             </a>
+<<<<<<< Updated upstream
           </div>
           <div class="category">
             <a href="">
+=======
+          </div> -->
+
+
+
+          <div class="categories-section">
+        @foreach ($mobiles as $mobile)
+        <div class="category">
+            <a class="link2" href="{{ route('productdetail', ['id' => $mobile->id]) }}">
+            <div class="image">
+              <img src="{{ $mobile->image }}" alt="Product 1">
+            </div>
+            <div class="product-details">
+                <h3>{{ $mobile->name }}</h3>
+                <p>£{{ $mobile->price }}</p>
+            </div>
+          </a>
+        </div>
+        @endforeach 
+      </div>
+
+
+          <!-- <div class="category">
+            <a class="link1" href="Mobile">
+>>>>>>> Stashed changes
                 <div class="image">
                     <img src="phone2.png" alt="Product 1">
                 </div>
@@ -206,7 +239,7 @@ align-items: center;
       </div>
       
     </div>
-      
+       -->
       
       
       
