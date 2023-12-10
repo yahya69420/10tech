@@ -67,16 +67,13 @@
       <h4>Cart
         <span class="price" style="color:black">
           <i class="fa fa-shopping-cart"></i>
-          <b>4</b>
+          <b>1</b>
         </span>
       </h4>
-      <p><a href="#" style="color:black">Product 1</a> <span class="price">£15</span></p>
-      <p><a href="#" style="color:black">Product 2</a> <span class="price">£5</span></p>
-      <p><a href="#" style="color:black">Product 3</a> <span class="price">£8</span></p>
-      <p><a href="#" style="color:black">Product 4</a> <span class="price">£2</span></p>
+      <p><a href="#" style="color:black">JPhone</a> <span class="price">£1000</span></p>
       <hr>
-      <p>Estimated Shipping<span class = "price" style = "color:black"><b>£5</b></span></p>
-      <p>Total <span class="price" style="color:black"><b>£30</b></span></p>
+      <p>Estimated Shipping<span class = "price" style = "color:black"><b>£30</b></span></p>
+      <p>Total <span class="price" style="color:black"><b>£1030</b></span></p>
     </div>
   </div>
 </div> 
