@@ -74,7 +74,7 @@ align-items: center;
   .category .image {
     position: relative;
     width: 110%;
-    height: 150px; 
+    height: 200px; 
     overflow: hidden;
   }
 
@@ -176,8 +176,9 @@ align-items: center;
          </div>
       
        </div>
+
        <div class="our-product">
-             Our Product
+             Our Products
          </div>
          <div class="affordable-cutting-edge">
              Affordable &amp; Cutting Edge
@@ -186,185 +187,65 @@ align-items: center;
          <header style="color: black; padding: 10px;  font-weight: bold; padding-top:50px;">
             <h2>Categories</h2>
         </header>
-      
          <div class="categories-section">
+          @foreach ($categories as $category)
           <div class="category">
-            <a class="link2" href="Console">
+            <a class="link2" href="{{ $category->name }}">
               <div class="image">
-                  <img src="console.png" alt="Product 1">
+                <img src="{{ $category->image }}" alt="Product 1">
               </div>
               <div class="product-details">
-                  <h3>Console</h3>
-                  <p class="price-highlight">From ONLY $409.99</p>
-
+                  <h3>{{ $category->name }}</h3>
+                  <p class="price-highlight">From ONLY £{{ $category->price }}</p>
               </div>
             </a>
+            
           </div>
-          <div class="category">
-            <a class="link2" href="mobile">
-              <div class="image">
-                    <img src="Phones.png" alt="Product 1">
-                </div>
-                <div class="product-details">
-                    <h3>Mobile Phones</h3>
-                    <p class="price-highlight">From ONLY $109.99</p>
-                </div>
-            </a>
-        </div>
-          <div class="category">
-            <a class="link2" href="Laptop">
-              <div class="image">
-                  <img src="laptop.png" alt="Product 1">
-                </div>
-              <div class="product-details">
-                  <h3>Laptops</h3>
-                  <p class="price-highlight">From ONLY $199.99</p>
-              </div>
-            </a>
-          </div>
-          <div class="category">
-            <a class="link2" href="Tablet">
-              <div class="image">
-                  <img src="tablet.png" alt="Product 1">
-              </div>
-              <div class="product-details">
-                  <h3>Tablets</h3>
-                  <p class="price-highlight">From ONLY $199.99</p>
-              </div>
-            </a>
-          </div>
-          <div class="category">
-            <a class="link2" href="Monitor">
-            <div class="image">
-                  <img src="monitor.png" alt="Product 1">
-              </div>
-              <div class="product-details">
-                  <h3>monitors</h3>
-                  <p class="price-highlight">From ONLY $199.99</p>
-              </div>
-            </a>
-          </div>
+          @endforeach
       </div>
+
       <header style="color: rgb(225, 30, 30); padding: 10px;  font-weight: bold; padding-top:50px;">
         <h2>Popular Products</h2>
       </header>
       <div class="categories-section">
+      @foreach ($products->shuffle()->take(7) as $product)
         <div class="category">
-          <a class="link2" href="">
+            <a class="link2" href="{{ route('productdetail', ['id' => $product->id]) }}">
             <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
+              <img src="{{ $product->image }}" alt="Product 1">
             </div>
             <div class="product-details">
-                <h3>iApple</h3>
-                <p>$1999.99</p>
+                <h3>{{ $product->name }}</h3>
+                <p>£{{ $product->price }}</p>
             </div>
           </a>
         </div>
-        <div class="category">
-          <a class="link2" href="">
-            <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-            </div>
-            <div class="product-details">
-                <h3>Samsong</h3>
-                <p>$199.99</p>
-            </div>
-          </a>
-        </div>
-        <div class="category">
-          <a class="link2" href="">
-            <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-            </div>
-            <div class="product-details">
-                <h3>Mars Tab 2</h3>
-                <p>$229.99</p>
-            </div>
-          </a>
-        </div>
-        <div class="category">
-          <a class="link2" href="">
-            <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-            </div>
-            <div class="product-details">
-                <h3>PS22</h3>
-                <p>$569.99</p>
-            </div>
-          </a>
-        </div>
+        @endforeach 
       </div>
-      <header style="color: black; padding: 10px;  font-weight: bold; padding-top:50px;">
+
+      <header style="color: rgb(225, 30, 30); padding: 10px;  font-weight: bold; padding-top:50px;">
         <h2>Whats New</h2>
       </header>
       <div class="categories-section">
+      @foreach ($products->shuffle()->take(7) as $product)
         <div class="category">
-          <a class="link2" href="Console">
+        <a class="link2" href="{{ route('productdetail', ['id' => $product->id]) }}">
             <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
+              <img src="{{ $product->image }}" alt="Product 1">
             </div>
             <div class="product-details">
-                <h3>Monitor 32"</h3>
-                <p>$199.99</p>
+                <h3>{{ $product->name }}</h3>
+                <p>£{{ $product->price }}</p>
             </div>
           </a>
         </div>
-        <div class="category">
-          <a class="link2" href="Console">
-            <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-            </div>
-            <div class="product-details">
-                <h3>ITouch 24</h3>
-                <p>$300.99</p>
-            </div>
-          </a>
-        </div>
-        <div class="category">
-          <a class="link2" href="Console">
-            <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-            </div>
-            <div class="product-details">
-                <h3>Console</h3>
-                <p>$19.99</p>
-            </div>
-          </a>
-        </div>
-        <div class="category">
-          <a class="link2" href="Console">
-            <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-            </div>
-            <div class="product-details">
-                <h3>Console</h3>
-                <p>$19.99</p>
-            </div>
-          </a>
-        </div>
-        <div class="category">
-          <a class="link2" href="Console">
-            <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-            </div>
-            <div class="product-details">
-                <h3>Console</h3>
-                <p>$19.99</p>
-            </div>
-          </a>
-        </div>
+        @endforeach 
       </div>
-        
-      
-      
-      
-      
-      
-      
-      
-      
-      </body>
-</body>
+
+    </body>
+
+    <footer>@include('layouts\footer')
+    </footer>
 
 </html>
 

@@ -76,7 +76,7 @@ align-items: center;
   .category .image {
     position: relative;
     width: 100%;
-    height: 150px; 
+    height: 200px; 
     overflow: hidden;
   }
 
@@ -118,7 +118,7 @@ align-items: center;
         </style>
 
 
-<title>Laptop</title>
+<title>Laptops</title>
 
     </head>
     
@@ -135,35 +135,55 @@ align-items: center;
           <div class="hero">
             <div class="heroescontent">
               <h1>Laptops</h1>
-              <p>Discover the latest phones for the best prices</p>
+              <p>Discover the latest laptops for the best prices</p>
             </div>
           </div>
       
        </div>
 
-         <header style="color: black; padding: 10px;  font-weight: bold; padding-top:50px;">
+         <!-- <header style="color: black; padding: 10px;  font-weight: bold; padding-top:50px;">
             <h2>Categories</h2>
-        </header>
-      
+        </header> -->
+<!--       
          <div class="categories-section">
           <div class="category">
-            <a class="link1" href="laptop.php">
+            <a href="laptop.php">
               <div class="image">
-                  <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
+                  <img src="laptop1.png" alt="Product 1">
               </div>
               <div class="product-details">
-                  <h3>Product Name 1</h3>
+                  <h3>Laptop 1</h3>
                   <p>$19.99</p>
               </div>
             </a>
-          </div>
-          <div class="category">
+          </div> -->
+
+
+
+          <div class="categories-section">
+        @foreach ($laptops as $laptop)
+        <div class="category">
+            <a class="link2" href="{{ route('productdetail', ['id' => $laptop->id]) }}">
+            <div class="image">
+              <img src="{{ $laptop->image }}" alt="Product 1">
+            </div>
+            <div class="product-details">
+                <h3>{{ $laptop->name }}</h3>
+                <p>£{{ $laptop->price }}</p>
+            </div>
+          </a>
+        </div>
+        @endforeach 
+      </div>
+
+
+          <!-- <div class="category">
             <a class="link1" href="Mobile">
                 <div class="image">
-                    <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
+                    <img src="laptop2.png" alt="Product 1">
                 </div>
                 <div class="product-details">
-                    <h3>Mobile Phones</h3>
+                    <h3>Laptop 2</h3>
                     <p>$109.99</p>
                 </div>
             </a>
@@ -171,10 +191,10 @@ align-items: center;
           <div class="category">
             <a href="laptop.php" class="category-link">
               <div class="image">
-                  <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
+                  <img src="laptop3.png" alt="Product 1">
                 </div>
               <div class="product-details">
-                  <h3>Laptops</h3>
+                  <h3>Laptop 3</h3>
                   <p>$199.99</p>
               </div>
             </a>
@@ -182,10 +202,10 @@ align-items: center;
           <div class="category">
             <a href="Tablet.php" >
               <div class="image">
-                  <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
+                  <img src="laptop4.png" alt="Product 1">
               </div>
               <div class="product-details">
-                  <h3>Tablets</h3>
+                  <h3>Laptop 4</h3>
                   <p>$199.99</p>
               </div>
             </a>
@@ -193,10 +213,10 @@ align-items: center;
           <div class="category">
             <a href="Mobile.php" >
               <div class="image">
-                  <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
+                  <img src="Laptop.png" alt="Product 1">
               </div>
               <div class="product-details">
-                  <h3>monitors</h3>
+                  <h3>Laptop 5</h3>
                   <p>$199.99</p>
               </div>
             </a>
@@ -261,15 +281,14 @@ align-items: center;
           </a>
         </div>
     </div>
+       -->
       
       
       
       
       
+      @include('layouts\footer')
       
-      
-      
-      </body>
 </body>
 
 </html>

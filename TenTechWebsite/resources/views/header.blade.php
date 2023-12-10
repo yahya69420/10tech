@@ -22,9 +22,10 @@
         <nav class="menu1">
           <a class="link1" href = "about">About Us</a>
           <a class="link1" href="Laptop">Laptops</a>
-          <a class="link1" href="mobile">Smartphones</a>
+          <a class="link1" href="Mobile">Smartphones</a>
           <a class="link1" href="Tablet">Tablets</a>
           <a class="link1" href="Console">Console</a>
+          
 
         </nav>
       </nav>
