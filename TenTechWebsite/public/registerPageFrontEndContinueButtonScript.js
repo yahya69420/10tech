@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const darkToggle = document.getElementById("darkToggle");
     darkToggle.addEventListener("change", function () {
         if (darkToggle.checked) {
-            document.body.style.backgroundColor = "rgb(40, 40, 40)"; 
+            document.body.style.backgroundColor = "rgb(40, 40, 40)";
         } else {
             document.body.style.backgroundColor = "rgb(203, 203, 203)";
         }
@@ -40,17 +40,17 @@ document.addEventListener("DOMContentLoaded", function () {
         registerButton.style.display = "flex";
 
         document.getElementById("login-link").classList.add("animate__animated", "animate__fadeInUp","animate-infinite");
+    });
 
-
-        // when icon clicked, show password
-        showPasswordIcon.addEventListener("click", function () {
-            this.classList.toggle("bxs-show");
-            if (singlePassField.type === "password") {
-                singlePassField.type = "text";
-            } else {
-                singlePassField.type = "password";
-            }
-        });
+    // don't nest this in continue button so it also works for login
+    // when icon clicked, show password
+    showPasswordIcon.addEventListener("click", function () {
+        this.classList.toggle("bxs-show");
+        if (singlePassField.type === "password") {
+            singlePassField.type = "text";
+        } else {
+            singlePassField.type = "password";
+        }
     });
 
     clearIcon.addEventListener("click", function () {
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (isLengthValid && isUpperCase && isLowerCase && isDigitPresent) {
             passwordIndicator.style.backgroundColor = "green";
-            passwordErrorMessage.style.color = "green"; 
+            passwordErrorMessage.style.color = "green";
             registerButtonTag.removeAttribute("disabled");
             registerButtonTag.style.backgroundColor = "black";
             registerButtonTag.style.color = "white";
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         else if (isLengthValid && (isUpperCase || isLowerCase || isDigitPresent)) {
             passwordIndicator.style.backgroundColor = "orange";
-            passwordErrorMessage.style.color = "orange"; 
+            passwordErrorMessage.style.color = "orange";
             registerButtonTag.setAttribute("disabled", "disabled");
             registerButtonTag.style.backgroundColor = "lightgrey";
             registerButtonTag.style.color = "darkgrey";
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         else {
             passwordIndicator.style.backgroundColor = "red";
-            passwordErrorMessage.style.color = "red"; 
+            passwordErrorMessage.style.color = "red";
             registerButtonTag.setAttribute("disabled", "disabled");
             registerButtonTag.style.backgroundColor = "lightgrey";
             registerButtonTag.style.color = "darkgrey";
