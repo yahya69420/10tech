@@ -53,8 +53,8 @@ Route::get('/Monitor', [App\Http\Controllers\ProductController::class, 'showAllM
 
 Auth::routes();
 
-// basket route
-// Route::get('/basket', [App\Http\Controllers\BasketController::class, 'index'])->name('basket');
+//basket route
+Route::get('/basket', [App\Http\Controllers\BasketController::class, 'index'])->name('basket');
 
 // product detail route
 Route::get('/productdetail/{id}', [App\Http\Controllers\ProductController::class, 'productDetail'])->name('productdetail');
