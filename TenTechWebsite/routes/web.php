@@ -38,7 +38,7 @@ Route::get('/complete', function(){
 });
 
 Route::get('/mobile', function () {
-    return view('mobile');
+    return view('Mobile');
 });
 Route::get('/Laptop', function () {
     return view('Laptop');
@@ -61,3 +61,6 @@ Route::get('/products/{id}', [ProductController::class, 'productDetail'])->name(
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// logout route
+Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
