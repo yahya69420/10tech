@@ -76,12 +76,12 @@ align-items: center;
   .category .image {
     position: relative;
     width: 100%;
-    height: 150px; 
+    height: 200px; 
     overflow: hidden;
   }
 
   .category .image img {
-    width: 100%;
+    width: 110%;
     height: 100%;
     object-fit: cover;
     margin-left: -20px;
@@ -142,61 +142,61 @@ align-items: center;
        </div>
 
          <header style="color: black; padding: 10px;  font-weight: bold; padding-top:50px;">
-            <h2>Categories</h2>
+            <h2>Products</h2>
         </header>
       
          <div class="categories-section">
           <div class="category">
-            <a class="link1" href="laptop.php">
+            <a href="">
               <div class="image">
-                  <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
+                  <img src="phone1.png" alt="Product 1">
               </div>
               <div class="product-details">
-                  <h3>Product Name 1</h3>
+                  <h3>Phone 1</h3>
                   <p>$19.99</p>
               </div>
             </a>
           </div>
           <div class="category">
-            <a class="link1" href="Mobile">
+            <a href="">
                 <div class="image">
-                    <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
+                    <img src="phone2.png" alt="Product 1">
                 </div>
                 <div class="product-details">
-                    <h3>Mobile Phones</h3>
+                    <h3> Phone 2</h3>
                     <p>$109.99</p>
                 </div>
             </a>
         </div>
           <div class="category">
-            <a href="laptop.php" class="category-link">
+            <a href="" >
               <div class="image">
-                  <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
+                  <img src="phone3.png" alt="Product 1">
                 </div>
               <div class="product-details">
-                  <h3>Laptops</h3>
+                  <h3>Phone 3</h3>
                   <p>$199.99</p>
               </div>
             </a>
           </div>
           <div class="category">
-            <a href="Tablet.php" >
+            <a href="" >
               <div class="image">
-                  <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
+                  <img src="phone4.png" alt="Product 1">
               </div>
               <div class="product-details">
-                  <h3>Tablets</h3>
+                  <h3>Phone 4</h3>
                   <p>$199.99</p>
               </div>
             </a>
           </div>
           <div class="category">
-            <a href="Mobile.php" >
+            <a href="" >
               <div class="image">
-                  <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
+                  <img src="phone5.png" alt="Product 1">
               </div>
               <div class="product-details">
-                  <h3>monitors</h3>
+                  <h3>Phone 5</h3>
                   <p>$199.99</p>
               </div>
             </a>
@@ -204,62 +204,7 @@ align-items: center;
       </div>
 
       </div>
-      <div class="categories-section">
-        <div class="category">
-          <a class="link1" href="laptop.php">
-            <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-            </div>
-            <div class="product-details">
-                <h3>Product Name 1</h3>
-                <p>$19.99</p>
-            </div>
-          </a>
-        </div>
-        <div class="category">
-          <a class="link1" href="Mobile">
-              <div class="image">
-                  <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-              </div>
-              <div class="product-details">
-                  <h3>Mobile Phones</h3>
-                  <p>$109.99</p>
-              </div>
-          </a>
-      </div>
-        <div class="category">
-          <a href="laptop.php" class="category-link">
-            <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-              </div>
-            <div class="product-details">
-                <h3>Laptops</h3>
-                <p>$199.99</p>
-            </div>
-          </a>
-        </div>
-        <div class="category">
-          <a href="Tablet.php" >
-            <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-            </div>
-            <div class="product-details">
-                <h3>Tablets</h3>
-                <p>$199.99</p>
-            </div>
-          </a>
-        </div>
-        <div class="category">
-          <a href="Mobile.php" >
-            <div class="image">
-                <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
-            </div>
-            <div class="product-details">
-                <h3>monitors</h3>
-                <p>$199.99</p>
-            </div>
-          </a>
-        </div>
+      
     </div>
       
       
@@ -269,7 +214,7 @@ align-items: center;
       
       
       
-      </body>
-</body>
+    @include('layouts\footer')
+  </body>
 
 </html>
