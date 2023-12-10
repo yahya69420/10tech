@@ -224,10 +224,6 @@ align-items: center;
       </div>
 
       </div>
-<<<<<<< Updated upstream
-     
-      
-=======
       <div class="categories-section">
         <div class="category">
           <a class="link1" href="laptop.php">
@@ -286,7 +282,6 @@ align-items: center;
         </div>
     </div>
        -->
->>>>>>> Stashed changes
       
       
       
