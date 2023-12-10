@@ -135,27 +135,16 @@ align-items: center;
           <div class="hero">
             <div class="heroescontent">
               <h1>Laptops</h1>
-<<<<<<< Updated upstream
-              <p>Discover the latest Laptops for the best prices</p>
-=======
               <p>Discover the latest laptops for the best prices</p>
->>>>>>> Stashed changes
             </div>
           </div>
       
        </div>
 
-<<<<<<< Updated upstream
-         <header style="color: black; padding: 10px;  font-weight: bold; padding-top:50px;">
-            <h2>Products</h2>
-        </header>
-      
-=======
          <!-- <header style="color: black; padding: 10px;  font-weight: bold; padding-top:50px;">
             <h2>Categories</h2>
         </header> -->
 <!--       
->>>>>>> Stashed changes
          <div class="categories-section">
           <div class="category">
             <a href="laptop.php">
@@ -167,11 +156,6 @@ align-items: center;
                   <p>$19.99</p>
               </div>
             </a>
-<<<<<<< Updated upstream
-          </div>
-          <div class="category">
-            <a href="Mobile">
-=======
           </div> -->
 
 
@@ -195,7 +179,6 @@ align-items: center;
 
           <!-- <div class="category">
             <a class="link1" href="Mobile">
->>>>>>> Stashed changes
                 <div class="image">
                     <img src="laptop2.png" alt="Product 1">
                 </div>
