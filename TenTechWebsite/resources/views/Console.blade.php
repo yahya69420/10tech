@@ -118,7 +118,7 @@ align-items: center;
         </style>
 
 
-<title>Laptop</title>
+<title>Consoles</title>
 
     </head>
     
@@ -134,8 +134,8 @@ align-items: center;
       
           <div class="hero">
             <div class="heroescontent">
-              <h1>Laptops</h1>
-              <p>Discover the latest phones for the best prices</p>
+              <h1>Consoles</h1>
+              <p>Discover the latest consoles for the best prices</p>
             </div>
           </div>
       
@@ -144,7 +144,7 @@ align-items: center;
          <header style="color: black; padding: 10px;  font-weight: bold; padding-top:50px;">
             <h2>Categories</h2>
         </header>
-      
+<!--       
          <div class="categories-section">
           <div class="category">
             <a class="link1" href="laptop.php">
@@ -156,8 +156,28 @@ align-items: center;
                   <p>$19.99</p>
               </div>
             </a>
-          </div>
-          <div class="category">
+          </div> -->
+
+
+
+          <div class="categories-section">
+        @foreach ($consoles as $console)
+        <div class="category">
+            <a class="link2" href="{{ route('productdetail', ['id' => $console->id]) }}">
+            <div class="image">
+              <img src="{{ $console->image }}" alt="Product 1">
+            </div>
+            <div class="product-details">
+                <h3>{{ $console->name }}</h3>
+                <p>£{{ $console->price }}</p>
+            </div>
+          </a>
+        </div>
+        @endforeach 
+      </div>
+
+
+          <!-- <div class="category">
             <a class="link1" href="Mobile">
                 <div class="image">
                     <img src="pexels-fauxels-3184451.jpg" alt="Product 1">
@@ -261,7 +281,7 @@ align-items: center;
           </a>
         </div>
     </div>
-      
+       -->
       
       
       
