@@ -37,22 +37,6 @@ Route::get('/header', function(){
 Route::get('/complete', function(){
     return view('complete');
 });
-
-Route::get('/mobile', function () {
-    return view('Mobile');
-});
-Route::get('/Laptop', function () {
-    return view('Laptop');
-});
-Route::get('/Monitor', function () {
-    return view('Monitor');
-});
-Route::get('/Tablet', function () {
-    return view('Tablet');
-});
-Route::get('/Console', function () {
-    return view('Console');
-});
 Route::get('/contact', function () {
     return view('contact');
 });
