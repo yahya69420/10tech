@@ -38,7 +38,6 @@ Route::get('/complete', function(){
     return view('complete');
 });
 
-<<<<<<< Updated upstream
 Route::get('/mobile', function () {
     return view('Mobile');
 });
@@ -57,7 +56,7 @@ Route::get('/Console', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
-=======
+
 Route::get('/Laptop', [App\Http\Controllers\ProductController::class, 'showAllLaptops'])->name('laptop');
 
 Route::get('/Tablet', [App\Http\Controllers\ProductController::class, 'showAllTablets'])->name('tablet');
@@ -67,7 +66,6 @@ Route::get('/Console', [App\Http\Controllers\ProductController::class, 'showAllC
 Route::get('/Mobile', [App\Http\Controllers\ProductController::class, 'showAllMobiles'])->name('mobile');
 
 Route::get('/Monitor', [App\Http\Controllers\ProductController::class, 'showAllMonitors'])->name('monitor');
->>>>>>> Stashed changes
 
 Auth::routes();
 
