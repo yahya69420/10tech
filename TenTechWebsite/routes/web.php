@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,9 +18,7 @@ Route::get('/', function () {
 });
 
 // default url that returns the 'home' page that is the shop
-Route::get('/shop', function () {
-    return view('welcome');
-});
+Route::get('/shop', [ProductController::class, 'index']);
 
 Route::get('/about', function () {
     return view('about');
@@ -56,5 +54,10 @@ Route::get('/Console', function () {
 });
 
 Auth::routes();
+
+
+
+Route::get('/products/{id}', [ProductController::class, 'productDetail'])->name('productdetail');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
