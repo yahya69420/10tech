@@ -18,7 +18,7 @@
             <h2>{{ $product->name }}</h2>
             <p>{{ $product->category }}</p>
             <p>{{ $product->description }}</p>
-            <p>{{ $product->price }}</p>
+            <p>£{{ $product->price }}</p>
             <button>Add to Cart</button>
         </div>
     </div>
