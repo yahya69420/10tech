@@ -70,10 +70,10 @@
           <b>1</b>
         </span>
       </h4>
-      <p><a href="#" style="color:black">JPhone</a> <span class="price">£1000</span></p>
+      <p><a href="#" style="color:black">IPhunny 13</a> <span class="price">£1399.00</span></p>
       <hr>
-      <p>Estimated Shipping<span class = "price" style = "color:black"><b>£30</b></span></p>
-      <p>Total <span class="price" style="color:black"><b>£1030</b></span></p>
+      <p>Estimated Shipping<span class = "price" style = "color:black"><b>£30.00</b></span></p>
+      <p>Total <span class="price" style="color:black"><b>£1429.00</b></span></p>
     </div>
   </div>
 </div> 
