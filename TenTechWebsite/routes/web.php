@@ -52,6 +52,9 @@ Route::get('/Tablet', function () {
 Route::get('/Console', function () {
     return view('Console');
 });
+Route::get('/contact', function () {
+    return view('contact');
+});
 
 Auth::routes();
 

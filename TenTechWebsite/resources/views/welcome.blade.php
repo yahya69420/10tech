@@ -74,7 +74,7 @@ align-items: center;
   .category .image {
     position: relative;
     width: 110%;
-    height: 150px; 
+    height: 200px; 
     overflow: hidden;
   }
 
@@ -241,8 +241,11 @@ align-items: center;
         </div>
         @endforeach 
       </div>
-      </body>
-</body>
+
+    </body>
+
+    <footer>@include('layouts\footer')
+    </footer>
 
 </html>
 

@@ -9,6 +9,7 @@
     <title>Your Page Title</title>
 </head>
 <body>
+    @include('header')
     <div class="product-container">
         <div class="product-image">
             <img src="{{ $product->gallery }}" alt="{{ $product->name }}">
