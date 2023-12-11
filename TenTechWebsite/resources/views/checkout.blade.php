@@ -69,12 +69,14 @@
           <i class="fa fa-shopping-cart"></i>
           <b>1</b>
         </span>
+        @foreach ($products as $product)
       </h4>
-      <p><a href="#" style="color:black">IPhunny 13</a> <span class="price">£1399.00</span></p>
+      <p><a href="#" style="color:black">{{ $product->name }}</a> <span class="price">{{ $product->price }}</span></p>
       <hr>
-      <p>Estimated Shipping<span class = "price" style = "color:black"><b>£30.00</b></span></p>
-      <p>Total <span class="price" style="color:black"><b>£1429.00</b></span></p>
+      <p>Estimated Shipping<span class = "price" style = "color:black"><b>Free shipping</b></span></p>
+      <p>Total <span class="price" style="color:black"><b>{{ $product->price }}</b></span></p>
     </div>
   </div>
+  @endforeach
 </div> 
 </html>
