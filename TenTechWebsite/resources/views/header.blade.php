@@ -20,7 +20,6 @@
         </label>
 
         <nav class="menu1">
-          <a class="link1" href = "about">About Us</a>
           <a class="link1" href="Laptop">Laptops</a>
           <a class="link1" href="Mobile">Smartphones</a>
           <a class="link1" href="Tablet">Tablets</a>
@@ -35,7 +34,7 @@
       <input type="search" placeholder="Search...">
     </div>
     <div class="logo">
-      <h1 class = "home"><a  href = "shop">TenTech</a></h1>
+      <h1>TenTech</h1>
     </div>
     <nav class="navigation">
       <ul>
@@ -57,7 +56,7 @@
         <li class="dropdown"><button class="dropbtn"><img src="shopping-basket.png" class="account"></button>
           <div class="dropdown-content">
             <a href="{{ route('basket') }}">Basket</a>
-            <a href="../../public/checkout">Checkout</a>
+            <a href="checkout">Checkout</a>
           </div>
         </li>
       </ul>
