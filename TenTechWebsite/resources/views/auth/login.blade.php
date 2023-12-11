@@ -58,22 +58,55 @@
             </div>
         </div>
 
-        <!-- Password label/field -->
-        <div id="password-confirm-password" class="form-control">
+        <!-- Password label/field (initially hidden) -->
+        <div id="password-confirm-password" class="form-control hidden">
             <input type="password" id="password" name="password" class="border-1 rounded border mt-3 mx-5 mb-1 border-black" placeholder="Password" required>
             <i class='bx bxs-hide' id="showPassIcon"></i>
         </div>
 
+        <!-- Continue button (with JavaScript to toggle visibility) -->
         <div class="continueButton">
-            <button class="btn w-80 mt-3" id="continue-button" disabled>
-                Log in
+            <button class="btn w-80 mt-3" id="continue-button" onclick="togglePasswordField()">
+                Continue
             </button>
+        </div>
+        <div id="loginButton" class="hidden form-control">
+    <!-- Remove the disabled attribute -->
+    <button type="submit" class="btn btn-active" id="loginButtonTag">
+        Log In
+    </button>
         </div>
 
         <div class="register-link text-center pt-2" id="register-link">
             <p>Don't have an account? <a href="{{ route('register') }}">Sign up</a></p>
         </div>
     </form>
-</div>
+
+    <script>
+    function togglePasswordField() {
+        var emailField = document.getElementById("email");
+        var passwordField = document.getElementById("password-confirm-password");
+        var continueButton = document.getElementById("continue-button");
+        var loginButton = document.getElementById("loginButton");
+        var emailValidationMessage = document.getElementById("email-validation-message");
+
+        // Validate the email format
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var isValidEmail = emailRegex.test(emailField.value);
+
+        // Show/hide password field based on email validation
+        passwordField.classList.toggle("hidden", !isValidEmail);
+
+        // Change the button text based on the visibility of the password field
+        continueButton.innerText = passwordField.classList.contains("hidden") ? "Continue" : "Log in";
+
+        // Show email validation message
+        emailValidationMessage.innerText = isValidEmail ? "Valid email!" : "Invalid email!";
+        emailValidationMessage.style.color = isValidEmail ? "green" : "red";
+
+        loginButton.classList.toggle("hidden", !isValidEmail);
+        loginButton.disabled = !isValidEmail; 
+    }
+</script>
 </body>
 </html>

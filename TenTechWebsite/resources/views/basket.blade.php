@@ -29,10 +29,9 @@
     <div class="myBagCard p-5 rounded-md w-2/4 shadow-2xl" id="myBagCardId">
         <!-- Card title -->
         <h1 class="text-3xl font-bold text-center p-5 pb-0 mb-4">My Bag (x items)</h1>
-        <button class="addDummyProduct btn btn-active text-white mt-2" id="addDummyP" onclick="addDummyProduct()">Add dummy product</button>
+        @foreach ($products as $product)
         <ul class="itemList">
             <li class="productItem">
-                @foreach ($products as $product)
                 <img class="productImage" src="{{ $product->image }}">
                 <div class="productInfo">
                     <div class="pName font-bold">{{ $product->name }}</div>
@@ -52,7 +51,11 @@
                     </div>
                     <div class="pPrice pSubtotal font-bold">£{{ $product->price }}</div>
                 </div>
-                <button class="removeButton btn btn-error mx-2" onclick="removeDummyProduct()">Remove product</button>
+                <div class="removeButton">
+                    <a href="{{ route('remove_from_basket', ['cart_id' => $product->cart_id]) }}">
+                        <button class="btn btn-active text-white">Remove</button>
+                    </a>
+                </div>
             </li>
             @endforeach
         </ul>
@@ -121,7 +124,9 @@
                     <hr id="blackLine">
                 </div>
             </div>
-            <button class="continueButton btn btn-active text-white mt-2">CONTINUE</button>
+            <a href="checkout">
+                <button class="checkoutButton btn btn-active text-white mt-2">CONTINUE</button>
+            </a>
         </div>
     </div>
 </body>
@@ -156,42 +161,6 @@
 
 
     // Calculate the initial total
-    calculateTotal();
-
-    function addDummyProduct() {
-        let dummyProduct = document.createElement('li');
-        dummyProduct.classList.add('productItem');
-        dummyProduct.innerHTML = `
-        <img class="productImage" src="{{ $product->image }}">
-        <div class="productInfo">
-            <div class="pName font-bold">{{ $product->name }}</div>
-            <div class="pQuantity font-bold">
-                Quantity:
-                <select class="quantityDropdown productQuantity" data-price="{{ $product->price }}" class="qDrop">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                </select>
-            </div>
-            <div class="pPrice pSubtotal font-bold">£{{ $product->price }}</div>
-        </div>
-        <button class="removeButton btn btn-error mx-2" onclick="removeDummyProduct()">Remove product</button>
-        `;
-        document.querySelector('.itemList').appendChild(dummyProduct);
-        calculateTotal();
-
-    }
-
-    function removeDummyProduct() {
-        document.querySelector('.itemList').removeChild(document.querySelector('.productItem'));
-        calculateTotal();
-    }
     calculateTotal();
 </script>
 

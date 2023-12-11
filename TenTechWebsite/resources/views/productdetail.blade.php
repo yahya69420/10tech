@@ -19,7 +19,22 @@
             <p>{{ $product->category }}</p>
             <p>{{ $product->description }}</p>
             <p>£{{ $product->price }}</p>
-            <button>Add to Cart</button>
+            <!-- form to allow for product to be added to the cart database so it can be accessed
+        and manipulated later -->
+            <form action="{{ route('add_to_basket') }}" method="POST">
+                <!-- 
+                    From the Laravel documentation: Anytime you define a "POST", "PUT", "PATCH",
+                     or "DELETE" HTML form in your application, you should include a hidden 
+                     CSRF _token field in the form so that the CSRF protection middleware can 
+                     validate the request. For convenience, you may use the @csrf Blade directive 
+                     to generate the hidden token input field
+                     Reference: https://laravel.com/docs/10.x/csrf
+                 -->
+                @csrf
+                <!-- the product id  passed inas hidden input so it can be accessed in the conteoller -->
+                <input type="text" name="product_id" value="{{ $product->id }}" hidden>
+                <button type="submit">Add to Basket</button>
+            </form>
         </div>
     </div>
 </body>

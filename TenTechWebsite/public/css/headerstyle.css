@@ -11,6 +11,10 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.home a:hover{
+  color:rgb(61, 61, 61);  
+}
+
 .search {
   display: flex;
   align-items: baseline;
@@ -150,7 +154,7 @@ transition: all 0.3s ease;
 .link1 {
   width: 100%;
   margin: 0;
-  padding: 10px 0;
+  padding: 0px 0;
   font: 700 20px 'Oswald', sans-serif;
 }
 
