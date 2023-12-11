@@ -118,7 +118,31 @@
     <div class="div">
         <div class="text-wrapper-3">Who We Are</div>
         <p class="p">
-            Welcome to TenTech! We are a team of students that are committed to providing you the latest technology products.
+            We are dynamic team of computer scientist at TenTech driven by our passion to provide a flawless online shopping experience. we have a diverse selection of high quality products, providing seamless transactions and prioritizing customer satifaction.
+
+<br>
+
+The team consist of 8 memebers which are:
+<br>
+	- Ali Qadeer
+<br>
+	- Muhammad Rashid
+<br>
+	- Awad Riaz
+<br>
+	- Ali Salad
+<br>
+	- Tashdid Salam
+<br>
+	- Syed Shah
+<br>
+	- Shuaib Ur Rehman
+<br>
+	- Rahul Vasantlal
+<br>
+<br>
+
+At TenTech we strive to exceed all your expectations by making sure you get all the latest technology products at a reasonable price. We try to be competitive and beat current market prices.
 
         </p>
         <div class="div-wrapper"></div>

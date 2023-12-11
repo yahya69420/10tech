@@ -20,12 +20,12 @@
         </label>
 
         <nav class="menu1">
-          <a class="link1" href = "about">About Us</a>
-          <a class="link1" href="Laptop">Laptops</a>
-          <a class="link1" href="Mobile">Smartphones</a>
-          <a class="link1" href="Tablet">Tablets</a>
-          <a class="link1" href="Console">Console</a>
-          
+            <a class="link1" href="Laptop">Laptops</a>
+            <a class="link1" href="Mobile">Smartphones</a>
+            <a class="link1" href="Tablet">Tablets</a>
+            <a class="link1" href="Console">Console</a>
+            <a class="link1" href = "about">About Us</a>
+
 
         </nav>
       </nav>
@@ -43,7 +43,7 @@
         <li class="dropdown"><button class="dropbtn"><img src="account.png" class="account"></button>
           <div class="dropdown-content">
              <!-- if user authenticated, show POST logout button with CSRF token for security -->
-            @if (Auth::check()) 
+            @if (Auth::check())
             <form action="{{ route('logout') }}" method="POST">
               @csrf
               <button type="submit">Logout</button>
@@ -57,8 +57,8 @@
         </li>
         <li class="dropdown"><button class="dropbtn"><img src="shopping-basket.png" class="account"></button>
           <div class="dropdown-content">
-            <a href="basket">Basket</a>
-            <a href="checkout">Checkout</a>
+            <a href="{{ route('basket') }}">Basket</a>
+            <a href="http://localhost/10tech/TenTechWebsite/public/checkout">Checkout</a>
           </div>
         </li>
       </ul>

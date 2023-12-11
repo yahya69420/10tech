@@ -25,11 +25,6 @@ Route::get('/about', function () {
     return view('about');
 });
 
-
-Route::get('/checkout', function(){
-    return view('checkout');
-});
-
 Route::get('/header', function(){
     return view('header');
 });
@@ -53,8 +48,17 @@ Route::get('/Monitor', [App\Http\Controllers\ProductController::class, 'showAllM
 
 Auth::routes();
 
-//basket route
+//basket route for the view
 Route::get('/basket', [App\Http\Controllers\BasketController::class, 'index'])->name('basket');
+
+// route for adding product to basket
+Route::post('/add_to_basket', [App\Http\Controllers\BasketController::class, 'addToBasket'])->name('add_to_basket');
+
+// route for removing product from basket
+Route::get('/remove_from_basket/{cart_id}', [App\Http\Controllers\BasketController::class, 'removeFromBasket'])->name('remove_from_basket');
+
+// refactored checkout route to use the checkout method in the BasketController
+Route::get('/checkout', [App\Http\Controllers\BasketController::class, 'checkout'])->name('checkout');
 
 // product detail route
 Route::get('/productdetail/{id}', [App\Http\Controllers\ProductController::class, 'productDetail'])->name('productdetail');

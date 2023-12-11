@@ -26,7 +26,12 @@
                     <br>
                     <p>Sit tight and wait. In order to track your order, here is your <b>tracking number:</b></p>
                     <hr>
-                    <h3>0000-0000-0000</h3>
+                    <?php
+                    // use Illuminate\Support\Str;
+                    // $random = Str::random(10);
+                    $random = uniqid();
+                    echo "<h3>". $random . "</h3>";
+                    ?>
                     <br>
                     <p>We'll send you an email confirming all the details</p>
               </div>
