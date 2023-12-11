@@ -139,7 +139,10 @@ The team consist of 8 memebers which are:
 	- Shuaib Ur Rehman
 <br>
 	- Rahul Vasantlal
+<br>
+<br>
 
+At TenTech we strive to exceed all your expectations by making sure you get all the latest technology products at a reasonable price. We try to be competitive and beat current market prices.
 
         </p>
         <div class="div-wrapper"></div>
