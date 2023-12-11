@@ -56,7 +56,7 @@
         <li class="dropdown"><button class="dropbtn"><img src="shopping-basket.png" class="account"></button>
           <div class="dropdown-content">
             <a href="{{ route('basket') }}">Basket</a>
-            <a href="checkout">Checkout</a>
+            <a href="http://localhost/10tech/TenTechWebsite/public/checkout">Checkout</a>
           </div>
         </li>
       </ul>
