@@ -21,31 +21,31 @@ class ProductController extends Controller
         return view('productdetail', ['product' => $product]);
     }
 
-    public function showAllConsoles() 
+    public function showAllConsoles()
     {
         $consoles = Product::join('category_product', 'products.id', '=', 'category_product.product_id')
             ->where('category_product.category_id', 2)
             ->get();
 
-        return view('console', ['consoles' => $consoles]);
+        return view('Console', ['consoles' => $consoles]);
     }
 
-    public function showAllMobiles() 
+    public function showAllMobiles()
     {
         $mobiles = Product::join('category_product', 'products.id', '=', 'category_product.product_id')
             ->where('category_product.category_id', 1)
             ->get();
 
-        return view('mobile', ['mobiles' => $mobiles]);
+        return view('Mobile', ['mobiles' => $mobiles]);
     }
 
-    public function showAllMonitors() 
+    public function showAllMonitors()
     {
         $monitors = Product::join('category_product', 'products.id', '=', 'category_product.product_id')
             ->where('category_product.category_id', 3)
             ->get();
 
-        return view('monitor', ['monitors' => $monitors]);
+        return view('Monitor', ['monitors' => $monitors]);
     }
 
     public function showAllTablets() {
@@ -53,15 +53,15 @@ class ProductController extends Controller
             ->where('category_product.category_id', 4)
             ->get();
 
-        return view('tablet', ['tablets' => $tablets]);
-    } 
+        return view('Tablet', ['tablets' => $tablets]);
+    }
 
     public function showAllLaptops() {
         $laptops = Product::join('category_product', 'products.id', '=', 'category_product.product_id')
             ->where('category_product.category_id', 5)
             ->get();
 
-        return view('laptop', ['laptops' => $laptops]);
+        return view('Laptop', ['laptops' => $laptops]);
     }
-    
+
 }

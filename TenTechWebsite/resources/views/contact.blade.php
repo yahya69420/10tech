@@ -21,15 +21,15 @@
 
 
     .hero {
-      background-image: white; 
-      height: 25vh; 
-      width: 100%; 
+      background-image: white;
+      height: 25vh;
+      width: 100%;
     }
 
     .hero p {
       color: white;
       text-align: center;
-      padding-top: 8vh; 
+      padding-top: 8vh;
     }
 
 .contact-us {
@@ -94,7 +94,7 @@ input[type="submit"] {
     <div class="hero">
         <p>This is the hero section</p>
       </div>
-    
+
       <div class="contact-us">
         <div class="left">
           <h2>Contact Information</h2>
@@ -118,43 +118,43 @@ input[type="submit"] {
         const emailInput = document.querySelector("#email");
         const subjectInput = document.querySelector("#subject");
         const submittedMessage = document.querySelector("#submittedMessage");
-    
+
         function validateForm() {
           clearMessages();
-    
+
           let errorFlag = false;
-    
+
           if (nameInput.value.length < 1) {
             alert("Name cannot be blank");
             nameInput.classList.add("error-border");
             errorFlag = true;
           }
-    
+
           if (lnameInput.value.length < 1) {
             alert("Last name cannot be blank");
             lnameInput.classList.add("error-border");
             errorFlag = true;
           }
-    
+
           if (subjectInput.value.length < 1) {
             alert("Subject cannot be blank");
             subjectInput.classList.add("error-border");
             errorFlag = true;
           }
-    
+
           if (!emailIsValid(emailInput.value)) {
             alert("Email is invalid");
             emailInput.classList.add("error-border");
             errorFlag = true;
           }
-    
+
           if (!errorFlag) {
             // Form is successfully validated
             submittedMessage.innerText = "Submitted";
             return false; // Prevent form submission
           }
         }
-    
+
         function clearMessages() {
           nameInput.classList.remove("error-border");
           lnameInput.classList.remove("error-border");
@@ -162,12 +162,12 @@ input[type="submit"] {
           emailInput.classList.remove("error-border");
           submittedMessage.innerText = ""; // Clear the submitted message
         }
-    
+
         function emailIsValid(email) {
           let pattern = /\S+@\S+\.\S+/;
           return pattern.test(email);
         }
-    
+
         const submitButton = document.getElementById("submit");
         submitButton.addEventListener("click", function (event) {
           if (!validateForm()) {
@@ -175,6 +175,6 @@ input[type="submit"] {
           }
         });
       </script>
-      @include('layouts\footer')
+    @include('layouts/footer')
     </body>
     </html>

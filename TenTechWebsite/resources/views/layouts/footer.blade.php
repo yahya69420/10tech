@@ -52,7 +52,7 @@
           <h4>Shopping with TenTech</h4>
           <ul>
             <li><a href="shop">Home</a></li>
-            <li><a href="mobile">Mobile</a></li>
+            <li><a href="Mobile">Mobile</a></li>
             <li><a href="Monitor">Monitor</a></li>
             <li><a href="Console">Console</a></li>
             <li><a href="Laptop">Laptop</a></li>

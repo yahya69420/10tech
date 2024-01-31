@@ -118,7 +118,7 @@
     <div class="div">
         <div class="text-wrapper-3">Who We Are</div>
         <p class="p">
-            We are dynamic team of computer scientist at TenTech driven by our passion to provide a flawless online shopping experience. we have a diverse selection of high quality products, providing seamless transactions and prioritizing customer satifaction. 
+            We are dynamic team of computer scientist at TenTech driven by our passion to provide a flawless online shopping experience. we have a diverse selection of high quality products, providing seamless transactions and prioritizing customer satifaction.
 
 <br>
 
@@ -130,7 +130,7 @@ The team consist of 8 memebers which are:
 <br>
 	- Awad Riaz
 <br>
-	- Ali Salad 
+	- Ali Salad
 <br>
 	- Tashdid Salam
 <br>
