@@ -38,14 +38,14 @@
     </div>
     <nav class="navigation">
       <ul>
-        <li class="dropdown"><button class="dropbtn"><img src="account.png" class="account"></button>
+        <li class="dropdown"><button class="dropbtn"><img src="/10tech/TenTechWebsite/public/account.png" class="account"></button>
           <div class="dropdown-content">
              <!-- if user authenticated, show POST logout button with CSRF token for security -->
             @if (Auth::check()) 
-            <form action="{{ route('logout') }}" method="POST">
-              @csrf
-              <button type="submit">Logout</button>
-            </form>
+            <a href="{{ route('logout') }}">Logout</a>
+            <!-- added user settings route to modify settings profile for user -->
+            <hr>
+            <a href="{{ url('settings') }}">Settings</a>
             @else
             <!-- if user is not authenticated, show login and register links -->
             <a href="{{ route('login') }}">Login</a>
@@ -53,7 +53,7 @@
             @endif
           </div>
         </li>
-        <li class="dropdown"><button class="dropbtn"><img src="shopping-basket.png" class="account"></button>
+        <li class="dropdown"><button class="dropbtn"><img src="/10tech/TenTechWebsite/public/shopping-basket.png" class="account"></button>
           <div class="dropdown-content">
             <a href="{{ route('basket') }}">Basket</a>
             <a href="http://localhost/10tech/TenTechWebsite/public/checkout">Checkout</a>
