@@ -43,19 +43,11 @@
         <li class="dropdown"><button class="dropbtn"><img src="/10tech/TenTechWebsite/public/account.png" class="account"></button>
           <div class="dropdown-content">
              <!-- if user authenticated, show POST logout button with CSRF token for security -->
-<<<<<<< HEAD
             @if (Auth::check()) 
-            <a href="{{ route('logout') }}">Logout</a>
+            <a href="{{ route('settings') }}">User Profile</a>
             <!-- added user settings route to modify settings profile for user -->
             <hr>
-            <a href="{{ url('settings') }}">Settings</a>
-=======
-            @if (Auth::check())
-            <form action="{{ route('logout') }}" method="POST">
-              @csrf
-              <button type="submit">Logout</button>
-            </form>
->>>>>>> 13f0364c8fc9b9a255eba32563d9161cba6e14a8
+            <a href="{{ url('logout') }}">Logout</a>
             @else
             <!-- if user is not authenticated, show login and register links -->
             <a href="{{ route('login') }}">Login</a>
