@@ -35,7 +35,7 @@
       <input type="search" placeholder="Search...">
     </div>
     <div class="logo">
-      <h1 class = "home"><a  href = "shop">TenTech</a>
+      <h1 class = "home"><a  href = "{{ url('shop') }}">TenTech</a>
     </h1>
     </div>
     <nav class="navigation">
