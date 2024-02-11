@@ -140,20 +140,27 @@ align-items: center;
 
               @if(session('success'))
     <script>
-        const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: true,
-            timer: 5000,
+        let timerInterval;
+        Swal.fire({
+            icon: 'success',
+            title: "Success!",
+            html: "{{ session('success') }}",
+            timer: 3000,
             timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.onmouseenter = Swal.stopTimer;
-                toast.onmouseleave = Swal.resumeTimer;
+            didOpen: () => {
+                Swal.showLoading();
+                const timer = Swal.getPopup().querySelector("b");
+                timerInterval = setInterval(() => {
+                    timer.textContent = `${Swal.getTimerLeft()}`;
+                }, 100);
+            },
+            willClose: () => {
+                clearInterval(timerInterval);
             }
-        });
-        Toast.fire({
-            icon: "success",
-            title: "{{ session('success') }}"
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log("I was closed by the timer");
+            }
         });
     </script>
 @endif
