@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="{{ asset('/css/headerstyle.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+
 <body>
 
   <header class="header">
@@ -60,7 +62,8 @@
           </div>
         </li>
         @else
-        <li class="dropdown"><button class="dropbtn"><img src="{{ Auth::user()->profile_image }}" class="account" style="width:50px; height:50px; border-radius:50%;"></button>
+        <!-- erorr: was not shwoing pp so used asset() biuldeing a url from relative path of public/ {{ Auth::user()->profile_image }}  -->
+        <li class="dropdown"><button class="dropbtn"><img src="{{ asset(Auth::user()->profile_image) }}" class="account" style="width:50px; height:50px; border-radius:50%;"></button>
           <div class="dropdown-content">
             <a href="{{ route('settings') }}">User Profile</a>
             <hr>
