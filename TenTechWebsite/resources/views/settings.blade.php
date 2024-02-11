@@ -126,7 +126,6 @@
 
     @if(session('success'))
     <script>
-        let timerInterval;
         Swal.fire({
             icon: 'success',
             title: "Success!",
