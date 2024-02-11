@@ -25,7 +25,7 @@
                         <a href="{{ route('settings') }}"><button class="btn btn-light">View Recent Orders</button></a>
                         <a href="{{ route('settings') }}"><button class="btn btn-light">Payment Methods</button></a>
                         <a href="#"> <button type=" button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="passwordButton">Change Password</button></a>
-                        <a href="{{ route('settings') }}"><button class="btn btn-light">Change Profile Picture</button></a>
+                        <a href="#"> <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#profilePictureChangeModal" id="profilePictureChangeButton">Change Profile Picture</button></a>
                         <a href="#"> <button type=" button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#deleteAccount" id="deleteButton">Delete Account</button></a>
                     </div>
                 </div>
@@ -175,6 +175,39 @@
         });
     </script>
     @endif
+    <div class="modal fade" id="profilePictureChangeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="profilePictureChangeModalLabel">Change profile picture</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="profilePictureChangeButtonCrossModal"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('updateProfilePicture') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @if (Auth::user()->profile_image == null)
+                        <div class="text-center mb-3">
+                            <img src="account.png" alt="Profile Image" class="img-fluid" style="max-width: 45%; max-height: 45%;">
+                        </div>
+                        @else
+                        <div class="text-center mb-3">
+                            <img src="{{ Auth::user()->profile_image }}" alt="Profile Image" class="img-fluid" style="max-width: 45%; max-height: 45%;">
+                        </div>
+                        @endif
+                        <div class="mb-3">
+                            <label for="new-profile-image" class="form-label">Upload New Profile Picture</label>
+                            <input type="file" accept="image/*" class="form-control" id="new-profile-image" name="new_profile_image">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="profilePictureChangeFooterClose">Close</button>
+                            <button type="submit" class="btn btn-success">Save Profile Picture</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 <script>
@@ -185,6 +218,22 @@
 
         var closeModalCrossDeleteAcc = document.getElementById('closeModalCrossDeleteAcc');
         var closeModalDeleteAcc = document.getElementById('closeModalDeleteAcc');
+
+        var profilePictureChangeButton = document.getElementById('profilePictureChangeButton');
+        var profilePictureChangeButtonCrossModal = document.getElementById('profilePictureChangeButtonCrossModal');
+        var profilePictureChangeModal = document.getElementById('profilePictureChangeFooterClose');
+
+        profilePictureChangeButton.addEventListener('click', function() {
+            profilePictureChangeButton.className = 'btn btn-primary';
+        });
+
+        profilePictureChangeButtonCrossModal.addEventListener('click', function() {
+            profilePictureChangeButton.className = 'btn btn-light';
+        });
+
+        profilePictureChangeModal.addEventListener('click', function() {
+            profilePictureChangeButton.className = 'btn btn-light';
+        });
 
 
         passwordButton.addEventListener('click', function() {
