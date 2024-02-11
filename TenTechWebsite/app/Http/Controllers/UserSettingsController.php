@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Cart;
+use Illuminate\Support\Facades\File;
 
 class UserSettingsController extends Controller
 {
@@ -62,15 +64,44 @@ class UserSettingsController extends Controller
 
         return redirect('/settings')->with('success', 'Password updated successfully');
     }
-    
+
     public function deleteAccount()
     {
         if (Auth::check()) {
             $user = Auth::user();
+            // find the path of the user's image file
+            $profileImagePath = public_path('/') . $user->profile_image;
+            // if the file exists, delete it
+            if (File::exists($profileImagePath)) {
+                // delte it 
+                File::delete($profileImagePath);
+            }
+            // cascade delete 
+            Cart::where('user_id', $user->id)->delete();
             User::where('id', $user->id)->delete();
             return redirect('/shop')->with('success', 'Account deleted successfully');
         } else {
             return redirect('/settings')->with('error', 'Account not deleted');
         }
+    }
+
+    public function updateProfilePicture(Request $request)
+    {
+        $request->validate([
+            'new_profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->new_profile_image == null) {
+            return redirect('/settings')->with('error', 'No file selected');
+        }
+
+        $user = Auth::user();
+        // name  of the file is the time concatneateed with the extension, so it can be opened
+        $name = time() . '.' . $request->new_profile_image->extension();
+        // move the file to the public folder
+        $request->new_profile_image->move(public_path('/'), $name);
+        // update the user's profile image
+        User::where('id', $user->id)->update(['profile_image' => $name, 'updated_at' => now()]);
+        return redirect('/settings')->with('success', 'Profile picture updated successfully');
     }
 }
