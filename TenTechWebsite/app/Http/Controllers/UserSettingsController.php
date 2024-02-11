@@ -95,6 +95,17 @@ class UserSettingsController extends Controller
             return redirect('/settings')->with('error', 'No file selected');
         }
 
+        // delete the old pp if it is in the user public folder
+        if (Auth::check()) {
+            $user = Auth::user();
+        $profileImagePath = public_path('/') . $user->profile_image;
+        // if the file exists, delete it
+        // save space
+        if (File::exists($profileImagePath)) {
+            // delte it 
+            File::delete($profileImagePath);
+        }
+        
         $user = Auth::user();
         // name  of the file is the time concatneateed with the extension, so it can be opened
         $name = time() . '.' . $request->new_profile_image->extension();
@@ -104,4 +115,5 @@ class UserSettingsController extends Controller
         User::where('id', $user->id)->update(['profile_image' => $name, 'updated_at' => now()]);
         return redirect('/settings')->with('success', 'Profile picture updated successfully');
     }
+}
 }
