@@ -48,7 +48,7 @@
                     timer: 1000,
                     timerProgressBar: true,
                     didOpen: (toast) => {
-                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseenter = Swal.resumeTimer;
                         toast.onmouseleave = Swal.resumeTimer;
                     }
                 });
