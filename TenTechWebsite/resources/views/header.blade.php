@@ -20,11 +20,11 @@
         </label>
 
         <nav class="menu1">
-            <a class="link1" href="Laptop">Laptops</a>
-            <a class="link1" href="Mobile">Smartphones</a>
-            <a class="link1" href="Tablet">Tablets</a>
-            <a class="link1" href="Console">Console</a>
-            <a class="link1" href = "about">About Us</a>
+          <a class="link1" href="Laptop">Laptops</a>
+          <a class="link1" href="Mobile">Smartphones</a>
+          <a class="link1" href="Tablet">Tablets</a>
+          <a class="link1" href="Console">Console</a>
+          <a class="link1" href="about">About Us</a>
 
 
         </nav>
@@ -35,25 +35,58 @@
       <input type="search" placeholder="Search...">
     </div>
     <div class="logo">
-      <h1 class = "home"><a  href = "{{ url('shop') }}">TenTech</a>
-    </h1>
+      <h1 class="home"><a href="{{ url('shop') }}">TenTech</a>
+      </h1>
     </div>
     <nav class="navigation">
       <ul>
+        <!-- if user is not authenticated, show login and register links -->
+        @if (!Auth::check())
         <li class="dropdown"><button class="dropbtn"><img src="/10tech/TenTechWebsite/public/account.png" class="account"></button>
           <div class="dropdown-content">
-             <!-- if user authenticated, show POST logout button with CSRF token for security -->
-            @if (Auth::check()) 
+            <a href="{{ route('login') }}">Login</a>
+            <hr>
+            <a href="{{ url('register') }}">Register</a>
+          </div>
+        </li>
+        @endif
+        @if (Auth::check())
+        @if (Auth::user()->profile_image == null)
+        <li class="dropdown"><button class="dropbtn"><img src="/10tech/TenTechWebsite/public/account.png" class="account"></button>
+          <div class="dropdown-content">
             <a href="{{ route('settings') }}">User Profile</a>
-            <!-- added user settings route to modify settings profile for user -->
             <hr>
             <a href="{{ url('logout') }}">Logout</a>
-            @else
-            <!-- if user is not authenticated, show login and register links -->
-            <a href="{{ route('login') }}">Login</a>
-            <a href="{{ route('register') }}">Register</a>
-            @endif
           </div>
+        </li>
+        @else
+        <li class="dropdown"><button class="dropbtn"><img src="{{ Auth::user()->profile_image }}" class="account" style="width:50px; height:50px; border-radius:50%;"></button>
+          <div class="dropdown-content">
+            <a href="{{ route('settings') }}">User Profile</a>
+            <hr>
+            <a href="{{ url('logout') }}">Logout</a>
+          </div>
+        </li>
+        @endif
+        @endif
+        <div class="dropdown-content">
+          <!-- if user authenticated, show POST logout button with CSRF token for security -->
+          @if (Auth::check())
+          <a href="{{ route('settings') }}">User Profile</a>
+          <!-- added user settings route to modify settings profile for user -->
+          <hr>
+          <a href="{{ url('logout') }}">Logout</a>
+          @else
+          <!-- if user is not authenticated, show login and register links -->
+          <li class="dropdown"><button class="dropbtn"><img src="/10tech/TenTechWebsite/public/account.png" class="account"></button>
+            <div class="dropdown-content">
+              <a href="{{ route('login') }}">Login</a>
+              <hr>
+              <a href="{{ url('register') }}">Register</a>
+            </div>
+          </li>
+          @endif
+        </div>
         </li>
         <li class="dropdown"><button class="dropbtn"><img src="/10tech/TenTechWebsite/public/shopping-basket.png" class="account"></button>
           <div class="dropdown-content">
@@ -65,4 +98,5 @@
     </nav>
   </header>
 </body>
+
 </html>
