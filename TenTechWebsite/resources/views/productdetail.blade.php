@@ -2,12 +2,15 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('/css/productdetail.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>{{ $product->name }}</title>
 </head>
+
 <body>
     @include('header')
     <div class="product-container">
@@ -35,7 +38,28 @@
                 <input type="text" name="product_id" value="{{ $product->id }}" hidden>
                 <button type="submit">Add to Basket</button>
             </form>
+            @dump(session()->all())
+            @if(session('successfulladdition'))
+            <script>
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "{{ session('successfulladdition') }}",
+                });
+            </script>
+            @endif
         </div>
     </div>
 </body>
+
 </html>
