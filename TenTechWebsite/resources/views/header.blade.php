@@ -54,7 +54,7 @@
         @endif
         @if (Auth::check())
         @if (Auth::user()->profile_image == null)
-        <li class="dropdown"><button class="dropbtn"><img src="/10tech/TenTechWebsite/public/account.png" class="account"></button>
+        <li class="dropdown"><button class="dropbtn"><img src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png" class="account"></button>
           <div class="dropdown-content">
             <a href="{{ route('settings') }}">User Profile</a>
             <hr>
@@ -63,7 +63,7 @@
         </li>
         @else
         <!-- erorr: was not shwoing pp so used asset() biuldeing a url from relative path of public/ {{ Auth::user()->profile_image }}  -->
-        <li class="dropdown"><button class="dropbtn"><img src="{{ asset(Auth::user()->profile_image) }}" class="account" style="width:50px; height:50px; border-radius:50%;"></button>
+        <li class="dropdown"><button class="dropbtn"><img src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png" class="account" style="width:50px; height:50px; border-radius:50%;"></button>
           <div class="dropdown-content">
             <a href="{{ route('settings') }}">User Profile</a>
             <hr>
@@ -81,7 +81,7 @@
           <a href="{{ url('logout') }}">Logout</a>
           @else
           <!-- if user is not authenticated, show login and register links -->
-          <li class="dropdown"><button class="dropbtn"><img src="/10tech/TenTechWebsite/public/account.png" class="account"></button>
+          <li class="dropdown"><button class="dropbtn"><img src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png" class="account"></button>
             <div class="dropdown-content">
               <a href="{{ route('login') }}">Login</a>
               <hr>
@@ -91,7 +91,7 @@
           @endif
         </div>
         </li>
-        <li class="dropdown"><button class="dropbtn"><img src="\10tech\TenTechWebsite\public\shopping-basket.png" class="account"></button>
+        <li class="dropdown"><button class="dropbtn"><img src="https://cdn.icon-icons.com/icons2/1795/PNG/512/shoppingbasket_114841.png" class="account"></button>
           <div class="dropdown-content">
             <a href="{{ route('basket') }}">Basket</a>
             <a href="http://localhost/10tech/TenTechWebsite/public/checkout">Checkout</a>
