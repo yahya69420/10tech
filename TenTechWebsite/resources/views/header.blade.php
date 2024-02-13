@@ -91,7 +91,7 @@
           @endif
         </div>
         </li>
-        <li class="dropdown"><button class="dropbtn"><img src="/10tech/TenTechWebsite/public/shopping-basket.png" class="account"></button>
+        <li class="dropdown"><button class="dropbtn"><img src="\10tech\TenTechWebsite\public\shopping-basket.png" class="account"></button>
           <div class="dropdown-content">
             <a href="{{ route('basket') }}">Basket</a>
             <a href="http://localhost/10tech/TenTechWebsite/public/checkout">Checkout</a>
