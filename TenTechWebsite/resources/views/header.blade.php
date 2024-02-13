@@ -18,7 +18,7 @@
         <label class="hamburger1" for="toggle1">
           <div class="top"></div>
           <div class="meat"></div>
-          <div class="bottom"></div>
+          <div class="bottomm"></div>
         </label>
 
         <nav class="menu1">
