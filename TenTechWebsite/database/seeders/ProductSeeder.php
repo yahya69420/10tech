@@ -54,6 +54,7 @@ class ProductSeeder extends Seeder
             'description' => 'Thin and light MacBook with M1 chip',
             'image' => 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWFjYm9vayUyMGFpcnxlbnwwfHwwfHx8MA%3D%3D',
             'stock' => '0',
+            'brand' => 'Apel',
         ])->categories()->attach($laptopCategory);
 
         Product::create([
@@ -62,6 +63,7 @@ class ProductSeeder extends Seeder
             'description' => 'Thin and light MacBook with M1 chip',
             'image' => 'https://images.unsplash.com/photo-1580522154071-c6ca47a859ad?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHx8MA%3D%3D',
             'stock' => '1',
+            'brand' => 'Apel',
         ])->categories()->attach($laptopCategory);
 
         Product::create([
@@ -70,6 +72,7 @@ class ProductSeeder extends Seeder
             'description' => 'Thin and light MacBook with M1 chip',
             'image' => 'https://www.cnet.com/a/img/resize/51a1873aac8a490cfd677f524a58f6bacf53d07e/hub/2019/01/04/83703cec-9498-4543-9b1f-0a5bc0683763/dell-xps-13-07.jpg?auto=webp&width=1200',
             'stock' => '2',
+            'brand' => 'Del',
         ])->categories()->attach($laptopCategory);
 
         Product::create([
@@ -78,6 +81,7 @@ class ProductSeeder extends Seeder
             'description' => 'Thin and light MacBook with M1 chip',
             'image' => 'https://sm.pcmag.com/t/pcmag_uk/review/h/hp-spectre/hp-spectre-x360-135-2022_jt67.3840.jpg',
             'stock' => '3',
+            'brand' => 'HP',
         ])->categories()->attach($laptopCategory);
 
         Product::create([
@@ -86,6 +90,7 @@ class ProductSeeder extends Seeder
             'description' => 'Thin and light MacBook with M1 chip',
             'image' => 'https://p4-ofp.static.pub/fes/cms/2023/02/10/7qjkk7h1a53t8jq5snivyzumxw040v193587.png',
             'stock' => '4',
+            'brand' => 'Lenovo',
         ])->categories()->attach($laptopCategory);
 
 
@@ -97,6 +102,7 @@ class ProductSeeder extends Seeder
             'description' => 'Description for iPhunny 13',
             'image' => 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             'stock' => '0',
+            'brand' => 'Apel',
         ])->categories()->attach($mobileCategory);
 
         Product::create([
@@ -105,6 +111,7 @@ class ProductSeeder extends Seeder
             'description' => 'Android phone with amazing features',
             'image' => 'https://images.unsplash.com/photo-1610792516307-ea5acd9c3b00?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2Ftc3VuZyUyMHBob25lfGVufDB8fDB8fHwy',
             'stock' => '1',
+            'brand' => 'Samsong',
         ])->categories()->attach($mobileCategory);
 
         Product::create([
@@ -113,6 +120,7 @@ class ProductSeeder extends Seeder
             'description' => 'Android phone with amazing features',
             'image' => 'https://images.unsplash.com/photo-1612442443556-09b5b309e637?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z29vZ2xlJTIwcGl4ZWx8ZW58MHx8MHx8fDA%3D',
             'stock' => '2',
+            'brand' => 'Gugle',
         ])->categories()->attach($mobileCategory);
 
         Product::create([
@@ -121,6 +129,7 @@ class ProductSeeder extends Seeder
             'description' => 'Android phone with amazing features',
             'image' => 'https://www.oneplus.com/content/dam/oasis/page/os/oxygenos/4.png',
             'stock' => '3',
+            'brand' => '1Plus',
         ])->categories()->attach($mobileCategory);
 
         Product::create([
@@ -129,6 +138,7 @@ class ProductSeeder extends Seeder
             'description' => 'Android phone with amazing features',
             'image' => 'https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/phones/p40-pro/images/design/design-intro-e@2x.webp',
             'stock' => '4',
+            'brand' => 'Hawai',
         ])->categories()->attach($mobileCategory);
 
 
@@ -139,6 +149,7 @@ class ProductSeeder extends Seeder
             'description' => '27-inch 4K UHD monitor with HDR support',
             'image' => 'https://gfx3.senetic.com/akeneo-catalog/a/3/d/f/a3dfec2c830f8f76a74f53985ae4ebc65e89bac8_1627564_DELL_U2720Q_image1',
             'stock' => '0',
+            'brand' => 'Dell',
         ])->categories()->attach($monitorCategory);
 
         Product::create([
@@ -147,6 +158,7 @@ class ProductSeeder extends Seeder
             'description' => '27-inch 4K UHD monitor with HDR support',
             'image' => 'https://www.lg.com/content/dam/channel/wcms/uk/images/monitors/27GN950-B_AEK_EEUK_UK_C/MNT-27GN950-Basic.jpg',
             'stock' => '1',
+            'brand' => 'LG',
         ])->categories()->attach($monitorCategory);
 
         Product::create([
@@ -155,6 +167,7 @@ class ProductSeeder extends Seeder
             'description' => '27-inch 4K UHD monitor with HDR support',
             'image' => 'https://image-us.samsung.com/SamsungUS/samsungbusiness/computing/monitors/gaming/32--odyssey-g7-gaming-monitor-lc32g75tqsnxza/LC32G75TQSNXZA_001_Front_Black_1600x1200.jpg?$product-details-jpg$',
             'stock' => '2',
+            'brand' => 'Samsong',
         ])->categories()->attach($monitorCategory);
 
         Product::create([
@@ -163,6 +176,7 @@ class ProductSeeder extends Seeder
             'description' => '27-inch 4K UHD monitor with HDR support',
             'image' => 'https://i.pcmag.com/imagery/reviews/074fs6JJYgfDgoy3QwAHelw-8.fit_scale.size_760x427.v1569478388.jpg',
             'stock' => '3',
+            'brand' => 'Acer',
         ])->categories()->attach($monitorCategory);
 
         Product::create([
@@ -171,6 +185,7 @@ class ProductSeeder extends Seeder
             'description' => '27-inch 4K UHD monitor with HDR support',
             'image' => 'https://rog.asus.com/media/1534242864535.jpg',
             'stock' => '4',
+            'brand' => 'Microsoft',
         ])->categories()->attach($monitorCategory);
 
 
@@ -181,6 +196,7 @@ class ProductSeeder extends Seeder
             'description' => 'Thin and light iPad with A14 Bionic chip',
             'image' => 'https://images.unsplash.com/photo-1604399852419-f67ee7d5f2ef?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             'stock' => '0',
+            'brand' => 'Apel',
         ])->categories()->attach($tabletCategory);
 
         Product::create([
@@ -189,6 +205,7 @@ class ProductSeeder extends Seeder
             'description' => 'Thin and light iPad with A14 Bionic chip',
             'image' => 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-tab-s7-01.jpg',
             'stock' => '1',
+            'brand' => 'Samsong',
         ])->categories()->attach($tabletCategory);
 
         Product::create([
@@ -197,6 +214,7 @@ class ProductSeeder extends Seeder
             'description' => 'Thin and light iPad with A14 Bionic chip',
             'image' => 'https://fdn2.gsmarena.com/vv/pics/huawei/matepad-11-pro-2022-1.jpg',
             'stock' => '2',
+            'brand' => 'Hawai',
         ])->categories()->attach($tabletCategory);
 
         Product::create([
@@ -205,6 +223,7 @@ class ProductSeeder extends Seeder
             'description' => 'Thin and light iPad with A14 Bionic chip',
             'image' => 'https://fdn2.gsmarena.com/vv/pics/lenovo/lenovo-tab-p11-pro-2.jpg',
             'stock' => '3',
+            'brand' => 'Lenovo',
         ])->categories()->attach($tabletCategory);
 
         Product::create([
@@ -213,6 +232,7 @@ class ProductSeeder extends Seeder
             'description' => 'Thin and light iPad with A14 Bionic chip',
             'image' => 'https://fdn2.gsmarena.com/vv/pics/samsung/galaxy-tab-s6-lite-1.jpg',
             'stock' => '4',
+            'brand' => 'Samsong',
         ])->categories()->attach($tabletCategory);
 
 
@@ -226,6 +246,7 @@ class ProductSeeder extends Seeder
             'description' => 'Next-gen gaming console with 4K graphics',
             'image' => 'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             'stock' => '0',
+            'brand' => 'Sony',
         ])->categories()->attach($consoleCategory);
 
         Product::create([
@@ -234,6 +255,7 @@ class ProductSeeder extends Seeder
             'description' => 'Next-gen gaming console with 4K graphics',
             'image' => 'https://images.unsplash.com/photo-1621259182978-fbf93132d53d?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             'stock' => '1',
+            'brand' => 'Microsoft', 
         ])->categories()->attach($consoleCategory);
 
         Product::create([
@@ -242,6 +264,7 @@ class ProductSeeder extends Seeder
             'description' => 'Next-gen gaming console with 4K graphics',
             'image' => 'https://images.unsplash.com/photo-1507457379470-08b800bebc67?q=80&w=2109&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             'stock' => '2',
+            'brand' => 'Soni', 
         ])->categories()->attach($consoleCategory);
 
         Product::create([
@@ -250,6 +273,7 @@ class ProductSeeder extends Seeder
             'description' => 'Next-gen gaming console with 4K graphics',
             'image' => 'https://images.unsplash.com/photo-1612036781124-847f8939b154?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             'stock' => '3',
+            'brand' => 'Nin10do', 
         ])->categories()->attach($consoleCategory);
 
 
@@ -259,6 +283,7 @@ class ProductSeeder extends Seeder
             'description' => 'Next-gen gaming console with 4K graphics',
             'image' => 'https://images.unsplash.com/photo-1618556679398-486ba2cf2e89?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             'stock' => '4',
+            'brand' => 'Nin10do', 
         ])->categories()->attach($consoleCategory);
 
 

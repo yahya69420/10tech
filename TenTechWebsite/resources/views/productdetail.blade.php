@@ -23,6 +23,13 @@
             <p>{{ $product->category }}</p>
             <p>{{ $product->description }}</p>
             <p>£{{ $product->price }}</p>
+            <label for="quantity">Quantity:</label>
+            <select id="quantity" name="quantity">
+            <!-- You can dynamically generate options based on available stock -->
+                @for ($i = 1; $i <= $product->stock; $i++)
+                    <option value="{{ $i }}">{{ $i }}</option>
+                @endfor
+            </select>
             <!-- form to allow for product to be added to the cart database so it can be accessed
         and manipulated later -->
             <form action="{{ route('add_to_basket') }}" method="POST">
