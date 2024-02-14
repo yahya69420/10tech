@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
-    <link rel="stylesheet" href="{{ asset('/css/checkout.css') }}">
-    <style>
 
-</style>    
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="{{ asset('/css/checkout.css') }}">
+  <style>
+
+  </style>
 </head>
+
 <body>
-@include ('header ')
+  @include ('header ')
 
 </body>
 <div class="row">
@@ -57,26 +59,26 @@
           </div>
 
         </div>
-       <a href = "complete"> <input type="button" value="Continue to checkout" class="btn" ></a>
+        <a href="complete"> <input type="button" value="Continue to checkout" class="btn"></a>
       </form>
     </div>
   </div>
 
+  @foreach ($cartItems as $cartItem)
   <div class="col-25">
     <div class="container">
       <h4>Cart
         <span class="price" style="color:black">
           <i class="fa fa-shopping-cart"></i>
-          <b>1</b>
+          <b>{{ $cartItem->cart_quantity }} Items</b>
         </span>
-        @foreach ($products as $product)
       </h4>
-      <p><a href="#" style="color:black">{{ $product->name }}</a> <span class="price">{{ $product->price }}</span></p>
+      <p><a href="#" style="color:black">{{ $cartItem->name }} (x{{ $cartItem->cart_quantity }})</a> <span class="price">{{ $cartItem->price }}</span></p>
       <hr>
-      <p>Estimated Shipping<span class = "price" style = "color:black"><b>Free shipping</b></span></p>
-      <p>Total <span class="price" style="color:black"><b>{{ $product->price }}</b></span></p>
+      <p>Estimated Shipping<span class="price" style="color:black"><b>Free shipping</b></span></p>
+      <p>Total <span class="price" style="color:black"><b>£{{ $cartItem->price * $cartItem->cart_quantity }}</b></span></p>
     </div>
   </div>
   @endforeach
-</div> 
+</div>
 </html>
