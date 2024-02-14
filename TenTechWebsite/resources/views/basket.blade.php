@@ -121,6 +121,76 @@ body {
     margin-right: 10px;
     background-color: white;
 }
+
+.removeButton {
+    display: flex;
+    justify-content: flex-end; 
+    flex-grow: 0;
+}
+
+.subTotal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    margin-top: 20px;
+}
+
+/* delivery section styling */
+
+#deliveryCardId {
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    width: 313px;
+    height: 160px;
+}
+
+.deliveryForm label {
+    display: block;
+}
+
+.deliveryForm input[type="radio"] {
+    background-color: white;
+}
+
+
+#totalCardId {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 0px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.rightSide {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+    width: fit-content;
+    height: fit-content;
+}
+
+#promoCodeInput {
+    background-color: rgb(255, 255, 255);
+}
+
+.totalInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+
+.checkoutButton {
+    background-color: #049f47; 
+    
+}
 </style>
 </head>
 
