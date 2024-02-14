@@ -38,7 +38,13 @@
                 <!-- the product id  passed inas hidden input so it can be accessed in the conteoller -->
                 <input type="text" name="product_id" value="{{ $product->id }}" hidden>
                 <input type="text" name="product_name" value="{{ $product->name }}" hidden>
-                @if($product->stock > 0)
+                @if($product->stock > 0) 
+                <label for="quantity">Quantity:</label>
+                <select id="quantity" name="quantity">
+                    @for ($i = 1; $i <= $product->stock; $i++)
+                        <option value="{{ $i }}">{{ $i }}</option>
+                    @endfor
+                </select>
                 <h4><span class="badge rounded-pil bg-success">{{ $product->stock }} In Stock</span></h4>
                 <button type="submit">Add to Basket</button>
                 @else
