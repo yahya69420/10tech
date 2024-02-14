@@ -201,7 +201,7 @@ body {
     <div class="myBagCard p-5 rounded-md w-2/4 shadow-2xl" id="myBagCardId">
         <!-- Card title -->
         <h1 class="text-3xl font-bold text-center p-5 pb-0 mb-4">My Bag </h1>
-        @foreach ($products as $product)
+        @foreach ($cartItems as $cartItem)
         <ul class="itemList">
             <li class="productItem">
                 <img class="productImage" src="{{ $cartItem->image }}">
