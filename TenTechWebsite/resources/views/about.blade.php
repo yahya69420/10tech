@@ -10,7 +10,7 @@ body, html {
 }
 
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://127.0.0.1:8000/pexels-orhan-pergel-18980943.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("pexels-orhan-pergel-18980943.jpg");
   height: 50%;
   background-position: center;
   background-repeat: no-repeat;

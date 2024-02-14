@@ -44,7 +44,7 @@
       <ul>
         <!-- if user is not authenticated, show login and register links -->
         @if (!Auth::check())
-        <li class="dropdown"><button class="dropbtn"><img src="/10tech/TenTechWebsite/public/account.png" class="account"></button>
+        <li class="dropdown"><button class="dropbtn"><img src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png" class="account"></button>
           <div class="dropdown-content">
             <a href="{{ route('login') }}">Login</a>
             <hr>
