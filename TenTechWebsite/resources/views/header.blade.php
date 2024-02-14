@@ -63,7 +63,7 @@
         </li>
         @else
         <!-- erorr: was not shwoing pp so used asset() biuldeing a url from relative path of public/ {{ Auth::user()->profile_image }}  -->
-        <li class="dropdown"><button class="dropbtn"><img src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png" class="account" style="width:50px; height:50px; border-radius:50%;"></button>
+        <li class="dropdown"><button class="dropbtn"><img src="{{ asset(Auth::user()->profile_image) }}" class="account" style="width:50px; height:50px; border-radius:50%;"></button>
           <div class="dropdown-content">
             <a href="{{ route('settings') }}">User Profile</a>
             <hr>
