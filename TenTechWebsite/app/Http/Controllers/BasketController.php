@@ -22,8 +22,8 @@ class BasketController extends Controller
     {
         // use join to get the relevant information from the products table using the foreign key
         $products = DB::table('cart')
-        // from the cart table 
-        // join the products table where the cart FK is equal to the products PK in the products table
+            // from the cart table 
+            // join the products table where the cart FK is equal to the products PK in the products table
             ->join('products', 'cart.product_id', '=', 'products.id')
             // also only when the user id in the cart table is equal to the currently authenticated users id
             // so only they can see their own cart
@@ -33,31 +33,45 @@ class BasketController extends Controller
             ->select('products.*', 'cart.id as cart_id')
             // and then get all the results of tge SQL qury 
             ->get();
-            // and then returb  the view with the products variable
-            return view('basket', ['products' => $products]);
+        // and then returb  the view with the products variable
+        return view('basket', ['products' => $products]);
     }
 
     public function addToBasket(Request $request)
     {
-        // create a new cart object for this specific user
-        $cart = new Cart();
-        // set the carts attribute of a user id to the currently authenticated users id
-        // each user will have their own cart
-        $cart->user_id = auth()->user()->id;
-        // set the carts attribute of a product id to the product id that was passed in the request,
-        // which is what is referenced in the view in the POST form as a hidden input
-        $cart->product_id = $request->product_id;
-        // save the cart object to the database
-        $cart->save();
-        $product_name = $request->product_name;
-        // redirect the user to the page that were on before added to cart clickjed
-        return back()->with('successfulladdition', $product_name . ' added to basket');
+        $cartExists = Cart::where('product_id', $request->product_id)->where('user_id', auth()->user()->id)->exists();
+        if ($cartExists) {
+            $cart = Cart::where('product_id', $request->product_id)->where('user_id', auth()->user()->id)->first();
+            $cart->quantity += $request->quantity;
+            $product_price = Product::find($request->product_id)->price;
+            $cart->total = $product_price * $cart->quantity;
+            $cart->save();
+            $product_name = $request->product_name;
+            return back()->with('successfulladdition', $cart->quantity . ' ' . $product_name . '(s) added to basket');
+        } else {
+            // create a new cart object for this specific user
+            $cart = new Cart();
+            // set the carts attribute of a user id to the currently authenticated users id
+            // each user will have their own cart
+            $cart->user_id = auth()->user()->id;
+            // set the carts attribute of a product id to the product id that was passed in the request,
+            // which is what is referenced in the view in the POST form as a hidden input
+            $cart->product_id = $request->product_id;
+            // save the cart object to the database
+            $cart->quantity = $request->quantity;
+            $product_price = Product::find($request->product_id)->price;
+            $cart->total = $product_price * $cart->quantity;
+            $cart->save();
+            $product_name = $request->product_name;
+            // redirect the user to the page that were on before added to cart clickjed
+            return back()->with('successfulladdition', $cart->quantity . ' ' . $product_name . '(s) added to basket');
+        }
     }
 
-    public function removeFromBasket($id) 
+    public function removeFromBasket($id)
     {
         Cart::destroy($id);
-        return back()-> with('success', 'Item removed from basket');
+        return back()->with('success', 'Item removed from basket');
     }
 
     public function checkout()
@@ -67,5 +81,6 @@ class BasketController extends Controller
             ->where('cart.user_id', '=', auth()->user()->id)
             ->select('products.*', 'cart.id as cart_id')
             ->get();
-            return view('checkout', ['products' => $products]);    }
+        return view('checkout', ['products' => $products]);
+    }
 }
