@@ -7,7 +7,7 @@ body {
   display: flex;
   justify-content: space-between; /* Adjusted justify-content */
   align-items: center;
-  background-color: gray;
+  background-color:  #99a3a4;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -110,7 +110,7 @@ z-index: 120;
   margin-top: -5px;
 }
 
-#toggle1:checked + .hamburger1 .bottom {
+#toggle1:checked + .hamburger1 .bottomm {
   -webkit-transform: scale(0);
           transform: scale(0);
 }
@@ -123,7 +123,7 @@ z-index: 120;
 /* Menu */
 .menu1 {
 width: 100%;
-background-color: gray;
+background-color: #99a3a4;
 margin: 0;
 display: -ms-grid;
 display: grid;
@@ -167,7 +167,7 @@ transition: all 0.3s ease;
 
     /* Style The Dropdown Button */
     .dropbtn {
-  background-color: gray;
+  background-color: #99a3a4;
   justify-content: right;
   align-self: right;
   color: white;
@@ -188,7 +188,7 @@ transition: all 0.3s ease;
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: rgb(61, 61, 61);
+  background-color:  #616a6b;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -212,7 +212,7 @@ transition: all 0.3s ease;
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: rgb(61, 61, 61);
+  background-color: #616a6b;
 }
 
 .account{

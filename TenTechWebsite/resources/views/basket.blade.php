@@ -26,6 +26,7 @@
 
 
 <body>
+    @include ('header')
     <div class="myBagCard p-5 rounded-md w-2/4 shadow-2xl" id="myBagCardId">
         <!-- Card title -->
         <h1 class="text-3xl font-bold text-center p-5 pb-0 mb-4">My Bag (x items)</h1>

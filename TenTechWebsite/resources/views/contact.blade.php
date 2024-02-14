@@ -6,9 +6,6 @@
 
 <style>
 
-
-  <style>
-
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -93,24 +90,24 @@ input[type="submit"] {
     @include('header')
     <div class="hero">
         <p>This is the hero section</p>
-      </div>
+    </div>
 
-      <div class="contact-us">
+    <div class="contact-us">
         <div class="left">
-          <h2>Contact Information</h2>
-          <form action="#" method="post">
-            <input type="text" id="name" placeholder="First Name" required>
-            <input type="text" id="lname" placeholder="Last Name" required>
-            <input type="email" id="email" placeholder="Email" required>
-          </form>
+            <h2>Contact Information</h2>
+            <form action="submit_form.php" method="post" onsubmit="return validateForm()">
+                <input type="text" id="name" name="name" placeholder="First Name" required>
+                <input type="text" id="lname" name="lname" placeholder="Last Name" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
         </div>
         <div class="right">
-          <h2>Message</h2>
-          <textarea id="subject" placeholder="Your message here" required></textarea>
-          <input type="submit" id="submit" value="Submit" required>
-          <p id="submittedMessage" style="color: green;"></p>
+            <h2>Message</h2>
+            <textarea id="subject" name="subject" placeholder="Your message here" required></textarea>
+            <input type="submit" id="submit" value="Submit">
+            <p id="submittedMessage" style="color: green;"></p>
+            </form>
         </div>
-      </div>
+    </div>
       <script>
         // JavaScript code for form validation
         const nameInput = document.querySelector("#name");

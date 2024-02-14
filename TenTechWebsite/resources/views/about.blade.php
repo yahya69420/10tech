@@ -1,153 +1,104 @@
 <!DOCTYPE html>
 <html>
-<!--TODO: kulim park font still doesn't work, need to look into it. -->
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 90%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-    <title>About Us</title>
-    <style>
-        @font-face {
-            font-family: "Kulim Park";
-            src: url("https://fonts.googleapis.com/css?family=Kulim+Park:700,200");
-        }
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("pexels-orhan-pergel-18980943.jpg");
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-        html,
-        body {
-            margin: 0px;
-            height: 100%;
-        }
+.hero-text {
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
 
-        .about-us {
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            width: 100%;
-        }
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 25px;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
 
-        .about-us .div {
-            background-color: #ffffff;
-            width: 1440px;
-            height: 1024px;
-            position: relative;
-        }
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
+}
 
-        .about-us .text-wrapper-3 {
-            position: absolute;
-            width: 320px;
-            top: 451px;
-            left: 37px;
-            font-family: "Kulim Park";
-            font-weight: 700;
-            color: #000000;
-            font-size: 40px;
-            text-align: center;
-            letter-spacing: 0;
-            line-height: normal;
-            white-space: nowrap;
-        }
+.text {
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
 
-        .about-us .p {
-            position: absolute;
-            width: 893px;
-            top: 497px;
-            left: 56px;
-            font-family: "Kulim Park";
-            font-weight: 200;
-            color: #000000;
-            font-size: 40px;
-            letter-spacing: 0;
-            line-height: normal;
-        }
+.list {
+  margin-left: 50px;
+}
 
-        .about-us .div-wrapper {
-            position: absolute;
-            width: 1440px;
-            height: 284px;
-            top: 116px;
-            left: 0;
-            background-image: url('pexels-photomix-company-1038628.jpg');
-            background-size: cover;
-            box-shadow: 0px 4px 4px 0px #00000040;
-        }
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
 
-        .about-us .text-wrapper-4 {
-            position: absolute;
-            width: 330px;
-            top: 55px;
-            left: 555px;
-            font-family: "Kulim Park";
-            font-weight: 700;
-            color: #D9D9D9;
-            font-size: 40px;
-            text-align: center;
-            letter-spacing: 0;
-            line-height: normal;
-        }
+.lorem {
+  max-width: 600px;
+}
 
-        .about-us .simple-static-image-wrapper {
-            position: absolute;
-            width: 448px;
-            height: 459px;
-            top: 452px;
-            left: 967px;
-            background-image: url('pexels-format-1029757.jpg');
-            background-size: cover;
-            box-shadow: 0px 4px 4px 0px #00000040;
-        }
+.image {
+  max-width: 30%;
+}
 
-        .about-us .simple-static-image {
-            position: absolute;
-            width: 330px;
-            top: 172px;
-            left: 59px;
-            font-family: "Kulim Park";
-            font-weight: 700;
-            color: #D9D9D9;
-            font-size: 40px;
-            text-align: center;
-            letter-spacing: 0;
-        }
-    </style>
+</style>
 </head>
 <body>
-@include('header')
-<div class="about-us">
-    <div class="div">
-        <div class="text-wrapper-3">Who We Are</div>
-        <p class="p">
-            We are dynamic team of computer scientist at TenTech driven by our passion to provide a flawless online shopping experience. we have a diverse selection of high quality products, providing seamless transactions and prioritizing customer satifaction.
+@include ('header')
+<div class="hero-image">
+  <div class="hero-text">
+    <h1 style="font-size:50px">We are TenTech</h1>
 
-<br>
-
-The team consist of 8 memebers which are:
-<br>
-	- Ali Qadeer
-<br>
-	- Muhammad Rashid
-<br>
-	- Awad Riaz
-<br>
-	- Ali Salad
-<br>
-	- Tashdid Salam
-<br>
-	- Syed Shah
-<br>
-	- Shuaib Ur Rehman
-<br>
-	- Rahul Vasantlal
-<br>
-<br>
-
-At TenTech we strive to exceed all your expectations by making sure you get all the latest technology products at a reasonable price. We try to be competitive and beat current market prices.
-
-        </p>
-        <div class="div-wrapper"></div>
-        <div class="simple-static-image-wrapper"></div>
-    </div>
+  </div>
 </div>
+<h3 class="text">Our team:</h3>
+<div class="container">
+
+<ul class="list">
+    <li>Awad Riaz</li>
+    <li>Muhammad Rashid</li>
+    <li>Syed Shah</li>
+    <li>Ali Salad</li>
+    <li>Ali Qadeer</li>
+    <li>Tashdid Salam</li>
+    <li>Shuaib Ur Rehman</li>
+    <li>Rahul Vasantlal</li>
+</ul>
+
+
+  <p class="lorem">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.
+  </p>
+
+</div>
+
+<footer>@include('layouts/footer')</footer>
 </body>
 </html>

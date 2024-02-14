@@ -49,8 +49,9 @@ class BasketController extends Controller
         $cart->product_id = $request->product_id;
         // save the cart object to the database
         $cart->save();
+        $product_name = $request->product_name;
         // redirect the user to the page that were on before added to cart clickjed
-        return back();
+        return back()->with('successfulladdition', $product_name . ' added to basket');
     }
 
     public function removeFromBasket($id) 
