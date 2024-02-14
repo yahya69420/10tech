@@ -21,21 +21,187 @@
     <!-- BoxIcon CDN -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Basket</title>
+    <style>
+        /* remove any default padding and margins to avoid 
+any issues that are impossible to debug later; make this universal*/
+
+/* For clarity, use of tailwind utilities were chosen against here 
+so that the css was more easier to read and could be applied 
+universally as is the case here :) */
+
+/* default padding and border arithemetic is like so: 
+    - width = width + padding + border
+    - height = height + padding + border
+    border-box removes this for easier arithmetic and modifications when needed */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html:root {
+    background-color: rgb(238, 238, 238);
+}
+
+body,
+html {
+    font-family: "Roboto", sans-serif;
+    color: black;
+    display: flex;
+    flex-direction: row;
+}
+
+body {
+    /* change the background to default to light mode */
+    background-color: rgb(238, 238, 238);
+    display: flex;
+}
+
+#myBagCardId {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+    width: auto;
+    max-height: 100%; /*Set a fixed height for the container/*
+    
+    /*
+    Use overflow-auto to add scrollbars to an element in the event that its content 
+    overflows the bounds of that element. Unlike overflow-scroll, which always shows 
+    scrollbars, this utility will only show them if scrolling is necessary.*/
+
+    overflow-y: auto; /* ennabele vertical scrolling */
+    margin-left: 250px;
+    margin-right: auto;
+
+}
+
+.itemList {
+    list-style: none;
+    padding: 10px;
+    border: rgb(22, 21, 21);
+}
+
+.productItem {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 10px 0; /* Add padding to separate items */
+    border-bottom: 1px solid #242424; 
+}
+
+#blackLine {
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    height: 2px;
+}
+
+.productImage {
+    height: auto;
+    width: 80px; 
+    margin-right: 20px; 
+}
+
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.pName,
+.pQuantity,
+.pPrice {
+    margin-bottom: 10px;
+}
+
+.quantityDropdown {
+    margin-right: 10px;
+    background-color: white;
+}
+
+.removeButton {
+    display: flex;
+    justify-content: flex-end; 
+    flex-grow: 0;
+}
+
+.subTotal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    margin-top: 20px;
+}
+
+/* delivery section styling */
+
+#deliveryCardId {
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    width: 313px;
+    height: 160px;
+}
+
+.deliveryForm label {
+    display: block;
+}
+
+.deliveryForm input[type="radio"] {
+    background-color: white;
+}
+
+
+#totalCardId {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 0px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.rightSide {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+    width: fit-content;
+    height: fit-content;
+}
+
+#promoCodeInput {
+    background-color: rgb(255, 255, 255);
+}
+
+.totalInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+
+.checkoutButton {
+    background-color: #049f47; 
+    
+}
+</style>
 </head>
 
 
 
 <body>
-    @include ('header')
+
     <div class="myBagCard p-5 rounded-md w-2/4 shadow-2xl" id="myBagCardId">
         <!-- Card title -->
-        @php
-        $totalQuantity = 0;
-        foreach ($cartItems as $cartItem) {
-        $totalQuantity += $cartItem->cart_quantity;
-        }
-        @endphp
-        <h1 class="text-3xl font-bold text-center p-5 pb-0 mb-4">My Bag ({{ $totalQuantity }} items)</h1> @foreach ($cartItems as $cartItem)
+        <h1 class="text-3xl font-bold text-center p-5 pb-0 mb-4">My Bag </h1>
+        @foreach ($products as $product)
         <ul class="itemList">
             <li class="productItem">
                 <img class="productImage" src="{{ $cartItem->image }}">
@@ -86,40 +252,41 @@
     </div>
 
     <div class="rightSide">
-        <h1 class="text-3xl font-bold text-center pb-0">Delivery</h1>
-        <div class="deliveryCard p-5 rounded-md shadow-2xl" id="deliveryCardId">
-            <hr id="blackLine">
 
-            <div class="deliveryForm text-xl font-bold">
-                <form action="#" method="POST">
-
-                    <label for="deliveryOption1">
-                        <input type="radio" id="deliveryOption1" name="deliveryOption" value="option1" checked>
-                        Delivery Option 1
-                    </label>
-
-                    <label for="deliveryOption2">
-                        <input type="radio" id="deliveryOption2" name="deliveryOption" value="option2">
-                        Delivery Option 2
-                    </label>
-
-                </form>
-
-            </div>
-
-
-        </div>
-
-        <h1 class="text-3xl font-bold text-center pb-0">Total</h1>
 
         <div class="totalCard p-5 mt-0 pt-0 rounded-md shadow-2xl" id="totalCardId">
             <div class="totalCardPromoField">
+                <h1 class="text-3xl font-bold text-center pb-0">Total</h1>
+
                 <p class="text-md font-medium text-left p-1 pb-0 mb-0.5">Promo Code</p>
                 <div class="promoCodeField">
                     <input type="text" id="promoCodeInput" placeholder="Enter promo code" class="input input-bordered" />
                     <button id="applyPromoCode" class="btn btn-active">Apply</button>
                 </div>
             </div>
+            <div class="deliveryCard ">
+                <hr id="blackLine">
+    
+                <div class="deliveryForm text-xl font-bold">
+                    <form action="#" method="POST">
+    
+                        <label for="deliveryOption1">
+                            <input type="radio" id="deliveryOption1" name="deliveryOption" value="option1" checked>
+                            Delivery Option 1
+                        </label>
+    
+                        <label for="deliveryOption2">
+                            <input type="radio" id="deliveryOption2" name="deliveryOption" value="option2">
+                            Delivery Option 2
+                        </label>
+    
+                    </form>
+    
+                </div>
+    
+    
+            </div>
+    
             <div class="totalInfo">
                 <div class="leftsideInfo">
                     <h2 class="font-bold text-xl mt-2">Estimated shipping costs</h2>
