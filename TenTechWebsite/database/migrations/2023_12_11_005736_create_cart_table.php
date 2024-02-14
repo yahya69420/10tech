@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             // create a foreign key that references the id column in the products table
             $table->foreignId('product_id')->constrained();
+            $table->integer('quantity')->default(1);
+            $table->decimal('total', 8, 2);
             $table->timestamps();
         });
     }
