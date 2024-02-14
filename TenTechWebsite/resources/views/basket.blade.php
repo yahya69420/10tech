@@ -21,12 +21,68 @@
     <!-- BoxIcon CDN -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Basket</title>
+    <style>
+        /* remove any default padding and margins to avoid 
+any issues that are impossible to debug later; make this universal*/
+
+/* For clarity, use of tailwind utilities were chosen against here 
+so that the css was more easier to read and could be applied 
+universally as is the case here :) */
+
+/* default padding and border arithemetic is like so: 
+    - width = width + padding + border
+    - height = height + padding + border
+    border-box removes this for easier arithmetic and modifications when needed */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html:root {
+    background-color: rgb(238, 238, 238);
+}
+
+body,
+html {
+    font-family: "Roboto", sans-serif;
+    color: black;
+    display: flex;
+    flex-direction: row;
+}
+
+body {
+    /* change the background to default to light mode */
+    background-color: rgb(238, 238, 238);
+    display: flex;
+}
+
+#myBagCardId {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+    width: auto;
+    max-height: 100%; /*Set a fixed height for the container/*
+    
+    /*
+    Use overflow-auto to add scrollbars to an element in the event that its content 
+    overflows the bounds of that element. Unlike overflow-scroll, which always shows 
+    scrollbars, this utility will only show them if scrolling is necessary.*/
+
+    overflow-y: auto; /* ennabele vertical scrolling */
+    margin-left: 250px;
+    margin-right: auto;
+
+}
+</style>
 </head>
 
 
 
 <body>
-    @include ('header')
     <div class="myBagCard p-5 rounded-md w-2/4 shadow-2xl" id="myBagCardId">
         <!-- Card title -->
         <h1 class="text-3xl font-bold text-center p-5 pb-0 mb-4">My Bag (x items)</h1>
