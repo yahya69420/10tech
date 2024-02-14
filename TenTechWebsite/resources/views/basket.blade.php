@@ -201,8 +201,8 @@ body {
     <div class="myBagCard p-5 rounded-md w-2/4 shadow-2xl" id="myBagCardId">
         <!-- Card title -->
         <h1 class="text-3xl font-bold text-center p-5 pb-0 mb-4">My Bag </h1>
-        @foreach ($cartItems as $cartItem)
         <ul class="itemList">
+        @foreach ($cartItems as $cartItem)
             <li class="productItem">
                 <img class="productImage" src="{{ $cartItem->image }}">
                 <div class="productInfo">
@@ -234,19 +234,26 @@ body {
                         <button class="btn btn-active text-white">Remove</button>
                     </a>
                 </div>
+                @endforeach
             </li>
-            @endforeach
         </ul>
 
+        @php 
+        $total = 0;
+        @endphp
+
         @foreach ($cartItems as $cartItem)
+        @php
+        $total += $cartItem->price * $cartItem->cart_quantity;
+        @endphp
+        @endforeach
 
         <div class="subTotal">
             <div class="subtotalInfo">
                 <h1 class="font-bold text-xl mt-2">SUBTOTAL</h1>
             </div>
-            <h2 class="font-bold text-l mt-2 ml-2" id="overallSubtotal">£{{ $cartItem->price * $cartItem->cart_quantity }}</h2>
+            <h2 class="font-bold text-l mt-2 ml-2" id="overallSubtotal">£{{ $total }}</h2>
         </div>
-        @endforeach
 
 
     </div>
@@ -296,16 +303,15 @@ body {
                     <h2 class="font-bold text-xl mt-2">SUBTOTAL</h2>
                     <hr id="blackLine">
                 </div>
-                @foreach ($cartItems as $cartItem)
+
                 <div class="rightsideInfo">
                     <h2 class="font-bold text-xl mt-2 ml-2" id="deliveryCosts">£0.00</h2>
                     <hr id="blackLine">
                     <h2 class="font-bold text-xl mt-2 ml-2">£0.00</h2>
                     <hr id="blackLine">
-                    <h2 class="font-bold text-xl mt-2 ml-2" id="overallSubtotal2">£{{ $cartItem->price * $cartItem->cart_quantity }}</h2>
+                    <h2 class="font-bold text-xl mt-2 ml-2" id="overallSubtotal2">£{{ $total }}</h2>
                     <hr id="blackLine">
                 </div>
-                @endforeach
             </div>
             <a href="checkout">
                 <button class="checkoutButton btn btn-active text-white mt-2">CONTINUE</button>
