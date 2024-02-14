@@ -107,6 +107,6 @@
         loginButton.classList.toggle("hidden", !isValidEmail);
         loginButton.disabled = !isValidEmail; 
     }
-</script>sql
+</script>
 </body>
 </html>
