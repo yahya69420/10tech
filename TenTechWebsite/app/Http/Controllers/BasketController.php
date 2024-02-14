@@ -21,20 +21,26 @@ class BasketController extends Controller
     public function index()
     {
         // use join to get the relevant information from the products table using the foreign key
-        $products = DB::table('cart')
+        // $products = DB::table('cart')
             // from the cart table 
             // join the products table where the cart FK is equal to the products PK in the products table
-            ->join('products', 'cart.product_id', '=', 'products.id')
+            // ->join('products', 'cart.product_id', '=', 'products.id')
             // also only when the user id in the cart table is equal to the currently authenticated users id
             // so only they can see their own cart
-            ->where('cart.user_id', '=', auth()->user()->id)
+            // ->where('cart.user_id', '=', auth()->user()->id)
             // select all the columns from the products table, and retrieve the cart id that 
             // is attributed
-            ->select('products.*', 'cart.id as cart_id')
+            // ->select('products.*', 'cart.id as cart_id')
             // and then get all the results of tge SQL qury 
-            ->get();
+            // ->get();
         // and then returb  the view with the products variable
-        return view('basket', ['products' => $products]);
+        // return view('basket', ['products' => $products]);
+        $cartItems = Cart::join('products', 'cart.product_id', '=', 'products.id')
+        ->where('cart.user_id', '=', auth()->user()->id)
+        ->select('products.*','cart.quantity as cart_quantity', 'cart.total as cart_total', 'cart.id as cart_id')
+        ->get();
+        // dd($cartItems);
+        return view('basket', ['cartItems' => $cartItems]);
     }
 
     public function addToBasket(Request $request)
@@ -74,13 +80,24 @@ class BasketController extends Controller
         return back()->with('success', 'Item removed from basket');
     }
 
+    public function updateCart(Request $request)
+    {
+        $cart = Cart::where('id', $request->cart_id)->first();
+        $cart->quantity = $request->product_quantity;
+        $product_price = Product::find($request->product_id)->price;
+        $cart->total = $product_price * $cart->quantity;
+        $cart->save();
+        // dd($cart);
+        return back()->with('success', 'Cart updated');
+    }
+
     public function checkout()
     {
-        $products = DB::table('cart')
-            ->join('products', 'cart.product_id', '=', 'products.id')
-            ->where('cart.user_id', '=', auth()->user()->id)
-            ->select('products.*', 'cart.id as cart_id')
-            ->get();
-        return view('checkout', ['products' => $products]);
+        $cartItems = Cart::join('products', 'cart.product_id', '=', 'products.id')
+        ->where('cart.user_id', '=', auth()->user()->id)
+        ->select('products.*','cart.quantity as cart_quantity', 'cart.total as cart_total', 'cart.id as cart_id')
+        ->get();
+        // dd($cartItems);
+        return view('checkout', ['cartItems' => $cartItems]);
     }
 }
