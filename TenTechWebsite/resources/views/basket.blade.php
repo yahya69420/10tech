@@ -77,6 +77,39 @@ body {
     margin-right: auto;
 
 }
+
+.itemList {
+    list-style: none;
+    padding: 10px;
+    border: rgb(22, 21, 21);
+}
+
+.productItem {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 10px 0; /* Add padding to separate items */
+    border-bottom: 1px solid #242424; 
+}
+
+#blackLine {
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    height: 2px;
+}
+
+.productImage {
+    height: auto;
+    width: 80px; 
+    margin-right: 20px; 
+}
+
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
 </style>
 </head>
 
