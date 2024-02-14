@@ -60,6 +60,8 @@ Route::get('/remove_from_basket/{cart_id}', [App\Http\Controllers\BasketControll
 // refactored checkout route to use the checkout method in the BasketController
 Route::get('/checkout', [App\Http\Controllers\BasketController::class, 'checkout'])->name('checkout');
 
+Route::post('/update_cart/{cart_id}', [App\Http\Controllers\BasketController::class, 'updateCart'])->name('update_cart');
+
 // product detail route
 Route::get('/productdetail/{id}', [App\Http\Controllers\ProductController::class, 'productDetail'])->name('productdetail');
 
