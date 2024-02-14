@@ -197,9 +197,10 @@ body {
 
 
 <body>
+
     <div class="myBagCard p-5 rounded-md w-2/4 shadow-2xl" id="myBagCardId">
         <!-- Card title -->
-        <h1 class="text-3xl font-bold text-center p-5 pb-0 mb-4">My Bag (x items)</h1>
+        <h1 class="text-3xl font-bold text-center p-5 pb-0 mb-4">My Bag </h1>
         @foreach ($products as $product)
         <ul class="itemList">
             <li class="productItem">
@@ -243,40 +244,41 @@ body {
     </div>
 
     <div class="rightSide">
-        <h1 class="text-3xl font-bold text-center pb-0">Delivery</h1>
-        <div class="deliveryCard p-5 rounded-md shadow-2xl" id="deliveryCardId">
-            <hr id="blackLine">
 
-            <div class="deliveryForm text-xl font-bold">
-                <form action="#" method="POST">
-
-                    <label for="deliveryOption1">
-                        <input type="radio" id="deliveryOption1" name="deliveryOption" value="option1" checked>
-                        Delivery Option 1
-                    </label>
-
-                    <label for="deliveryOption2">
-                        <input type="radio" id="deliveryOption2" name="deliveryOption" value="option2">
-                        Delivery Option 2
-                    </label>
-
-                </form>
-
-            </div>
-
-
-        </div>
-
-        <h1 class="text-3xl font-bold text-center pb-0">Total</h1>
 
         <div class="totalCard p-5 mt-0 pt-0 rounded-md shadow-2xl" id="totalCardId">
             <div class="totalCardPromoField">
+                <h1 class="text-3xl font-bold text-center pb-0">Total</h1>
+
                 <p class="text-md font-medium text-left p-1 pb-0 mb-0.5">Promo Code</p>
                 <div class="promoCodeField">
                     <input type="text" id="promoCodeInput" placeholder="Enter promo code" class="input input-bordered" />
                     <button id="applyPromoCode" class="btn btn-active">Apply</button>
                 </div>
             </div>
+            <div class="deliveryCard ">
+                <hr id="blackLine">
+    
+                <div class="deliveryForm text-xl font-bold">
+                    <form action="#" method="POST">
+    
+                        <label for="deliveryOption1">
+                            <input type="radio" id="deliveryOption1" name="deliveryOption" value="option1" checked>
+                            Delivery Option 1
+                        </label>
+    
+                        <label for="deliveryOption2">
+                            <input type="radio" id="deliveryOption2" name="deliveryOption" value="option2">
+                            Delivery Option 2
+                        </label>
+    
+                    </form>
+    
+                </div>
+    
+    
+            </div>
+    
             <div class="totalInfo">
                 <div class="leftsideInfo">
                     <h2 class="font-bold text-xl mt-2">Estimated shipping costs</h2>
