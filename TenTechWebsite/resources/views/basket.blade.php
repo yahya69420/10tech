@@ -110,6 +110,17 @@ body {
     justify-content: center;
     flex-grow: 1;
 }
+
+.pName,
+.pQuantity,
+.pPrice {
+    margin-bottom: 10px;
+}
+
+.quantityDropdown {
+    margin-right: 10px;
+    background-color: white;
+}
 </style>
 </head>
 
