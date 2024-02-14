@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('/css/productdetail.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>{{ $product->name }}</title>
 </head>
 
@@ -36,7 +37,14 @@
                 @csrf
                 <!-- the product id  passed inas hidden input so it can be accessed in the conteoller -->
                 <input type="text" name="product_id" value="{{ $product->id }}" hidden>
+                <input type="text" name="product_name" value="{{ $product->name }}" hidden>
+                @if($product->stock > 0)
+                <h4><span class="badge rounded-pil bg-success">{{ $product->stock }} In Stock</span></h4>
                 <button type="submit">Add to Basket</button>
+                @else
+                <h4><span class="badge rounded-pil bg-danger">Out of Stock</span></h4>
+                <button type="submit">Add to wishlist</button>
+                @endif
             </form>
             @dump(session()->all())
             @if(session('successfulladdition'))
@@ -45,7 +53,7 @@
                     toast: true,
                     position: "top-end",
                     showConfirmButton: false,
-                    timer: 1000,
+                    timer: 1500,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                         toast.onmouseenter = Swal.resumeTimer;
