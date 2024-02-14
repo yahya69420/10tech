@@ -22,38 +22,43 @@ class BasketController extends Controller
     {
         // use join to get the relevant information from the products table using the foreign key
         // $products = DB::table('cart')
-            // from the cart table 
-            // join the products table where the cart FK is equal to the products PK in the products table
-            // ->join('products', 'cart.product_id', '=', 'products.id')
-            // also only when the user id in the cart table is equal to the currently authenticated users id
-            // so only they can see their own cart
-            // ->where('cart.user_id', '=', auth()->user()->id)
-            // select all the columns from the products table, and retrieve the cart id that 
-            // is attributed
-            // ->select('products.*', 'cart.id as cart_id')
-            // and then get all the results of tge SQL qury 
-            // ->get();
+        // from the cart table 
+        // join the products table where the cart FK is equal to the products PK in the products table
+        // ->join('products', 'cart.product_id', '=', 'products.id')
+        // also only when the user id in the cart table is equal to the currently authenticated users id
+        // so only they can see their own cart
+        // ->where('cart.user_id', '=', auth()->user()->id)
+        // select all the columns from the products table, and retrieve the cart id that 
+        // is attributed
+        // ->select('products.*', 'cart.id as cart_id')
+        // and then get all the results of tge SQL qury 
+        // ->get();
         // and then returb  the view with the products variable
         // return view('basket', ['products' => $products]);
         $cartItems = Cart::join('products', 'cart.product_id', '=', 'products.id')
-        ->where('cart.user_id', '=', auth()->user()->id)
-        ->select('products.*','cart.quantity as cart_quantity', 'cart.total as cart_total', 'cart.id as cart_id')
-        ->get();
+            ->where('cart.user_id', '=', auth()->user()->id)
+            ->select('products.*', 'cart.quantity as cart_quantity', 'cart.total as cart_total', 'cart.id as cart_id')
+            ->get();
         // dd($cartItems);
         return view('basket', ['cartItems' => $cartItems]);
     }
 
     public function addToBasket(Request $request)
     {
+        $product = Product::find($request->product_id);
         $cartExists = Cart::where('product_id', $request->product_id)->where('user_id', auth()->user()->id)->exists();
         if ($cartExists) {
             $cart = Cart::where('product_id', $request->product_id)->where('user_id', auth()->user()->id)->first();
-            $cart->quantity += $request->quantity;
-            $product_price = Product::find($request->product_id)->price;
-            $cart->total = $product_price * $cart->quantity;
-            $cart->save();
-            $product_name = $request->product_name;
-            return back()->with('successfulladdition', $cart->quantity . ' ' . $product_name . '(s) added to basket');
+            if ($cart->quantity + $request->quantity > $product->stock || $request->quantity > $product->stock) {
+                return back()->with('error', 'The requested quantity exceeds the available stock');
+            } else {
+                $cart->quantity += $request->quantity;
+                $product_price = Product::find($request->product_id)->price;
+                $cart->total = $product_price * $cart->quantity;
+                $cart->save();
+                $product_name = $request->product_name;
+                return back()->with('successfulladdition', $cart->quantity . ' ' . $product_name . '(s) added to basket');
+            }
         } else {
             // create a new cart object for this specific user
             $cart = new Cart();
@@ -94,9 +99,9 @@ class BasketController extends Controller
     public function checkout()
     {
         $cartItems = Cart::join('products', 'cart.product_id', '=', 'products.id')
-        ->where('cart.user_id', '=', auth()->user()->id)
-        ->select('products.*','cart.quantity as cart_quantity', 'cart.total as cart_total', 'cart.id as cart_id')
-        ->get();
+            ->where('cart.user_id', '=', auth()->user()->id)
+            ->select('products.*', 'cart.quantity as cart_quantity', 'cart.total as cart_total', 'cart.id as cart_id')
+            ->get();
         // dd($cartItems);
         return view('checkout', ['cartItems' => $cartItems]);
     }
