@@ -45,11 +45,17 @@
                         <option value="{{ $i }}">{{ $i }}</option>
                     @endfor
                 </select>
-                <h4><span class="badge rounded-pil bg-success">{{ $product->stock }} In Stock</span></h4>
+                @if ($product->stock > 10)
+                <h4><span class="badge rounded-pil bg-success">{{ $product->stock }} Products in stock</span></h4>
+                <button type="submit">Add to Basket</button>
+                @elseif ($product->stock <= 10 && $product->stock > 0)
+                <h4><span class="badge rounded-pil bg-warning">{{ $product->stock }} Products in stock</span></h4>
+                <h4><span class="badge rounded-pil bg-warning">Low Stock</span></h4>
                 <button type="submit">Add to Basket</button>
                 @else
-                <h4><span class="badge rounded-pil bg-danger">Out of Stock</span></h4>
+                <h4><span class="badge rounded-pil bg-danger">Out of stock</span></h4>
                 <button type="submit">Add to wishlist</button>
+                @endif
                 @endif
             </form>
             @dump(session()->all())
