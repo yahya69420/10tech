@@ -41,9 +41,16 @@
                 @if($product->stock > 0) 
                 <label for="quantity">Quantity:</label>
                 <select id="quantity" name="quantity">
+                    @if ($product->stock > 10)
+                    <!-- changed to less/equal to 10 for simplicity -->
+                    @for ($i = 1; $i <= 10; $i++)
+                        <option value="{{ $i }}">{{ $i }}</option>
+                    @endfor
+                    @else 
                     @for ($i = 1; $i <= $product->stock; $i++)
                         <option value="{{ $i }}">{{ $i }}</option>
                     @endfor
+                    @endif
                 </select>
                 @if ($product->stock > 10)
                 <h4><span class="badge rounded-pil bg-success">{{ $product->stock }} Products in stock</span></h4>
@@ -63,7 +70,7 @@
             <script>
                 const Toast = Swal.mixin({
                     toast: true,
-                    position: "top-end",
+                    position: "top",
                     showConfirmButton: false,
                     timer: 1500,
                     timerProgressBar: true,
