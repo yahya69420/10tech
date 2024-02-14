@@ -29,31 +29,42 @@
     @include ('header')
     <div class="myBagCard p-5 rounded-md w-2/4 shadow-2xl" id="myBagCardId">
         <!-- Card title -->
-        <h1 class="text-3xl font-bold text-center p-5 pb-0 mb-4">My Bag (x items)</h1>
-        @foreach ($products as $product)
+        @php
+        $totalQuantity = 0;
+        foreach ($cartItems as $cartItem) {
+        $totalQuantity += $cartItem->cart_quantity;
+        }
+        @endphp
+        <h1 class="text-3xl font-bold text-center p-5 pb-0 mb-4">My Bag ({{ $totalQuantity }} items)</h1> @foreach ($cartItems as $cartItem)
         <ul class="itemList">
             <li class="productItem">
-                <img class="productImage" src="{{ $product->image }}">
+                <img class="productImage" src="{{ $cartItem->image }}">
                 <div class="productInfo">
-                    <div class="pName font-bold">{{ $product->name }}</div>
-                    <div class="pQuantity font-bold">
-                        Quantity:
-                        <select class="quantityDropdown productQuantity" data-price="{{ $product->price }}" class="qDrop">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                        </select>
-                    </div>
-                    <div class="pPrice pSubtotal font-bold">£{{ $product->price }}</div>
+                    <a href="{{ route('productdetail', ['id' => $cartItem->id]) }}" style="color:blue"><div class="pName font-bold">{{ $cartItem->name }}</div></a>
+                    <form action="{{ route('update_cart', ['cart_id' => $cartItem->cart_id]) }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="cart_id" value="{{ $cartItem->cart_id }}">
+                        <input type="hidden" name="product_id" value="{{ $cartItem->id }}">
+                        <input type="hidden" name="product_name" value="{{ $cartItem->name }}">
+                        <input type="hidden" name="product_price" value="{{ $cartItem->price }}">
+                        <input type="hidden" name="product_stock" value="{{ $cartItem->stock }}">
+                        <input type="hidden" name="product_image" value="{{ $cartItem->image }}">
+                        <div class="pQuantity font-bold">
+                            Quantity:
+                            <select class="quantityDropdown productQuantity" data-price="{{ $cartItem->price }}" data-cart-id="{{ $cartItem->cart_id }}" name="product_quantity">
+                                @for ($i = 1; $i <= $cartItem->stock && $i <= 10; $i++) <option value="{{ $i }}" {{ $cartItem->cart_quantity == $i ? 'selected' : '' }}>{{ $i }}</option>
+                                        @endfor
+                            </select>
+                        </div>
+                        <div class="updateButton">
+                            <button class="btn btn-active text-white">Update Cart</button>
+                        </div>
+                    </form>
+
+                    <div class="pPrice pSubtotal font-bold">£{{ $cartItem->price * $cartItem->cart_quantity }}</div>
                 </div>
                 <div class="removeButton">
-                    <a href="{{ route('remove_from_basket', ['cart_id' => $product->cart_id]) }}">
+                    <a href="{{ route('remove_from_basket', ['cart_id' => $cartItem->cart_id]) }}">
                         <button class="btn btn-active text-white">Remove</button>
                     </a>
                 </div>
@@ -61,13 +72,15 @@
             @endforeach
         </ul>
 
+        @foreach ($cartItems as $cartItem)
 
         <div class="subTotal">
             <div class="subtotalInfo">
                 <h1 class="font-bold text-xl mt-2">SUBTOTAL</h1>
             </div>
-            <h2 class="font-bold text-l mt-2 ml-2" id="overallSubtotal">£0.00</h2>
+            <h2 class="font-bold text-l mt-2 ml-2" id="overallSubtotal">£{{ $cartItem->price * $cartItem->cart_quantity }}</h2>
         </div>
+        @endforeach
 
 
     </div>
@@ -116,14 +129,16 @@
                     <h2 class="font-bold text-xl mt-2">SUBTOTAL</h2>
                     <hr id="blackLine">
                 </div>
+                @foreach ($cartItems as $cartItem)
                 <div class="rightsideInfo">
                     <h2 class="font-bold text-xl mt-2 ml-2" id="deliveryCosts">£0.00</h2>
                     <hr id="blackLine">
                     <h2 class="font-bold text-xl mt-2 ml-2">£0.00</h2>
                     <hr id="blackLine">
-                    <h2 class="font-bold text-xl mt-2 ml-2" id="overallSubtotal2">£0.00</h2>
+                    <h2 class="font-bold text-xl mt-2 ml-2" id="overallSubtotal2">£{{ $cartItem->price * $cartItem->cart_quantity }}</h2>
                     <hr id="blackLine">
                 </div>
+                @endforeach
             </div>
             <a href="checkout">
                 <button class="checkoutButton btn btn-active text-white mt-2">CONTINUE</button>
@@ -133,7 +148,8 @@
 </body>
 
 
-<script>
+
+<!-- <script>
     // Function to calculate the total
     function calculateTotal() {
         let total = 0;
@@ -163,6 +179,6 @@
 
     // Calculate the initial total
     calculateTotal();
-</script>
+</script> -->
 
 </html>
