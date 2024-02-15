@@ -64,21 +64,39 @@
     </div>
   </div>
 
+  @php
+  $totalItems = 0;
+  $totalAmount = 0;
+  @endphp
+
   @foreach ($cartItems as $cartItem)
+  @php
+  $totalItems += $cartItem->cart_quantity;
+  $totalAmount += $cartItem->price * $cartItem->cart_quantity;
+  @endphp
+  @endforeach
+
   <div class="col-25">
     <div class="container">
       <h4>Cart
         <span class="price" style="color:black">
           <i class="fa fa-shopping-cart"></i>
-          <b>{{ $cartItem->cart_quantity }} Items</b>
+          <b>{{ $totalItems }} Items</b>
         </span>
       </h4>
-      <p><a href="#" style="color:black">{{ $cartItem->name }} (x{{ $cartItem->cart_quantity }})</a> <span class="price">{{ $cartItem->price }}</span></p>
+
+      @foreach ($cartItems as $cartItem)
+      <p><a href="{{ route('productdetail', ['id' => $cartItem->id]) }}" style="color: blue; text-decoration: underline; cursor: pointer;">{{ $cartItem->name }} (x{{ $cartItem->cart_quantity }})</a> <span class="price">{{ $cartItem->price }}</span></p>
       <hr>
+      @endforeach
+
       <p>Estimated Shipping<span class="price" style="color:black"><b>Free shipping</b></span></p>
-      <p>Total <span class="price" style="color:black"><b>£{{ $cartItem->price * $cartItem->cart_quantity }}</b></span></p>
+      <hr>
+      <p>Discounts <span class="price" style="color:black"><b>£0.00</b></span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>£{{ number_format($totalAmount, 2) }}</b></span></p>
     </div>
   </div>
-  @endforeach
+
 </div>
 </html>
