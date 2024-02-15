@@ -232,7 +232,7 @@ universally as is the case here :) */
                             </select>
                         </div>
                         <div class="updateButton">
-                            <button class="btn btn-active text-white">Update Cart</button>
+                            <button class="btn btn-active   hover:bg-green-700 text-black">Update Cart</button>
                         </div>
                     </form>
                     <div class="pPrice pSubtotal font-bold">£{{ number_format($cartItem->price * $cartItem->cart_quantity, 2) }}</div>
