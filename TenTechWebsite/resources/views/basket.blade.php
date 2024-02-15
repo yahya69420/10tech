@@ -236,7 +236,7 @@ universally as is the case here :) */
                 </div>
                 <div class="removeButton">
                     <a href="{{ route('remove_from_basket', ['cart_id' => $cartItem->cart_id]) }}">
-                        <button class="btn btn-active text-white">Remove</button>
+                        <button class="btn btn-active bg-red-500 hover:bg-red-700 text-white">Remove</button>
                     </a>
                 </div>
                 @endforeach
