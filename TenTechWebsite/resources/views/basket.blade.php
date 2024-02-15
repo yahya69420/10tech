@@ -131,6 +131,7 @@ universally as is the case here :) */
             justify-content: flex-end;
             flex-grow: 0;
             margin-top: 35px;
+            margin-left: 20px; 
             
         }
 
