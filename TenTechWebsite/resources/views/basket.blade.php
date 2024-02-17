@@ -131,8 +131,8 @@ universally as is the case here :) */
             justify-content: flex-end;
             flex-grow: 0;
             margin-top: 35px;
-            margin-left: 20px; 
-            
+            margin-left: 20px;
+
         }
 
         .subTotal {
@@ -213,7 +213,7 @@ universally as is the case here :) */
             <li class="productItem">
                 <img class="productImage" src="{{ $cartItem->image }}">
                 <div class="productInfo">
-                    <a href="{{ route('productdetail', ['id' => $cartItem->id]) }}" style="color:blue">
+                    <a href="{{ route('productdetail', ['id' => $cartItem->id]) }}" style="color:blue; text-decoration: underline; cursor: pointer;">
                         <div class="pName font-bold">{{ $cartItem->name }}</div>
                     </a>
                     <form action="{{ route('update_cart', ['cart_id' => $cartItem->cart_id]) }}" method="POST">
@@ -224,10 +224,15 @@ universally as is the case here :) */
                         <input type="hidden" name="product_price" value="{{ $cartItem->price }}">
                         <input type="hidden" name="product_stock" value="{{ $cartItem->stock }}">
                         <input type="hidden" name="product_image" value="{{ $cartItem->image }}">
+                        @if(session('discount'))
+                        <input type="hidden" name="promo_code" id="promoCodeInput" placeholder="Enter promo code" class="input input-bordered" value="{{ session('discount')->code }}" />
+                        @else
+                        <input type="hidden" name="promo_code" id="promoCodeInput" placeholder="Enter promo code" class="input input-bordered" />
+                        @endif
                         <div class="pQuantity font-bold">
                             Quantity:
                             <select class="quantityDropdown productQuantity" data-price="{{ $cartItem->price }}" data-cart-id="{{ $cartItem->cart_id }}" name="product_quantity">
-                                @for ($i = 1; $i <= $cartItem->stock && $i <= $cartItem->cart_quantity; $i++) <option value="{{ $i }}" {{ $cartItem->cart_quantity == $i ? 'selected' : '' }}>{{ $i }}</option>
+                                @for ($i = 1; $i <= $cartItem->stock && $i <= 10; $i++) <option value="{{ $i }}" {{ $cartItem->cart_quantity == $i ? 'selected' : '' }}>{{ $i }}</option>
                                         @endfor
                             </select>
                         </div>
@@ -259,7 +264,11 @@ universally as is the case here :) */
             <div class="subtotalInfo">
                 <h1 class="font-bold text-xl mt-2">SUBTOTAL</h1>
             </div>
+            @if(session('discount'))
             <h2 class="font-bold text-l mt-2 ml-2" id="overallSubtotal">£{{ number_format($total, 2) }}</h2>
+            @else
+            <h2 class="font-bold text-l mt-2 ml-2" id="overallSubtotal">£{{ number_format($total, 2) }}</h2>
+            @endif
         </div>
 
 
@@ -272,11 +281,22 @@ universally as is the case here :) */
             <div class="totalCardPromoField">
                 <h1 class="text-3xl font-bold text-center pb-0">Total</h1>
 
-                <p class="text-md font-medium text-left p-1 pb-0 mb-0.5">Promo Code</p>
-                <div class="promoCodeField">
-                    <input type="text" id="promoCodeInput" placeholder="Enter promo code" class="input input-bordered" />
-                    <button id="applyPromoCode" class="btn btn-active">Apply</button>
-                </div>
+                <form action="apply_discount" method="post">
+                    @csrf
+                    <p class="text-md font-medium text-left p-1 pb-0 mb-0.5">Promo Code</p>
+                    <div class="promoCodeField">
+                        @if(session('discount'))
+                        <p style="margin-bottom: 10px; color: #049f47; font-weight: bold;">
+                            {{ session('discount')->code }} has been applied
+                        </p>
+                        <input style="border: 2px solid #049f47; padding: 8px; width: 200px; box-sizing: border-box;" type="text" name="promo_code" id="promoCodeInput" placeholder="Enter promo code" class="input input-bordered" value="{{ session('discount')->code }}" readonly />
+                        <button type="submit" id="removePromoCode" class="btn btn-active" formaction="remove_discount">Remove</button>
+                        @else
+                        <input type="text" name="promo_code" id="promoCodeInput" placeholder="Enter promo code" class="input input-bordered" />
+                        @endif
+                        <button type="submit" id="applyPromoCode" class="btn btn-active">Apply</button>
+                    </div>
+                </form>
             </div>
             <div class="deliveryCard ">
                 <hr id="blackLine">
@@ -305,7 +325,11 @@ universally as is the case here :) */
                 <div class="leftsideInfo">
                     <h2 class="font-bold text-xl mt-2">Estimated shipping costs</h2>
                     <hr id="blackLine">
+                    @if(session('discount') && session('discount')->type == 'percentage')
+                    <h2 class="font-bold text-xl mt-2">Discounts ({{ session('discount')->value }}%)</h2>
+                    @else
                     <h2 class="font-bold text-xl mt-2">Discounts</h2>
+                    @endif
                     <hr id="blackLine">
                     <h2 class="font-bold text-xl mt-2">SUBTOTAL</h2>
                     <hr id="blackLine">
@@ -314,15 +338,26 @@ universally as is the case here :) */
                 <div class="rightsideInfo">
                     <h2 class="font-bold text-xl mt-2 ml-2" id="deliveryCosts">£0.00</h2>
                     <hr id="blackLine">
+                    @if(session('discount'))
+                    <h2 class="font-bold text-xl mt-2 ml-2">£{{ number_format(session('discountTotal'), 2) }}</h2>
+                    <hr id="blackLine">
+                    <h2 class="font-bold text-xl mt-2 ml-2" id="overallSubtotal2">£{{ number_format(session('totalAmount'), 2) }}</h2>
+                    @else
                     <h2 class="font-bold text-xl mt-2 ml-2">£0.00</h2>
                     <hr id="blackLine">
-                    <h2 class="font-bold text-xl mt-2 ml-2" id="overallSubtotal2">£{{ number_format($total, 2) }}</h2>
-                    <hr id="blackLine">
+                    <h2 class="font-bold text-xl mt-2 ml-2" id="overallSubtotal2">£{{ number_format($total, 2)}}</h2>
+                    @endif
                 </div>
             </div>
+            @if (DB::table('cart')->where('user_id', auth()->user()->id)->count() == 0)
+            <p class="text-red-500 font-bold">The cart is empty</p>
+            <a href="{{ url('shop') }}">
+                <button class="checkoutButton btn btn-active text-white mt-2">CONTINUE SHOPPING</button>
+            @else
             <a href="checkout">
                 <button class="checkoutButton btn btn-active text-white mt-2">CONTINUE</button>
             </a>
+            @endif
         </div>
     </div>
 </body>
@@ -345,6 +380,26 @@ universally as is the case here :) */
     Toast.fire({
         icon: "success",
         title: "{{ session('success') }}",
+    });
+</script>
+@endif
+
+@if(session('error'))
+<script>
+    Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.resumeTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+    Toast.fire({
+        icon: "error",
+        title: "{{ session('error') }}",
     });
 </script>
 @endif
