@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Discount;
 
 class ProductSeeder extends Seeder
 {
@@ -261,6 +262,65 @@ class ProductSeeder extends Seeder
             'stock' => '48',
         ])->categories()->attach($consoleCategory);
 
+        // A normal discount with %
+        Discount::create([
+            'code' => '10POFF',
+            'type' => 'percentage',
+            'value' => 10,
+            'start_date' => now(),
+            'end_date' => now()->addDays(30),
+            'active' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // A discount with a fixed value
+        Discount::create([
+            'code' => '20OFF',
+            'type' => 'fixed',
+            'value' => 20,
+            'start_date' => now(),
+            'end_date' => now()->addDays(30),
+            'active' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // A discount that has expired
+        Discount::create([
+            'code' => 'EXPIRED',
+            'type' => 'percentage',
+            'value' => 10,
+            'start_date' => now()->subDays(30),
+            'end_date' => now()->subDays(1),
+            'active' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // A discount that is not active
+        Discount::create([
+            'code' => 'INACTIVE',
+            'type' => 'percentage',
+            'value' => 10,
+            'start_date' => now(),
+            'end_date' => now()->addDays(30),
+            'active' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // A discount that is active but has not started
+        Discount::create([
+            'code' => 'NOTSTARTED',
+            'type' => 'percentage',
+            'value' => 10,
+            'start_date' => now()->addDays(30),
+            'end_date' => now()->addDays(60),
+            'active' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
 
 
     }
