@@ -93,6 +93,9 @@ class BasketController extends Controller
         $product_price = Product::find($request->product_id)->price;
         $cart->total = $product_price * $cart->quantity;
         $cart->save();
+        if (session('discount')) {
+            $this->applyDiscount($request);
+        }
         // dd($cart);
         return back()->with('success', 'Cart updated');
     }
