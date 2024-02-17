@@ -82,6 +82,7 @@ class BasketController extends Controller
     public function removeFromBasket($id)
     {
         Cart::destroy($id);
+        session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
         return back()->with('success', 'Item removed from basket');
     }
 
