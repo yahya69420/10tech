@@ -107,7 +107,7 @@ class BasketController extends Controller
         if (DB::table('cart')->where('user_id', auth()->user()->id)->count() == 0) {
             return back()->with('error', 'The cart is empty');
         }
-        
+
         $discount = DB::table('discounts')->where('code', $request->promo_code)->first();
         if ($discount) {
             if ($discount->active == 1) {
@@ -159,7 +159,17 @@ class BasketController extends Controller
             ->where('cart.user_id', '=', auth()->user()->id)
             ->select('products.*', 'cart.quantity as cart_quantity', 'cart.total as cart_total', 'cart.id as cart_id')
             ->get();
+        $discountTotal = session('discountTotal');
+        $totalAmount = session('totalAmount');
+        $discount = session('discount');
+        // dd($discountTotal, $totalAmount, $discount, $cartItems);
+        if ($discount) {
+            return view('checkout', ['cartItems' => $cartItems, 'discountTotal' => $discountTotal, 'totalAmount' => $totalAmount, 'discount' => $discount]);
+        } else {
+            return view('checkout', ['cartItems' => $cartItems]);
+        }
         // dd($cartItems);
-        return view('checkout', ['cartItems' => $cartItems]);
+        // dd($discountTotal, $totalAmount, $discount, $cartItems);
+        // return view('checkout', ['cartItems' => $cartItems, 'discountTotal' => $discountTotal, 'totalAmount' => $totalAmount, 'discount' => $discount]);
     }
 }
