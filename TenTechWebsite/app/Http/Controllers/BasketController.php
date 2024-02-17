@@ -99,6 +99,11 @@ class BasketController extends Controller
 
     public function applyDiscount(Request $request)
     {
+        // fixed issue of hidden value absence
+        if (DB::table('cart')->where('user_id', auth()->user()->id)->count() == 0) {
+            return back()->with('error', 'The cart is empty');
+        }
+        
         $discount = DB::table('discounts')->where('code', $request->promo_code)->first();
         if ($discount) {
             if ($discount->active == 1) {
