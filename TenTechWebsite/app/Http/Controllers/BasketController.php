@@ -119,6 +119,8 @@ class BasketController extends Controller
                         $discountTotal = ($totalAmount * $discount->value) / 100;
                         $totalAmount -= ($totalAmount * $discount->value) / 100;
                     }
+                    session(['discountTotal' => $discountTotal, 'totalAmount' => $totalAmount, 'totalItems' => $totalItems, 'cartItems' => $cartItems, 'discount' => $discount]);
+                    // dd($discountTotal, $totalAmount, $totalItems, $cartItems, $discount);
                     return back()->with('success', 'The discount code has been applied', ['cartItems' => $cartItems, 'totalItems' => $totalItems, 'totalAmount' => $totalAmount, 'discount' => $discount, 'discountTotal' => $discountTotal]);
                 } else {
                     return back()->with('error', 'The discount code is not valid');
