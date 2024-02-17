@@ -96,6 +96,40 @@ class BasketController extends Controller
         return back()->with('success', 'Cart updated');
     }
 
+    public function applyDiscount(Request $request)
+    {
+        $discount = DB::table('discounts')->where('code', $request->promo_code)->first();
+        if ($discount) {
+            if ($discount->active == 1) {
+                if ($discount->start_date <= now() && $discount->end_date >= now()) {
+                    $cartItems = Cart::join('products', 'cart.product_id', '=', 'products.id')
+                        ->where('cart.user_id', '=', auth()->user()->id)
+                        ->select('products.*', 'cart.quantity as cart_quantity', 'cart.total as cart_total', 'cart.id as cart_id')
+                        ->get();
+                    $totalItems = 0;
+                    $totalAmount = 0;
+                    foreach ($cartItems as $cartItem) {
+                        $totalItems += $cartItem->cart_quantity;
+                        $totalAmount += $cartItem->price * $cartItem->cart_quantity;
+                    }
+                    if ($discount->type == 'fixed') {
+                        $discountTotal = $discount->value;
+                        $totalAmount -= $discount->value;
+                    } else {
+                        $discountTotal = ($totalAmount * $discount->value) / 100;
+                        $totalAmount -= ($totalAmount * $discount->value) / 100;
+                    }
+                    return back()->with('success', 'The discount code has been applied', ['cartItems' => $cartItems, 'totalItems' => $totalItems, 'totalAmount' => $totalAmount, 'discount' => $discount, 'discountTotal' => $discountTotal]);
+                } else {
+                    return back()->with('error', 'The discount code is not valid');
+                }
+            } else {
+                return back()->with('error', 'The discount code is not active');
+            }
+        } else {
+            return back()->with('error', 'The discount code is not valid');
+        }
+    }
     public function checkout()
     {
         $cartItems = Cart::join('products', 'cart.product_id', '=', 'products.id')
