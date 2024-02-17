@@ -57,6 +57,12 @@ Route::post('/add_to_basket', [App\Http\Controllers\BasketController::class, 'ad
 // route for removing product from basket
 Route::get('/remove_from_basket/{cart_id}', [App\Http\Controllers\BasketController::class, 'removeFromBasket'])->name('remove_from_basket');
 
+// route for applying discount
+Route::post('/apply_discount', [App\Http\Controllers\BasketController::class, 'applyDiscount'])->name('apply_discount');
+
+// route for removing discount
+Route::post('/remove_discount', [App\Http\Controllers\BasketController::class, 'removeDiscount'])->name('remove_discount');
+
 // refactored checkout route to use the checkout method in the BasketController
 Route::get('/checkout', [App\Http\Controllers\BasketController::class, 'checkout'])->name('checkout');
 
