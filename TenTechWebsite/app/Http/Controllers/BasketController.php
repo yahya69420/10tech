@@ -130,6 +130,13 @@ class BasketController extends Controller
             return back()->with('error', 'The discount code is not valid');
         }
     }
+
+    public function removeDiscount()
+    {
+        session()->forget(['discount', 'discountTotal']);
+        return back()->with('success', 'The discount code has been removed');
+    }
+
     public function checkout()
     {
         $cartItems = Cart::join('products', 'cart.product_id', '=', 'products.id')
