@@ -39,12 +39,13 @@ class BasketController extends Controller
             ->where('cart.user_id', '=', auth()->user()->id)
             ->select('products.*', 'cart.quantity as cart_quantity', 'cart.total as cart_total', 'cart.id as cart_id')
             ->get();
-        // dd($cartItems);
+        session()->forget('cartItems');
         return view('basket', ['cartItems' => $cartItems]);
     }
 
     public function addToBasket(Request $request)
     {
+        session()->forget('cartItems');
         $product = Product::find($request->product_id);
         $cartExists = Cart::where('product_id', $request->product_id)->where('user_id', auth()->user()->id)->exists();
         if ($cartExists) {
@@ -133,13 +134,16 @@ class BasketController extends Controller
                     // dd($discountTotal, $totalAmount, $totalItems, $cartItems, $discount);
                     return back()->with('success', 'The discount code has been applied', ['cartItems' => $cartItems, 'totalItems' => $totalItems, 'totalAmount' => $totalAmount, 'discount' => $discount, 'discountTotal' => $discountTotal]);
                 } else {
-                    return back()->with('error', 'The discount code is not valid');
+                    session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
+                    return back()->with('error', 'The discount code has expired');
                 }
             } else {
+                session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
                 return back()->with('error', 'The discount code is not active');
             }
         } else {
-            return back()->with('error', 'The discount code is not valid');
+            session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
+            return back()->with('error', 'The discount code is invalid');
         }
     }
 
