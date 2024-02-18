@@ -232,7 +232,7 @@ universally as is the case here :) */
                         <div class="pQuantity font-bold">
                             Quantity:
                             <select class="quantityDropdown productQuantity" data-price="{{ $cartItem->price }}" data-cart-id="{{ $cartItem->cart_id }}" name="product_quantity">
-                                @for ($i = 1; $i <= $cartItem->stock && $i <= 10; $i++) <option value="{{ $i }}" {{ $cartItem->cart_quantity == $i ? 'selected' : '' }}>{{ $i }}</option>
+                                @for ($i = 1; $i <= $cartItem->stock && $i <= $cartItem->cart_quantity + 5; $i++) <option value="{{ $i }}" {{ $cartItem->cart_quantity == $i ? 'selected' : '' }}>{{ $i }}</option>
                                         @endfor
                             </select>
                         </div>
