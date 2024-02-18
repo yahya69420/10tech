@@ -92,9 +92,21 @@
 
       <p>Estimated Shipping<span class="price" style="color:black"><b>Free shipping</b></span></p>
       <hr>
-      <p>Discounts <span class="price" style="color:black"><b>£0.00</b></span></p>
+      @if (session('discount'))
+      @if (session('discount')->type == 'percentage')
+      <p>Discount ({{ session('discount')->value }}%)<span class="price" style="color:black"><b>-£{{ number_format(session('discountTotal'), 2) }}</b></span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>£{{ number_format(session('totalAmount'), 2) }}</b></span></p>
+      @else
+      <p>Discount <span class="price" style="color:black"><b>-£{{ number_format(session('discountTotal'), 2) }}</b></span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>£{{ number_format(session('totalAmount'), 2) }}</b></span></p>
+      @endif
+      @else
+      <p>Discount <span class="price" style="color:black"><b>£0.00</b></span></p>
       <hr>
       <p>Total <span class="price" style="color:black"><b>£{{ number_format($totalAmount, 2) }}</b></span></p>
+      @endif
     </div>
   </div>
 
