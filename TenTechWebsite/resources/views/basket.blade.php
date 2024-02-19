@@ -67,7 +67,6 @@ universally as is the case here :) */
             margin: 20px;
             width: auto;
             max-height: 100%;
-            margin-top: 100px;
             /*Set a fixed height for the container/*
     
     /*
@@ -181,7 +180,6 @@ universally as is the case here :) */
             margin: 20px;
             width: fit-content;
             height: fit-content;
-            margin-top: 100px;
 
         }
 
