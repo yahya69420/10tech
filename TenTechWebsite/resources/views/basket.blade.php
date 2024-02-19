@@ -224,7 +224,7 @@ universally as is the case here :) */
             <li class="productItem">
                 <img class="productImage" src="{{ $cartItem->image }}">
                 <div class="productInfo">
-                    <a href="{{ route('productdetail', ['id' => $cartItem->id]) }}" style="color:blue; text-decoration: underline; cursor: pointer;">
+                    <a href="{{ route('productdetail', ['id' => $cartItem->id]) }}" style="color:rgb(0, 0, 0);  cursor: pointer;">
                         <div class="pName font-bold">{{ $cartItem->name }}</div>
                     </a>
                     <form action="{{ route('update_cart', ['cart_id' => $cartItem->cart_id]) }}" method="POST">
