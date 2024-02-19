@@ -68,6 +68,10 @@ body, html {
   max-width: 30%;
 }
 
+.aboutbutton{
+  color: black;
+}
+
 </style>
 </head>
 <body>
@@ -75,7 +79,7 @@ body, html {
 <div class="hero-image">
   <div class="hero-text">
     <h1 style="font-size:50px">We are TenTech</h1>
-
+    <h2 ><a href="contact" class = "aboutbutton"><button >Contact Us</a></h2>
   </div>
 </div>
 <h3 class="text">Our team:</h3>
