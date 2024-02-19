@@ -67,6 +67,7 @@ universally as is the case here :) */
             margin: 20px;
             width: auto;
             max-height: 100%;
+            margin-top: 100px;
             /*Set a fixed height for the container/*
     
     /*
@@ -180,6 +181,8 @@ universally as is the case here :) */
             margin: 20px;
             width: fit-content;
             height: fit-content;
+            margin-top: 100px;
+
         }
 
         #promoCodeInput {
@@ -198,12 +201,20 @@ universally as is the case here :) */
             background-color: #049f47;
 
         }
+        header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; 
+}
     </style>
 </head>
 
 
 
 <body>
+    @include('header')
+
 
     <div class="myBagCard p-5 rounded-md w-2/4 shadow-2xl" id="myBagCardId">
         <!-- Card title -->
