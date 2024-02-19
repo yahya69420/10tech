@@ -5,85 +5,87 @@
   <title>Contact Us</title>
 
 <style>
+    <style>
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f2f2f2;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
 
 
-    .hero {
-      background-image: white;
-      height: 25vh;
-      width: 100%;
-    }
+.hero {
+  background-image: white;
+  height: 25vh;
+  width: 100%;
+}
 
-    .hero p {
-      color: white;
-      text-align: center;
-      padding-top: 8vh;
-    }
+.hero p {
+  color: white;
+  text-align: center;
+  padding-top: 8vh;
+}
 
 .contact-us {
-  display: flex;
-  background-color: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+display: flex;
+background-color: #fff;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .left, .right {
-  flex: 1;
-  padding: 20px;
+flex: 1;
+padding: 20px;
 }
 
 .left {
-  background-color: #ccc;
+background-color: #ccc;
 }
 
 .left h2 {
-  margin-top: 0;
+margin-top: 0;
 }
 
 .right textarea {
-  width: 100%;
-  height: 150px;
-  padding: 10px;
-  box-sizing: border-box;
-  resize: none;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
-  margin-bottom: 20px;
+width: 100%;
+height: 150px;
+padding: 10px;
+box-sizing: border-box;
+resize: none;
+border: 1px solid #ddd;
+border-radius: 5px;
+font-size: 16px;
+margin-bottom: 20px;
 }
 
 input[type="text"],
 input[type="email"] {
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin-bottom: 20px;
-  box-sizing: border-box;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
+width: calc(100% - 20px);
+padding: 10px;
+margin-bottom: 20px;
+box-sizing: border-box;
+border: 1px solid #ddd;
+border-radius: 5px;
+font-size: 16px;
 }
 
 input[type="submit"] {
-  background-color: #7f807f;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
+background-color: #7f807f;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
 }
 
 
+</style>
 </style>
 </head>
 <body>
@@ -95,9 +97,8 @@ input[type="submit"] {
     <div class="contact-us">
         <div class="left">
             <h2>Contact Information</h2>
-            <form action="submit_form.php" method="post" onsubmit="return validateForm()">
-                <input type="text" id="name" name="name" placeholder="First Name" required>
-                <input type="text" id="lname" name="lname" placeholder="Last Name" required>
+            <form action="" method="post" onsubmit="return validateForm()">
+                <input type="text" id="name" name="name" placeholder="Name" required>
                 <input type="email" id="email" name="email" placeholder="Email" required>
         </div>
         <div class="right">
@@ -110,8 +111,7 @@ input[type="submit"] {
     </div>
       <script>
         // JavaScript code for form validation
-        const nameInput = document.querySelector("#name");
-        const lnameInput = document.querySelector("#lname");
+        const nameInput = document.querySelector("#name");  
         const emailInput = document.querySelector("#email");
         const subjectInput = document.querySelector("#subject");
         const submittedMessage = document.querySelector("#submittedMessage");
@@ -124,12 +124,6 @@ input[type="submit"] {
           if (nameInput.value.length < 1) {
             alert("Name cannot be blank");
             nameInput.classList.add("error-border");
-            errorFlag = true;
-          }
-
-          if (lnameInput.value.length < 1) {
-            alert("Last name cannot be blank");
-            lnameInput.classList.add("error-border");
             errorFlag = true;
           }
 
@@ -175,3 +169,32 @@ input[type="submit"] {
     @include('layouts/footer')
     </body>
     </html>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    try {
+        $db = new mysqli("localhost", "root", "", "laravel");
+    } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+    }
+
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $subject = $_POST["subject"];
+
+    // Prepare SQL statement to insert data into the database
+    $stmt = $db->prepare("INSERT INTO customer_messages (name, email, subject) VALUES (?, ?, ?)");
+    $stmt->bind_param("ssss", $name,$email, $subject);
+
+    // Execute the statement
+    if ($stmt->execute()) {
+        echo "Message submitted successfully!";
+    } else {
+        echo "Error: " . $db->error;
+    }
+
+    // Close the statement and database connection
+    $stmt->close();
+    $db->close();
+}
+?>
