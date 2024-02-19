@@ -140,9 +140,8 @@ font-size: 16px;
           }
 
           if (!errorFlag) {
-            // Form is successfully validated
             submittedMessage.innerText = "Submitted";
-            return false; // Prevent form submission
+            return false;
           }
         }
 
@@ -151,7 +150,7 @@ font-size: 16px;
           lnameInput.classList.remove("error-border");
           subjectInput.classList.remove("error-border");
           emailInput.classList.remove("error-border");
-          submittedMessage.innerText = ""; // Clear the submitted message
+          submittedMessage.innerText = "";
         }
 
         function emailIsValid(email) {
@@ -162,7 +161,7 @@ font-size: 16px;
         const submitButton = document.getElementById("submit");
         submitButton.addEventListener("click", function (event) {
           if (!validateForm()) {
-            event.preventDefault(); // Prevent form submission if validation fails
+            event.preventDefault(); 
           }
         });
       </script>
@@ -182,18 +181,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $subject = $_POST["subject"];
 
-    // Prepare SQL statement to insert data into the database
     $stmt = $db->prepare("INSERT INTO customer_messages (name, email, subject) VALUES (?, ?, ?)");
     $stmt->bind_param("ssss", $name,$email, $subject);
-
-    // Execute the statement
+    
     if ($stmt->execute()) {
         echo "Message submitted successfully!";
     } else {
         echo "Error: " . $db->error;
     }
-
-    // Close the statement and database connection
     $stmt->close();
     $db->close();
 }
