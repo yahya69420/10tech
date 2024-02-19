@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
-    <link rel="stylesheet" href="{{ asset('/css/checkout.css') }}">
-    <style>
 
-</style>    
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="{{ asset('/css/checkout.css') }}">
+  <style>
+
+  </style>
 </head>
+
 <body>
-@include ('header ')
+  @include ('header ')
 
 </body>
 <div class="row">
@@ -57,26 +59,56 @@
           </div>
 
         </div>
-       <a href = "complete"> <input type="button" value="Continue to checkout" class="btn" ></a>
+        <a href="complete"> <input type="button" value="Continue to checkout" class="btn"></a>
       </form>
     </div>
   </div>
+
+  @php
+  $totalItems = 0;
+  $totalAmount = 0;
+  @endphp
+
+  @foreach ($cartItems as $cartItem)
+  @php
+  $totalItems += $cartItem->cart_quantity;
+  $totalAmount += $cartItem->price * $cartItem->cart_quantity;
+  @endphp
+  @endforeach
 
   <div class="col-25">
     <div class="container">
       <h4>Cart
         <span class="price" style="color:black">
           <i class="fa fa-shopping-cart"></i>
-          <b>1</b>
+          <b>{{ $totalItems }} Items</b>
         </span>
-        @foreach ($products as $product)
       </h4>
-      <p><a href="#" style="color:black">{{ $product->name }}</a> <span class="price">{{ $product->price }}</span></p>
+
+      @foreach ($cartItems as $cartItem)
+      <p><a href="{{ route('productdetail', ['id' => $cartItem->id]) }}" style="color: blue; text-decoration: underline; cursor: pointer;">{{ $cartItem->name }} (x{{ $cartItem->cart_quantity }})</a> <span class="price">{{ $cartItem->price }}</span></p>
       <hr>
-      <p>Estimated Shipping<span class = "price" style = "color:black"><b>Free shipping</b></span></p>
-      <p>Total <span class="price" style="color:black"><b>{{ $product->price }}</b></span></p>
+      @endforeach
+
+      <p>Estimated Shipping<span class="price" style="color:black"><b>Free shipping</b></span></p>
+      <hr>
+      @if (session('discount'))
+      @if (session('discount')->type == 'percentage')
+      <p>Discount ({{ session('discount')->value }}%)<span class="price" style="color:black"><b>-£{{ number_format(session('discountTotal'), 2) }}</b></span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>£{{ number_format(session('totalAmount'), 2) }}</b></span></p>
+      @else
+      <p>Discount <span class="price" style="color:black"><b>-£{{ number_format(session('discountTotal'), 2) }}</b></span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>£{{ number_format(session('totalAmount'), 2) }}</b></span></p>
+      @endif
+      @else
+      <p>Discount <span class="price" style="color:black"><b>£0.00</b></span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>£{{ number_format($totalAmount, 2) }}</b></span></p>
+      @endif
     </div>
   </div>
-  @endforeach
-</div> 
+
+</div>
 </html>
