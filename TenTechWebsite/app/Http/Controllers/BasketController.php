@@ -21,51 +21,155 @@ class BasketController extends Controller
     public function index()
     {
         // use join to get the relevant information from the products table using the foreign key
-        $products = DB::table('cart')
+        // $products = DB::table('cart')
         // from the cart table 
         // join the products table where the cart FK is equal to the products PK in the products table
-            ->join('products', 'cart.product_id', '=', 'products.id')
-            // also only when the user id in the cart table is equal to the currently authenticated users id
-            // so only they can see their own cart
+        // ->join('products', 'cart.product_id', '=', 'products.id')
+        // also only when the user id in the cart table is equal to the currently authenticated users id
+        // so only they can see their own cart
+        // ->where('cart.user_id', '=', auth()->user()->id)
+        // select all the columns from the products table, and retrieve the cart id that 
+        // is attributed
+        // ->select('products.*', 'cart.id as cart_id')
+        // and then get all the results of tge SQL qury 
+        // ->get();
+        // and then returb  the view with the products variable
+        // return view('basket', ['products' => $products]);
+        $cartItems = Cart::join('products', 'cart.product_id', '=', 'products.id')
             ->where('cart.user_id', '=', auth()->user()->id)
-            // select all the columns from the products table, and retrieve the cart id that 
-            // is attributed
-            ->select('products.*', 'cart.id as cart_id')
-            // and then get all the results of tge SQL qury 
+            ->select('products.*', 'cart.quantity as cart_quantity', 'cart.total as cart_total', 'cart.id as cart_id')
             ->get();
-            // and then returb  the view with the products variable
-            return view('basket', ['products' => $products]);
+        session()->forget('cartItems');
+        return view('basket', ['cartItems' => $cartItems]);
     }
 
     public function addToBasket(Request $request)
     {
-        // create a new cart object for this specific user
-        $cart = new Cart();
-        // set the carts attribute of a user id to the currently authenticated users id
-        // each user will have their own cart
-        $cart->user_id = auth()->user()->id;
-        // set the carts attribute of a product id to the product id that was passed in the request,
-        // which is what is referenced in the view in the POST form as a hidden input
-        $cart->product_id = $request->product_id;
-        // save the cart object to the database
-        $cart->save();
-        $product_name = $request->product_name;
-        // redirect the user to the page that were on before added to cart clickjed
-        return back()->with('successfulladdition', $product_name . ' added to basket');
+        session()->forget('cartItems');
+        $product = Product::find($request->product_id);
+        $cartExists = Cart::where('product_id', $request->product_id)->where('user_id', auth()->user()->id)->exists();
+        if ($cartExists) {
+            $cart = Cart::where('product_id', $request->product_id)->where('user_id', auth()->user()->id)->first();
+            if ($cart->quantity + $request->quantity > $product->stock || $request->quantity > $product->stock) {
+                return back()->with('error', 'The requested quantity exceeds the available stock');
+            } else {
+                $cart->quantity += $request->quantity;
+                $product_price = Product::find($request->product_id)->price;
+                $cart->total = $product_price * $cart->quantity;
+                $cart->save();
+                $product_name = $request->product_name;
+                return back()->with('successfulladdition', $cart->quantity . ' ' . $product_name . '(s) added to basket');
+            }
+        } else {
+            // create a new cart object for this specific user
+            $cart = new Cart();
+            // set the carts attribute of a user id to the currently authenticated users id
+            // each user will have their own cart
+            $cart->user_id = auth()->user()->id;
+            // set the carts attribute of a product id to the product id that was passed in the request,
+            // which is what is referenced in the view in the POST form as a hidden input
+            $cart->product_id = $request->product_id;
+            // save the cart object to the database
+            $cart->quantity = $request->quantity;
+            $product_price = Product::find($request->product_id)->price;
+            $cart->total = $product_price * $cart->quantity;
+            $cart->save();
+            $product_name = $request->product_name;
+            // redirect the user to the page that were on before added to cart clickjed
+            return back()->with('successfulladdition', $cart->quantity . ' ' . $product_name . '(s) added to basket');
+        }
     }
 
-    public function removeFromBasket($id) 
+    public function removeFromBasket($id)
     {
         Cart::destroy($id);
-        return back()-> with('success', 'Item removed from basket');
+        session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
+        return back()->with('success', 'Item removed from basket');
+    }
+
+    public function updateCart(Request $request)
+    {
+        $cart = Cart::where('id', $request->cart_id)->first();
+        $cart->quantity = $request->product_quantity;
+        $product_price = Product::find($request->product_id)->price;
+        $cart->total = $product_price * $cart->quantity;
+        $cart->save();
+        if (session('discount')) {
+            $this->applyDiscount($request);
+        }
+        // dd($cart);
+        return back()->with('success', 'Cart updated');
+    }
+
+    public function applyDiscount(Request $request)
+    {
+        // fixed issue of hidden value absence
+        if (DB::table('cart')->where('user_id', auth()->user()->id)->count() == 0) {
+            return back()->with('error', 'The cart is empty');
+        }
+
+        $discount = DB::table('discounts')->where('code', $request->promo_code)->first();
+        if ($discount) {
+            if ($discount->active == 1) {
+                if ($discount->start_date <= now() && $discount->end_date >= now()) {
+                    $cartItems = Cart::join('products', 'cart.product_id', '=', 'products.id')
+                        ->where('cart.user_id', '=', auth()->user()->id)
+                        ->select('products.*', 'cart.quantity as cart_quantity', 'cart.total as cart_total', 'cart.id as cart_id')
+                        ->get();
+                    $totalItems = 0;
+                    $totalAmount = 0;
+                    foreach ($cartItems as $cartItem) {
+                        $totalItems += $cartItem->cart_quantity;
+                        $totalAmount += $cartItem->price * $cartItem->cart_quantity;
+                    }
+                    if ($discount->type == 'fixed') {
+                        $discountTotal = $discount->value;
+                        $totalAmount -= $discount->value;
+                    } else {
+                        $discountTotal = ($totalAmount * $discount->value) / 100;
+                        $totalAmount -= ($totalAmount * $discount->value) / 100;
+                    }
+                    session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
+                    session(['discountTotal' => $discountTotal, 'totalAmount' => $totalAmount, 'totalItems' => $totalItems, 'cartItems' => $cartItems, 'discount' => $discount]);
+                    // dd($discountTotal, $totalAmount, $totalItems, $cartItems, $discount);
+                    return back()->with('success', 'The discount code has been applied', ['cartItems' => $cartItems, 'totalItems' => $totalItems, 'totalAmount' => $totalAmount, 'discount' => $discount, 'discountTotal' => $discountTotal]);
+                } else {
+                    session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
+                    return back()->with('error', 'The discount code has expired');
+                }
+            } else {
+                session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
+                return back()->with('error', 'The discount code is not active');
+            }
+        } else {
+            session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
+            return back()->with('error', 'The discount code is invalid');
+        }
+    }
+
+    public function removeDiscount()
+    {
+        session()->forget(['discount', 'discountTotal']);
+        return back()->with('success', 'The discount code has been removed');
     }
 
     public function checkout()
     {
-        $products = DB::table('cart')
-            ->join('products', 'cart.product_id', '=', 'products.id')
+        $cartItems = Cart::join('products', 'cart.product_id', '=', 'products.id')
             ->where('cart.user_id', '=', auth()->user()->id)
-            ->select('products.*', 'cart.id as cart_id')
+            ->select('products.*', 'cart.quantity as cart_quantity', 'cart.total as cart_total', 'cart.id as cart_id')
             ->get();
-            return view('checkout', ['products' => $products]);    }
+        $discountTotal = session('discountTotal');
+        $totalAmount = session('totalAmount');
+        $discount = session('discount');
+        // dd($discountTotal, $totalAmount, $discount, $cartItems);
+        if ($discount) {
+            return view('checkout', ['cartItems' => $cartItems, 'discountTotal' => $discountTotal, 'totalAmount' => $totalAmount, 'discount' => $discount]);
+        } else {
+            return view('checkout', ['cartItems' => $cartItems]);
+        }
+        // dd($cartItems);
+        // dd($discountTotal, $totalAmount, $discount, $cartItems);
+        // return view('checkout', ['cartItems' => $cartItems, 'discountTotal' => $discountTotal, 'totalAmount' => $totalAmount, 'discount' => $discount]);
+    }
 }

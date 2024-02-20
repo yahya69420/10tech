@@ -71,34 +71,32 @@
                 <!-- the product id  passed inas hidden input so it can be accessed in the conteoller -->
                 <input type="text" name="product_id" value="{{ $product->id }}" hidden>
                 <input type="text" name="product_name" value="{{ $product->name }}" hidden>
-                
                 @if($product->stock > 0) 
                 <label for="quantity">Quantity:</label>
                 <select id="quantity" name="quantity">
-                    @for ($i = 1; $i <= $product->stock; $i++)
-                        <option value="{{ $i }}">{{ $i }}</option>
-                    @endfor
+                    @if ($product->stock > 10)
+                    <!-- changed to less/equal to 10 for simplicity -->
+                    @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                        @endfor
+                        @else
+                        @for ($i = 1; $i <= $product->stock; $i++)
+                            <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                            @endif
                 </select>
-
-                
                 <h4><span class="badge rounded-pil bg-success">{{ $product->stock }} In Stock</span></h4>
-                <hr> <!-- Divider - Price-->
-
                 <button type="submit">Add to Basket</button>
                 @else
                 <h4><span class="badge rounded-pil bg-danger">Out of Stock</span></h4>
                 <button type="submit">Add to wishlist</button>
                 @endif
-
-                </form>
-            
-
+            </form>
             @dump(session()->all())
             @if(session('successfulladdition'))
             <script>
-                const Toast = Swal.mixin({
+                Toast = Swal.mixin({
                     toast: true,
-                    position: "top-end",
+                    position: "top",
                     showConfirmButton: false,
                     timer: 1500,
                     timerProgressBar: true,
@@ -110,6 +108,26 @@
                 Toast.fire({
                     icon: "success",
                     title: "{{ session('successfulladdition') }}",
+                });
+            </script>
+            @endif
+            
+            @if(session('error'))
+            <script>
+                Toast = Swal.mixin({
+                    toast: true,
+                    position: "top",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.resumeTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "error",
+                    title: "{{ session('error') }}",
                 });
             </script>
             @endif

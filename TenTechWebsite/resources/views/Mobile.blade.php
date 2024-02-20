@@ -158,7 +158,61 @@ align-items: center;
             </a> -->
           <!-- </div> -->
 
+        <div class="sorts_filter-section"> 
 
+          <div class="dropdown">
+              <button onclick="toggleSortDropdown()" class="dropbtn">Sort<span class="arrow" id="sortArrow"></span></button>
+              <div id="sortDropdown" class="dropdown-content">
+                  <a href="?sort=price_asc&brand=<?php echo urlencode($_GET['brand'] ?? ''); ?>">Price low to high</a>
+                  <a href="?sort=price_desc&brand=<?php echo urlencode($_GET['brand'] ?? ''); ?>">Price high to low</a>
+              </div>
+          </div>
+
+          <div class="dropdown" style="margin-left: 10px;">
+              <button onclick="toggleReleaseDropdown()" class="dropbtn">Release<span class="arrow" id="releaseArrow"></span></button>
+              <div id="releaseDropdown" class="dropdown-content">
+                  <a href="#release_2022" onclick="selectRelease('2022')">2022</a>
+                  <a href="#release_2021" onclick="selectRelease('2021')">2021</a>
+                  <a href="#release_2020" onclick="selectRelease('2020')">2020</a>
+              </div>
+          </div>
+
+          <div class="dropdown" style="margin-left: 10px;"> <!-- Adding some space -->
+              <button onclick="toggleBrandDropdown()" class="dropbtn">Brand<span class="arrow" id="brandArrow"></span></button>
+              <div id="brandDropdown" class="dropdown-content">
+                  <a href="?sort=<?php echo urlencode($_GET['sort'] ?? ''); ?>&brand=Apel">Apel</a>
+                  <a href="?sort=<?php echo urlencode($_GET['sort'] ?? ''); ?>&brand=Samsong">Samsong</a>
+                  <a href="?sort=<?php echo urlencode($_GET['sort'] ?? ''); ?>&brand=Gugle">Gugle</a>
+                  <a href="?sort=<?php echo urlencode($_GET['sort'] ?? ''); ?>&brand=1Plus">1Plus</a>
+                  <a href="?sort=<?php echo urlencode($_GET['sort'] ?? ''); ?>&brand=Hawai">Hawai</a>
+                  <!-- Add more brand options as needed -->
+              </div>
+          </div>
+
+
+          <div class="dropdown" style="margin-left: 10px;">
+              <button onclick="toggleOSDropdown()" class="dropbtn">OS<span class="arrow" id="osArrow"></span></button>
+              <div id="osDropdown" class="dropdown-content">
+                  <a href="#os_android" onclick="selectOS('Android')">Android</a>
+                  <a href="#os_ios" onclick="selectOS('iOS')">iOS</a>
+              <!-- Add more OS options as needed -->
+              </div>
+          </div>
+
+
+
+          <!-- Size Dropdown -->
+          <div class="dropdown" style="margin-left: 10px;">
+              <button onclick="toggleSizeDropdown()" class="dropbtn">Size<span class="arrow" id="sizeArrow"></span></button>
+              <div id="sizeDropdown" class="dropdown-content">
+                  <a href="#size_5inch" onclick="selectSize('5 inch')">6.1 inch</a>
+                  <a href="#size_6inch" onclick="selectSize('6 inch')">6.7 inch</a>
+                  <!-- Add more size options as needed -->
+              </div>
+          </div>
+
+
+      </div>              
 
           <div class="categories-section">
         @foreach ($mobiles as $mobile)

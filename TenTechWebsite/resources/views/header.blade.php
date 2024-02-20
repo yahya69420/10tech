@@ -27,6 +27,7 @@
           <a class="link1" href="Tablet">Tablets</a>
           <a class="link1" href="Console">Console</a>
           <a class="link1" href="about">About Us</a>
+          <a class="link1" href="contact">Contact Us</a>
 
 
         </nav>

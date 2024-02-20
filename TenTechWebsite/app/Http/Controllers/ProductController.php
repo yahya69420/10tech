@@ -33,9 +33,27 @@ class ProductController extends Controller
     public function showAllMobiles()
     {
         $mobiles = Product::join('category_product', 'products.id', '=', 'category_product.product_id')
-            ->where('category_product.category_id', 1)
-            ->get();
+            ->where('category_product.category_id', 1);
+            //->get();
 
+        //Filter by brand if a brand filter is applied 
+        $brandFilter = request()->get('brand');
+            if ($brandFilter) {
+            $mobiles->where('brand', $brandFilter);
+        }
+
+        //Apply sorting  
+        $sortOrder = request()->get('sort');
+        if ($sortOrder == 'price_asc') {
+        // Sort the $mobiles collection by price in ascending order
+            $mobiles = $mobiles->orderBy('price',"asc");
+        } elseif ($sortOrder == 'price_desc') {
+            $mobiles = $mobiles->orderBy('price',"desc");
+        }
+
+        $mobiles = $mobiles->get();
+
+        
         return view('Mobile', ['mobiles' => $mobiles]);
     }
 
