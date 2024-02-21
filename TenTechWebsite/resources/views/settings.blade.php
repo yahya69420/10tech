@@ -14,7 +14,6 @@
 <body>
     @include('header')
     <nav class="navbar navbar-light bg-light">
-        <div>Account Details</div>
     </nav>
     <div class="container">
         <div class="row">
