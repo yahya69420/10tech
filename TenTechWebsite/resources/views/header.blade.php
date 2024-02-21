@@ -22,12 +22,12 @@
         </label>
 
         <nav class="menu1">
-          <a class="link1" href="Laptop">Laptops</a>
-          <a class="link1" href="Mobile">Smartphones</a>
-          <a class="link1" href="Tablet">Tablets</a>
-          <a class="link1" href="Console">Console</a>
-          <a class="link1" href="about">About Us</a>
-          <a class="link1" href="contact">Contact Us</a>
+          <a class="link1" href="{{ url('Laptop') }}">Laptops</a>
+          <a class="link1" href="{{ url('Mobile') }}">Smartphones</a>
+          <a class="link1" href="{{ url('Tablet') }}">Tablets</a>
+          <a class="link1" href="{{ url('Console') }}">Console</a>
+          <a class="link1" href="{{ url('about') }}">About Us</a>
+          <a class="link1" href="{{ url('contact') }}">Contact Us</a>
 
 
         </nav>
