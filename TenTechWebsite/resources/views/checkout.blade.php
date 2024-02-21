@@ -18,8 +18,8 @@
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="">
-
+      <form action="{{ route('completeorder') }}" method="post">
+        @csrf
         <div class="row">
           <div class="col-50">
             <h3>Billing Address</h3>
@@ -27,16 +27,25 @@
             <input type="text" id="fname" name="firstname" placeholder="">
             <label for="email"><i class="fa fa-envelope"></i> Email</label>
             <input type="text" id="email" name="email" placeholder="">
-            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address Line 1</label>
+            <input type="text" id="addressLine1" name="addressLine1" placeholder="">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address Line 2</label>
+            <input type="text" id="addressLine2" name="addressLine2" placeholder="">
             <label for="city"><i class="fa fa-institution"></i> Town/City</label>
             <input type="text" id="city" name="city" placeholder="">
+            <label for="country">Country</label>
+            <select id="country" name="country">
+              <option value="England">England</option>
+              <option value="Scotland">Scotland</option>
+              <option value="Wales">Wales</option>
+              <option value="Northern Ireland">Northern Ireland</option>
+            </select>
 
             <div class="row">
 
               <div class="col-50">
                 <label for="zip">Post Code</label>
-                <input type="text" id="post" name="post" placeholder="">
+                <input type="text" id="postcode" name="postcode" placeholder="">
               </div>
             </div>
           </div>
@@ -59,7 +68,14 @@
           </div>
 
         </div>
-        <a href="complete"> <input type="button" value="Continue to checkout" class="btn"></a>
+        @foreach ($cartItems as $cartItem)
+        <input type="text" name="user_id" value="{{ auth()->user()->id }}" hidden>
+        <input type="text" name="product_id" value="{{ $cartItem->product_id }}" hidden>
+        <input type="text" name="quantity" value="{{ $cartItem->quantity }}" hidden>
+        <input type="text" name="total" value="{{ $cartItem->total }}" hidden>
+        @endforeach
+        <input type="submit" value="Continue to checkout" class="btn">
+        <!-- <a href="complete"> <input type="submit" value="Continue to checkout" class="btn"></a> -->
       </form>
     </div>
   </div>
