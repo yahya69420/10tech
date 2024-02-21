@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('user_payments', function (Blueprint $table) {
             $table->id();
+            $table->string('card_number')->nullable();
+            $table->string('card_holder_name')->nullable();
+            $table->string('expiry_date')->nullable();
+            $table->string('cvv')->nullable();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
