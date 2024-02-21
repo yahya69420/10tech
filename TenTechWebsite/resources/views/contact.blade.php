@@ -104,8 +104,7 @@
     </div>
 </div>
 
-<input type="submit" id="submit" value="Submit">
-<p id="submittedMessage" style="color: green;"></p>
+
 </div>
 </div>
 
