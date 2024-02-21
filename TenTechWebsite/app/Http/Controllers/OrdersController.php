@@ -56,5 +56,19 @@ class OrdersController extends Controller
                 'user_id' => auth()->user()->id,
             ]);
         }
+
+        // Create order items
+
+        $cart = Cart::where('user_id', auth()->user()->id)->get();
+
+        foreach ($cart as $item) {
+            OrderItems::create([
+                'quantity' => $item->quantity,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'order_id' => null, // This will be updated when ordes table made
+                'product_id' => $item->product_id,
+            ]);
+        }
     }
 }
