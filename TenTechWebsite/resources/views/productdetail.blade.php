@@ -14,15 +14,48 @@
 
 <body>
     @include('header')
+
+    <section class="container sproduct my-5 pt-5">
+    <div class="row mt-5">
+        <div class="col-lg-5 col-md-12 col-12">
+            <div class = "image-frame">
+                <img class="img-fluid " src="{{ $product->image }}" alt="{{ $product->name }}" style="margin-bottom: 20px;">
+            </div>
+        </div>
+        
+        <div class="col-lg-7 col-md-12 col-12">
+            <div class="product-details">
+                <h3 class="solid-heading"> {{ $product->name }}</h3>
+                <h5 class="price-head">Price: £{{ $product->price }}</h5>
+                <div class="add-to-cart">
+                    <select id="quantity" name="quantity">
+                        @for ($i = 1; $i <= $product->stock; $i++)
+                            <option value="{{ $i }}">{{ $i }}</option>
+                        @endfor
+                    </select>
+                    <button class="buy-btn">Add to Cart</button>
+                </div>
+                <h4 >Product Details</h4>
+                <p style="font-size:15px">{{ $product->description }}</p>
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+
+    {{--
     <div class="product-container">
-        <div class="product-image">
+        <div class = "row">
             <img src="{{ $product->image }}" alt="{{ $product->name }}">
         </div>
         <div class="product-details">
             <h2>{{ $product->name }}</h2>
             <p>{{ $product->category }}</p>
             <p>{{ $product->description }}</p>
+            <hr> <!-- Divider - Price-->
             <p>£{{ $product->price }}</p>
+            <hr> <!-- Divider -size,quantity-->
             <!-- form to allow for product to be added to the cart database so it can be accessed
         and manipulated later -->
             <form action="{{ route('add_to_basket') }}" method="POST">
@@ -38,7 +71,7 @@
                 <!-- the product id  passed inas hidden input so it can be accessed in the conteoller -->
                 <input type="text" name="product_id" value="{{ $product->id }}" hidden>
                 <input type="text" name="product_name" value="{{ $product->name }}" hidden>
-                @if($product->stock > 0)
+                @if($product->stock > 0) 
                 <label for="quantity">Quantity:</label>
                 <select id="quantity" name="quantity">
                     @if ($product->stock > 10)
@@ -107,6 +140,9 @@
             @endif
         </div>
     </div>
+    --}}
+    
+    @include('layouts/footer')
 </body>
 
 </html>

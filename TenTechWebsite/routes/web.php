@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// routes/web.php
+use App\Http\Controllers\MessageController;
+
+Route::post('/submit-message', [MessageController::class, 'store'])->name('submit.message');
+
 // gets the index.php and returns to the '/shop' url
 Route::get('/', function () {
     return redirect('/shop');
