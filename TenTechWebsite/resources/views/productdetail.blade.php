@@ -109,75 +109,78 @@
                      to generate the hidden token input field
                      Reference: https://laravel.com/docs/10.x/csrf
                  -->
-            @csrf
-            <!-- the product id  passed inas hidden input so it can be accessed in the conteoller -->
-            <input type="text" name="product_id" value="{{ $product->id }}" hidden>
-            <input type="text" name="product_name" value="{{ $product->name }}" hidden>
-            @if($product->stock > 0)
-            <label for="quantity">Quantity:</label>
-            <select id="quantity" name="quantity">
-                @if ($product->stock > 10)
-                <!-- changed to less/equal to 10 for simplicity -->
-                @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}">{{ $i }}</option>
-                    @endfor
-                    @else
-                    @for ($i = 1; $i <= $product->stock; $i++)
-                        <option value="{{ $i }}">{{ $i }}</option>
+                @csrf
+                <!-- the product id  passed inas hidden input so it can be accessed in the conteoller -->
+                <input type="text" name="product_id" value="{{ $product->id }}" hidden>
+                <input type="text" name="product_name" value="{{ $product->name }}" hidden>
+                @if($product->stock > 0) 
+                <label for="quantity">Quantity:</label>
+                <select id="quantity" name="quantity">
+                    @if ($product->stock > 10)
+                    <!-- changed to less/equal to 10 for simplicity -->
+                    @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}">{{ $i }}</option>
                         @endfor
-                        @endif
-            </select>
-            <h4><span class="badge rounded-pil bg-success">{{ $product->stock }} In Stock</span></h4>
-            <button type="submit">Add to Basket</button>
-            @elseif ($product->stock <= 10 && $product->stock > 0)
-                <h4><span class="badge rounded-pil bg-warning">{{ $product->stock }} Products in stock</span></h4>
-                <h4><span class="badge rounded-pil bg-warning">Low Stock</span></h4>
+                        @else
+                        @for ($i = 1; $i <= $product->stock; $i++)
+                            <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                            @endif
+                </select>
+                @if ($product->stock > 10)
+                <h4><span class="badge rounded-pil bg-success">{{ $product->stock }} Products in stock</span></h4>
                 <button type="submit">Add to Basket</button>
-                @else
-                <h4><span class="badge rounded-pil bg-danger">Out of Stock</span></h4>
-                <button type="submit">Add to wishlist</button>
-                @endif
-        </form>
-        @dump(session()->all())
-        @if(session('successfulladdition'))
-        <script>
-            Toast = Swal.mixin({
-                toast: true,
-                position: "top",
-                showConfirmButton: false,
-                timer: 1500,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.onmouseenter = Swal.resumeTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                }
-            });
-            Toast.fire({
-                icon: "success",
-                title: "{{ session('successfulladdition') }}",
-            });
-        </script>
-        @endif
+                @elseif ($product->stock <= 10 && $product->stock > 0)
+                    <h4><span class="badge rounded-pil bg-warning">{{ $product->stock }} Products in stock</span></h4>
+                    <h4><span class="badge rounded-pil bg-warning">Low Stock</span></h4>
+                    <button type="submit">Add to Basket</button>
+                    @endif
+                    @endif
+                    @if ($product->stock == 0)
+                    <h4><span class="badge rounded-pil bg-danger">Out of stock</span></h4>
+                    <button type="submit">Add to wishlist</button>
+                    @endif
+            </form>
+            @dump(session()->all())
+            @if(session('successfulladdition'))
+            <script>
+                Toast = Swal.mixin({
+                    toast: true,
+                    position: "top",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.resumeTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "{{ session('successfulladdition') }}",
+                });
+            </script>
+            @endif
 
-        @if(session('error'))
-        <script>
-            Toast = Swal.mixin({
-                toast: true,
-                position: "top",
-                showConfirmButton: false,
-                timer: 1500,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.onmouseenter = Swal.resumeTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                }
-            });
-            Toast.fire({
-                icon: "error",
-                title: "{{ session('error') }}",
-            });
-        </script>
-        @endif
-    </div>
+            @if(session('error'))
+            <script>
+                Toast = Swal.mixin({
+                    toast: true,
+                    position: "top",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.resumeTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "error",
+                    title: "{{ session('error') }}",
+                });
+            </script>
+            @endif
+        </div>
     </div>
     --}}
 
