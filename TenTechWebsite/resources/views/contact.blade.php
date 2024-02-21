@@ -8,7 +8,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            display: flex;
+            
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -103,6 +103,7 @@
         </form>
     </div>
 </div>
+
 
 @include('layouts/footer')
 
