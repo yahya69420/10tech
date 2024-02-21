@@ -58,10 +58,11 @@
                     <h4><span class="badge rounded-pil bg-warning">{{ $product->stock }} Products in stock</span></h4>
                     <h4><span class="badge rounded-pil bg-warning">Low Stock</span></h4>
                     <button type="submit">Add to Basket</button>
-                    @else
+                    @endif
+                    @endif
+                    @if ($product->stock == 0)
                     <h4><span class="badge rounded-pil bg-danger">Out of stock</span></h4>
                     <button type="submit">Add to wishlist</button>
-                    @endif
                     @endif
             </form>
             @dump(session()->all())
@@ -84,7 +85,7 @@
                 });
             </script>
             @endif
-            
+
             @if(session('error'))
             <script>
                 Toast = Swal.mixin({
