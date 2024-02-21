@@ -104,63 +104,37 @@
     </div>
 </div>
 
+<input type="submit" id="submit" value="Submit">
+<p id="submittedMessage" style="color: green;"></p>
+</div>
+</div>
+
 @include('layouts/footer')
 
 <script>
-    // JavaScript code for form validation
-    const nameInput = document.querySelector("#name");
-    const emailInput = document.querySelector("#email");
-    const subjectInput = document.querySelector("#subject");
+    const form = document.querySelector('form');
     const submittedMessage = document.querySelector("#submittedMessage");
 
-    function validateForm() {
-        clearMessages();
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent default form submission behavior
 
-        let errorFlag = false;
+        const formData = new FormData(form);
 
-        if (nameInput.value.length < 1) {
-            alert("Name cannot be blank");
-            nameInput.classList.add("error-border");
-            errorFlag = true;
-        }
-
-        if (subjectInput.value.length < 1) {
-            alert("Subject cannot be blank");
-            subjectInput.classList.add("error-border");
-            errorFlag = true;
-        }
-
-        if (!emailIsValid(emailInput.value)) {
-            alert("Email is invalid");
-            emailInput.classList.add("error-border");
-            errorFlag = true;
-        }
-
-        if (!errorFlag) {
-            submittedMessage.innerText = "Submitted";
-            return false;
-        }
-    }
-
-    function clearMessages() {
-        nameInput.classList.remove("error-border");
-        lnameInput.classList.remove("error-border");
-        subjectInput.classList.remove("error-border");
-        emailInput.classList.remove("error-border");
-        submittedMessage.innerText = "";
-    }
-
-    function emailIsValid(email) {
-        let pattern = /\S+@\S+\.\S+/;
-        return pattern.test(email);
-    }
-
-    const submitButton = document.getElementById("submit");
-    submitButton.addEventListener("click", function (event) {
-        if (!validateForm()) {
-            event.preventDefault();
-        }
+        fetch('{{ route("submit.message") }}', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                submittedMessage.innerText = 'Message submitted successfully!';
+                form.reset(); // Optionally reset the form
+            } else {
+                submittedMessage.innerText = 'Error: ' + data.error;
+            }
+        })
+        .catch(error => {
+            submittedMessage.innerText = 'Submitted';
+        });
     });
 </script>
-</body>
-</html>
