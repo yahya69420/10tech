@@ -89,3 +89,6 @@ Route::post('/update-password', [App\Http\Controllers\UserSettingsController::cl
 Route::post('/delete-account', [App\Http\Controllers\UserSettingsController::class, 'deleteAccount'])->name('delete-account');
 
 Route::post('/updateProfilePicture', [App\Http\Controllers\UserSettingsController::class, 'updateProfilePicture'])->name('updateProfilePicture');
+
+// Route for the checkout process
+Route::post('/completeorder', [App\Http\Controllers\OrdersController::class, 'completeOrder'])->name('completeorder');
