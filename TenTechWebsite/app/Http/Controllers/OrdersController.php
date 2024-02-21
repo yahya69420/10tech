@@ -76,6 +76,26 @@ class OrdersController extends Controller
         // $totalAmount = session('totalAmount');
         $totalAmount = Cart::where('user_id', auth()->user()->id)->sum('total');
         $discountTotal = session('discountTotal');
+
+        // Create an order
+        $order = Orders::create([
+            'total_before_discount' => $totalAmount,
+            'discount_amount' => $discountTotal,
+            'total_after_discount' => $totalAmount - $discountTotal,
+            'status' => 'pending',
+            'order_date' => now(),
+            'tracking_number' => uniqid(),
+            'user_address_id' => $userAddress->id,
+            'user_payment_id' => $userPayments->id,
+            'discount_id' => $discount->id ?? null,
+            'user_id' => auth()->user()->id,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // odate the order_id in the order_items table
+        OrderItems::where('order_id', null)->update(['order_id' => $order->id]);
+
         return view('complete', ['userAddress' => $userAddress]);
     }
 }
