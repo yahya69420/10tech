@@ -26,6 +26,15 @@ return new class extends Migration
             $table->timestamps();
 
         });
+
+
+        // these lines are added to this file because the foreign keys are not created in the order_items table
+        // this was due to a migration order issue where the order_items table was created before the orders table
+        // this is the pivot table for the many to many relationship between orders and products
+        Schema::table('order_items', function (Blueprint $table) {
+            $table->foreignId('order_id')->nullable()->references('id')->on('orders')->onDelete('cascade');
+            $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
+        });
     }
 
     /**
