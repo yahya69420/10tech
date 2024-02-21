@@ -66,9 +66,16 @@ class OrdersController extends Controller
                 'quantity' => $item->quantity,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'order_id' => null, // This will be updated when ordes table made
+                'order_id' => null, // This will be updated when we have the orders table
                 'product_id' => $item->product_id,
             ]);
         }
+
+        $discount = session('discount');
+        // dd($discount);
+        // $totalAmount = session('totalAmount');
+        $totalAmount = Cart::where('user_id', auth()->user()->id)->sum('total');
+        $discountTotal = session('discountTotal');
+        return view('complete', ['userAddress' => $userAddress]);
     }
 }
