@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
+use App\Models\UserAddress;
+use App\Models\UserPayments;
 
 class RegisterController extends Controller
 {
@@ -74,9 +76,31 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user =  User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        // create user address and user payment information
+        UserAddress::create([
+            // create all null values for the user address
+            'address_line_1' => null,
+            'address_line_2' => null,
+            'city' => null,
+            'post_code' => null,
+            'country' => null,
+            'user_id' => $user->id
+        ]);
+
+        // create all null values for the user payment
+        UserPayments::create([
+            'card_number' => null,
+            'card_holder_name' => null,
+            'expiry_date' => null,
+            'cvv' => null,
+            'user_id' => $user->id
+        ]);
+        
+        return $user;
     }
 }

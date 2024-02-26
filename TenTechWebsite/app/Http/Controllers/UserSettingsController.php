@@ -79,6 +79,7 @@ class UserSettingsController extends Controller
             // cascade delete 
             Cart::where('user_id', $user->id)->delete();
             User::where('id', $user->id)->delete();
+            session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
             return redirect('/shop')->with('success', 'Account deleted successfully');
         } else {
             return redirect('/settings')->with('error', 'Account not deleted');
