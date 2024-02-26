@@ -17,8 +17,16 @@
 
         .hero {
             background-image: white;
-            height: 25vh;
+            height: 15vh;
             width: 100%;
+        }
+
+        .hero-image {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("pexels-orhan-pergel-18980943.jpg");
+            height: 30%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .hero p {
@@ -107,7 +115,8 @@
 
 </div>
 </div>
-
+<div class="hero">
+</div>
 @include('layouts/footer')
 
 <script>
