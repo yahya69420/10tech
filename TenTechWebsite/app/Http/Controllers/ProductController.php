@@ -41,6 +41,10 @@ class ProductController extends Controller
             if ($brandFilter) {
             $mobiles->where('brand', $brandFilter);
         }
+        $releaseYear = request()->get('release');
+        if ($releaseYear) {
+            $mobiles->where('release', $releaseYear);
+        }
 
         //Apply sorting  
         $sortOrder = request()->get('sort');
