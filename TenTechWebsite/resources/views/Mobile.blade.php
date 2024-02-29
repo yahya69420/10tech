@@ -161,26 +161,32 @@ align-items: center;
         
         <div class="sorts_filter-section"> 
 
-          <div class="dropdown">
+          <div class="dropdownSF">
               <button onclick="toggleSortDropdown()" class="dropbtn">Sort<span class="arrow" id="sortArrow"></span></button>
-              <div id="sortDropdown" class="dropdown-content">
+              <div id="sortDropdown" class="dropdown-contentSF">
                   <a href="?sort=price_asc">Price low to high</a>
                   <a href="?sort=price_desc">Price high to low</a>
               </div>
           </div>
+          
 
-          <div class="dropdown" style="margin-left: 10px;">
+          <div class="dropdownSF" style="margin-left: 10px;">
               <button class="dropbtn">Release<span class="arrow" id="releaseArrow"></span></button>
-              <div id="releaseDropdown" class="dropdown-content">
-                  <a href="?release=2022">2022</a>
-                  <a href="?release=2021">2021</a>
-                  <a href="?release=2020">2020</a>
+              <div id="releaseDropdown" class="dropdown-contentSF">
+              @php
+                  $uniqueReleases = $mobiles->unique('release')->sortBy('release');
+              @endphp
+              @foreach ($uniqueReleases  as $mobile)
+                <a href="?release={{ $mobile->release }}">{{ $mobile->release }}</a>
+              @endforeach
               </div>
-          </div>
 
-          <div class="dropdown" style="margin-left: 10px;"> <!-- Adding some space -->
+          </div>
+        
+
+          <div class="dropdownSF" style="margin-left: 10px;"> <!-- Adding some space -->
               <button onclick="toggleBrandDropdown()" class="dropbtn">Brand<span class="arrow" id="brandArrow"></span></button>
-              <div id="brandDropdown" class="dropdown-content">
+              <div id="brandDropdown" class="dropdown-contentSF">
                   <a href="?sort=&brand=Apel">Apel</a>
                   <a href="?sort=&brand=Samsong">Samsong</a>
                   <a href="?sort=&brand=Gugle">Gugle</a>
@@ -190,26 +196,9 @@ align-items: center;
           </div>
 
 
-          <div class="dropdown" style="margin-left: 10px;">
-              <button onclick="toggleOSDropdown()" class="dropbtn">OS<span class="arrow" id="osArrow"></span></button>
-              <div id="osDropdown" class="dropdown-content">
-                  <a href="#os_android" onclick="selectOS('Android')">Android</a>
-                  <a href="#os_ios" onclick="selectOS('iOS')">iOS</a>
-              <!-- Add more OS options as needed -->
-              </div>
-          </div>
 
 
 
-          <!-- Size Dropdown -->
-          <div class="dropdown" style="margin-left: 10px;">
-              <button onclick="toggleSizeDropdown()" class="dropbtn">Size<span class="arrow" id="sizeArrow"></span></button>
-              <div id="sizeDropdown" class="dropdown-content">
-                  <a href="#size_5inch" onclick="selectSize('5 inch')">6.1 inch</a>
-                  <a href="#size_6inch" onclick="selectSize('6 inch')">6.7 inch</a>
-                  <!-- Add more size options as needed -->
-              </div>
-          </div>
 
 
       </div>              
