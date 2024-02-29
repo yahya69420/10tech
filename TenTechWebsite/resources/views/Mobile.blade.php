@@ -187,11 +187,13 @@ align-items: center;
           <div class="dropdownSF" style="margin-left: 10px;"> <!-- Adding some space -->
               <button onclick="toggleBrandDropdown()" class="dropbtn">Brand<span class="arrow" id="brandArrow"></span></button>
               <div id="brandDropdown" class="dropdown-contentSF">
-                  <a href="?sort=&brand=Apel">Apel</a>
-                  <a href="?sort=&brand=Samsong">Samsong</a>
-                  <a href="?sort=&brand=Gugle">Gugle</a>
-                  <a href="?sort=&brand=1Plus">1Plus</a>
-                  <a href="?sort=&brand=Hawai">Hawai</a>
+                @php
+                  $uniqueBrands = $mobiles->unique('brand')->sortBy('brand');
+              @endphp
+              @foreach ($uniqueBrands  as $mobile)
+                <a href="?sort=&brand={{ $mobile->brand }}">{{ $mobile->brand }}</a>
+              @endforeach
+              
               </div>
           </div>
 
