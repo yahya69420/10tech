@@ -86,6 +86,10 @@ Route::get('/settings', [App\Http\Controllers\UserSettingsController::class, 'in
 
 Route::post('/update-password', [App\Http\Controllers\UserSettingsController::class, 'updatePassword'])->name('update-password');
 
+Route::post('update-address', [App\Http\Controllers\UserSettingsController::class, 'updateAddress'])->name('update-address');
+// delete-address
+Route::post('delete-address', [App\Http\Controllers\UserSettingsController::class, 'deleteAddress'])->name('delete-address');
+
 Route::post('/delete-account', [App\Http\Controllers\UserSettingsController::class, 'deleteAccount'])->name('delete-account');
 
 Route::post('/updateProfilePicture', [App\Http\Controllers\UserSettingsController::class, 'updateProfilePicture'])->name('updateProfilePicture');
