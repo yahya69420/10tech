@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Cart;
 use Illuminate\Support\Facades\File;
+use App\Models\UserAddress;
+use App\Models\UserPayments;
 
 class UserSettingsController extends Controller
 {
@@ -20,11 +22,13 @@ class UserSettingsController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $userEmail = $user->email;
+        $userAddress = UserAddress::where('user_id', $user->id)->first();
+        $userPayments = UserPayments::where('user_id', $user->id)->first();
+        $lastFourDigits = substr($userPayments->card_number, -4);
         if ($user == null) {
             return redirect('/login');
         } else {
-            return view('settings', ['user' => $user]);
+            return view('settings', ['user' => $user, 'userAddress' => $userAddress, 'userPayments' => $userPayments, 'lastFourDigits' => $lastFourDigits]);
         }
     }
 
@@ -99,22 +103,59 @@ class UserSettingsController extends Controller
         // delete the old pp if it is in the user public folder
         if (Auth::check()) {
             $user = Auth::user();
-        $profileImagePath = public_path('/') . $user->profile_image;
-        // if the file exists, delete it
-        // save space
-        if (File::exists($profileImagePath)) {
-            // delte it 
-            File::delete($profileImagePath);
+            $profileImagePath = public_path('/') . $user->profile_image;
+            // if the file exists, delete it
+            // save space
+            if (File::exists($profileImagePath)) {
+                // delte it 
+                File::delete($profileImagePath);
+            }
+
+            $user = Auth::user();
+            // name  of the file is the time concatneateed with the extension, so it can be opened
+            $name = time() . '.' . $request->new_profile_image->extension();
+            // move the file to the public folder
+            $request->new_profile_image->move(public_path('/'), $name);
+            // update the user's profile image
+            User::where('id', $user->id)->update(['profile_image' => $name, 'updated_at' => now()]);
+            return redirect('/settings')->with('success', 'Profile picture updated successfully');
         }
-        
-        $user = Auth::user();
-        // name  of the file is the time concatneateed with the extension, so it can be opened
-        $name = time() . '.' . $request->new_profile_image->extension();
-        // move the file to the public folder
-        $request->new_profile_image->move(public_path('/'), $name);
-        // update the user's profile image
-        User::where('id', $user->id)->update(['profile_image' => $name, 'updated_at' => now()]);
-        return redirect('/settings')->with('success', 'Profile picture updated successfully');
     }
-}
+
+    public function updateAddress(Request $request)
+    {
+        if ($request->address_line_1 == null || $request->city == null || $request->post_code == null || $request->country == null) {
+            return redirect('/settings')->with('error', 'All fields are required');
+        }
+
+        $userAddress = UserAddress::where('user_id', auth()->user()->id)->first();
+        $userAddress->update([
+            'address_line_1' => $request->address_line_1,
+            'address_line_2' => $request->address_line_2,
+            'city' => $request->city,
+            'post_code' => $request->post_code,
+            'country' => $request->country,
+            'user_id' => auth()->user()->id
+        ]);
+        // dd($request->address_line_1, $request->address_line_2, $request->city, $request->postcode, $request->country);
+        return redirect('/settings')->with('success', 'Address updated successfully');
+    }
+
+    public function deleteAddress(Request $request)
+    {
+        if (UserAddress::where('user_id', auth()->user()->id)->where('address_line_1', null)->where('address_line_2', null)->where('city', null)->where('post_code', null)->where('country', null)->count() > 0) {
+            return redirect('/settings')->with('error', 'No address to delete');
+        }
+
+        $userAddress = UserAddress::where('user_id', auth()->user()->id)->first();
+        $userAddress->update([
+            'address_line_1' => null,
+            'address_line_2' => null,
+            'city' => null,
+            'post_code' => null,
+            'country' => null,
+            'user_id' => auth()->user()->id
+        ]);
+        return redirect('/settings')->with('success', 'Address deleted successfully');
+    }
 }
