@@ -19,7 +19,7 @@
         <div class="row mt-5">
             <div class="col-lg-5 col-md-12 col-12">
                 <div class="image-frame">
-                    <img class="img-fluid " src="{{ $product->image }}" alt="{{ $product->name }}" style="margin-bottom: 20px;">
+                    <img class="img-fluid " src="{{ asset($product->image) }}" alt="{{ $product->name }}" style="margin-bottom: 20px;">
                 </div>
             </div>
 

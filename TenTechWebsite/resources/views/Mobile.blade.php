@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="stylesheet" href="{{ asset('/css/sort-filters.css') }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <style>
@@ -157,59 +158,49 @@ align-items: center;
               </div>
             </a> -->
           <!-- </div> -->
-
+        
         <div class="sorts_filter-section"> 
 
-          <div class="dropdown">
+          <div class="dropdownSF">
               <button onclick="toggleSortDropdown()" class="dropbtn">Sort<span class="arrow" id="sortArrow"></span></button>
-              <div id="sortDropdown" class="dropdown-content">
-                  <a href="?sort=price_asc&brand=<?php echo urlencode($_GET['brand'] ?? ''); ?>">Price low to high</a>
-                  <a href="?sort=price_desc&brand=<?php echo urlencode($_GET['brand'] ?? ''); ?>">Price high to low</a>
+              <div id="sortDropdown" class="dropdown-contentSF">
+                  <a href="?sort=price_asc">Price low to high</a>
+                  <a href="?sort=price_desc">Price high to low</a>
               </div>
           </div>
+          
 
-          <div class="dropdown" style="margin-left: 10px;">
-              <button onclick="toggleReleaseDropdown()" class="dropbtn">Release<span class="arrow" id="releaseArrow"></span></button>
-              <div id="releaseDropdown" class="dropdown-content">
-                  <a href="#release_2022" onclick="selectRelease('2022')">2022</a>
-                  <a href="#release_2021" onclick="selectRelease('2021')">2021</a>
-                  <a href="#release_2020" onclick="selectRelease('2020')">2020</a>
+          <div class="dropdownSF" style="margin-left: 10px;">
+              <button class="dropbtn">Release<span class="arrow" id="releaseArrow"></span></button>
+              <div id="releaseDropdown" class="dropdown-contentSF">
+              @php
+                  $uniqueReleases = $mobiles->unique('release')->sortBy('release');
+              @endphp
+              @foreach ($uniqueReleases  as $mobile)
+                <a href="?release={{ $mobile->release }}">{{ $mobile->release }}</a>
+              @endforeach
               </div>
-          </div>
 
-          <div class="dropdown" style="margin-left: 10px;"> <!-- Adding some space -->
+          </div>
+        
+
+          <div class="dropdownSF" style="margin-left: 10px;"> <!-- Adding some space -->
               <button onclick="toggleBrandDropdown()" class="dropbtn">Brand<span class="arrow" id="brandArrow"></span></button>
-              <div id="brandDropdown" class="dropdown-content">
-                  <a href="?sort=<?php echo urlencode($_GET['sort'] ?? ''); ?>&brand=Apel">Apel</a>
-                  <a href="?sort=<?php echo urlencode($_GET['sort'] ?? ''); ?>&brand=Samsong">Samsong</a>
-                  <a href="?sort=<?php echo urlencode($_GET['sort'] ?? ''); ?>&brand=Gugle">Gugle</a>
-                  <a href="?sort=<?php echo urlencode($_GET['sort'] ?? ''); ?>&brand=1Plus">1Plus</a>
-                  <a href="?sort=<?php echo urlencode($_GET['sort'] ?? ''); ?>&brand=Hawai">Hawai</a>
-                  <!-- Add more brand options as needed -->
-              </div>
-          </div>
-
-
-          <div class="dropdown" style="margin-left: 10px;">
-              <button onclick="toggleOSDropdown()" class="dropbtn">OS<span class="arrow" id="osArrow"></span></button>
-              <div id="osDropdown" class="dropdown-content">
-                  <a href="#os_android" onclick="selectOS('Android')">Android</a>
-                  <a href="#os_ios" onclick="selectOS('iOS')">iOS</a>
-              <!-- Add more OS options as needed -->
+              <div id="brandDropdown" class="dropdown-contentSF">
+                @php
+                  $uniqueBrands = $mobiles->unique('brand')->sortBy('brand');
+              @endphp
+              @foreach ($uniqueBrands  as $mobile)
+                <a href="?sort=&brand={{ $mobile->brand }}">{{ $mobile->brand }}</a>
+              @endforeach
+              
               </div>
           </div>
 
 
 
-          <!-- Size Dropdown -->
-          <div class="dropdown" style="margin-left: 10px;">
-              <button onclick="toggleSizeDropdown()" class="dropbtn">Size<span class="arrow" id="sizeArrow"></span></button>
-              <div id="sizeDropdown" class="dropdown-content">
-                  <a href="#size_5inch" onclick="selectSize('5 inch')">6.1 inch</a>
-                  <a href="#size_6inch" onclick="selectSize('6 inch')">6.7 inch</a>
-                  <!-- Add more size options as needed -->
-              </div>
-          </div>
+
+
 
 
       </div>              
@@ -287,7 +278,8 @@ align-items: center;
 
 
 
-
+      <script>
+      </script>                
       @include('layouts/footer')
   </body>
 
