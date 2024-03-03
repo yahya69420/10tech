@@ -111,4 +111,8 @@ class OrdersController extends Controller
         // dd($orderItems);
         return view('order-history', ['orders' => $orders, 'orderItems' => $orderItems]);
     }
+
+    public function orderDetails() {
+        return view('order-details');
+    }
 }
