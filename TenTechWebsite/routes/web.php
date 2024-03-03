@@ -96,3 +96,7 @@ Route::post('/updateProfilePicture', [App\Http\Controllers\UserSettingsControlle
 
 // Route for the checkout process
 Route::post('/completeorder', [App\Http\Controllers\OrdersController::class, 'completeOrder'])->name('completeorder');
+
+Route::post('/addpaymentinfo', [App\Http\Controllers\UserSettingsController::class, 'addPaymentInfo'])->name('addPaymentInfo');
+
+Route::post('/delete-payment-details', [App\Http\Controllers\UserSettingsController::class, 'deletePaymentDetails'])->name('deletePaymentDetails');
