@@ -92,7 +92,7 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="{{ route('settings') }}"><button class="btn btn-primary">Account Details</button></a>
-                        <a href="{{ route('settings') }}"><button class="btn btn-light">View Recent Orders</button></a>
+                        <a href="{{ route('order-history') }}"><button class="btn btn-light">View Recent Orders</button></a>
                         <a href="#"> <button type=" button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#userPaymentModal" id="userPaymentButton">Payment Methods</button></a>
                         <a href="#"> <button type=" button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#userAddressModal" id="userAddressButton">User Address</button></a>
                         <a href="#"> <button type=" button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="passwordButton">Change Password</button></a>
