@@ -43,7 +43,9 @@
                         <div class="single-order border rounded p-3 m-3 shadow">
                             <div class="order-header">
                                 <div class="order-id d-flex justify-content-between">
-                                    <h6 class="heading-6 heading-6 fw-bold text-dark">Order ID: {{ $order->tracking_number }}</h6>
+                                    <a href="{{ route('order-details', ['id' => $order->tracking_number]) }}" class="text-dark">
+                                        <h6 class="heading-6 heading-6 fw-bold text-primary">Order ID: {{ $order->tracking_number }}</h6>
+                                    </a>
                                     <h5 class="heading-5 fw-bold text-dark">Total: {{ $order->total_after_discount }}</h5>
                                 </div>
 
