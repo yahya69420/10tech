@@ -102,6 +102,13 @@ class OrdersController extends Controller
 
     public function orderHistory() {
         $orders = Orders::where('user_id', auth()->user()->id)->get();
-        return view('order-history', ['orders' => $orders]);
+        $orderItems = [];
+        foreach ($orders as $order) {
+            $items = OrderItems::where('order_id', $order->id)->get();
+            // associate the order id with the order items using k:v pairs
+            $orderItems[$order->id] = $items;
+        } 
+        // dd($orderItems);
+        return view('order-history', ['orders' => $orders, 'orderItems' => $orderItems]);
     }
 }
