@@ -17,9 +17,18 @@
                 <div class="row">
                     <div class="col-lg-9">
                         <div class="history-title">
-                            <p class="heading-4 font-weight-bold title fs-1">Order History</p>
+                            @if ($orders->count() == 0)
+                            <p class="heading-4 font-weight-bold title fs-1">You have no orders yet</p>
+                            @else
+                            @if ($orders->count() == 1)
+                            <p class="heading-4 font-weight-bold title fs-1">Order History ({{ $orders->count() }} order)</p>
+                            @else
+                            <p class="heading-4 font-weight-bold title fs-1">Order History ({{ $orders->count() }} orders)</p>
+                            @endif
+                            @endif
                         </div>
                     </div>
+                    <hr class="border-0 bg-dark bg-gradient" style="height: 10px;">
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-9">
