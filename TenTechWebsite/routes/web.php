@@ -102,3 +102,6 @@ Route::post('/addpaymentinfo', [App\Http\Controllers\UserSettingsController::cla
 Route::post('/delete-payment-details', [App\Http\Controllers\UserSettingsController::class, 'deletePaymentDetails'])->name('deletePaymentDetails');
 
 Route::get('order-history', [App\Http\Controllers\OrdersController::class, 'orderHistory'])->name('order-history');
+
+// Route for the order details page
+Route::get('order-details/{id}', [App\Http\Controllers\OrdersController::class, 'orderDetails'])->name('order-details');
