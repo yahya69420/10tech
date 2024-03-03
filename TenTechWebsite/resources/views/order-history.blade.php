@@ -28,18 +28,25 @@
                         <div class="single-order border rounded p-3 m-3 shadow">
                             <div class="order-header">
                                 <div class="order-id d-flex justify-content-between">
-                                    <h6 class="heading-6 heading-6 fw-bold text-dark">Order ID: 123456</h6>
-                                    <h5 class="heading-5 fw-bold text-dark">Total: £1000</h5>
+                                    <h6 class="heading-6 heading-6 fw-bold text-dark">Order ID: {{ $order->tracking_number }}</h6>
+                                    <h5 class="heading-5 fw-bold text-dark">Total: {{ $order->total_after_discount }}</h5>
                                 </div>
 
                                 <div class="order-info">
                                     <ul class="list-unstyled">
+                                        @foreach($orderItems[$order->id] as $item)
                                         <li>
-                                            <h6 class="heading-6 font-weight-500">Quantity: 1 Product</h6>
+                                            @if ($item->quantity > 1)
+                                            <h6 class="heading-6 font-weight-500">Quantity: {{ $item->quantity }} items ordered</h6>
                                         </li>
+                                        @else
+                                        <h6 class="heading-6 font-weight-500">Quantity: {{ $item->quantity }} item ordered</h6>
+                                        </li>
+                                        @endif
                                         <li>
-                                            <h6 class="heading-6 font-weight-500">Order Date: 12/12/2021</h6>
+                                            <h6 class="heading-6 font-weight-500">Order Date: {{ \Carbon\Carbon::parse($order->order_date)->toDayDateTimeString() }}</h6>
                                         </li>
+                                        @endforeach
                                     </ul>
                                     <div class="progress" style="height: 30px;">
                                         <div class="progress-bar bg-warning" role="progressbar" style="width: 25%; color:black; font-size:20px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">PENDING</div>
@@ -54,18 +61,26 @@
                         <div class="single-order border rounded p-3 m-3 shadow">
                             <div class="order-header">
                                 <div class="order-id d-flex justify-content-between">
-                                    <h6 class="heading-6 heading-6 fw-bold text-dark">Order ID: 123456</h6>
-                                    <h5 class="heading-5 fw-bold text-dark">Total: £1000</h5>
+                                    <h6 class="heading-6 heading-6 fw-bold text-dark">Order ID: {{ $order->tracking_number }}</h6>
+                                    <h5 class="heading-5 fw-bold text-dark">Total: {{ $order->total_after_discount }}</h5>
                                 </div>
 
                                 <div class="order-info">
                                     <ul class="list-unstyled">
+                                        <!-- associative array with the order id as the key to match the order items value -->
+                                        @foreach($orderItems[$order->id] as $item)
                                         <li>
-                                            <h6 class="heading-6 font-weight-500">Quantity: 1 Product</h6>
+                                            @if ($item->quantity > 1)
+                                            <h6 class="heading-6 font-weight-500">Quantity: {{ $item->quantity }} items ordered</h6>
                                         </li>
+                                        @else
+                                        <h6 class="heading-6 font-weight-500">Quantity: {{ $item->quantity }} item ordered</h6>
+                                        </li>
+                                        @endif
                                         <li>
-                                            <h6 class="heading-6 font-weight-500">Order Date: 12/12/2021</h6>
+                                            <h6 class="heading-6 font-weight-500">Order Date: {{ \Carbon\Carbon::parse($order->order_date)->toDayDateTimeString() }}</h6>
                                         </li>
+                                        @endforeach
                                     </ul>
                                     <div class="progress" style="height: 30px;">
                                         <div class="progress-bar bg-info" role="progressbar" style="width: 50%; color:black; font-size:20px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">PROCESSING</div>
@@ -80,18 +95,25 @@
                         <div class="single-order border rounded p-3 m-3 shadow">
                             <div class="order-header">
                                 <div class="order-id d-flex justify-content-between">
-                                    <h6 class="heading-6 heading-6 fw-bold text-dark">Order ID: 123456</h6>
-                                    <h5 class="heading-5 fw-bold text-dark">Total: £1000</h5>
+                                    <h6 class="heading-6 heading-6 fw-bold text-dark">Order ID: {{ $order->tracking_number }}</h6>
+                                    <h5 class="heading-5 fw-bold text-dark">Total: {{ $order->total_after_discount }}</h5>
                                 </div>
 
                                 <div class="order-info">
                                     <ul class="list-unstyled">
+                                        @foreach($orderItems[$order->id] as $item)
                                         <li>
-                                            <h6 class="heading-6 font-weight-500">Quantity: 1 Product</h6>
+                                            @if ($item->quantity > 1)
+                                            <h6 class="heading-6 font-weight-500">Quantity: {{ $item->quantity }} items ordered</h6>
                                         </li>
+                                        @else
+                                        <h6 class="heading-6 font-weight-500">Quantity: {{ $item->quantity }} item ordered</h6>
+                                        </li>
+                                        @endif
                                         <li>
-                                            <h6 class="heading-6 font-weight-500">Order Date: 12/12/2021</h6>
+                                            <h6 class="heading-6 font-weight-500">Order Date: {{ \Carbon\Carbon::parse($order->order_date)->toDayDateTimeString() }}</h6>
                                         </li>
+                                        @endforeach
                                     </ul>
                                     <div class="progress" style="height: 30px;">
                                         <div class="progress-bar bg-success" role="progressbar" style="width: 100%; color:black; font-size:20px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">DELIVERED</div>
@@ -106,18 +128,25 @@
                         <div class="single-order border rounded p-3 m-3 shadow">
                             <div class="order-header">
                                 <div class="order-id d-flex justify-content-between">
-                                    <h6 class="heading-6 heading-6 fw-bold text-dark">Order ID: 123456</h6>
-                                    <h5 class="heading-5 fw-bold text-dark">Total: £1000</h5>
+                                    <h6 class="heading-6 heading-6 fw-bold text-dark">Order ID: {{ $order->tracking_number }}</h6>
+                                    <h5 class="heading-5 fw-bold text-dark">Total: {{ $order->total_after_discount }}</h5>
                                 </div>
 
                                 <div class="order-info">
                                     <ul class="list-unstyled">
+                                        @foreach($orderItems[$order->id] as $item)
                                         <li>
-                                            <h6 class="heading-6 font-weight-500">Quantity: 1 Product</h6>
+                                            @if ($item->quantity > 1)
+                                            <h6 class="heading-6 font-weight-500">Quantity: {{ $item->quantity }} items ordered</h6>
                                         </li>
+                                        @else
+                                        <h6 class="heading-6 font-weight-500">Quantity: {{ $item->quantity }} item ordered</h6>
+                                        </li>
+                                        @endif
                                         <li>
-                                            <h6 class="heading-6 font-weight-500">Order Date: 12/12/2021</h6>
+                                            <h6 class="heading-6 font-weight-500">Order Date: {{ \Carbon\Carbon::parse($order->order_date)->toDayDateTimeString() }}</h6>
                                         </li>
+                                        @endforeach
                                     </ul>
                                     <div class="progress" style="height: 30px;">
                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 100%; color:black; font-size:20px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">CANCELLED</div>
