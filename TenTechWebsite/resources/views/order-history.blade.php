@@ -19,6 +19,12 @@
                         <div class="history-title">
                             @if ($orders->count() == 0)
                             <p class="heading-4 font-weight-bold title fs-1">You have no orders yet</p>
+                            <a href="{{ url('/') }}" class="btn btn-primary btn-lg mb-2">Let's change that!</a>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
                             @else
                             @if ($orders->count() == 1)
                             <p class="heading-4 font-weight-bold title fs-1">Order History ({{ $orders->count() }} order)</p>
