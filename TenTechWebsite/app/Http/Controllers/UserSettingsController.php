@@ -158,4 +158,56 @@ class UserSettingsController extends Controller
         ]);
         return redirect('/settings')->with('success', 'Address deleted successfully');
     }
+
+
+    public function addPaymentInfo(Request $request) {
+        // dd($request->all());
+        
+        if ($request->card_number == null || $request->card_holder_name == null || $request->expiry_date == null || $request->cvv == null) {
+            return redirect('/settings')->with('error', 'All fields are required');
+        }
+
+        $request->validate([
+            'card_number' => 'required',
+            'card_holder_name' => 'required',
+            'expiry_date' => 'required',
+            'cvv' => 'required',
+            'cardType' => 'required',
+            'cardColour' => 'required',
+        ]);
+
+        // dd($request->card_number, $request->card_holder_name, $request->expiry_date, $request->ccv);
+
+
+        $userPayments = UserPayments::where('user_id', auth()->user()->id)->first();
+        $userPayments->update([
+            'card_number' => $request->card_number,
+            'card_holder_name' => $request->card_holder_name,
+            'expiry_date' => $request->expiry_date,
+            'cvv' => $request->cvv,
+            'card_type' => $request->cardType,
+            'color' => $request->cardColour,
+            'user_id' => auth()->user()->id
+        ]);
+        return redirect('/settings')->with('success', 'Payment card added successfully');
+    }
+
+
+    public function deletePaymentDetails() {
+        if (UserPayments::where('user_id', auth()->user()->id)->where('card_number', null)->where('card_holder_name', null)->where('expiry_date', null)->where('cvv', null)->count() > 0) {
+            return redirect('/settings')->with('error', 'No payment card to delete');
+        }
+
+        $userPayments = UserPayments::where('user_id', auth()->user()->id)->first();
+        $userPayments->update([
+            'card_number' => null,
+            'card_holder_name' => null,
+            'expiry_date' => null,
+            'cvv' => null,
+            'card_type' => null,
+            'color' => null,
+            'user_id' => auth()->user()->id
+        ]);
+        return redirect('/settings')->with('success', 'Payment card deleted successfully');
+    }
 }
