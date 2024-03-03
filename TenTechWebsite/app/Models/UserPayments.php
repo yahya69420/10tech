@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class UserPayments extends Model
 {
     use HasFactory;
-    protected $fillable = ['card_number', 'card_holder_name', 'expiry_date', 'cvv', 'user_id'];
+    protected $fillable = ['card_number', 'card_holder_name', 'expiry_date', 'cvv', 'card_type', 'color', 'user_id'];
 }

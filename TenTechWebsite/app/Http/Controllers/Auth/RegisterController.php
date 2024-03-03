@@ -98,6 +98,8 @@ class RegisterController extends Controller
             'card_holder_name' => null,
             'expiry_date' => null,
             'cvv' => null,
+            'card_type' => null,
+            'color' => null,
             'user_id' => $user->id
         ]);
         

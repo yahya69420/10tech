@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('card_holder_name')->nullable();
             $table->string('expiry_date')->nullable();
             $table->string('cvv')->nullable();
+            $table->string('card_type')->nullable();
+            $table->string('color')->nullable();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
