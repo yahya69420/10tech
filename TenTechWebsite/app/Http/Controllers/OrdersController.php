@@ -98,4 +98,10 @@ class OrdersController extends Controller
 
         return view('complete', ['userAddress' => $userAddress]);
     }
+
+
+    public function orderHistory() {
+        $orders = Orders::where('user_id', auth()->user()->id)->get();
+        return view('order-history', ['orders' => $orders]);
+    }
 }
