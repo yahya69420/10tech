@@ -8,7 +8,11 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Discount;
- 
+use App\Models\OrderItems;
+use App\Models\Orders;
+use App\Models\UserAddress;
+use App\Models\UserPayments;
+
 class ProductSeeder extends Seeder
 {
     /**
@@ -371,7 +375,142 @@ class ProductSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
- 
+
+
+        // create a single normal user so we can test the order history
+        DB::table('users')->insert([
+            'email' => 'test@test.com',
+            'email_verified_at' => null,
+            'password' => bcrypt('1'),
+            'profile_image' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        UserAddress::create([
+            'address_line_1' => '123 Fake Street',
+            'address_line_2' => 'Fake Town',
+            'city' => 'Faketown',
+            'post_code' => 'FA1 1KE',
+            'country' => 'England',
+            'user_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // create a single payemnt method for the user
+
+        UserPayments::create([
+            'card_number' => '1234567890123456',
+            'card_holder_name' => 'Test User',
+            'expiry_date' => '12/23',
+            'cvv' => '123',
+            'card_type' => 'visa',
+            'color' => '#1a1f71',
+            'user_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        
+
+
+        // Create orders
+        Orders::create([
+            'total_before_discount' => 1000,
+            'discount_amount' => 0,
+            'total_after_discount' => 1000,
+            'status' => 'pending',
+            'order_date' => now(),
+            'tracking_number' => '65e4a105a9f39',
+            'user_address_id' => 1,
+            'user_payment_id' => 1,
+            'discount_id' => null,
+            'user_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        OrderItems::create([
+            'quantity' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+            'order_id' => 1,
+            'product_id' => 1,
+        ]);
+
+        Orders::create([
+            'total_before_discount' => 2000,
+            'discount_amount' => 0,
+            'total_after_discount' => 2000,
+            'status' => 'processing',
+            'order_date' => now(),
+            'tracking_number' => '65e4a105a9f39',
+            'user_address_id' => 1,
+            'user_payment_id' => 1,
+            'discount_id' => null,
+            'user_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        OrderItems::create([
+            'quantity' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+            'order_id' => 2,
+            'product_id' => 2,
+        ]);
+
+        Orders::create([
+            'total_before_discount' => 3000,
+            'discount_amount' => 0,
+            'total_after_discount' => 3000,
+            'status' => 'completed',
+            'order_date' => now(),
+            'tracking_number' => '65e4a105a9f39',
+            'user_address_id' => 1,
+            'user_payment_id' => 1,
+            'discount_id' => null,
+            'user_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        OrderItems::create([
+            'quantity' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+            'order_id' => 3,
+            'product_id' => 3,
+        ]);
+
+        // create a cancelled order
+        Orders::create([
+            'total_before_discount' => 4000,
+            'discount_amount' => 0,
+            'total_after_discount' => 4000,
+            'status' => 'cancelled',
+            'order_date' => now(),
+            'tracking_number' => '65e4a105a9f39',
+            'user_address_id' => 1,
+            'user_payment_id' => 1,
+            'discount_id' => null,
+            'user_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        OrderItems::create([
+            'quantity' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+            'order_id' => 4,
+            'product_id' => 4,
+        ]);
+
+
+
  
     }
 }
