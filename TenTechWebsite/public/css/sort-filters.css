@@ -56,7 +56,10 @@
     margin-bottom: 5px;
 }
 
-.dropdown-contentSF a:hover {background-color: light}
+.dropdown-contentSF a:hover {
+    background-color: light;
+    color: blue;
+}
 
 .arrow {
     display: inline-block;
