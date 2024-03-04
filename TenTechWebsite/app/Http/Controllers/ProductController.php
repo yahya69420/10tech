@@ -36,18 +36,22 @@ class ProductController extends Controller
             ->where('category_product.category_id', 1);
             //->get();
 
-        //Filter by brand if a brand filter is applied 
         $brandFilter = request()->get('brand');
+        $releaseYear = request()->get('release');
+        $sortOrder = request()->get('sort');
+
+        //Filter by brand if a brand filter is applied 
+        
             if ($brandFilter) {
             $mobiles->where('brand', $brandFilter);
         }
-        $releaseYear = request()->get('release');
+        
         if ($releaseYear) {
             $mobiles->where('release', $releaseYear);
         }
 
         //Apply sorting  
-        $sortOrder = request()->get('sort');
+        
         if ($sortOrder == 'price_asc') {
         // Sort the $mobiles collection by price in ascending order
             $mobiles = $mobiles->orderBy('price',"asc");
@@ -57,8 +61,14 @@ class ProductController extends Controller
 
         $mobiles = $mobiles->get();
 
-        
-        return view('Mobile', ['mobiles' => $mobiles]);
+        $uniqueBrands = Product::distinct()->pluck('brand')->sort();
+        $uniqueReleases = Product::distinct()->pluck('release')->sort();
+        return view('Mobile', [
+            'mobiles' => $mobiles,
+            'currentBrand' => $brandFilter,
+            'currentRelease' => $releaseYear,
+            'currentSort' => $sortOrder
+        ]);
     }
 
     public function showAllMonitors()

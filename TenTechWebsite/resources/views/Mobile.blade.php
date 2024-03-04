@@ -164,8 +164,10 @@ align-items: center;
           <div class="dropdownSF">
               <button onclick="toggleSortDropdown()" class="dropbtn">Sort<span class="arrow" id="sortArrow"></span></button>
               <div id="sortDropdown" class="dropdown-contentSF">
-                  <a href="?sort=price_asc">Price low to high</a>
-                  <a href="?sort=price_desc">Price high to low</a>
+                  <a href="?sort=price_asc&brand={{ $currentBrand }}&release={{ $currentRelease }}">Price low to high</a>
+                  <a href="?sort=price_desc&brand={{ $currentBrand }}&release={{ $currentRelease }}">Price high to low</a>
+                  <!-- Reset Filters Option -->
+                  <a href="{{ request()->url() }}" style="color: white;" >Clear</a>
               </div>
           </div>
           
@@ -177,8 +179,12 @@ align-items: center;
                   $uniqueReleases = $mobiles->unique('release')->sortBy('release');
               @endphp
               @foreach ($uniqueReleases  as $mobile)
-                <a href="?release={{ $mobile->release }}">{{ $mobile->release }}</a>
+                <a href="?release={{ $mobile->release }}&sort={{ $currentSort }}&brand={{ $currentBrand }}">{{ $mobile->release }}</a>
               @endforeach
+
+              <!-- Reset Filters Option -->
+              <a href="{{ request()->url() }}" style="color: white;">Clear</a>
+
               </div>
 
           </div>
@@ -187,13 +193,16 @@ align-items: center;
           <div class="dropdownSF" style="margin-left: 10px;"> <!-- Adding some space -->
               <button onclick="toggleBrandDropdown()" class="dropbtn">Brand<span class="arrow" id="brandArrow"></span></button>
               <div id="brandDropdown" class="dropdown-contentSF">
-                @php
+              @php
                   $uniqueBrands = $mobiles->unique('brand')->sortBy('brand');
               @endphp
               @foreach ($uniqueBrands  as $mobile)
-                <a href="?sort=&brand={{ $mobile->brand }}">{{ $mobile->brand }}</a>
+                  <a href="?brand={{ $mobile->brand }}&sort={{ $currentSort }}&release={{ $currentRelease }}">{{ $mobile->brand }}</a>
               @endforeach
-              
+
+              <!-- Reset Filters Option -->
+              <a href="{{ request()->url() }}" style="color: white;">Clear</a>
+
               </div>
           </div>
 
