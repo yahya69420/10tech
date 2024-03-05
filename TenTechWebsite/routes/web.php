@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 // routes/web.php
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\RatingController;
 
 Route::post('/submit-message', [MessageController::class, 'store'])->name('submit.message');
 
@@ -76,7 +77,7 @@ Route::post('/update_cart/{cart_id}', [App\Http\Controllers\BasketController::cl
 
 // product detail route
 Route::get('/productdetail/{id}', [App\Http\Controllers\ProductController::class, 'productDetail'])->name('productdetail');
-
+Route::post('add-rating',[RatingController::class,'add']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // logout route
