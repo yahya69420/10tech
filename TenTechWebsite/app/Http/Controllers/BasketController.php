@@ -106,11 +106,12 @@ class BasketController extends Controller
         $cart->total = $product_price * $cart->quantity;
         $cart->save();
         if (session('discount')) {
+            session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
             $this->applyDiscount($request);
         }
         // updates the session data even if there is no discoun applied
-        session(['cartItems' => $cart, 'totalItems' => $cart->sum('quantity'), 'totalAmount' => $cart->sum('total')]);
-        // dd($cart);
+        session(['cartItems' => $cart, 'totalItems' => $cart->sum('quantity'), 'totalAmount' => session('totalAmount'), 'discountTotal' => session('discountTotal')]);
+        // dd(session()->all());
         return back()->with('success', 'Cart updated');
     }
 
@@ -142,7 +143,7 @@ class BasketController extends Controller
                         $discountTotal = ($totalAmount * $discount->value) / 100;
                         $totalAmount -= ($totalAmount * $discount->value) / 100;
                     }
-                    session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
+                    // session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
                     session(['discountTotal' => $discountTotal, 'totalAmount' => $totalAmount, 'totalItems' => $totalItems, 'cartItems' => $cartItems, 'discount' => $discount]);
                     // dd($discountTotal, $totalAmount, $totalItems, $cartItems, $discount);
                     return back()->with('success', 'The discount code has been applied', ['cartItems' => $cartItems, 'totalItems' => $totalItems, 'totalAmount' => $totalAmount, 'discount' => $discount, 'discountTotal' => $discountTotal]);
