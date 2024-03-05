@@ -248,7 +248,7 @@ universally as is the case here :) */
                             </select>
                         </div>
                         <div class="updateButton">
-                            <button class="btn btn-active   hover:bg-green-700 text-black">Update Cart</button>
+                            <button class="btn btn-active hover:bg-green-700 text-black bg-neutral-content">Update Quantity</button>
                         </div>
                     </form>
                     <div class="pPrice pSubtotal font-bold">£{{ number_format($cartItem->price * $cartItem->cart_quantity, 2) }}</div>
@@ -301,11 +301,11 @@ universally as is the case here :) */
                             {{ session('discount')->code }} has been applied
                         </p>
                         <input style="border: 2px solid #049f47; padding: 8px; width: 200px; box-sizing: border-box;" type="text" name="promo_code" id="promoCodeInput" placeholder="Enter promo code" class="input input-bordered" value="{{ session('discount')->code }}" readonly />
-                        <button type="submit" id="removePromoCode" class="btn btn-active" formaction="remove_discount">Remove</button>
+                        <button type="submit" id="removePromoCode" class="btn btn-active bg-red-500 hover:bg-red-700 text-white" formaction="remove_discount">Remove</button>
                         @else
                         <input type="text" name="promo_code" id="promoCodeInput" placeholder="Enter promo code" class="input input-bordered" />
                         @endif
-                        <button type="submit" id="applyPromoCode" class="btn btn-active">Apply</button>
+                        <button type="submit" id="applyPromoCode" class="btn text-black hover:bg-green-700" style="background-color: #a6adba;" onmouseover="this.style.backgroundColor='#156f3d'" onmouseout="this.style.backgroundColor=''">Apply</button>
                     </div>
                 </form>
             </div>
