@@ -12,6 +12,15 @@
           padding: 0;
           background: #0e161d;
         }
+        .content {
+    margin-left: 250px;
+    padding: 20px;
+  }
+  .dashboard {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Ensure cards wrap when needed */
+  }
         </style>
 </head>
 <body>
