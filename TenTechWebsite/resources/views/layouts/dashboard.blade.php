@@ -109,6 +109,16 @@
               <p>56</p>
             </a>
           </div>
-        </div>
+        </div><div class="charts-flex-container">
+
+            <div class="chart-container">
+              <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+            </div>
+          <div class="chart-container2">
+            <canvas id="myChart2" style="width:100%;max-width:600px"></canvas>
+          </div>
+          </div>
+          
+          </div>
 </body>
 </html>
