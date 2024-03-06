@@ -13,6 +13,5 @@ class Review extends Model
         'user_id',
         'prod_id',
         'user_review'
-
     ];
 }
