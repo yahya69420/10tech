@@ -98,6 +98,11 @@
               <h3>order</h3>
               <p>25</p>
             </a>
+          </div>    <div class="card" style="background: #2ecc71;">
+            <a href="link-to-customers">
+              <h3>inventory</h3>
+              <p>1500</p>
+            </a>
           </div>
 </body>
 </html>
