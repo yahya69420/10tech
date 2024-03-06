@@ -21,6 +21,11 @@
     justify-content: space-between;
     flex-wrap: wrap; /* Ensure cards wrap when needed */
   }
+  .card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
         </style>
 </head>
 <body>
