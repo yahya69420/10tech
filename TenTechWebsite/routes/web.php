@@ -80,6 +80,7 @@ Route::post('/update_cart/{cart_id}', [App\Http\Controllers\BasketController::cl
 Route::get('/productdetail/{id}', [App\Http\Controllers\ProductController::class, 'productDetail'])->name('productdetail');
 Route::post('add-rating',[RatingController::class,'add']);
 Route::get('add-review/{product_id}/userreview',[ReviewController::class,'add']);
+Route::post('add-review/',[ReviewController::class,'create']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // logout route
