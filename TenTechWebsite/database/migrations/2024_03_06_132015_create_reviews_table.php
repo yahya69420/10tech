@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('prod_id');
-            $table->string('user_review');
+            $table->mediumText('user_review');
             $table->timestamps();
         });
     }
