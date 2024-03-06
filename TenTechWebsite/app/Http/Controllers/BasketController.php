@@ -58,6 +58,8 @@ class BasketController extends Controller
                 $cart->total = $product_price * $cart->quantity;
                 $cart->save();
                 $product_name = $request->product_name;
+                // session data is stored so that it can be accesseind the orders controller for the checkout
+                session(['cartItems' => $cart, 'totalItems' => $cart->sum('quantity'), 'totalAmount' => $cart->sum('total')]);
                 return back()->with('successfulladdition', $cart->quantity . ' ' . $product_name . '(s) added to basket');
             }
         } else {
@@ -75,6 +77,7 @@ class BasketController extends Controller
             $cart->total = $product_price * $cart->quantity;
             $cart->save();
             $product_name = $request->product_name;
+            session(['cartItems' => $cart, 'totalItems' => $cart->sum('quantity'), 'totalAmount' => $cart->sum('total')]);
             // redirect the user to the page that were on before added to cart clickjed
             return back()->with('successfulladdition', $cart->quantity . ' ' . $product_name . '(s) added to basket');
         }
@@ -82,8 +85,16 @@ class BasketController extends Controller
 
     public function removeFromBasket($id)
     {
+        // destroy the crt item wit the id that was passed in as the paramtetr
         Cart::destroy($id);
+        // nuke the session data
         session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
+        // updates the session data with whatever is left in the cart by looping through the cart - O(n)
+        // operation but the program/project os small so not a big hinderance
+        $cart = Cart::where('user_id', auth()->user()->id)->get();
+        for ($i = 0; $i < count($cart); $i++) {
+            session(['cartItems' => $cart, 'totalItems' => $cart->sum('quantity'), 'totalAmount' => $cart->sum('total')]);
+        }
         return back()->with('success', 'Item removed from basket');
     }
 
@@ -95,9 +106,12 @@ class BasketController extends Controller
         $cart->total = $product_price * $cart->quantity;
         $cart->save();
         if (session('discount')) {
+            session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
             $this->applyDiscount($request);
         }
-        // dd($cart);
+        // updates the session data even if there is no discoun applied
+        session(['cartItems' => $cart, 'totalItems' => $cart->sum('quantity'), 'totalAmount' => session('totalAmount'), 'discountTotal' => session('discountTotal')]);
+        // dd(session()->all());
         return back()->with('success', 'Cart updated');
     }
 
@@ -129,7 +143,7 @@ class BasketController extends Controller
                         $discountTotal = ($totalAmount * $discount->value) / 100;
                         $totalAmount -= ($totalAmount * $discount->value) / 100;
                     }
-                    session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
+                    // session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
                     session(['discountTotal' => $discountTotal, 'totalAmount' => $totalAmount, 'totalItems' => $totalItems, 'cartItems' => $cartItems, 'discount' => $discount]);
                     // dd($discountTotal, $totalAmount, $totalItems, $cartItems, $discount);
                     return back()->with('success', 'The discount code has been applied', ['cartItems' => $cartItems, 'totalItems' => $totalItems, 'totalAmount' => $totalAmount, 'discount' => $discount, 'discountTotal' => $discountTotal]);

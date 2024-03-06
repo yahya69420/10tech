@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 // routes/web.php
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\RatingController;
 
 Route::post('/submit-message', [MessageController::class, 'store'])->name('submit.message');
 
@@ -76,7 +77,7 @@ Route::post('/update_cart/{cart_id}', [App\Http\Controllers\BasketController::cl
 
 // product detail route
 Route::get('/productdetail/{id}', [App\Http\Controllers\ProductController::class, 'productDetail'])->name('productdetail');
-
+Route::post('add-rating',[RatingController::class,'add']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // logout route
@@ -86,6 +87,27 @@ Route::get('/settings', [App\Http\Controllers\UserSettingsController::class, 'in
 
 Route::post('/update-password', [App\Http\Controllers\UserSettingsController::class, 'updatePassword'])->name('update-password');
 
+Route::post('update-address', [App\Http\Controllers\UserSettingsController::class, 'updateAddress'])->name('update-address');
+// delete-address
+Route::post('delete-address', [App\Http\Controllers\UserSettingsController::class, 'deleteAddress'])->name('delete-address');
+
 Route::post('/delete-account', [App\Http\Controllers\UserSettingsController::class, 'deleteAccount'])->name('delete-account');
 
 Route::post('/updateProfilePicture', [App\Http\Controllers\UserSettingsController::class, 'updateProfilePicture'])->name('updateProfilePicture');
+
+// Route for the checkout process
+Route::post('/completeorder', [App\Http\Controllers\OrdersController::class, 'completeOrder'])->name('completeorder');
+
+Route::post('/addpaymentinfo', [App\Http\Controllers\UserSettingsController::class, 'addPaymentInfo'])->name('addPaymentInfo');
+
+Route::post('/delete-payment-details', [App\Http\Controllers\UserSettingsController::class, 'deletePaymentDetails'])->name('deletePaymentDetails');
+
+Route::get('order-history', [App\Http\Controllers\OrdersController::class, 'orderHistory'])->name('order-history');
+
+// Route for the order details page
+Route::get('order-details/{id}', [App\Http\Controllers\OrdersController::class, 'orderDetails'])->name('order-details');
+
+
+// Admin routes
+
+Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');

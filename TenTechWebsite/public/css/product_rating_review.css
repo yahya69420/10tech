@@ -1,0 +1,42 @@
+/* rating */
+/* Star rating container styling: sets the gold color, font size, weight, and alignment for the rating display. */
+.rating-css div {
+  color: #ffe400;
+  font-size: 30px;
+  font-family: sans-serif;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 20px 0;
+  
+}
+
+/* Hides the rating input fields, as they are not meant to be directly seen or interacted with by the user. */
+.rating-css input {
+  display: none;
+}
+
+/* Styles the rating labels (stars) to appear large and clickable, with a text shadow for depth. */
+.rating-css input + label {
+  font-size: 60px;
+  text-shadow: 1px 1px 0 #8f8420;
+  cursor: pointer;
+}
+
+/* Diminishes the color of unselected stars to a lighter shade, visually indicating the rating level. */
+.rating-css input:checked + label ~ label {
+  color: #b4afaf;
+}
+
+/* Provides interactive feedback by scaling down the label (star) when it is clicked or tapped. */
+.rating-css label:active {
+  transform: scale(0.8);
+  transition: 0.3s ease;
+}
+/* End of Star Rating */
+
+/* color of stars under product name */
+/*Enhances the visual feedback of the selected rating stars under the product name. */
+.checked{ 
+  color: #ffe900;
+}

@@ -92,6 +92,15 @@
 </head>
 <body>
 @include('header')
+
+<div class="contact-info">
+        <p>Contact our company:</p>
+        <p>Email: contact@company.com</p>
+        <p>Phone: +1 123-456-7890</p>
+        <p>Emergency 24-hour service: +1 987-654-3210</p>
+    </div>
+
+
 <div class="hero">
 </div>
 
