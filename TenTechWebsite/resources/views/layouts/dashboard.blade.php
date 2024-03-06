@@ -84,6 +84,14 @@
         </style>
 </head>
 <body>
-    
+    <div class="content">
+        <div class="dashboard">
+          
+          <div class="card" style="background: #3498db;">
+            <a href="link-to-products">
+              <h3>Customer</h3>
+              <p>249</p>
+            </a>
+          </div>
 </body>
 </html>
