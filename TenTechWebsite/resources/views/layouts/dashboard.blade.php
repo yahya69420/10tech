@@ -65,6 +65,22 @@
   max-width: calc(50% - 40px); 
   box-sizing: border-box; 
 }
+.charts-flex-container {
+  display: flex;
+  justify-content: space-around; 
+  align-items: flex-start;
+  flex-wrap: wrap; 
+  margin: 20px; 
+}
+
+
+
+
+
+
+
+
+
         </style>
 </head>
 <body>
