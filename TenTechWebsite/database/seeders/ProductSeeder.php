@@ -383,6 +383,7 @@ class ProductSeeder extends Seeder
             'email_verified_at' => null,
             'password' => bcrypt('1'),
             'profile_image' => null,
+            'is_admin' => 0,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -411,6 +412,42 @@ class ProductSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        // create a single admin user
+        DB::table('users')->insert([
+            'email' => 'admin@admin.com',
+            'email_verified_at' => null,
+            'password' => bcrypt('1'),
+            'profile_image' => null,
+            'is_admin' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        UserAddress::create([
+            'address_line_1' => '123 Admin Street',
+            'address_line_2' => 'Admin Town',
+            'city' => 'Admintown',
+            'post_code' => 'AD1 1KE',
+            'country' => 'England',
+            'user_id' => 2,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // create a single payemnt method for the admin
+        UserPayments::create([
+            'card_number' => '1234567890123456',
+            'card_holder_name' => 'Admin User',
+            'expiry_date' => '12/23',
+            'cvv' => '123',
+            'card_type' => 'visa',
+            'color' => '#1a1f71',
+            'user_id' => 2,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        
 
         
 
