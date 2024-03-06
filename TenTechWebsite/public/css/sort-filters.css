@@ -57,8 +57,7 @@
 }
 
 .dropdown-contentSF a:hover {
-    background-color: light;
-    color: blue;
+    background-color: rgba(47, 47, 199, 0.5);
 }
 
 .arrow {
