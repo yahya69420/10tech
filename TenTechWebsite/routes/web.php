@@ -106,3 +106,8 @@ Route::get('order-history', [App\Http\Controllers\OrdersController::class, 'orde
 
 // Route for the order details page
 Route::get('order-details/{id}', [App\Http\Controllers\OrdersController::class, 'orderDetails'])->name('order-details');
+
+
+// Admin routes
+
+Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
