@@ -103,6 +103,12 @@
               <h3>inventory</h3>
               <p>1500</p>
             </a>
+          </div> <div class="card" style="background: #e74c3c;">
+            <a href="link-to-alerts">
+              <h3>ALERTS</h3>
+              <p>56</p>
+            </a>
           </div>
+        </div>
 </body>
 </html>
