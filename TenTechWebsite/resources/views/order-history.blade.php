@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-lg-9">
                         <div class="history-title">
-                            @if ($orders->count() == 0)
+                            @if ($userOrders->count() == 0)
                             <p class="heading-4 font-weight-bold title fs-1">You have no orders yet</p>
                             <a href="{{ url('/') }}" class="btn btn-primary btn-lg mb-2">Let's change that!</a>
                             <br>
@@ -26,10 +26,10 @@
                             <br>
                             <br>
                             @else
-                            @if ($orders->count() == 1)
-                            <p class="heading-4 font-weight-bold title fs-1">Order History ({{ $orders->count() }} order)</p>
+                            @if ($userOrders->count() == 1)
+                            <p class="heading-4 font-weight-bold title fs-1">Order History ({{ $userOrders->count() }} order)</p>
                             @else
-                            <p class="heading-4 font-weight-bold title fs-1">Order History ({{ $orders->count() }} orders)</p>
+                            <p class="heading-4 font-weight-bold title fs-1">Order History ({{ $userOrders->count() }} orders)</p>
                             @endif
                             @endif
                         </div>
@@ -38,132 +38,191 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-9">
-                        @foreach($orders as $order)
+                        @foreach($userOrders as $order)
                         @if($order->status == 'pending')
                         <div class="single-order border rounded p-3 m-3 shadow">
                             <div class="order-header">
                                 <div class="order-id d-flex justify-content-between">
-                                    <a href="{{ route('order-details', ['id' => $order->tracking_number]) }}" class="text-dark">
-                                        <h6 class="heading-6 heading-6 fw-bold text-primary">Order ID: {{ $order->tracking_number }}</h6>
-                                    </a>
-                                    <h5 class="heading-5 fw-bold text-dark">Total: {{ $order->total_after_discount }}</h5>
+                                    <form action="{{ route('order-details', ['id' => $order->tracking_number]) }}" method="post">
+                                        @csrf
+                                        <button type="submit" class="text-dark" style="background: none; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;">
+                                            <h6 class="heading-6 heading-6 fw-bold text-primary">Order ID: {{ $order->tracking_number }}</h6>
+                                            <input type="hidden" name="id" value="{{ $order->tracking_number }}">
+                                        </button>
+                                    </form>
+                                    <h5 class="heading-5 fw-bold text-dark">Total: £{{ number_format($order->total_after_discount, 2) }}</h5>
                                 </div>
 
                                 <div class="order-info">
                                     <ul class="list-unstyled">
-                                        @foreach($orderItems[$order->id] as $item)
+                                        @php
+                                        $totalQuantity = 0;
+                                        $orderInfoDisplayed = false;
+                                        @endphp
+                                        @foreach($order->orderItems as $item)
+                                        @php
+                                        $totalQuantity += $item->quantity;
+                                        @endphp
+                                        @endforeach
+                                        @if (!$orderInfoDisplayed)
                                         <li>
-                                            @if ($item->quantity > 1)
-                                            <h6 class="heading-6 font-weight-500">Quantity: {{ $item->quantity }} items ordered</h6>
+                                            @if ($totalQuantity > 1)
+                                            <h6 class="heading-6 font-weight-500">Quantity: {{ $totalQuantity }} items ordered</h6>
+                                            @else
+                                            <h6 class="heading-6 font-weight-500">Quantity: {{ $totalQuantity }} item ordered</h6>
+                                            @endif
                                         </li>
-                                        @else
-                                        <h6 class="heading-6 font-weight-500">Quantity: {{ $item->quantity }} item ordered</h6>
-                                        </li>
-                                        @endif
                                         <li>
                                             <h6 class="heading-6 font-weight-500">Order Date: {{ \Carbon\Carbon::parse($order->order_date)->toDayDateTimeString() }}</h6>
                                         </li>
-                                        @endforeach
+                                        @endif
                                     </ul>
                                     <div class="progress" style="height: 30px;">
                                         <div class="progress-bar bg-warning" role="progressbar" style="width: 25%; color:black; font-size:20px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">PENDING</div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                         @endif
                         @endforeach
-                        @foreach ($orders as $order)
+
+                        @foreach($userOrders as $order)
                         @if($order->status == 'processing')
                         <div class="single-order border rounded p-3 m-3 shadow">
                             <div class="order-header">
                                 <div class="order-id d-flex justify-content-between">
-                                    <h6 class="heading-6 heading-6 fw-bold text-dark">Order ID: {{ $order->tracking_number }}</h6>
-                                    <h5 class="heading-5 fw-bold text-dark">Total: {{ $order->total_after_discount }}</h5>
+                                    <form action="{{ route('order-details', ['id' => $order->tracking_number]) }}" method="post">
+                                        @csrf
+                                        <button type="submit" class="text-dark" style="background: none; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;">
+                                            <h6 class="heading-6 heading-6 fw-bold text-primary">Order ID: {{ $order->tracking_number }}</h6>
+                                            <input type="hidden" name="id" value="{{ $order->tracking_number }}">
+                                        </button>
+                                    </form>
+                                    <h5 class="heading-5 fw-bold text-dark">Total: £{{ number_format($order->total_after_discount, 2) }}</h5>
                                 </div>
 
                                 <div class="order-info">
                                     <ul class="list-unstyled">
-                                        <!-- associative array with the order id as the key to match the order items value -->
-                                        @foreach($orderItems[$order->id] as $item)
+                                        @php
+                                        $totalQuantity = 0;
+                                        $orderInfoDisplayed = false;
+                                        @endphp
+                                        @foreach($order->orderItems as $item)
+                                        @php
+                                        $totalQuantity += $item->quantity;
+                                        @endphp
+                                        @endforeach
+                                        @if (!$orderInfoDisplayed)
                                         <li>
-                                            @if ($item->quantity > 1)
-                                            <h6 class="heading-6 font-weight-500">Quantity: {{ $item->quantity }} items ordered</h6>
+                                            @if ($totalQuantity > 1)
+                                            <h6 class="heading-6 font-weight-500">Quantity: {{ $totalQuantity }} items ordered</h6>
+                                            @else
+                                            <h6 class="heading-6 font-weight-500">Quantity: {{ $totalQuantity }} item ordered</h6>
+                                            @endif
                                         </li>
-                                        @else
-                                        <h6 class="heading-6 font-weight-500">Quantity: {{ $item->quantity }} item ordered</h6>
-                                        </li>
-                                        @endif
                                         <li>
                                             <h6 class="heading-6 font-weight-500">Order Date: {{ \Carbon\Carbon::parse($order->order_date)->toDayDateTimeString() }}</h6>
                                         </li>
-                                        @endforeach
+                                        @endif
                                     </ul>
                                     <div class="progress" style="height: 30px;">
                                         <div class="progress-bar bg-info" role="progressbar" style="width: 50%; color:black; font-size:20px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">PROCESSING</div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                         @endif
                         @endforeach
-                        @foreach ($orders as $order)
+
+                        @foreach($userOrders as $order)
                         @if($order->status == 'completed')
                         <div class="single-order border rounded p-3 m-3 shadow">
                             <div class="order-header">
                                 <div class="order-id d-flex justify-content-between">
-                                    <h6 class="heading-6 heading-6 fw-bold text-dark">Order ID: {{ $order->tracking_number }}</h6>
-                                    <h5 class="heading-5 fw-bold text-dark">Total: {{ $order->total_after_discount }}</h5>
+                                    <form action="{{ route('order-details', ['id' => $order->tracking_number]) }}" method="post">
+                                        @csrf
+                                        <button type="submit" class="text-dark" style="background: none; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;">
+                                            <h6 class="heading-6 heading-6 fw-bold text-primary">Order ID: {{ $order->tracking_number }}</h6>
+                                            <input type="hidden" name="id" value="{{ $order->tracking_number }}">
+                                        </button>
+                                    </form>
+                                    <h5 class="heading-5 fw-bold text-dark">Total: £{{ number_format($order->total_after_discount, 2) }}</h5>
                                 </div>
 
                                 <div class="order-info">
                                     <ul class="list-unstyled">
-                                        @foreach($orderItems[$order->id] as $item)
+                                        @php
+                                        $totalQuantity = 0;
+                                        $orderInfoDisplayed = false;
+                                        @endphp
+                                        @foreach($order->orderItems as $item)
+                                        @php
+                                        $totalQuantity += $item->quantity;
+                                        @endphp
+                                        @endforeach
+                                        @if (!$orderInfoDisplayed)
                                         <li>
-                                            @if ($item->quantity > 1)
-                                            <h6 class="heading-6 font-weight-500">Quantity: {{ $item->quantity }} items ordered</h6>
+                                            @if ($totalQuantity > 1)
+                                            <h6 class="heading-6 font-weight-500">Quantity: {{ $totalQuantity }} items ordered</h6>
+                                            @else
+                                            <h6 class="heading-6 font-weight-500">Quantity: {{ $totalQuantity }} item ordered</h6>
+                                            @endif
                                         </li>
-                                        @else
-                                        <h6 class="heading-6 font-weight-500">Quantity: {{ $item->quantity }} item ordered</h6>
-                                        </li>
-                                        @endif
                                         <li>
                                             <h6 class="heading-6 font-weight-500">Order Date: {{ \Carbon\Carbon::parse($order->order_date)->toDayDateTimeString() }}</h6>
                                         </li>
-                                        @endforeach
+                                        @endif
                                     </ul>
                                     <div class="progress" style="height: 30px;">
                                         <div class="progress-bar bg-success" role="progressbar" style="width: 100%; color:black; font-size:20px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">DELIVERED</div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                         @endif
                         @endforeach
-                        @foreach ($orders as $order)
+
+                        @foreach($userOrders as $order)
                         @if($order->status == 'cancelled')
                         <div class="single-order border rounded p-3 m-3 shadow">
                             <div class="order-header">
                                 <div class="order-id d-flex justify-content-between">
-                                    <h6 class="heading-6 heading-6 fw-bold text-dark">Order ID: {{ $order->tracking_number }}</h6>
-                                    <h5 class="heading-5 fw-bold text-dark">Total: {{ $order->total_after_discount }}</h5>
+                                    <form action="{{ route('order-details', ['id' => $order->tracking_number]) }}" method="post">
+                                        @csrf
+                                        <button type="submit" class="text-dark" style="background: none; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;">
+                                            <h6 class="heading-6 heading-6 fw-bold text-primary">Order ID: {{ $order->tracking_number }}</h6>
+                                            <input type="hidden" name="id" value="{{ $order->tracking_number }}">
+                                        </button>
+                                    </form>
+                                    <h5 class="heading-5 fw-bold text-dark">Total: £{{ number_format($order->total_after_discount, 2) }}</h5>
                                 </div>
 
                                 <div class="order-info">
                                     <ul class="list-unstyled">
-                                        @foreach($orderItems[$order->id] as $item)
+                                        @php
+                                        $totalQuantity = 0;
+                                        $orderInfoDisplayed = false;
+                                        @endphp
+                                        @foreach($order->orderItems as $item)
+                                        @php
+                                        $totalQuantity += $item->quantity;
+                                        @endphp
+                                        @endforeach
+                                        @if (!$orderInfoDisplayed)
                                         <li>
-                                            @if ($item->quantity > 1)
-                                            <h6 class="heading-6 font-weight-500">Quantity: {{ $item->quantity }} items ordered</h6>
+                                            @if ($totalQuantity > 1)
+                                            <h6 class="heading-6 font-weight-500">Quantity: {{ $totalQuantity }} items ordered</h6>
+                                            @else
+                                            <h6 class="heading-6 font-weight-500">Quantity: {{ $totalQuantity }} item ordered</h6>
+                                            @endif
                                         </li>
-                                        @else
-                                        <h6 class="heading-6 font-weight-500">Quantity: {{ $item->quantity }} item ordered</h6>
-                                        </li>
-                                        @endif
                                         <li>
                                             <h6 class="heading-6 font-weight-500">Order Date: {{ \Carbon\Carbon::parse($order->order_date)->toDayDateTimeString() }}</h6>
                                         </li>
-                                        @endforeach
+                                        @endif
                                     </ul>
                                     <div class="progress" style="height: 30px;">
                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 100%; color:black; font-size:20px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">CANCELLED</div>

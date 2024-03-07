@@ -105,9 +105,10 @@ Route::post('/delete-payment-details', [App\Http\Controllers\UserSettingsControl
 Route::get('order-history', [App\Http\Controllers\OrdersController::class, 'orderHistory'])->name('order-history');
 
 // Route for the order details page
-Route::get('order-details/{id}', [App\Http\Controllers\OrdersController::class, 'orderDetails'])->name('order-details');
+Route::post('order-details/{id}', [App\Http\Controllers\OrdersController::class, 'orderDetails'])->name('order-details');
 
 
 // Admin routes
 
 Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin/adminheader', [App\Http\Controllers\AdminController::class, 'adminheader'])->name('admin.adminheader');

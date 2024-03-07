@@ -13,6 +13,10 @@ class OrdersController extends Controller
 {
     public function completeOrder(Request $request)
     {
+        if (Cart::where('user_id', auth()->user()->id)->count() == 0) {
+            return redirect('/basket')->with('error', 'Cannot check out if you have no items in your cart');
+        }
+
         // Only allow one address per user
         $userAddress = UserAddress::where('user_id', auth()->user()->id)->first();
 
@@ -96,23 +100,36 @@ class OrdersController extends Controller
         // odate the order_id in the order_items table
         OrderItems::where('order_id', null)->update(['order_id' => $order->id]);
 
+        // Clear the cart
+        Cart::where('user_id', auth()->user()->id)->delete();
+        // clear the session
+        session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
         return view('complete', ['userAddress' => $userAddress]);
     }
 
 
-    public function orderHistory() {
-        $orders = Orders::where('user_id', auth()->user()->id)->get();
-        $orderItems = [];
-        foreach ($orders as $order) {
-            $items = OrderItems::where('order_id', $order->id)->get();
-            // associate the order id with the order items using k:v pairs
-            $orderItems[$order->id] = $items;
-        } 
-        // dd($orderItems);
-        return view('order-history', ['orders' => $orders, 'orderItems' => $orderItems]);
+    public function orderHistory()
+    {
+        $userOrders = Orders::with('orderItems')
+            ->where('user_id', auth()->user()->id)
+            ->get();
+        // dd($userOrders);
+        return view('order-history', compact('userOrders'));
+        // dd($orders);
     }
 
-    public function orderDetails() {
-        return view('order-details');
+    public function orderDetails(Request $request)
+    {
+        // need to fetch all of the details regarding the order, including the Orders itself, the OrderItems, the UserAddress, and the UserPayments, and the Product in each OrderItem as well as the User that makes the oreder
+        $details = Orders::with('orderItems', 'userAddress', 'userPayments', 'orderItems.product', 'user')
+            ->where('tracking_number', $request->id)
+            ->first();
+        // dd($details); // central debug view
+
+        // $details = Orders::with('orderItems', 'userAddress', 'userPayments')
+        // ->where('tracking_number', request('id'))
+        // ->first();
+
+        return view('order-details', compact('details'));
     }
 }
