@@ -169,7 +169,7 @@
                         </div>
                         <div class="col-md-12 mt-3">
                             <h4 style="font-weight: bold; font-size: 30px;">Total Price (+): £{{ number_format($details->total_before_discount, 2) }}</h4>
-                            <h4 style="font-weight: bold; font-size: 30px;">Discounts (-): £{{ number_format($details->discount_amount, 2) }}</h4>
+                            <h4 style="font-weight: bold; font-size: 30px; color:green;">Discounts (-): £{{ number_format($details->discount_amount, 2) }}</h4>
                             <hr>
                             <b>
                                 <h4 style="font-weight: bold; font-size: 30px;">Grand Total: £{{ number_format($details->total_after_discount, 2) }}</h4>
