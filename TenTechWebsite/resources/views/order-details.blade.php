@@ -136,29 +136,30 @@
                                                         <div class="fas fa-window-close" style="font-size: 30px; color: red;"></div>
                                                         @elseif ($details->status == 'completed')
                                                         <strong>
-                                                            <p class="me-3">Delivered On: {{ \Carbon\Carbon::parse($details->updated_at)->toDayDateTimeString() }}</p><strong>
-                                                                @endif
-                                                                <div class="row mt-3">
-                                                                    <div class="col-md-12">
-                                                                        <div class="title bg-secondary p-3 rounded shadow mt-1 mb-2" style="background-image: radial-gradient( circle 674px at 18.3% 77%,  rgba(139,186,244,1) 3.4%, rgba(15,51,92,1) 56.6% );">
-                                                                            <h4>Personal Details</h4>
-                                                                        </div>
-                                                                        <p>Email: {{ $details->user->email }}</p>
-                                                                    </div>
+                                                            <p class="me-3">Delivered On: {{ \Carbon\Carbon::parse($details->updated_at)->toDayDateTimeString() }}</p>
+                                                        </strong>
+                                                        @endif
+                                                        <div class="row mt-3">
+                                                            <div class="col-md-12">
+                                                                <div class="title bg-secondary p-3 rounded shadow mt-1 mb-2" style="background-image: radial-gradient( circle 674px at 18.3% 77%,  rgba(139,186,244,1) 3.4%, rgba(15,51,92,1) 56.6% );">
+                                                                    <h4>Personal Details</h4>
                                                                 </div>
+                                                                <p>Email: {{ $details->user->email }}</p>
+                                                            </div>
+                                                        </div>
 
-                                                                <div class="row mt-3">
-                                                                    <div class="col-md-12">
-                                                                        <div class="title bg-secondary p-3 rounded shadow mt-1 mb-1" style="background-image: radial-gradient( circle 674px at 18.3% 77%,  rgba(139,186,244,1) 3.4%, rgba(15,51,92,1) 56.6% );">
-                                                                            <h4>Delivery Details</h4>
-                                                                        </div>
-                                                                        <p>Address Line 1: {{ $details->userAddress->address_line_1 }}</p>
-                                                                        <p>Address Line 2: {{ $details->userAddress->address_line_2 }}</p>
-                                                                        <p>City: {{ $details->userAddress->city }}</p>
-                                                                        <p>Post Code: {{ $details->userAddress->post_code }}</p>
-                                                                        <p>Country: {{ $details->userAddress->country }}</p>
-                                                                    </div>
+                                                        <div class="row mt-3">
+                                                            <div class="col-md-12">
+                                                                <div class="title bg-secondary p-3 rounded shadow mt-1 mb-1" style="background-image: radial-gradient( circle 674px at 18.3% 77%,  rgba(139,186,244,1) 3.4%, rgba(15,51,92,1) 56.6% );">
+                                                                    <h4>Delivery Details</h4>
                                                                 </div>
+                                                                <p>Address Line 1: {{ $details->userAddress->address_line_1 }}</p>
+                                                                <p>Address Line 2: {{ $details->userAddress->address_line_2 }}</p>
+                                                                <p>City: {{ $details->userAddress->city }}</p>
+                                                                <p>Post Code: {{ $details->userAddress->post_code }}</p>
+                                                                <p>Country: {{ $details->userAddress->country }}</p>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                         </tbody>
