@@ -80,7 +80,7 @@
                                                     <td class="aProduct">
                                                         <div class="d-flex align-items-center">
                                                             <div class="thumbnail">
-                                                                <img src="{{ asset($item->product->image) }}" alt="product" class="img-fluid" style="height:60px; width:60px;">
+                                                                <img src="{{ asset($item->product->image) }}" alt="product" class="img-fluid" style="height:150px; width:150px;">
                                                             </div>
                                                             <div class="product-deets m-3">
                                                                 <h6 class="product-title">
