@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" integrity="sha512-8RxmFOVaKQe/xtg6lbscU9DU0IRhURWEuiI0tXevv+lXbAHfkpamD4VKFQRto9WgfOJDwOZ74c/s9Yesv3VvIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>{{ $details->tracking_number }}</title>
+
+
     <style>
         .progress-bar {
             position: relative;
@@ -107,9 +109,60 @@
                                             @endforeach
                                     </table>
 
+                                </div>
+                            </div>
 
+                            <!-- Right Table 506% of width -->
+                            <div class="col-md-4 overflow-hidden">
+                                <div class="table-responsive">
+                                    <table class="table table-borderless overflow-hidden">
+                                        <tbody>
+                                            <div class="mt-30">
+                                                <div class="title bg-secondary p-3 rounded shadow mt-1 mb-1" style="background-image: radial-gradient( circle 674px at 18.3% 77%,  rgba(139,186,244,1) 3.4%, rgba(15,51,92,1) 56.6% );">
+                                                    <h4>Order Details</h4>
+                                                </div>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex order-id justify-content-lg-start">
+                                                            <p class="me-3">Order ID: {{ $details->tracking_number }}</p>
+                                                        </div>
+                                                        <div class="d-flex order-date justify-content-lg-start">
+                                                            <p class="me-3">Order Date: {{ \Carbon\Carbon::parse($details->order_date)->toDayDateTimeString() }}</p>
+                                                        </div>
+                                                        @if ($details->status == 'cancelled')
+                                                        <strong>
+                                                            <p class="me-3">Cancelled On: {{ \Carbon\Carbon::parse($details->updated_at)->toDayDateTimeString() }}</p>
+                                                        </strong>
+                                                        <div class="fas fa-window-close" style="font-size: 30px; color: red;"></div>
+                                                        @elseif ($details->status == 'completed')
+                                                        <strong>
+                                                            <p class="me-3">Delivered On: {{ \Carbon\Carbon::parse($details->updated_at)->toDayDateTimeString() }}</p><strong>
+                                                                @endif
+                                                                <div class="row mt-3">
+                                                                    <div class="col-md-12">
+                                                                        <div class="title bg-secondary p-3 rounded shadow mt-1 mb-2" style="background-image: radial-gradient( circle 674px at 18.3% 77%,  rgba(139,186,244,1) 3.4%, rgba(15,51,92,1) 56.6% );">
+                                                                            <h4>Personal Details</h4>
+                                                                        </div>
+                                                                        <p>Email: {{ $details->user->email }}</p>
+                                                                    </div>
+                                                                </div>
 
-
+                                                                <div class="row mt-3">
+                                                                    <div class="col-md-12">
+                                                                        <div class="title bg-secondary p-3 rounded shadow mt-1 mb-1" style="background-image: radial-gradient( circle 674px at 18.3% 77%,  rgba(139,186,244,1) 3.4%, rgba(15,51,92,1) 56.6% );">
+                                                                            <h4>Delivery Details</h4>
+                                                                        </div>
+                                                                        <p>Address Line 1: {{ $details->userAddress->address_line_1 }}</p>
+                                                                        <p>Address Line 2: {{ $details->userAddress->address_line_2 }}</p>
+                                                                        <p>City: {{ $details->userAddress->city }}</p>
+                                                                        <p>Post Code: {{ $details->userAddress->post_code }}</p>
+                                                                        <p>Country: {{ $details->userAddress->country }}</p>
+                                                                    </div>
+                                                                </div>
+                                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
