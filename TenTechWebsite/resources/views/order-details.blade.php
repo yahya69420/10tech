@@ -166,10 +166,38 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-12 mt-3">
+                            <h4 style="font-weight: bold; font-size: 30px;">Total Price (+): £{{ number_format($details->total_before_discount, 2) }}</h4>
+                            <h4 style="font-weight: bold; font-size: 30px;">Discounts (-): £{{ number_format($details->discount_amount, 2) }}</h4>
+                            <hr>
+                            <b>
+                                <h4 style="font-weight: bold; font-size: 30px;">Grand Total: £{{ number_format($details->total_after_discount, 2) }}</h4>
+                            </b>
+                        </div>
+                        <hr>
+                        <div class="title bg-secondary p-3 rounded shadow mt-1 mb-1 card-subtitle text-muted" style="background-image: radial-gradient( circle 674px at 18.3% 77%,  rgba(139,186,244,1) 3.4%, rgba(15,51,92,1) 56.6% );">
+                            <h4>Cancellations</h4>
+                        </div>
+                        <ol>
+                            <li><strong>Cancellation Period:</strong> Orders can be cancelled within 24 hours of placement.</li>
 
+                            <li><strong>Procedure:</strong> Log in, go to "Order History," and follow instructions for cancellation.</li>
+
+                            <li><strong>Refund:</strong> Full refund for cancellations within 24 hours; after, refund terms may vary.</li>
+
+                            <li><strong>Exceptions:</strong> Items that have been damaged may not be accepted during returns process.</li>
+
+                            <li><strong>Communication:</strong> Email confirmation upon successful cancellation.</li>
+                        </ol>
+                        <div class="container m-3">
+                        </div>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" autocomplete="off">Write a review!</button>
+                        <button type="button" class="btn btn-outline-danger">Cancel your order</button>
                     </div>
                 </div>
-                @include('layouts/footer')
+            </div>
+        </div>
+        @include('layouts/footer')
 </body>
 
 </html>
