@@ -45,7 +45,7 @@
     margin: 0;
     color: #333;
   }
-  .chart-container,  {
+  .chart-container, .chart-container2 {
   padding: 20px;
   background: #1a2938;
   border-radius: 5px;
@@ -55,16 +55,7 @@
   max-width: calc(50% - 40px); 
   box-sizing: border-box; 
 }
-.chart-container2 {
-  padding: 20px;
-  background: #1a2938;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  margin-top: 20px; 
-  flex: 1; 
-  max-width: calc(50% - 40px); 
-  box-sizing: border-box; 
-}
+
 .charts-flex-container {
   display: flex;
   justify-content: space-around; 
@@ -84,6 +75,7 @@
         </style>
 </head>
 <body>
+  
     <div class="content">
         <div class="dashboard">
           

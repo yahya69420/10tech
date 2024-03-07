@@ -111,3 +111,4 @@ Route::post('order-details/{id}', [App\Http\Controllers\OrdersController::class,
 // Admin routes
 
 Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin/adminheader', [App\Http\Controllers\AdminController::class, 'adminheader'])->name('admin.adminheader');
