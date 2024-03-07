@@ -63,7 +63,60 @@
                             </div>
                             @endif
                         </div>
+                        <div class="row mt-2">
+                            <!-- Left Table 505% of width -->
+                            <div class="col-md-8">
+                                <div class="table-responsive">
+                                    <table class="table caption-top">
+                                        <div class="mt-30">
+                                            <div class="title bg-secondary p-3 rounded shadow mt-1 mb-1" style="background-image: radial-gradient( circle 674px at 18.3% 77%,  rgba(139,186,244,1) 3.4%, rgba(15,51,92,1) 56.6% );">
+                                                <h4>Ordered Products</h4>
+                                            </div>
+                                            @foreach ($details->orderItems as $item)
+                                            <tbody>
+                                                <tr>
+                                                    <td class="aProduct">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="thumbnail">
+                                                                <img src="{{ asset($item->product->image) }}" alt="product" class="img-fluid" style="height:60px; width:60px;">
+                                                            </div>
+                                                            <div class="product-deets m-3">
+                                                                <h6 class="product-title">
+                                                                    <a href="{{ route('productdetail', ['id' => $item->product->id]) }}" class="text-primary">{{ $item->product->name }}</a>
+                                                                </h6>
+                                                                <ul class="list-unstyled d-flex">
+                                                                    <li class="me-3">
+                                                                        <span>Unit Price: £{{ $item->product->price }}</span>
+                                                                    </li>
+                                                                    <li class="me-3">
+                                                                        @if ($item->quantity > 1)
+                                                                        <span>Quantity: {{ $item->quantity }} units</span>
+                                                                    </li>
+                                                                    @else
+                                                                    <span>Quantity: {{ $item->quantity }} unit</span>
+                                                                    @endif
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="price-of-product">
+                                                        <span style="font-weight: bold; font-size: 20px">Total Price: £{{ number_format($item->quantity * $item->product->price, 2) }}</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            @endforeach
+                                    </table>
 
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                @include('layouts/footer')
 </body>
 
 </html>
