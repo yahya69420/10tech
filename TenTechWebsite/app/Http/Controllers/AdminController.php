@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
+
 class AdminController extends Controller
 {
 
@@ -19,7 +21,8 @@ class AdminController extends Controller
     }
 
     public function admincust(){
-            return view('layouts.admincust');
+        $data = User::where('is_admin', 0)->get();
+        return view('layouts.admincust', ['data' => $data]);
     }
     //
 }
