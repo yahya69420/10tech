@@ -22,4 +22,21 @@ class Orders extends Model
         return $this->hasMany(OrderItems::class, 'order_id');
     }
 
+    public function userPayments()
+    {
+        return $this->belongsTo(UserPayments::class, 'user_payment_id');
+    }
+
+    public function userAddress()
+    {
+        return $this->belongsTo(UserAddress::class, 'user_address_id');
+    }
+
+    // realate to teh user that the order belongs to
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 }

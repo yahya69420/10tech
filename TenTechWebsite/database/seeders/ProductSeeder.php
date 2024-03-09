@@ -459,7 +459,7 @@ class ProductSeeder extends Seeder
             'total_after_discount' => 1000,
             'status' => 'pending',
             'order_date' => now(),
-            'tracking_number' => '65e4a105a9f39',
+            'tracking_number' => uniqid(),
             'user_address_id' => 1,
             'user_payment_id' => 1,
             'discount_id' => null,
@@ -482,13 +482,13 @@ class ProductSeeder extends Seeder
             'total_after_discount' => 2000,
             'status' => 'processing',
             'order_date' => now(),
-            'tracking_number' => '65e4a105a9f39',
+            'tracking_number' => uniqid(),
             'user_address_id' => 1,
             'user_payment_id' => 1,
             'discount_id' => null,
             'user_id' => 1,
             'created_at' => now(),
-            'updated_at' => now(),
+            'updated_at' => now()->addDay(),
         ]);
 
         OrderItems::create([
@@ -505,13 +505,13 @@ class ProductSeeder extends Seeder
             'total_after_discount' => 3000,
             'status' => 'completed',
             'order_date' => now(),
-            'tracking_number' => '65e4a105a9f39',
+            'tracking_number' => uniqid(),
             'user_address_id' => 1,
             'user_payment_id' => 1,
             'discount_id' => null,
             'user_id' => 1,
             'created_at' => now(),
-            'updated_at' => now(),
+            'updated_at' => now()->addDays(2)->addHours(4)->addMinutes(34),
         ]);
 
         OrderItems::create([
@@ -529,13 +529,13 @@ class ProductSeeder extends Seeder
             'total_after_discount' => 4000,
             'status' => 'cancelled',
             'order_date' => now(),
-            'tracking_number' => '65e4a105a9f39',
+            'tracking_number' => uniqid(),
             'user_address_id' => 1,
             'user_payment_id' => 1,
             'discount_id' => null,
             'user_id' => 1,
             'created_at' => now(),
-            'updated_at' => now(),
+            'updated_at' => now()->addHours(18)->addMinutes(34)->addSeconds(12),
         ]);
 
         OrderItems::create([

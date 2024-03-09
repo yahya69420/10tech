@@ -19,4 +19,15 @@ class OrderItems extends Model
     {
         return $this->belongsTo(Orders::class, 'order_id');
     }
+
+    /**
+     * Gets the product associated with an order item
+     * 
+     * Establishes a one-to-many relationship with Products based on 'product_id'
+     */
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 }

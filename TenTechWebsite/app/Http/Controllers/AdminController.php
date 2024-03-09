@@ -9,7 +9,13 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('layouts.dashboard');
+        if (!auth()->check()) {
+            return redirect('/login')->with('error', 'You are not logged in!');
+        } else if (auth()->user()->is_admin == 0) {
+            return redirect('/shop')->with('error', 'You are not an administrator of this site!');
+        } else {
+            return view('layouts.dashboard');
+        }
     }
     //
 }
