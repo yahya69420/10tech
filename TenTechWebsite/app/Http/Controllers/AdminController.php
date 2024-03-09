@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 
 class AdminController extends Controller
@@ -25,23 +26,33 @@ class AdminController extends Controller
         return view('layouts.admincust', ['data' => $data]);
     }
 
+    /**
+     * Add a new user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function addUser(Request $request)
-{
-    // Validate the incoming request data
-    $validatedData = $request->validate([
-        'email' => 'required|email|unique:users,email',
-        'password' => 'required|string|min:8',
-    ]);
+    {
+        // Validate the incoming request data
+        $validator = Validator::make($request->all(), [
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'], // Adjust password rules as needed
+        ]);
 
-    // Create a new user
-    $user = new User();
-    $user->email = $validatedData['email'];
-    $user->password = bcrypt($validatedData['password']); // Encrypt the password
-    $user->save();
+        // If validation fails, redirect back with errors
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
-    // Redirect back or wherever appropriate
-    return redirect()->back()->with('success', 'User added successfully!');
-}   
-    
+        // Create the user
+        $user = User::create([
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+        ]);
+
+        // Redirect back with success message
+        return redirect()->back()->with('success', 'User added successfully!');
+    }
     //
 }
