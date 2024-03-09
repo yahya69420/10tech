@@ -42,7 +42,7 @@
         <button type="submit">Add User</button>
     </form>
 </div>
-<script>
+   <script>
     // Get references to the button and form
     var addButton = document.getElementById('addButton');
     var addUserForm = document.getElementById('addUserForm');
