@@ -17,5 +17,9 @@ class AdminController extends Controller
             return view('layouts.dashboard');
         }
     }
+
+    public function admincust(){
+            return view('layouts.admincust');
+    }
     //
 }
