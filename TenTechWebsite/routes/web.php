@@ -81,6 +81,8 @@ Route::get('/productdetail/{id}', [App\Http\Controllers\ProductController::class
 Route::post('add-rating',[RatingController::class,'add']);
 Route::get('add-review/{product_id}/userreview',[ReviewController::class,'add']);
 Route::post('add-review/',[ReviewController::class,'create']);
+Route::get('edit-review/{product_name}/userreview',[ReviewController::class,'edit']);
+Route::put('update-review',[ReviewController::class,'update']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // logout route
