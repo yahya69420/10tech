@@ -74,4 +74,36 @@ class ReviewController extends Controller
         }
     }
 
+    public function edit($product_id) 
+    {
+        $product = Product::where('id', $product_id)->where('stock','>','0')->first();
+
+        if ($product) 
+        {
+            $product_id = $product->id;
+            $review = Review::where('user_id',Auth::id())->where('prod_id',$product_id)->first();
+
+            if ($review)
+            {
+                return view('reviews.edit', ['review' => $review,
+                                            ]);
+            }
+            else{
+                return redirect()->back()->with('status','The link you follow was broken');
+            }
+        }
+        else 
+        {
+            return redirect()->back()->with('status','The link you follow was broken');
+        }
+
+
+
+    }
+
+    public function update() 
+    {
+
+    }
+
 }
