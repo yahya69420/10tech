@@ -80,7 +80,7 @@
                                                     <td class="aProduct">
                                                         <div class="d-flex align-items-center">
                                                             <div class="thumbnail">
-                                                                <img src="{{ asset($item->product->image) }}" alt="product" class="img-fluid" style="height:60px; width:60px;">
+                                                                <img src="{{ asset($item->product->image) }}" alt="product" class="img-fluid" style="height:150px; width:150px;">
                                                             </div>
                                                             <div class="product-deets m-3">
                                                                 <h6 class="product-title">
@@ -136,29 +136,30 @@
                                                         <div class="fas fa-window-close" style="font-size: 30px; color: red;"></div>
                                                         @elseif ($details->status == 'completed')
                                                         <strong>
-                                                            <p class="me-3">Delivered On: {{ \Carbon\Carbon::parse($details->updated_at)->toDayDateTimeString() }}</p><strong>
-                                                                @endif
-                                                                <div class="row mt-3">
-                                                                    <div class="col-md-12">
-                                                                        <div class="title bg-secondary p-3 rounded shadow mt-1 mb-2" style="background-image: radial-gradient( circle 674px at 18.3% 77%,  rgba(139,186,244,1) 3.4%, rgba(15,51,92,1) 56.6% );">
-                                                                            <h4>Personal Details</h4>
-                                                                        </div>
-                                                                        <p>Email: {{ $details->user->email }}</p>
-                                                                    </div>
+                                                            <p class="me-3">Delivered On: {{ \Carbon\Carbon::parse($details->updated_at)->toDayDateTimeString() }}</p>
+                                                        </strong>
+                                                        @endif
+                                                        <div class="row mt-3">
+                                                            <div class="col-md-12">
+                                                                <div class="title bg-secondary p-3 rounded shadow mt-1 mb-2" style="background-image: radial-gradient( circle 674px at 18.3% 77%,  rgba(139,186,244,1) 3.4%, rgba(15,51,92,1) 56.6% );">
+                                                                    <h4>Personal Details</h4>
                                                                 </div>
+                                                                <p>Email: {{ $details->user->email }}</p>
+                                                            </div>
+                                                        </div>
 
-                                                                <div class="row mt-3">
-                                                                    <div class="col-md-12">
-                                                                        <div class="title bg-secondary p-3 rounded shadow mt-1 mb-1" style="background-image: radial-gradient( circle 674px at 18.3% 77%,  rgba(139,186,244,1) 3.4%, rgba(15,51,92,1) 56.6% );">
-                                                                            <h4>Delivery Details</h4>
-                                                                        </div>
-                                                                        <p>Address Line 1: {{ $details->userAddress->address_line_1 }}</p>
-                                                                        <p>Address Line 2: {{ $details->userAddress->address_line_2 }}</p>
-                                                                        <p>City: {{ $details->userAddress->city }}</p>
-                                                                        <p>Post Code: {{ $details->userAddress->post_code }}</p>
-                                                                        <p>Country: {{ $details->userAddress->country }}</p>
-                                                                    </div>
+                                                        <div class="row mt-3">
+                                                            <div class="col-md-12">
+                                                                <div class="title bg-secondary p-3 rounded shadow mt-1 mb-1" style="background-image: radial-gradient( circle 674px at 18.3% 77%,  rgba(139,186,244,1) 3.4%, rgba(15,51,92,1) 56.6% );">
+                                                                    <h4>Delivery Details</h4>
                                                                 </div>
+                                                                <p>Address Line 1: {{ $details->userAddress->address_line_1 }}</p>
+                                                                <p>Address Line 2: {{ $details->userAddress->address_line_2 }}</p>
+                                                                <p>City: {{ $details->userAddress->city }}</p>
+                                                                <p>Post Code: {{ $details->userAddress->post_code }}</p>
+                                                                <p>Country: {{ $details->userAddress->country }}</p>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                         </tbody>
@@ -168,7 +169,7 @@
                         </div>
                         <div class="col-md-12 mt-3">
                             <h4 style="font-weight: bold; font-size: 30px;">Total Price (+): £{{ number_format($details->total_before_discount, 2) }}</h4>
-                            <h4 style="font-weight: bold; font-size: 30px;">Discounts (-): £{{ number_format($details->discount_amount, 2) }}</h4>
+                            <h4 style="font-weight: bold; font-size: 30px; color:green;">Discounts (-): £{{ number_format($details->discount_amount, 2) }}</h4>
                             <hr>
                             <b>
                                 <h4 style="font-weight: bold; font-size: 30px;">Grand Total: £{{ number_format($details->total_after_discount, 2) }}</h4>

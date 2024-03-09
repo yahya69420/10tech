@@ -275,5 +275,15 @@ align-items: center;
     <footer>@include('layouts/footer')
     </footer>
 
+@if(session('error'))
+<script>
+Swal.fire({
+  icon: "error",
+  title: "{{ session('error') }}",
+  footer: '<a href="@asset(\'contact\')">Why do I have this issue?</a>',
+  });
+</script>
+@endif
+
 </html>
 

@@ -51,24 +51,24 @@
         <div class="bottom-section">
           <h4>Shopping with TenTech</h4>
           <ul>
-            <li><a href="shop">Home</a></li>
-            <li><a href="Mobile">Mobile</a></li>
-            <li><a href="Monitor">Monitor</a></li>
-            <li><a href="Console">Console</a></li>
-            <li><a href="Laptop">Laptop</a></li>
+            <li><a href="{{ asset('/shop') }}">Home</a></li>
+            <li><a href="{{ asset('/Mobile') }}">Mobile</a></li>
+            <li><a href="{{ asset('/Monitor') }}">Monitor</a></li>
+            <li><a href="{{ asset('/Console') }}">Console</a></li>
+            <li><a href="{{ asset('/Laptop') }}">Laptop</a></li>
           </ul>
         </div>
         <div class="bottom-section">
           <h4>Customer Care</h4>
           <ul>
-            <li><a href="contact">Contact Us</a></li>
-            <li><a href="about">About Us</a></li>
-            <li><a href="login">Login</a></li>
-            <li><a href="register">Register</a></li>
+            <li><a href="{{ asset('/contact') }}">Contact Us</a></li>
+            <li><a href="{{ asset('/about') }}">About Us</a></li>
+            <li><a href="{{ asset('/login') }}">Login</a></li>
+            <li><a href="{{ asset('/register') }}">Register</a></li>
           </ul>
         </div>
       <div class="bottom-bottom">
-        <p>Visit our corporate website at <a href="shop">www.TechTech.com</a></p>
+        <p>Visit our corporate website at <a href="{{ asset('/') }}">www.TechTech.com</a></p>
         <p>&copy; TenTech All rights reserved.</p>
       </div>
     </footer>
