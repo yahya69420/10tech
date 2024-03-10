@@ -55,5 +55,4 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'User added successfully!');
     }
     
-    
 }
