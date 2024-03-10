@@ -389,6 +389,7 @@ class ProductSeeder extends Seeder
         ]);
 
         UserAddress::create([
+            'full_name' => 'Tony Stark',
             'address_line_1' => '123 Fake Street',
             'address_line_2' => 'Fake Town',
             'city' => 'Faketown',
@@ -425,6 +426,7 @@ class ProductSeeder extends Seeder
         ]);
 
         UserAddress::create([
+            'full_name' => 'Admin Admin',
             'address_line_1' => '123 Admin Street',
             'address_line_2' => 'Admin Town',
             'city' => 'Admintown',
