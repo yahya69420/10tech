@@ -12,6 +12,8 @@ use App\Models\OrderItems;
 use App\Models\Orders;
 use App\Models\UserAddress;
 use App\Models\UserPayments;
+use App\Models\Review;
+use App\Models\Rating;
 
 class ProductSeeder extends Seeder
 {
@@ -546,6 +548,35 @@ class ProductSeeder extends Seeder
             'updated_at' => now(),
             'order_id' => 4,
             'product_id' => 4,
+        ]);
+
+        Rating::create([
+            'user_id' => '1',
+            'prod_id'=> '4',
+            'stars_rated'=> '5',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        Rating::create([
+            'user_id' => '2',
+            'prod_id'=> '4',
+            'stars_rated'=> '2',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        Review::create([
+            'user_id'=>'1',
+            'prod_id'=>'4',
+            'user_review'=>'Test User Review: Great Product!',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        Review::create([
+            'user_id'=>'2',
+            'prod_id'=>'4',
+            'user_review'=>'Admin Review: Fast Delivery!!!',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
 
