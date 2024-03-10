@@ -130,10 +130,40 @@ class ProductController extends Controller
     public function showAllMonitors()
     {
         $monitors = Product::join('category_product', 'products.id', '=', 'category_product.product_id')
-            ->where('category_product.category_id', 3)
-            ->get();
+            ->where('category_product.category_id', 3);
+            //->get();
+        
 
-        return view('Monitor', ['monitors' => $monitors]);
+        $brandFilter = request()->get('brand');
+        $releaseYear = request()->get('release');
+        $sortOrder = request()->get('sort');
+
+        if ($brandFilter) {
+            $monitors->where('brand', $brandFilter);
+        }
+        
+        if ($releaseYear) {
+            $monitors->where('release', $releaseYear);
+        }
+
+        if ($sortOrder == 'price_asc') {
+            // Sort the $mobiles collection by price in ascending order
+            $consoles  = $monitors->orderBy('price',"asc");
+        } elseif ($sortOrder == 'price_desc') {
+            $consoles  = $monitors ->orderBy('price',"desc");
+        }
+
+        $monitors = $monitors->get();
+        
+        return view('Monitor', [
+            'monitors' => $monitors,
+            'currentBrand' => $brandFilter,
+            'currentRelease' => $releaseYear,
+            'currentSort' => $sortOrder,
+        ]);
+
+
+        
     }
 
     public function showAllTablets() {
