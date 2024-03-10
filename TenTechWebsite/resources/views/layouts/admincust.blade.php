@@ -114,8 +114,26 @@
 
 .addbutton:hover,
 .addbutton:hover{
-    color: white;
+    background-color: #788485;
     cursor: pointer;
+}
+
+.removebutton {
+  margin-left: 10px; /* Adjust margin as needed */
+  background-color: #E74C3C; /* Red color for remove button */
+  border: none;
+  color: black;
+  padding: 15px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.removebutton:hover {
+  background-color: #C0392B; /* Darker red color on hover */
+  cursor: pointer;
 }
 
 /* Modal content */
@@ -155,6 +173,7 @@
 <div class="container">
   <h2>Users</h2>
   <button class="addbutton" id="addButton">Add User</button>
+  <button class="removebutton" id="removeButton">Remove User</button>
   <ul class="responsive-table">
     <li class="table-header">
       <div class="col col-1">User Id</div>
