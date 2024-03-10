@@ -197,7 +197,7 @@
     <li class="table-header">
       <div class="col col-1">User Id</div>
       <div class="col col-2">Email</div>
-      <div class="col col-3">Date Created</div>
+      <div class="col col-3">Last Updated</div>
       <div class="col col-4"></div>
       <div class="col col-4"></div>
     </li>
@@ -205,7 +205,7 @@
     <li class="table-row">
       <div class="col col-1" data-label="UserId">{{ $item->id}}</div>
       <div class="col col-2" data-label="Email">{{ $item->email }}</div>
-      <div class="col col-3" data-label="Last Updated">{{ $item->updated_at }}</div>
+      <div class="col col-3" data-label="Date Created">{{ $item->updated_at }}</div>
       <div class="col col-4" data-label="Actions">
     <form action="{{ route('admin.removeuser', ['id' => $item->id]) }}" method="POST">
         @csrf
