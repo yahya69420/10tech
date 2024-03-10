@@ -46,13 +46,17 @@
             flex-basis: 10%;
           }
           .col-2 {
-            flex-basis: 40%;
+            flex-basis: 25%;
           }
           .col-3 {
             flex-basis: 25%;
           }
           .col-4 {
-            flex-basis: 25%;
+            flex-basis: 20%;
+          }
+        
+          .col-5{
+            flex-basis: 20%:
           }
 
           @media all and (max-width: 767px) {
@@ -116,6 +120,23 @@
 .addbutton:hover{
     background-color: #788485;
     cursor: pointer;
+}
+
+.editbutton {
+    background-color: #2da96d;
+    border: none;
+  color: black;
+  padding: 15px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.editbutton:hover{
+    cursor: pointer;
+    background-color: #1f7e50;
 }
 
 .removebutton {
@@ -193,7 +214,7 @@
     </form>
     </div>
     <div class = "col col-5" data-label="Actions">
-        <button>Edit</button>
+        <button class="editbutton">Edit</button>
 </div>
     </li>
     @endforeach
