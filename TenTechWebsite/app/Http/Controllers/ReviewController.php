@@ -6,6 +6,8 @@ use App\Models\OrderItems; //Ordered
 use App\Models\Product;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 
 class ReviewController extends Controller
 {
@@ -89,20 +91,44 @@ class ReviewController extends Controller
                                             ]);
             }
             else{
-                return redirect()->back()->with('status','The link you follow was broken');
+                
+                return redirect()->back()->with('status','The link you followed was broken');
             }
         }
         else 
         {
-            return redirect()->back()->with('status','The link you follow was broken');
+            return redirect()->back()->with('status',"The link you follow was broken");
         }
 
 
 
     }
 
-    public function update() 
+    public function update(Request $request) 
     {
+        $user_review = $request->input('user_review');
+        if ($user_review!= '')
+        { 
+            $review_id = $request->input('review_id');
+            $review = Review::where('id', $review_id)->where('user_id',Auth::id())->first();
+            
+            if ($review) {
+                $review->user_review = $request->input('user_review');
+                $review->update();
+
+                // return redirect()->route('productdetail', ['id' => $product_id])->with('status', "Thank you for writing a review");
+                return redirect()->route('productdetail', ['id' => $review->product->id])->with('status', "Thank you for writing a review");
+                
+            }
+            else 
+                {
+                    return redirect()->back()->with('status','Link is broken');
+                }
+        }
+        else 
+        {
+            return redirect()->back()->with('status',"You cannot subit an empty review");
+        }
 
     }
 
