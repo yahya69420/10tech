@@ -178,29 +178,30 @@
                                         <!-- Check if the current user is the author of the review to display an edit link -->
 
                                         @if($item->user_id == Auth::id())
-                                        
-                                            <a href=" {{ url('edit-review/'.$product->id.'/userreview')}}" class="btn btn-primary"> 
-                                            edit 
+                                            <!-- Shows edit button if user is logged in and has wrote a review -->
+                                            <a href=" {{ url('edit-review/'.$product->id.'/userreview')}}" class="btn btn-link"> 
+                                            edit review
                                             </a>
                                         @endif
                                         
                                         <br>
+                                        <!-- retrieve rating for the product by current item's user -->
                                         @php 
                                             $rating = App\Models\Rating::where('prod_id',$product->id)->where('user_id', $item->user->id)->first();
-                                            $userRatedStars = $rating ? $rating->stars_rated : 0; // Default to 0 if no rating is found
                                         @endphp 
 
                                         <!-- Check if there are ratings for the review by that user -->
                                         @if($rating)
+                                            <!-- displays user's rating as stars filled and unfilled -->
                                             @php
                                                 $user_rated = $rating->stars_rated;
                                             @endphp
 
-                                            @for($i = 1; $i<= $userRatedStars; $i++ ) 
+                                            @for($i = 1; $i<= $user_rated; $i++ ) 
                                                 <i class="fa fa-star checked"></i> 
                                             @endfor
                                             
-                                            @for($j = $userRatedStars+1; $j <= 5; $j++ ) 
+                                            @for($j = $user_rated+1; $j <= 5; $j++ ) 
                                                 <i class="fa fa-star "></i> 
                                             @endfor
                                 
