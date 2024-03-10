@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Rating;
 use App\Models\Category;
+use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -30,6 +31,10 @@ class ProductController extends Controller
         // Attempt to retrieve the current user's rating for the specified product, if it exists.
         $user_rating = Rating::where('prod_id', $product->id)->where('user_id',Auth::id())->first();
 
+        $reviews = Review::with('user.address')->where('prod_id', $product->id)->get();
+
+        //$reviews = Review::with('user.address')->where('prod_id', $product->id)->get();
+        
         // Check if there are any ratings for the product.
         if($ratings->count()>0) 
         {
@@ -45,7 +50,8 @@ class ProductController extends Controller
         return view('productdetail', ['product' => $product, 
                                     'ratings' => $ratings,
                                     'rating_value' =>$rating_value,
-                                    'user_rating'=>$user_rating]);
+                                    'user_rating'=>$user_rating,
+                                    'reviews'=>$reviews]);
     }
 
     public function showAllConsoles()
