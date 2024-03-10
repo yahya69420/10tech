@@ -162,22 +162,49 @@
                                     <a href="{{ url('add-review/'.$product->id.'/userreview')}}" class="btn btn-link">
                                         write Review
                                     </a>
-
+                                         
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for=""> Rahul Vasantlal </label>
-                                    <a href=""> edit </a>
-                                    <br>
-                                    <i class="fa fa-star checked"></i>
-                                    <i class="fa fa-star checked"></i>
-                                    <i class="fa fa-star checked"></i>
-                                    <i class="fa fa-star checked"></i>
-                                    <i class="fa fa-star "></i>
-                                    <small>Reviewed on 27 Aug 2021</small>
-                                    <p>
-                                        Product was good and fast deliver
-                                    </p>
+                                    @foreach($reviews as $item)
+                                    @php
+                                        $fullName = $item->user->address->full_name;                                     
+                                    @endphp
+                                    <div class="user-review">
+                                    
+                                        <!-- Display the card holder's name if available, otherwise 'anonymous' -->
+                                        <label>{{ $fullName ?? 'anonymous' }}</label>
+                                        
+                                        <!-- Check if the current user is the author of the review to display an edit link -->
+                                        @if($item->user_id == Auth::id())
+                                            <a href=" {{ url('edit-review/'.$product->name.'/userreview')}}"> edit </a>
+                                        @endif
+
+                                        <br>
+                                        <!-- Check if there are ratings for the review by that user -->
+                                        @if($item->rating)
+                                            @php
+                                                $user_rated = $item->rating->stars_rated;
+                                            @endphp
+
+                                            @for($i = 1; $i<= $ratenum; $i++ ) 
+                                                <i class="fa fa-star checked"></i> 
+                                            @endfor
+                                            
+                                            @for($j = $ratenum+1; $j <= 5; $j++ ) 
+                                                <i class="fa fa-star "></i> 
+                                            @endfor
+                                
+                                        @endif
+
+                                        <!-- Display the review date in "day month year" format -->
+                                        <small>Reviewed on {{ $item->created_at->format(' d M Y')}}</small>
+
+                                        <!-- Display the review text -->
+                                        <p>
+                                            {{ $item->user_review}}
+                                        </p>
+                                    @endforeach
 
                                 </div>
                             </div>
