@@ -146,10 +146,36 @@ class ProductController extends Controller
 
     public function showAllLaptops() {
         $laptops = Product::join('category_product', 'products.id', '=', 'category_product.product_id')
-            ->where('category_product.category_id', 5)
-            ->get();
+            ->where('category_product.category_id', 5);
+            //->get();
+        
+        $brandFilter = request()->get('brand');
+        $releaseYear = request()->get('release');
+        $sortOrder = request()->get('sort');
 
-        return view('Laptop', ['laptops' => $laptops]);
+        if ($brandFilter) {
+            $laptops->where('brand', $brandFilter);
+        }
+        
+        if ($releaseYear) {
+            $laptops->where('release', $releaseYear);
+        }
+
+        if ($sortOrder == 'price_asc') {
+            // Sort the $mobiles collection by price in ascending order
+            $laptops  = $laptops->orderBy('price',"asc");
+        } elseif ($sortOrder == 'price_desc') {
+            $laptops  = $laptops ->orderBy('price',"desc");
+        }
+
+        $laptops = $laptops->get();
+        
+        return view('Laptop', [
+            'laptops' => $laptops,
+            'currentBrand' => $brandFilter,
+            'currentRelease' => $releaseYear,
+            'currentSort' => $sortOrder,
+        ]);
     }
 
 }
