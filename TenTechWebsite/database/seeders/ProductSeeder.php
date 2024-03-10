@@ -617,8 +617,8 @@ class ProductSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-         // MacBook Pro Review by Test user
-         Rating::create([
+        // MacBook Pro Review by Admin
+        Rating::create([
             'user_id' => '2',
             'prod_id'=> '2',
             'stars_rated'=> '2',
@@ -629,7 +629,24 @@ class ProductSeeder extends Seeder
         Review::create([
             'user_id'=>'2',
             'prod_id'=>'2',
-            'user_review'=>'Excelent product but poor battery life overall and not worth the price in my opinion!.',
+            'user_review'=>'Excellent product but poor battery life overall and not worth the price in my opinion!.',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Dell XPS 13 Review by Admin User
+        Rating::create([
+            'user_id' => '2',
+            'prod_id'=> '3',
+            'stars_rated'=> '4',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Review::create([
+            'user_id'=>'2',
+            'prod_id'=>'3',
+            'user_review'=>"Seriously impressed with this machine. The spec is no surprise, it's what I ordered",
             'created_at' => now(),
             'updated_at' => now(),
         ]);
