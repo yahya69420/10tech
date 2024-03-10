@@ -100,7 +100,7 @@
 
                                     </form>
                                     <!-- @dump(session()->all()) -->
-                                    @dump(session()->all())
+                                    <!-- @dump(session()->all()) -->
                                     @if(session('successfulladdition'))
                                     <script>
                                         Toast = Swal.mixin({
@@ -160,7 +160,7 @@
                                     </button>
 
                                     <a href="{{ url('add-review/'.$product->id.'/userreview')}}" class="btn btn-link">
-                                        write Review
+                                        Write Review
                                     </a>
                                          
                                 </div>
@@ -176,10 +176,14 @@
                                         <label>{{ $fullName ?? 'anonymous' }}</label>
                                         
                                         <!-- Check if the current user is the author of the review to display an edit link -->
+                                        
                                         @if($item->user_id == Auth::id())
-                                            <a href=" {{ url('edit-review/'.$product->name.'/userreview')}}"> edit </a>
+                                        
+                                            <a href=" {{ url('edit-review/'.$product->id.'/userreview')}}" class="btn btn-primary"> 
+                                            edit 
+                                            </a>
                                         @endif
-
+                                        
                                         <br>
                                         <!-- Check if there are ratings for the review by that user -->
                                         @if($item->rating)
