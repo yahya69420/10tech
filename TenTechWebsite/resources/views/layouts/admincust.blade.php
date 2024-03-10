@@ -205,7 +205,7 @@
     <li class="table-row">
       <div class="col col-1" data-label="UserId">{{ $item->id}}</div>
       <div class="col col-2" data-label="Email">{{ $item->email }}</div>
-      <div class="col col-3" data-label="Date Created">{{ $item->created_at }}</div>
+      <div class="col col-3" data-label="Last Updated">{{ $item->updated_at }}</div>
       <div class="col col-4" data-label="Actions">
     <form action="{{ route('admin.removeuser', ['id' => $item->id]) }}" method="POST">
         @csrf
@@ -237,6 +237,20 @@
   </div>
 </div>
 
+<div id="editModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form id="editForm" action="{{ route('admin.edituser', ['id' => $item->id]) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <label for="edit_email">Email:</label>
+        <input type="email" id="edit_email" name="edit_email" required>
+        <button class="editbutton" type="submit">Save</button>
+    </form>
+  </div>
+</div>
+
 <script>
   // Get the modal
   var modal = document.getElementById("myModal");
@@ -263,6 +277,41 @@
       modal.style.display = "none";
     }
   }
+
+  // Get the edit modal
+var editModal = document.getElementById("editModal");
+
+// Get the edit button
+var editButtons = document.querySelectorAll(".editbutton");
+
+// Loop through each edit button and add event listener
+editButtons.forEach(function(button) {
+  button.onclick = function() {
+    // Get the email from the corresponding table row
+    var email = this.parentNode.parentNode.querySelector(".col-2").textContent.trim();
+    
+    // Set the value of the email input in the edit form
+    document.getElementById("edit_email").value = email;
+
+    // Display the edit modal
+    editModal.style.display = "block";
+  };
+});
+
+// Get the close button for the edit modal
+var editClose = editModal.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the edit modal
+editClose.onclick = function() {
+  editModal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the edit modal, close it
+window.onclick = function(event) {
+  if (event.target == editModal) {
+    editModal.style.display = "none";
+  }
+};
 </script>
 
 </body>

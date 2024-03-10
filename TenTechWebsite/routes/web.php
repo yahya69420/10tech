@@ -116,3 +116,4 @@ Route::get('/admin/adminheader', [App\Http\Controllers\AdminController::class, '
 Route::get('/admin/admincust', [App\Http\Controllers\AdminController::class, 'admincust'])->name('admin.admincust');
 Route::post('/admin/adduser', [AdminController::class, 'addUser'])->name('admin.adduser');
 Route::delete('/admin/removeuser/{id}', [AdminController::class, 'removeUser'])->name('admin.removeuser');
+Route::put('/admin/edituser/{id}', [AdminController::class, 'editUser'])->name('admin.edituser');
