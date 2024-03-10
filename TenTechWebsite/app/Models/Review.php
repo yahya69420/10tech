@@ -19,11 +19,11 @@ class Review extends Model
         return $this->belongsTo(User::class); // Indicates a "belongs to" relationship with the User model.
     }
 
-    public function rating() 
-    {
-        return $this->belongsTo(Rating::class, 'user_id', 'user_id');
+    // public function rating()
+    // {
+    //     return $this->belongsTo(Rating::class, 'user_id', 'user_id');
        
-    }
+    // }
 
     public function product() 
     {
