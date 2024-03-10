@@ -32,9 +32,7 @@ class ProductController extends Controller
         $user_rating = Rating::where('prod_id', $product->id)->where('user_id',Auth::id())->first();
 
         $reviews = Review::with('user.address')->where('prod_id', $product->id)->get();
-
         //$reviews = Review::with('user.address')->where('prod_id', $product->id)->get();
-        
         // Check if there are any ratings for the product.
         if($ratings->count()>0) 
         {
