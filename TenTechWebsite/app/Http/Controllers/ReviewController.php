@@ -22,14 +22,26 @@ class ReviewController extends Controller
             // Retrieve the ID of the found product
             $product_id = $product->id;
 
-            // Check if there's a verified purchase for this product by the current user
-            $verified_purchase = OrderItems::whereHas('order', function ($query) use ($product_id) {
+            $review_check = Review::where('user_id', Auth::id())->where('prod_id',$product_id)->first();
+
+            if ($review_check) 
+            {
+                return view('reviews.edit', ['review' => $review_check,
+                                            ]);
+            } 
+            else 
+            {
+                $verified_purchase = OrderItems::whereHas('order', function ($query) use ($product_id) {
                 $query->where('user_id', Auth::id()); // Filter orders by the current user's ID
-            })->where('product_id', $product_id)->exists(); // Check if the product is in the user's orders
+                })->where('product_id', $product_id)->exists(); // Check if the product is in the user's orders
+                
+                return view('reviews.index',['product' => $product,
+                                            'verified_purchase'=>$verified_purchase,
+                                            ]);
+            }
+
+            // Check if there's a verified purchase for this product by the current user
             
-            return view('reviews.index',['product' => $product,
-                                        'verified_purchase'=>$verified_purchase,
-                                        ]);
 
         }else {
             // If no product matches the search criteria, redirect back with a status message
