@@ -550,17 +550,28 @@ class ProductSeeder extends Seeder
             'product_id' => 4,
         ]);
 
+        // Macbook air Review 
+        Rating::create([
+            'user_id' => '1',
+            'prod_id'=> '1',
+            'stars_rated'=> '2',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        Review::create([
+            'user_id'=>'1',
+            'prod_id'=>'1',
+            'user_review'=>'The laptop delivered was in really good condition but battery life significantly dropped after about 2 months of use.
+            It can barely last 40 minutes.',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // HP Spectre x360 review by Test user
         Rating::create([
             'user_id' => '1',
             'prod_id'=> '4',
             'stars_rated'=> '5',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        Rating::create([
-            'user_id' => '2',
-            'prod_id'=> '4',
-            'stars_rated'=> '2',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -571,6 +582,16 @@ class ProductSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        // HP Spectre x360 review by Admin
+        Rating::create([
+            'user_id' => '2',
+            'prod_id'=> '4',
+            'stars_rated'=> '2',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        
         Review::create([
             'user_id'=>'2',
             'prod_id'=>'4',
@@ -579,7 +600,39 @@ class ProductSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
+        // MacBook Pro Review by Test user
+        Rating::create([
+            'user_id' => '1',
+            'prod_id'=> '2',
+            'stars_rated'=> '5',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
 
+        Review::create([
+            'user_id'=>'1',
+            'prod_id'=>'2',
+            'user_review'=>'Great condition! Really happy with my Mac book pro! Highly recommend this website for quality products.',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+         // MacBook Pro Review by Test user
+         Rating::create([
+            'user_id' => '2',
+            'prod_id'=> '2',
+            'stars_rated'=> '2',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Review::create([
+            'user_id'=>'2',
+            'prod_id'=>'2',
+            'user_review'=>'Excelent product but poor battery life overall and not worth the price in my opinion!.',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
 
  
     }
