@@ -12,6 +12,8 @@ use App\Models\OrderItems;
 use App\Models\Orders;
 use App\Models\UserAddress;
 use App\Models\UserPayments;
+use App\Models\Review;
+use App\Models\Rating;
 
 class ProductSeeder extends Seeder
 {
@@ -389,6 +391,7 @@ class ProductSeeder extends Seeder
         ]);
 
         UserAddress::create([
+            'full_name' => 'Tony Stark',
             'address_line_1' => '123 Fake Street',
             'address_line_2' => 'Fake Town',
             'city' => 'Faketown',
@@ -425,6 +428,7 @@ class ProductSeeder extends Seeder
         ]);
 
         UserAddress::create([
+            'full_name' => 'Admin Admin',
             'address_line_1' => '123 Admin Street',
             'address_line_2' => 'Admin Town',
             'city' => 'Admintown',
@@ -546,7 +550,106 @@ class ProductSeeder extends Seeder
             'product_id' => 4,
         ]);
 
+        // Macbook air Review 
+        Rating::create([
+            'user_id' => '1',
+            'prod_id'=> '1',
+            'stars_rated'=> '2',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        Review::create([
+            'user_id'=>'1',
+            'prod_id'=>'1',
+            'user_review'=>'The laptop delivered was in really good condition but battery life significantly dropped after about 2 months of use.
+            It can barely last 40 minutes.',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
 
+        // HP Spectre x360 review by Test user
+        Rating::create([
+            'user_id' => '1',
+            'prod_id'=> '4',
+            'stars_rated'=> '5',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        Review::create([
+            'user_id'=>'1',
+            'prod_id'=>'4',
+            'user_review'=>'Test User Review: Great Product!',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // HP Spectre x360 review by Admin
+        Rating::create([
+            'user_id' => '2',
+            'prod_id'=> '4',
+            'stars_rated'=> '2',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        
+        Review::create([
+            'user_id'=>'2',
+            'prod_id'=>'4',
+            'user_review'=>'Admin Review: Fast Delivery!!!',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // MacBook Pro Review by Test user
+        Rating::create([
+            'user_id' => '1',
+            'prod_id'=> '2',
+            'stars_rated'=> '5',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Review::create([
+            'user_id'=>'1',
+            'prod_id'=>'2',
+            'user_review'=>'Great condition! Really happy with my Mac book pro! Highly recommend this website for quality products.',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // MacBook Pro Review by Admin
+        Rating::create([
+            'user_id' => '2',
+            'prod_id'=> '2',
+            'stars_rated'=> '2',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Review::create([
+            'user_id'=>'2',
+            'prod_id'=>'2',
+            'user_review'=>'Excellent product but poor battery life overall and not worth the price in my opinion!.',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Dell XPS 13 Review by Admin User
+        Rating::create([
+            'user_id' => '2',
+            'prod_id'=> '3',
+            'stars_rated'=> '4',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Review::create([
+            'user_id'=>'2',
+            'prod_id'=>'3',
+            'user_review'=>"Seriously impressed with this machine. The spec is no surprise, it's what I ordered",
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
 
  
     }

@@ -43,4 +43,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    /**
+     * Define a one-to-one relationship with the UserAddress model.
+     * Enables direct access to a user's address information through their user ID
+     */
+    public function address()
+    {
+        return $this->hasOne(\App\Models\UserAddress::class, 'user_id', 'id');
+    }
 }
