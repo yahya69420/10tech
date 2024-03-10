@@ -198,8 +198,8 @@
       <div class="col col-1">User Id</div>
       <div class="col col-2">Email</div>
       <div class="col col-3">Last Updated</div>
-      <div class="col col-4"></div>
-      <div class="col col-4"></div>
+      <div class="col col-4"></div> 
+      <div class="col col-5"></div>
     </li>
     @foreach($data as $item)
     <li class="table-row">
@@ -216,6 +216,29 @@
     <div class = "col col-5" data-label="Actions">
         <button class="editbutton">Edit</button>
 </div>
+    </li>
+    @endforeach
+  </ul>
+</div>
+
+<hr>
+
+<div class="container">
+  <h2>Customer Messages</h2>
+  <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col col-1">User Id</div>
+      <div class="col col-2">Name</div>
+      <div class="col col-3">Message</div>
+      <div class="col col-4">Last Updated</div> 
+    </li>
+    @foreach($datamess as $item)
+    <li class="table-row">
+      <div class="col col-1" data-label="UserId">{{ $item->id}}</div>
+      <div class="col col-2" data-label="Name">{{ $item -> name}}</div>
+      <div class="col col-3" data-label="Subject">{{ $item->subject }}</div>
+      <div class="col col-4" data-label="Date Created">{{ $item->updated_at }}</div>
+    </div>
     </li>
     @endforeach
   </ul>

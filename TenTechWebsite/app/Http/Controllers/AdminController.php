@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\CustomerMessage;
 use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
@@ -24,7 +25,8 @@ class AdminController extends Controller
 
     public function admincust(){
         $data = User::where('is_admin', 0)->get();
-        return view('layouts.admincust', ['data' => $data]);
+        $datamess = CustomerMessage::all();
+        return view('layouts.admincust', ['data' => $data], ['datamess' => $datamess]);
     }
 
     /**
