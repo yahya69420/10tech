@@ -55,10 +55,35 @@ class ProductController extends Controller
     public function showAllConsoles()
     {
         $consoles = Product::join('category_product', 'products.id', '=', 'category_product.product_id')
-            ->where('category_product.category_id', 2)
-            ->get();
+            ->where('category_product.category_id', 2);
+            
+        $brandFilter = request()->get('brand');
+        $releaseYear = request()->get('release');
+        $sortOrder = request()->get('sort');
 
-        return view('Console', ['consoles' => $consoles]);
+        if ($brandFilter) {
+            $consoles->where('brand', $brandFilter);
+        }
+        
+        if ($releaseYear) {
+            $consoles->where('release', $releaseYear);
+        }
+
+        if ($sortOrder == 'price_asc') {
+            // Sort the $mobiles collection by price in ascending order
+            $consoles  = $consoles->orderBy('price',"asc");
+        } elseif ($sortOrder == 'price_desc') {
+            $consoles  = $consoles ->orderBy('price',"desc");
+        }
+
+        $consoles = $consoles->get();
+        
+        return view('Console', [
+            'consoles' => $consoles,
+            'currentBrand' => $brandFilter,
+            'currentRelease' => $releaseYear,
+            'currentSort' => $sortOrder,
+        ]);
     }
 
     public function showAllMobiles()
@@ -73,7 +98,7 @@ class ProductController extends Controller
 
         //Filter by brand if a brand filter is applied 
         
-            if ($brandFilter) {
+        if ($brandFilter) {
             $mobiles->where('brand', $brandFilter);
         }
         
