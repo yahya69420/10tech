@@ -115,3 +115,4 @@ Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'in
 Route::get('/admin/adminheader', [App\Http\Controllers\AdminController::class, 'adminheader'])->name('admin.adminheader');
 Route::get('/admin/admincust', [App\Http\Controllers\AdminController::class, 'admincust'])->name('admin.admincust');
 Route::post('/admin/adduser', [AdminController::class, 'addUser'])->name('admin.adduser');
+Route::delete('/admin/removeuser/{id}', [AdminController::class, 'removeUser'])->name('admin.removeuser');

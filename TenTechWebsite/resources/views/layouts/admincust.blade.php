@@ -119,7 +119,6 @@
 }
 
 .removebutton {
-  margin-left: 10px; /* Adjust margin as needed */
   background-color: #E74C3C; /* Red color for remove button */
   border: none;
   color: black;
@@ -173,18 +172,29 @@
 <div class="container">
   <h2>Users</h2>
   <button class="addbutton" id="addButton">Add User</button>
-  <button class="removebutton" id="removeButton">Remove User</button>
   <ul class="responsive-table">
     <li class="table-header">
       <div class="col col-1">User Id</div>
       <div class="col col-2">Email</div>
       <div class="col col-3">Date Created</div>
+      <div class="col col-4"></div>
+      <div class="col col-4"></div>
     </li>
     @foreach($data as $item)
     <li class="table-row">
       <div class="col col-1" data-label="UserId">{{ $item->id}}</div>
       <div class="col col-2" data-label="Email">{{ $item->email }}</div>
       <div class="col col-3" data-label="Date Created">{{ $item->created_at }}</div>
+      <div class="col col-4" data-label="Actions">
+    <form action="{{ route('admin.removeuser', ['id' => $item->id]) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button class="removebutton" type="submit">Remove</button>
+    </form>
+    </div>
+    <div class = "col col-5" data-label="Actions">
+        <button>Edit</button>
+</div>
     </li>
     @endforeach
   </ul>

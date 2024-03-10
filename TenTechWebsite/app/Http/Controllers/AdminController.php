@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
@@ -55,4 +56,15 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'User added successfully!');
     }
     
+    public function removeUser($id)
+{
+    // Find the user by id
+    $user = User::findOrFail($id);
+
+    // Delete the user
+    $user->delete();
+
+    // Redirect back with success message
+    return Redirect::back()->with('success', 'User removed successfully!');
+}
 }
