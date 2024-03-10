@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\AdminController;
 
 Route::post('/submit-message', [MessageController::class, 'store'])->name('submit.message');
 
@@ -81,7 +82,7 @@ Route::get('/productdetail/{id}', [App\Http\Controllers\ProductController::class
 Route::post('add-rating',[RatingController::class,'add']);
 Route::get('add-review/{product_id}/userreview',[ReviewController::class,'add']);
 Route::post('add-review/',[ReviewController::class,'create']);
-Route::get('edit-review/{product_name}/userreview',[ReviewController::class,'edit']);
+Route::get('edit-review/{product_id}/userreview',[ReviewController::class,'edit']);
 Route::put('update-review',[ReviewController::class,'update']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -117,3 +118,5 @@ Route::post('order-details/{id}', [App\Http\Controllers\OrdersController::class,
 
 Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
 Route::get('/admin/adminheader', [App\Http\Controllers\AdminController::class, 'adminheader'])->name('admin.adminheader');
+Route::get('/admin/admincust', [App\Http\Controllers\AdminController::class, 'admincust'])->name('admin.admincust');
+Route::post('/admin/adduser', [AdminController::class, 'addUser'])->name('admin.adduser');
