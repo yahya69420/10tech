@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
@@ -55,5 +56,38 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'User added successfully!');
     }
     
-    
+    public function removeUser($id)
+{
+    // Find the user by id
+    $user = User::findOrFail($id);
+
+    // Delete the user
+    $user->delete();
+
+    // Redirect back with success message
+    return Redirect::back()->with('success', 'User removed successfully!');
+}
+
+public function editUser(Request $request, $id)
+{
+    // Find the user by id
+    $user = User::findOrFail($id);
+
+    // Validate the incoming request data
+    $validator = Validator::make($request->all(), [
+        'edit_email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$user->id],
+    ]);
+
+    // If validation fails, redirect back with errors
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
+
+    // Update the user's email
+    $user->email = $request->input('edit_email');
+    $user->save();
+
+    // Redirect back with success message
+    return Redirect::back()->with('success', 'User email updated successfully!');
+}
 }
