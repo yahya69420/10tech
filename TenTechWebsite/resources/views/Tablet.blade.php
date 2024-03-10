@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <link rel="stylesheet" href="{{ asset('/css/sort-filters.css') }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <style>
@@ -158,7 +158,50 @@ align-items: center;
             </a>
           </div>  -->
 
+          <div class="sorts_filter-section"> 
+              <div class="dropdownSF">
+                <button class="dropbtn">Sort<span class="arrow" id="sortArrow"></span></button>
+                    <div id="sortDropdown" class="dropdown-contentSF">
+                        <a href="?sort=price_asc&brand={{ $currentBrand }}&release={{ $currentRelease }}">Price low to high</a>
+                        <a href="?sort=price_desc&brand={{ $currentBrand }}&release={{ $currentRelease }}">Price high to low</a>
+                        <a href="{{ request()->url() }}" style="color: white;" >Clear</a>
+                    </div>
+              </div>
+            
 
+            <div class="dropdownSF" style="margin-left: 10px;">
+                <button class="dropbtn">Release<span class="arrow" id="releaseArrow"></span></button>
+                <div id="releaseDropdown" class="dropdown-contentSF">
+                    @php
+                        $uniqueReleases = $tablets->unique('release')->sortBy('release');
+                    @endphp
+                    @foreach ($uniqueReleases  as $tablet)
+                        <a href="?release={{ $tablet->release }}&sort={{ $currentSort }}&brand={{ $currentBrand }}">{{ $tablet->release }}</a>
+                    @endforeach
+
+                  <!-- Reset Filters Option -->
+                  <a href="{{ request()->url() }}" style="color: white;">Clear</a>
+                
+                </div>
+            </div>
+          
+
+            <div class="dropdownSF" style="margin-left: 10px;"> <!-- Adding some space -->
+                <button class="dropbtn">Brand<span class="arrow" id="brandArrow"></span></button>
+                <div id="brandDropdown" class="dropdown-contentSF">
+                    @php
+                        $uniqueBrands = $tablets->unique('brand')->sortBy('brand');
+                    @endphp
+                    @foreach ($uniqueBrands  as $tablet)
+                        <a href="?brand={{ $tablet->brand }}&sort={{ $currentSort }}&release={{ $currentRelease }}">{{ $tablet->brand }}</a>
+                    @endforeach
+
+                <!-- Reset Filters Option -->
+                <a href="{{ request()->url() }}" style="color: white;">Clear</a>
+
+                </div>
+            </div>
+          </div>
 
           <div class="categories-section">
         @foreach ($tablets as $tablet)

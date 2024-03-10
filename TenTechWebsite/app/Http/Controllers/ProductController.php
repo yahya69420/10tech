@@ -168,10 +168,36 @@ class ProductController extends Controller
 
     public function showAllTablets() {
         $tablets = Product::join('category_product', 'products.id', '=', 'category_product.product_id')
-            ->where('category_product.category_id', 4)
-            ->get();
+            ->where('category_product.category_id', 4);
+            
 
-        return view('Tablet', ['tablets' => $tablets]);
+        $brandFilter = request()->get('brand');
+        $releaseYear = request()->get('release');
+        $sortOrder = request()->get('sort');
+
+        if ($brandFilter) {
+            $tablets->where('brand', $brandFilter);
+        }
+        
+        if ($releaseYear) {
+            $tablets->where('release', $releaseYear);
+        }
+
+        if ($sortOrder == 'price_asc') {
+            // Sort the $mobiles collection by price in ascending order
+            $tablets= $tablets->orderBy('price',"asc");
+        } elseif ($sortOrder == 'price_desc') {
+            $tablets  = $tablets ->orderBy('price',"desc");
+        }
+
+        $tablets = $tablets->get();
+        
+        return view('Tablet', [
+            'tablets' => $tablets,
+            'currentBrand' => $brandFilter,
+            'currentRelease' => $releaseYear,
+            'currentSort' => $sortOrder,
+        ]);
     }
 
     public function showAllLaptops() {
