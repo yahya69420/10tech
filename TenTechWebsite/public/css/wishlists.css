@@ -1,0 +1,46 @@
+.solid-heading {
+    font-family: verdana; 
+    font-weight: bold; 
+    text-align: center;
+}
+body {
+    font-family: Arial, sans-serif;
+}
+.wishlist-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+.wishlist-header {
+    color: #333;
+    margin-bottom: 20px;
+}
+.wishlist-header h1, .wishlist-header svg {
+    display: inline-block; /* Makes them sit in line */
+    vertical-align: middle; 
+    margin-right: 10px; 
+}
+
+.wishlist-header svg {
+    width: 40px; 
+    height: auto; 
+}
+.start-shopping-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(28, 113, 218);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.start-shopping-btn:hover {
+    background-color: lightblue;
+}
+.signin-prompt {
+    margin-top: 40px;
+    color: #666;
+    font-size: 14px;
+}
