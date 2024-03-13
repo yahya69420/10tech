@@ -249,7 +249,7 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <form action="{{ route('admin.adduser') }}" method="POST">
+    <form action="{{ route('admin.adduser') }}" method="POST" onsubmit="return validatePassword()">
         @csrf
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
@@ -275,6 +275,16 @@
 </div>
 
 <script>
+  // Function to validate password length
+  function validatePassword() {
+    var password = document.getElementById("password").value;
+    if (password.length < 8) {
+      alert("Password must be at least 8 characters long");
+      return false; // Prevent form submission
+    }
+    return true; // Allow form submission
+  }
+
   // Get the modal
   var modal = document.getElementById("myModal");
 
