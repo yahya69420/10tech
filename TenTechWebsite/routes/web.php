@@ -19,6 +19,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\WishlistController;
 
 Route::post('/submit-message', [MessageController::class, 'store'])->name('submit.message');
 
@@ -55,6 +56,7 @@ Route::get('/Mobile', [App\Http\Controllers\ProductController::class, 'showAllMo
 
 Route::get('/Monitor', [App\Http\Controllers\ProductController::class, 'showAllMonitors'])->name('monitor');
 
+// Route::post('add-to-wishlist',[WishlistController::class,'add']);
 Auth::routes();
 
 //basket route for the view
@@ -84,6 +86,10 @@ Route::get('add-review/{product_id}/userreview',[ReviewController::class,'add'])
 Route::post('add-review/',[ReviewController::class,'create']);
 Route::get('edit-review/{product_id}/userreview',[ReviewController::class,'edit']);
 Route::put('update-review',[ReviewController::class,'update']);
+
+Route::post('/add-to-wishlist',[WishlistController::class,'add'])->name('add-to-wishlist');
+Route::post('delete-wishlist-item',[WishlistController::class, 'deleteitem']);
+Route::get('wishlist',[WishlistController::class,'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // logout route
