@@ -96,6 +96,7 @@
           <div class="dropdown-content">
             <a href="{{ route('basket') }}">Basket</a>
             <a href="http://localhost/10tech/TenTechWebsite/public/checkout">Checkout</a>
+            <a href="http://localhost/10tech/TenTechWebsite/public/wishlist">Wishlist</a>
           </div>
         </li>
       </ul>
