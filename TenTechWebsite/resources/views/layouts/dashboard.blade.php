@@ -182,7 +182,7 @@
         </a>
       </li>
       <li class="sidebar-list-item">
-        <a href="#" target="_blank">
+        <a href="admincust" target="_blank">
           <span class="material-icons-outlined">Customer</span> 
         </a>
       </li>
@@ -200,7 +200,7 @@
   <div class="dashboard">
           
     <div class="card" style="background: #3498db;">
-      <a href="link-to-products">
+      <a href="admincust">
         <h3>Customer</h3>
         <p>249</p>
       </a>
