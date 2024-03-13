@@ -11,7 +11,7 @@
         }
         .container {
           max-width: 1000px;
-          margin-left: auto;
+          margin-left: 200px;
           margin-right: auto;
           padding-left: 10px;
           padding-right: 10px;
@@ -186,8 +186,105 @@
   cursor: pointer;
 }
 
+#sidebar {
+  position: fixed; /* Changed from grid-area to fixed */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  width: 200px; /* Width of the sidebar */
+  height: 100%;
+  background-color: #21232d;
+  color: #9799ab;
+  overflow-y: auto;
+  transition: all 0.5s;
+  z-index: 1000; 
+}
+
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 20px 20px;
+  margin-bottom: 30px;
+}
+
+.sidebar-title > span {
+  display: none;
+}
+
+.sidebar-brand {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar-list {
+  padding: 0;
+  margin-top: 15px;
+  list-style-type: none;
+}
+
+.sidebar-list-item {
+  padding: 20px 20px 20px 20px;
+}
+
+.sidebar-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.sidebar-list-item > a {
+  text-decoration: none;
+  color: #9799ab;
+}
+
+.sidebar-responsive {
+  display: inline !important;
+  position: absolute;
+  z-index: 12 !important;
+}
+
+
+
+.header {
+  grid-area: header;
+  height: 70px;
+  background-color: #21232d;;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px 0 30px;
+  box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+}
     </style>
 </head>
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <div class="sidebar-title">
+      <div class="sidebar-brand">
+        <span class="material-icons-outlined">10Tech</span>
+      </div>
+    </div>
+
+    <ul class="sidebar-list">
+      <li class="sidebar-list-item">
+        <a href="#" target="_blank">
+          <span class="material-icons-outlined">Admin</span> 
+        </a>
+      </li>
+      <li class="sidebar-list-item">
+        <a href="admincust" target="_blank">
+          <span class="material-icons-outlined">Customer</span> 
+        </a>
+      </li>
+      <li class="sidebar-list-item">
+        <a href="#" target="_blank">
+          <span class="material-icons-outlined">Products</span> /Inventory
+        </a>
+      </li>
+
+    </ul>
+  </aside>
 <body>
     
 <div class="container">
