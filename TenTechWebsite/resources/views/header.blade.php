@@ -11,6 +11,87 @@
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 </head>
+<script>
+    var availableTags = [];
+    // AJAX get request to the endpoint that returns all products
+    $.ajax({
+      method: "GET",
+      url: "{{ url('getAllProductsList') }}",
+      // On success, start the autocomplete functioon and pass the reposse as an argument
+      success: function(response) {
+        // console.log(response);
+        startAutoComplete(response) // response is an array of product names
+      }
+    });
+
+    // Function to start the autocomplete on the JQuery UI input field
+    function startAutoComplete(availableTags) {
+      $("#searchBar").autocomplete({
+        // the source option specifies the data to use for the autocomplete list from the availableTags array
+        source: availableTags.map(function(product) {
+          return {
+            id: product.id,  // these are properties of the object that will be passed to the select function
+            label: product.name,
+            value: product.name,
+            image: product.image,
+            price: product.price,
+          };
+        }),
+        // Custom render function to display HTML content
+        open: function(event, ui) {
+          // Set width of the dropdown to the same width as the input field
+          $(".ui-autocomplete img").css("height", "50px");
+        },
+        focus: function(event, ui) {
+          // this is to prevent the input field from being populated with the value of the selected item
+          event.preventDefault(); // Prevent value from being inserted into input
+        },
+        select: function(event, ui) { 
+          // Do something when a product is selected
+          // console.log(ui.item.value);
+          // window.location.href returns the href (URL) of the current page (https://www.w3schools.com/js/js_window_location.asp)
+          // but we are changing the href to the URL of the product detail page
+          // only on the select event
+          // with the id as the slug
+          window.location.href = "{{ url('productdetail') }}/" + ui.item.id;
+        }
+        // this is rendering the HTML content of the dropdown list
+        // this is the default rendering function, but we are overriding it to display the image and price
+        // we are targetting the jquery ui autocomplete list and appending the image and price to it
+      }).data("ui-autocomplete")._renderItem = function(ul, item) {
+        // the function is taking 2 parameters, the ul (unordered list) and the item
+        return $("<li>")
+        // the append function is appending the HTML content to the list
+          .append('<div class="product-item-complete"><img src="' + item.image + '" alt="' + item.label + '">' +
+            '<div class="product-details-complete"><span>' + item.label + '</span><span class="product-price-complete">' + '£' +
+            item.price + '</span></div></div>')
+            // the appendTo function is appending the list <li> to the <ul>
+          .appendTo(ul);
+      };
+    }
+  </script>
+  <style>
+    .product-item-complete {
+      display: flex;
+      align-items: center;
+    }
+
+    .product-item-complete img {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .product-details-complete {
+      flex-grow: 1;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .product-price-complete {
+      font-weight: bold;
+    }
+  </style>
 
 <body>
 
