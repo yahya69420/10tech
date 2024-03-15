@@ -56,6 +56,9 @@ Route::get('/Mobile', [App\Http\Controllers\ProductController::class, 'showAllMo
 
 Route::get('/Monitor', [App\Http\Controllers\ProductController::class, 'showAllMonitors'])->name('monitor');
 
+// route for the search bar data function
+Route::get('/getAllProductsList', [App\Http\Controllers\ProductController::class, 'getAllProductsList']);
+
 // Route::post('add-to-wishlist',[WishlistController::class,'add']);
 Auth::routes();
 
