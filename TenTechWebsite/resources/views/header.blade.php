@@ -7,6 +7,9 @@
   <title>10tech</title>
   <link rel="stylesheet" href="{{ asset('/css/headerstyle.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 </head>
 
 <body>
@@ -35,7 +38,7 @@
 
     </section>
     <div class="search">
-      <input type="search" placeholder="Search...">
+      <input type="search" placeholder="Search..." id="searchBar">
     </div>
     <div class="logo">
       <h1 class="home"><a href="{{ url('shop') }}">TenTech</a>
