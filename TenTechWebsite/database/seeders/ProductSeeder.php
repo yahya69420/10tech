@@ -470,6 +470,11 @@ class ProductSeeder extends Seeder
             'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now(),
+            'address_line_1' => '9 Lake Street',
+            'address_line_2' => 'Lake Town',
+            'city' => 'Laketown',
+            'post_code' => 'LA1 1KE',
+            'country' => 'England',
         ]);
 
         OrderItems::create([
@@ -493,6 +498,11 @@ class ProductSeeder extends Seeder
             'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now()->addDay(),
+            'address_line_1' => '1 Test Street',
+            'address_line_2' => 'Test Town',
+            'city' => 'Testtown',
+            'post_code' => 'TE1 1KE',
+            'country' => 'England',
         ]);
 
         OrderItems::create([
@@ -516,6 +526,11 @@ class ProductSeeder extends Seeder
             'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now()->addDays(2)->addHours(4)->addMinutes(34),
+            'address_line_1' => '335 Seefood Street',
+            'address_line_2' => 'Seefood Town',
+            'city' => 'Seedfood Town',
+            'post_code' => 'SW2 9LT',
+            'country' => 'Wales',
         ]);
 
         OrderItems::create([
@@ -540,6 +555,11 @@ class ProductSeeder extends Seeder
             'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now()->addHours(18)->addMinutes(34)->addSeconds(12),
+            'address_line_1' => '858 Roberston Road',
+            'address_line_2' => 'Fake Town',
+            'city' => 'Leeds',
+            'post_code' => 'LS1 1KE',
+            'country' => 'England',
         ]);
 
         OrderItems::create([
