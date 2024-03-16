@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
 use Illuminate\Support\Facades\DB;
+use App\Models\UserAddress;
 
 class BasketController extends Controller
 {
@@ -177,10 +178,12 @@ class BasketController extends Controller
         $totalAmount = session('totalAmount');
         $discount = session('discount');
         // dd($discountTotal, $totalAmount, $discount, $cartItems);
+        $userAddress = UserAddress::where('user_id', auth()->user()->id)->first();
+        // dd($userAddress);
         if ($discount) {
-            return view('checkout', ['cartItems' => $cartItems, 'discountTotal' => $discountTotal, 'totalAmount' => $totalAmount, 'discount' => $discount]);
+            return view('checkout', ['cartItems' => $cartItems, 'discountTotal' => $discountTotal, 'totalAmount' => $totalAmount, 'discount' => $discount, 'userAddress' => $userAddress]);
         } else {
-            return view('checkout', ['cartItems' => $cartItems]);
+            return view('checkout', ['cartItems' => $cartItems, 'userAddress' => $userAddress]);
         }
         // dd($cartItems);
         // dd($discountTotal, $totalAmount, $discount, $cartItems);
