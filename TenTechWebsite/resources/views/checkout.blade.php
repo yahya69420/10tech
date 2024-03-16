@@ -52,10 +52,10 @@
             </div>
             <div class="billing-info" id="bi" style="display: block;">
               <h3>Billing Address</h3>
-              <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+              <!-- <label for="fname"><i class="fa fa-user"></i> Full Name</label>
               <input type="text" id="fname" name="firstname" placeholder="">
               <label for="email"><i class="fa fa-envelope"></i> Email</label>
-              <input type="text" id="email" name="email" placeholder="">
+              <input type="text" id="email" name="email" placeholder=""> -->
               <label for="adr"><i class="fa fa-address-card-o"></i> Address Line 1</label>
               <input type="text" id="addressLine1" name="addressLine1" placeholder="">
               <label for="adr"><i class="fa fa-address-card-o"></i> Address Line 2</label>
