@@ -95,6 +95,7 @@
                   document.getElementById('expmonth').value = '{{ $userPayments->expiry_date }}';
                   document.getElementById('cvv').value = '{{ $userPayments->cvv }}';
                   document.getElementById('card_type_icon').className = 'card-icon fab fa-cc-' + '{{ $userPayments->card_type }}';
+                  document.getElementById('card_type_icon').style.color = '{{ $userPayments->color }}';
                   document.getElementById('cname').readOnly = true;
                   document.getElementById('ccnum').readOnly = true;
                   document.getElementById('expmonth').readOnly = true;
@@ -121,34 +122,6 @@
               <p>Card Holder Name: {{ $userPayments->card_holder_name }}</p>
               <p>Card Holder Number: XXXX XXXX XXXX {{ substr($userPayments->card_number, -4) }}</p>
               <p>Expiry Date: {{ $userPayments->expiry_date }}</p>
-              @php
-              $cartType = $userPayments->card_type;
-              @endphp
-              @if ($userPayments->card_type == 'visa')
-              <span class="card_logo fab fa-cc-visa" style="font-size: 35px; color: <?php echo $userPayments->color; ?>"></span>
-              @php
-              $cartType = $userPayments->card_type;
-              @endphp
-              @elseif ($userPayments->card_type == 'mastercard')
-              <span class="card_logo fab fa-cc-mastercard" style="font-size: 35px; color: <?php echo $userPayments->color; ?>"></span>
-              @php
-              $cartType = $userPayments->card_type;
-              @endphp
-              @elseif ($userPayments->card_type == 'amex')
-              <span class="card_logo fab fa-cc-amex" style="font-size: 35px; color: <?php echo $userPayments->color; ?>"></span>
-              @php
-              $cartType = $userPayments->card_type;
-              @endphp
-              @elseif ($userPayments->card_type == 'discover')
-              <span class="card_logo fab fa-cc-discover" style="font-size: 35px; color: <?php echo $userPayments->color; ?>"></span>
-              @php
-              $cartType = $userPayments->card_type;
-              @endphp
-              @elseif ($userPayments->card_type == 'dinersclub')
-              <span class="card_logo fab fa-cc-diners-club" style="font-size: 35px; color: <?php echo $userPayments->color; ?>"></span>
-              @elseif ($userPayments->card_type == 'jcb')
-              <span class="card_logo fab fa-cc-jcb" style="font-size: 35px; color: <?php echo $userPayments->color; ?>"></span>
-              @endif
             </div>
             <div class="payment-info" id="pi" style="display: block;">
 
