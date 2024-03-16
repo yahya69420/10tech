@@ -8,6 +8,7 @@ use App\Models\UserAddress;
 use App\Models\OrderItems;
 use App\Models\UserPayments;
 use App\Models\Orders;
+use App\Models\Product;
 
 class OrdersController extends Controller
 {
@@ -126,6 +127,15 @@ class OrdersController extends Controller
         }
         // odate the order_id in the order_items table
         OrderItems::where('order_id', null)->update(['order_id' => $order->id]);
+
+        //  product quantiity to be reduced
+        // dd($cart);
+        foreach ($cart as $item) {
+            $product = Product::find($item->product_id);
+            $product->update([
+                'stock' => $product->stock - $item->quantity,
+            ]);
+        }
 
         // Clear the cart
         Cart::where('user_id', auth()->user()->id)->delete();
