@@ -33,53 +33,70 @@
               document.getElementById('bi').style.display = 'block';
             }
           });
-          </script>
-          @endif
+        </script>
+        @endif
         <div class="row">
           <div class="col-50">
             <div class="billing-info" id="bi" style="display: block;">
-            <h3>Billing Address</h3>
-            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="">
-            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email" name="email" placeholder="">
-            <label for="adr"><i class="fa fa-address-card-o"></i> Address Line 1</label>
-            <input type="text" id="addressLine1" name="addressLine1" placeholder="">
-            <label for="adr"><i class="fa fa-address-card-o"></i> Address Line 2</label>
-            <input type="text" id="addressLine2" name="addressLine2" placeholder="">
-            <label for="city"><i class="fa fa-institution"></i> Town/City</label>
-            <input type="text" id="city" name="city" placeholder="">
-            <label for="country">Country</label>
-            <select id="country" name="country">
-              <option value="England">England</option>
-              <option value="Scotland">Scotland</option>
-              <option value="Wales">Wales</option>
-              <option value="Northern Ireland">Northern Ireland</option>
-            </select>
+              <h3>Billing Address</h3>
+              <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+              <input type="text" id="fname" name="firstname" placeholder="">
+              <label for="email"><i class="fa fa-envelope"></i> Email</label>
+              <input type="text" id="email" name="email" placeholder="">
+              <label for="adr"><i class="fa fa-address-card-o"></i> Address Line 1</label>
+              <input type="text" id="addressLine1" name="addressLine1" placeholder="">
+              <label for="adr"><i class="fa fa-address-card-o"></i> Address Line 2</label>
+              <input type="text" id="addressLine2" name="addressLine2" placeholder="">
+              <label for="city"><i class="fa fa-institution"></i> Town/City</label>
+              <input type="text" id="city" name="city" placeholder="">
+              <label for="country">Country</label>
+              <select id="country" name="country">
+                <option value="England">England</option>
+                <option value="Scotland">Scotland</option>
+                <option value="Wales">Wales</option>
+                <option value="Northern Ireland">Northern Ireland</option>
+              </select>
 
-            <div class="row">
+              <div class="row">
 
-              <div class="col-50">
-                <label for="zip">Post Code</label>
-                <input type="text" id="postcode" name="postcode" placeholder="">
+                <div class="col-50">
+                  <label for="zip">Post Code</label>
+                  <input type="text" id="postcode" name="postcode" placeholder="">
+                </div>
               </div>
             </div>
           </div>
-          </div>
 
           <div class="col-50">
-            <h3>Payment</h3>
+            @if ($userPayments->card_number != null || $userPayments->card_holder_name != null || $userPayments->expiry_date != null || $userPayments->cvv != null)
+            <label for="samepay"></label>
+            <input type="checkbox" id="samepay" name="samepay">Payment info is the same as saved info
+            <script>
+              // if the checkbox will be checked, just hide the shipping address fields
+              document.getElementById('samepay').addEventListener('change', function() {
+                if (this.checked) {
+                  document.getElementById('pi').style.display = 'none';
+                } else {
+                  document.getElementById('pi').style.display = 'block';
+                }
+              });
+            </script>
+            @endif
+            <div class="payment-info" id="pi" style="display: block;">
 
-            <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="">
-            <label for="ccnum">Credit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="">
-            <label for="expmonth">Exp Date</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="MM/YY">
-            <div class="row">
-              <div class="col-50">
-                <label for="cvv">CVV</label>
-                <input type="text" id="cvv" name="cvv" placeholder="">
+              <h3>Payment</h3>
+
+              <label for="cname">Name on Card</label>
+              <input type="text" id="cname" name="cardname" placeholder="">
+              <label for="ccnum">Credit card number</label>
+              <input type="text" id="ccnum" name="cardnumber" placeholder="">
+              <label for="expmonth">Exp Date</label>
+              <input type="text" id="expmonth" name="expmonth" placeholder="MM/YY">
+              <div class="row">
+                <div class="col-50">
+                  <label for="cvv">CVV</label>
+                  <input type="text" id="cvv" name="cvv" placeholder="">
+                </div>
               </div>
             </div>
           </div>
@@ -144,4 +161,5 @@
   </div>
 
 </div>
+
 </html>
