@@ -153,11 +153,11 @@
                                                                 <div class="title bg-secondary p-3 rounded shadow mt-1 mb-1" style="background-image: radial-gradient( circle 674px at 18.3% 77%,  rgba(139,186,244,1) 3.4%, rgba(15,51,92,1) 56.6% );">
                                                                     <h4>Delivery Details</h4>
                                                                 </div>
-                                                                <p>Address Line 1: {{ $details->userAddress->address_line_1 }}</p>
-                                                                <p>Address Line 2: {{ $details->userAddress->address_line_2 }}</p>
-                                                                <p>City: {{ $details->userAddress->city }}</p>
-                                                                <p>Post Code: {{ $details->userAddress->post_code }}</p>
-                                                                <p>Country: {{ $details->userAddress->country }}</p>
+                                                                <p>Address Line 1: {{ $details->address_line_1 }}</p>
+                                                                <p>Address Line 2: {{ $details->address_line_2 }}</p>
+                                                                <p>City: {{ $details->city }}</p>
+                                                                <p>Post Code: {{ $details->post_code }}</p>
+                                                                <p>Country: {{ $details->country }}</p>
                                                             </div>
                                                         </div>
                                                     </td>
