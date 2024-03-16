@@ -174,4 +174,27 @@ class OrdersController extends Controller
 
         return view('order-details', compact('details'));
     }
+
+    public function cancelOrder($id)
+    {
+        Orders::findOrFail($id)->update(['status' => 'cancelled']);
+
+        // the order has been cancelled, we need to update the stock of the products in the order
+        $orderItems = OrderItems::where('order_id', $id)->get();
+        foreach ($orderItems as $item) {
+            $product = Product::find($item->product_id);
+            $product->update([
+                'stock' => $product->stock + $item->quantity,
+            ]);
+        }
+
+        /*
+        returns a response in JSON format
+        {
+            "status": "success",
+            "message": "Order has been cancelled"
+        }
+        */
+        return response()->json(['status' => 'success', 'message' => 'Order has been cancelled']);
+    }
 }
