@@ -20,8 +20,24 @@
     <div class="container">
       <form action="{{ route('completeorder') }}" method="post">
         @csrf
+        <!-- checkbox -->
+        @if ($userAddress->address_line_1 != null || $userAddress->address_line_2 != null || $userAddress->city != null || $userAddress->post_code != null || $userAddress->country != null)
+        <label for="sameadr"></label>
+        <input type="checkbox" id="sameadr" name="sameadr">Shipping address same as billing
+        <script>
+          // if the checkbox will be checked, just hide the shipping address fields
+          document.getElementById('sameadr').addEventListener('change', function() {
+            if (this.checked) {
+              document.getElementById('bi').style.display = 'none';
+            } else {
+              document.getElementById('bi').style.display = 'block';
+            }
+          });
+          </script>
+          @endif
         <div class="row">
           <div class="col-50">
+            <div class="billing-info" id="bi" style="display: block;">
             <h3>Billing Address</h3>
             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
             <input type="text" id="fname" name="firstname" placeholder="">
@@ -48,6 +64,7 @@
                 <input type="text" id="postcode" name="postcode" placeholder="">
               </div>
             </div>
+          </div>
           </div>
 
           <div class="col-50">
