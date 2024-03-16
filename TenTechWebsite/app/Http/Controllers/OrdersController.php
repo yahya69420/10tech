@@ -14,6 +14,7 @@ class OrdersController extends Controller
 {
     public function completeOrder(Request $request)
     {
+        // dd($request->all());
         if (Cart::where('user_id', auth()->user()->id)->count() == 0) {
             return redirect('/basket')->with('error', 'Cannot check out if you have no items in your cart');
         }
@@ -45,12 +46,12 @@ class OrdersController extends Controller
         // Update or create user payment information
         $userPayments = UserPayments::where('user_id', auth()->user()->id)->first();
 
-        if ($userPayments) {
+        if ($userPayments && $request->samepay == "on") {
             $userPayments->update([
-                'card_number' => $request->cardnumber,
-                'card_holder_name' => $request->cardname,
-                'expiry_date' => $request->expmonth,
-                'cvv' => $request->cvv,
+                'card_number' => $userPayments->card_number,
+                'card_holder_name' => $userPayments->card_holder_name,
+                'expiry_date' => $userPayments->expiry_date,
+                'cvv' => $userPayments->cvv,
                 'user_id' => auth()->user()->id,
             ]);
         } else {
