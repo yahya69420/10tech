@@ -141,7 +141,7 @@ class OrdersController extends Controller
         Cart::where('user_id', auth()->user()->id)->delete();
         // clear the session
         session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
-        return view('complete', ['userAddress' => $userAddress]);
+        return view('complete', ['userAddress' => $userAddress, 'userPayments' => $userPayments, 'order' => $order]);
     }
 
 
