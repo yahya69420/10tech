@@ -52,14 +52,18 @@ class OrdersController extends Controller
                 'card_holder_name' => $userPayments->card_holder_name,
                 'expiry_date' => $userPayments->expiry_date,
                 'cvv' => $userPayments->cvv,
+                'card_type' => $userPayments->card_type, 
+                'color' => $userPayments->color,
                 'user_id' => auth()->user()->id,
             ]);
         } else {
-            UserPayments::create([
+            $userPayments->update([
                 'card_number' => $request->cardnumber,
                 'card_holder_name' => $request->cardname,
                 'expiry_date' => $request->expmonth,
                 'cvv' => $request->cvv,
+                'card_type' => $request->cardType,
+                'color' => $request->cardColour,
                 'user_id' => auth()->user()->id,
             ]);
         }
