@@ -39,9 +39,6 @@ Route::get('/header', function(){
     return view('header');
 });
 
-Route::get('/complete', function(){
-    return view('complete');
-});
 Route::get('/contact', function () {
     return view('contact');
 });
