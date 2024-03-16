@@ -24,6 +24,11 @@ return new class extends Migration
             $table->foreignId('discount_id')->nullable()->references('id')->on('discounts')->onDelete('cascade')->nullable();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
+            $table->string('address_line_1')->nullable();
+            $table->string('address_line_2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('post_code')->nullable();
+            $table->string('country')->nullable();
 
         });
 
