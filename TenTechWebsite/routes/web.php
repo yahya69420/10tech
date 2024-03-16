@@ -119,6 +119,7 @@ Route::get('order-history', [App\Http\Controllers\OrdersController::class, 'orde
 // Route for the order details page
 Route::post('order-details/{id}', [App\Http\Controllers\OrdersController::class, 'orderDetails'])->name('order-details');
 
+Route::delete('cancel-order/{id}', [App\Http\Controllers\OrdersController::class, 'cancelOrder'])->name('delete-order');
 
 // Admin routes
 
