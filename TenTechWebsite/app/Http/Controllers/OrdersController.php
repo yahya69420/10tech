@@ -20,13 +20,14 @@ class OrdersController extends Controller
         // Only allow one address per user
         $userAddress = UserAddress::where('user_id', auth()->user()->id)->first();
 
-        if ($userAddress) {
+        if ($userAddress && $request->sameadr == "on") {
+            // we are using the same address if the same address is checked
             $userAddress->update([
-                'address_line_1' => $request->addressLine1,
-                'address_line_2' => $request->addressLine2,
-                'city' => $request->city,
-                'post_code' => $request->postcode,
-                'country' => $request->country,
+                'address_line_1' => $userAddress->address_line_1,
+                'address_line_2' => $userAddress->address_line_2,
+                'city' => $userAddress->city,
+                'post_code' => $userAddress->post_code,
+                'country' => $userAddress->country,
                 'user_id' => auth()->user()->id
             ]);
         } else {
@@ -81,22 +82,48 @@ class OrdersController extends Controller
         $totalAmount = Cart::where('user_id', auth()->user()->id)->sum('total');
         $discountTotal = session('discountTotal');
 
-        // Create an order
-        $order = Orders::create([
-            'total_before_discount' => $totalAmount,
-            'discount_amount' => $discountTotal,
-            'total_after_discount' => $totalAmount - $discountTotal,
-            'status' => 'pending',
-            'order_date' => now(),
-            'tracking_number' => uniqid(),
-            'user_address_id' => $userAddress->id,
-            'user_payment_id' => $userPayments->id,
-            'discount_id' => $discount->id ?? null,
-            'user_id' => auth()->user()->id,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
+        // Create an order, is the same address is checked, use the user's address, otherwise use the address from the form
+        if ($request->sameadr == "on") {
+            $order = Orders::create([
+                'total_before_discount' => $totalAmount,
+                'discount_amount' => $discountTotal,
+                'total_after_discount' => $totalAmount - $discountTotal,
+                'status' => 'pending',
+                'order_date' => now(),
+                'tracking_number' => uniqid(),
+                'user_address_id' => $userAddress->id,
+                'user_payment_id' => $userPayments->id,
+                'discount_id' => $discount->id ?? null,
+                'user_id' => auth()->user()->id,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'address_line_1' => $userAddress->address_line_1,
+                'address_line_2' => $userAddress->address_line_2,
+                'city' => $userAddress->city,
+                'post_code' => $userAddress->post_code,
+                'country' => $userAddress->country,
+            ]);
+        } else {
+            $order = Orders::create([
+                'total_before_discount' => $totalAmount,
+                'discount_amount' => $discountTotal,
+                'total_after_discount' => $totalAmount - $discountTotal,
+                'status' => 'pending',
+                'order_date' => now(),
+                'tracking_number' => uniqid(),
+                'user_address_id' => $userAddress->id,
+                'user_payment_id' => $userPayments->id,
+                'discount_id' => $discount->id ?? null,
+                'user_id' => auth()->user()->id,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'address_line_1' => $request->addressLine1,
+                'address_line_2' => $request->addressLine2,
+                'city' => $request->city,
+                'post_code' => $request->postcode,
+                'country' => $request->country,
+            ]);
+        }
         // odate the order_id in the order_items table
         OrderItems::where('order_id', null)->update(['order_id' => $order->id]);
 
