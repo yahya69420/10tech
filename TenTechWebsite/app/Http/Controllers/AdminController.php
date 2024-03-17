@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\CustomerMessage;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Product;
+use App\Models\Category;
 
 class AdminController extends Controller
 {
@@ -109,8 +110,8 @@ public function editUser(Request $request, $id)
    public function adminproducts() {
     {
         $products = Product::all();
-        // $categories = Category::all();, 'categories' => $categories
-        return view('adminproducts', ['products' => $products]);
+         $categories = Category::all();
+        return view('adminproducts', ['products' => $products, 'categories' => $categories]);
     }
    }
 }
