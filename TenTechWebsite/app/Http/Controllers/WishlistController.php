@@ -48,7 +48,7 @@ class WishlistController extends Controller
                 
                 if($isInWishlist) {
                     // If already in wishlist, prevent adding and show a message
-                    return redirect()->back()->with('status', 'Product is already in wishlist!');
+                    return redirect()->back()->with('wishlist_error', 'Product is already in wishlist!');
                 } else {
                     // If not in wishlist, create a new wishlist entry
 
@@ -68,7 +68,7 @@ class WishlistController extends Controller
         }
         else {
             // If user is not authenticated, show a login prompt
-            return redirect()->back()->with('status', 'Please log in to add items to your wishlist!');
+            return redirect()->back()->with('wishlist_login_error', 'Please log in to add items to your wishlist!');
         }
     }
     /**

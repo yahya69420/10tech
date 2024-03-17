@@ -48,12 +48,12 @@ class RatingController extends Controller
             }
             else // If the user hasn't purchased the product, deny rating.
             {
-                return redirect()->back()->with('status',"Rating Unavaliable: You must purchase this product before rating it");
+                return redirect()->back()->with('Ratings_Error',"Rating Unavaliable: You must purchase this product before rating it");
             }
         }
         else // If the product doesn't exist or isn't active, return an error.
         { 
-            return redirect()->back()->with('status',"Error: Broken Link");
+            return redirect()->back()->with('Ratings_Error',"Error: Broken Link");
         }
     }
 }
