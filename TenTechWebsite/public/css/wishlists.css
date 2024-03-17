@@ -3,6 +3,14 @@
     font-weight: bold; 
     text-align: center;
 }
+.link {
+    color: #000000; /* Default color */
+    text-decoration: underline; /* Or other preferred style */
+    font-size: 20px; /* Adjust as necessary */
+}
+.link:hover {
+    color: #0800ff; /* Color on hover */
+}
 body {
     font-family: Arial, sans-serif;
 }
