@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Models\CustomerMessage;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Product;
 
 class AdminController extends Controller
 {
@@ -104,4 +105,12 @@ public function editUser(Request $request, $id)
     // Redirect back with success message
     return Redirect::back()->with('success', 'User email updated successfully!');
 }
+
+   public function adminproducts() {
+    {
+        $products = Product::all();
+        // $categories = Category::all();, 'categories' => $categories
+        return view('adminproducts', ['products' => $products]);
+    }
+   }
 }
