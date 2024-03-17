@@ -39,9 +39,6 @@ Route::get('/header', function(){
     return view('header');
 });
 
-Route::get('/complete', function(){
-    return view('complete');
-});
 Route::get('/contact', function () {
     return view('contact');
 });
@@ -55,6 +52,9 @@ Route::get('/Console', [App\Http\Controllers\ProductController::class, 'showAllC
 Route::get('/Mobile', [App\Http\Controllers\ProductController::class, 'showAllMobiles'])->name('mobile');
 
 Route::get('/Monitor', [App\Http\Controllers\ProductController::class, 'showAllMonitors'])->name('monitor');
+
+// route for the search bar data function
+Route::get('/getAllProductsList', [App\Http\Controllers\ProductController::class, 'getAllProductsList']);
 
 // Route::post('add-to-wishlist',[WishlistController::class,'add']);
 Auth::routes();
@@ -119,6 +119,7 @@ Route::get('order-history', [App\Http\Controllers\OrdersController::class, 'orde
 // Route for the order details page
 Route::post('order-details/{id}', [App\Http\Controllers\OrdersController::class, 'orderDetails'])->name('order-details');
 
+Route::delete('cancel-order/{id}', [App\Http\Controllers\OrdersController::class, 'cancelOrder'])->name('delete-order');
 
 // Admin routes
 

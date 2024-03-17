@@ -7,6 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" integrity="sha512-8RxmFOVaKQe/xtg6lbscU9DU0IRhURWEuiI0tXevv+lXbAHfkpamD4VKFQRto9WgfOJDwOZ74c/s9Yesv3VvIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>{{ $details->tracking_number }}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
 
     <style>
@@ -153,11 +156,11 @@
                                                                 <div class="title bg-secondary p-3 rounded shadow mt-1 mb-1" style="background-image: radial-gradient( circle 674px at 18.3% 77%,  rgba(139,186,244,1) 3.4%, rgba(15,51,92,1) 56.6% );">
                                                                     <h4>Delivery Details</h4>
                                                                 </div>
-                                                                <p>Address Line 1: {{ $details->userAddress->address_line_1 }}</p>
-                                                                <p>Address Line 2: {{ $details->userAddress->address_line_2 }}</p>
-                                                                <p>City: {{ $details->userAddress->city }}</p>
-                                                                <p>Post Code: {{ $details->userAddress->post_code }}</p>
-                                                                <p>Country: {{ $details->userAddress->country }}</p>
+                                                                <p>Address Line 1: {{ $details->address_line_1 }}</p>
+                                                                <p>Address Line 2: {{ $details->address_line_2 }}</p>
+                                                                <p>City: {{ $details->city }}</p>
+                                                                <p>Post Code: {{ $details->post_code }}</p>
+                                                                <p>Country: {{ $details->country }}</p>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -192,13 +195,69 @@
                         </ol>
                         <div class="container m-3">
                         </div>
-                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" autocomplete="off">Write a review!</button>
-                        <button type="button" class="btn btn-outline-danger">Cancel your order</button>
+                        <a href="{{ route('productdetail', ['id' => $item->product->id]) }}" class="btn btn-outline-primary">Write a review!</a>
+                        @if ($details->status == 'pending')
+                        <button type="button" class="btn btn-outline-danger" onclick="cancelOrder('{{ $details->id }}')">Cancel your order</button>
+                        @elseif ($details->status == 'completed')
+                        <button type="button" class="btn btn-outline-danger" onclick="cancelOrder('{{ $details->id }}')">Cancel your order</button>
+                        @elseif ($details->status == 'processing')
+                        <button type="button" class="btn btn-outline-danger" onclick="cancelOrder('{{ $details->id }}')">Cancel your order</button>
+                        @else
+                        <button type="button" class="btn btn-outline-danger" disabled>Cancel your order</button>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
-        @include('layouts/footer')
+    </div>
+    <script>
+        function cancelOrder(orderId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You want to cancel this order?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, cancel it!',
+                cancelButtonText: 'No, keep it'
+            }).then((result) => {
+                // If user confirms the action
+                if (result.isConfirmed) {
+                    // Get the CSRF token
+                    var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+                    // Send a DELTE request to the server
+                    $.ajax({
+                        method: "DELETE",
+                        url: "{{ url('cancel-order') }}/" + orderId,
+                        dataType: 'json',
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        success: function(response) {
+                            // readds the json repinse that weas generatied in the OrdersController
+                            if (response.status == 'success') {
+                                Swal.fire(
+                                    'Cancelled!',
+                                    'Your order has been cancelled.',
+                                    'success'
+                                ).then(() => {
+                                    // redirect to the order history page after the cancellation
+                                    window.location.href = "{{ url('order-history') }}";
+                                });
+                            } else {
+                                Swal.fire(
+                                    'Error!',
+                                    'Failed to cancel the order.',
+                                    'error'
+                                );
+                            }
+                        },
+                    });
+                }
+            });
+        }
+    </script>
+    @include('layouts/footer')
 </body>
 
 </html>

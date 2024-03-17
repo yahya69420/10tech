@@ -25,32 +25,36 @@ class ProductSeeder extends Seeder
         // Create categories
         $mobileCategory = Category::create([
             'name' => 'Mobile',
-            'image' => 'https://images.unsplash.com/photo-1589894404892-7310b92ea7a2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'image' => url('10tech/TenTechWebsite/public/phone5.png'),
             'price' => '199.00',
         ]);
  
         $consoleCategory = Category::create([
             'name' => 'Console',
-            'image' => 'https://images.unsplash.com/photo-1649380932726-869503f7ddf8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            // 'image' => 'https://images.unsplash.com/photo-1649380932726-869503f7ddf8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'image' => url('10tech/TenTechWebsite/public/console3.png'),
             'price' => '299.00',
         ]);
  
         $monitorCategory = Category::create([
             'name' => 'Monitor',
-            'image' => 'https://images.unsplash.com/photo-1545665277-5937489579f2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            // 'image' => 'https://images.unsplash.com/photo-1545665277-5937489579f2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'image' => url('10tech/TenTechWebsite/public/monitor4.png'),
             'price' => '89.99',
         ]);
  
         $tabletCategory = Category::create([
             'name' => 'Tablet',
-            'image' => 'https://images.unsplash.com/photo-1561154464-82e9adf32764?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            // 'image' => 'https://images.unsplash.com/photo-1561154464-82e9adf32764?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'image' => url('10tech/TenTechWebsite/public/tablet5.png'),
             'price' => '99.99',
        
         ]);
  
         $laptopCategory = Category::create([
             'name' => 'Laptop',
-            'image' => 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            // 'image' => 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'image' => url('10tech/TenTechWebsite/public/laptop4.png'),
             'price' => '399.99',
         ]);
  
@@ -470,6 +474,11 @@ class ProductSeeder extends Seeder
             'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now(),
+            'address_line_1' => '9 Lake Street',
+            'address_line_2' => 'Lake Town',
+            'city' => 'Laketown',
+            'post_code' => 'LA1 1KE',
+            'country' => 'England',
         ]);
 
         OrderItems::create([
@@ -493,6 +502,11 @@ class ProductSeeder extends Seeder
             'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now()->addDay(),
+            'address_line_1' => '1 Test Street',
+            'address_line_2' => 'Test Town',
+            'city' => 'Testtown',
+            'post_code' => 'TE1 1KE',
+            'country' => 'England',
         ]);
 
         OrderItems::create([
@@ -516,6 +530,11 @@ class ProductSeeder extends Seeder
             'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now()->addDays(2)->addHours(4)->addMinutes(34),
+            'address_line_1' => '335 Seefood Street',
+            'address_line_2' => 'Seefood Town',
+            'city' => 'Seedfood Town',
+            'post_code' => 'SW2 9LT',
+            'country' => 'Wales',
         ]);
 
         OrderItems::create([
@@ -540,6 +559,11 @@ class ProductSeeder extends Seeder
             'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now()->addHours(18)->addMinutes(34)->addSeconds(12),
+            'address_line_1' => '858 Roberston Road',
+            'address_line_2' => 'Fake Town',
+            'city' => 'Leeds',
+            'post_code' => 'LS1 1KE',
+            'country' => 'England',
         ]);
 
         OrderItems::create([

@@ -8,11 +8,13 @@ use App\Models\UserAddress;
 use App\Models\OrderItems;
 use App\Models\UserPayments;
 use App\Models\Orders;
+use App\Models\Product;
 
 class OrdersController extends Controller
 {
     public function completeOrder(Request $request)
     {
+        // dd($request->all());
         if (Cart::where('user_id', auth()->user()->id)->count() == 0) {
             return redirect('/basket')->with('error', 'Cannot check out if you have no items in your cart');
         }
@@ -20,13 +22,14 @@ class OrdersController extends Controller
         // Only allow one address per user
         $userAddress = UserAddress::where('user_id', auth()->user()->id)->first();
 
-        if ($userAddress) {
+        if ($userAddress && $request->sameadr == "on") {
+            // we are using the same address if the same address is checked
             $userAddress->update([
-                'address_line_1' => $request->addressLine1,
-                'address_line_2' => $request->addressLine2,
-                'city' => $request->city,
-                'post_code' => $request->postcode,
-                'country' => $request->country,
+                'address_line_1' => $userAddress->address_line_1,
+                'address_line_2' => $userAddress->address_line_2,
+                'city' => $userAddress->city,
+                'post_code' => $userAddress->post_code,
+                'country' => $userAddress->country,
                 'user_id' => auth()->user()->id
             ]);
         } else {
@@ -43,20 +46,24 @@ class OrdersController extends Controller
         // Update or create user payment information
         $userPayments = UserPayments::where('user_id', auth()->user()->id)->first();
 
-        if ($userPayments) {
+        if ($userPayments && $request->samepay == "on") {
+            $userPayments->update([
+                'card_number' => $userPayments->card_number,
+                'card_holder_name' => $userPayments->card_holder_name,
+                'expiry_date' => $userPayments->expiry_date,
+                'cvv' => $userPayments->cvv,
+                'card_type' => $userPayments->card_type, 
+                'color' => $userPayments->color,
+                'user_id' => auth()->user()->id,
+            ]);
+        } else {
             $userPayments->update([
                 'card_number' => $request->cardnumber,
                 'card_holder_name' => $request->cardname,
                 'expiry_date' => $request->expmonth,
                 'cvv' => $request->cvv,
-                'user_id' => auth()->user()->id,
-            ]);
-        } else {
-            UserPayments::create([
-                'card_number' => $request->cardnumber,
-                'card_holder_name' => $request->cardname,
-                'expiry_date' => $request->expmonth,
-                'cvv' => $request->cvv,
+                'card_type' => $request->cardType,
+                'color' => $request->cardColour,
                 'user_id' => auth()->user()->id,
             ]);
         }
@@ -81,30 +88,65 @@ class OrdersController extends Controller
         $totalAmount = Cart::where('user_id', auth()->user()->id)->sum('total');
         $discountTotal = session('discountTotal');
 
-        // Create an order
-        $order = Orders::create([
-            'total_before_discount' => $totalAmount,
-            'discount_amount' => $discountTotal,
-            'total_after_discount' => $totalAmount - $discountTotal,
-            'status' => 'pending',
-            'order_date' => now(),
-            'tracking_number' => uniqid(),
-            'user_address_id' => $userAddress->id,
-            'user_payment_id' => $userPayments->id,
-            'discount_id' => $discount->id ?? null,
-            'user_id' => auth()->user()->id,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
+        // Create an order, is the same address is checked, use the user's address, otherwise use the address from the form
+        if ($request->sameadr == "on") {
+            $order = Orders::create([
+                'total_before_discount' => $totalAmount,
+                'discount_amount' => $discountTotal,
+                'total_after_discount' => $totalAmount - $discountTotal,
+                'status' => 'pending',
+                'order_date' => now(),
+                'tracking_number' => uniqid(),
+                'user_address_id' => $userAddress->id,
+                'user_payment_id' => $userPayments->id,
+                'discount_id' => $discount->id ?? null,
+                'user_id' => auth()->user()->id,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'address_line_1' => $userAddress->address_line_1,
+                'address_line_2' => $userAddress->address_line_2,
+                'city' => $userAddress->city,
+                'post_code' => $userAddress->post_code,
+                'country' => $userAddress->country,
+            ]);
+        } else {
+            $order = Orders::create([
+                'total_before_discount' => $totalAmount,
+                'discount_amount' => $discountTotal,
+                'total_after_discount' => $totalAmount - $discountTotal,
+                'status' => 'pending',
+                'order_date' => now(),
+                'tracking_number' => uniqid(),
+                'user_address_id' => $userAddress->id,
+                'user_payment_id' => $userPayments->id,
+                'discount_id' => $discount->id ?? null,
+                'user_id' => auth()->user()->id,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'address_line_1' => $request->addressLine1,
+                'address_line_2' => $request->addressLine2,
+                'city' => $request->city,
+                'post_code' => $request->postcode,
+                'country' => $request->country,
+            ]);
+        }
         // odate the order_id in the order_items table
         OrderItems::where('order_id', null)->update(['order_id' => $order->id]);
+
+        //  product quantiity to be reduced
+        // dd($cart);
+        foreach ($cart as $item) {
+            $product = Product::find($item->product_id);
+            $product->update([
+                'stock' => $product->stock - $item->quantity,
+            ]);
+        }
 
         // Clear the cart
         Cart::where('user_id', auth()->user()->id)->delete();
         // clear the session
         session()->forget(['cartItems', 'totalItems', 'totalAmount', 'discount', 'discountTotal']);
-        return view('complete', ['userAddress' => $userAddress]);
+        return view('complete', ['userAddress' => $userAddress, 'userPayments' => $userPayments, 'order' => $order]);
     }
 
 
@@ -131,5 +173,28 @@ class OrdersController extends Controller
         // ->first();
 
         return view('order-details', compact('details'));
+    }
+
+    public function cancelOrder($id)
+    {
+        Orders::findOrFail($id)->update(['status' => 'cancelled']);
+
+        // the order has been cancelled, we need to update the stock of the products in the order
+        $orderItems = OrderItems::where('order_id', $id)->get();
+        foreach ($orderItems as $item) {
+            $product = Product::find($item->product_id);
+            $product->update([
+                'stock' => $product->stock + $item->quantity,
+            ]);
+        }
+
+        /*
+        returns a response in JSON format
+        {
+            "status": "success",
+            "message": "Order has been cancelled"
+        }
+        */
+        return response()->json(['status' => 'success', 'message' => 'Order has been cancelled']);
     }
 }

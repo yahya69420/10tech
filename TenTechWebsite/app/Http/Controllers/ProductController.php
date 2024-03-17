@@ -11,6 +11,25 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
+    public function getAllProductsList()
+    {
+        // $products = Product::select('name')->get();
+        $products = Product::select('id','name', 'price', 'image')->get();
+        $productList = [];
+
+
+        foreach ($products as $product) {
+            $productList[] = [
+                'id' => $product->id,
+                'name' => $product->name,
+                'price' => $product->price,
+                'image' => $product->image
+            ];
+        }
+
+        return $productList;
+    }
+
     public function index()
     {
         $products = Product::all();

@@ -23,7 +23,19 @@ class AdminController extends Controller
         }
     }
 
-    public function admincust(){
+    public function securityCheck() {
+        if (!auth()->check()) {
+            return redirect('/login')->with('error', 'You are not logged in!');
+        } else if (auth()->user()->is_admin == 0) {
+            return redirect('/shop')->with('error', 'You are not an administrator of this site!');
+        }
+    }
+
+    public function admincust() {
+        $response = $this->securityCheck();
+        if ($response) {
+            return $response;
+        }
         $data = User::where('is_admin', 0)->get();
         $datamess = CustomerMessage::all();
         return view('layouts.admincust', ['data' => $data], ['datamess' => $datamess]);
