@@ -130,3 +130,5 @@ Route::get('admin/adminproducts',[App\Http\Controllers\AdminController::class, '
 Route::post('/admin/adduser', [AdminController::class, 'addUser'])->name('admin.adduser');
 Route::delete('/admin/removeuser/{id}', [AdminController::class, 'removeUser'])->name('admin.removeuser');
 Route::put('/admin/edituser/{id}', [AdminController::class, 'editUser'])->name('admin.edituser');
+Route::post('/admin/adminproducts/add-product', [App\Http\Controllers\AdminController::class, 'addNewProduct'])->name('add-new-product');
+Route::post('/admin/adminproducts/edit-product', [App\Http\Controllers\AdminController::class, 'editNewProduct'])->name('edit-new-product');
