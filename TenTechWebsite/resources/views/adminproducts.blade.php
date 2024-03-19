@@ -82,9 +82,40 @@
           <td>
             <!-- <button class="btn btn-secondary">Edit</button> -->
             <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editProductModal{{ $product->id }}">Edit</button>
-            <button class="btn btn-danger">Remove</button>
+            <!-- <button class="btn btn-danger">Remove</button> -->
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removeProductModal{{ $product->id }}">Remove</button>
           </td>
         </tr>
+        <!-- ############################################################## -->
+        <!-- ############################################################## -->
+
+        <!-- REMOVE PRODUCT -->
+
+        <div class="modal fade" id="removeProductModal{{ $product->id }}" tabindex="-1" aria-labelledby="editProductModalLabel{{ $product->id }}" aria-hidden="true">
+          <div class="modal-dialog modal-lg ">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="removeProductModalLabel{{ $product->id }}">Remove {{ $product->name }} (ID: {{ $product->id }})</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="text-center mb-3">
+                  <img src="{{ asset($product->image) }}" alt="product image" class="img-thumbnail" style="width:300px; height:300px;">
+                </div>
+                <p class="p-3 mb-2 bg-danger text-white">Are you sure you want to remove this product?</p>
+                <!-- <form method="POST" action="{{ url('admin/adminproducts/remove-product') }}">
+                  @csrf
+                  <input hidden name="productID" value="{{ $product->id }}">
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                  </div>
+                </form> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- ############################################################## -->
         <!-- ############################################################## -->
         <!-- edit product mdal -->
