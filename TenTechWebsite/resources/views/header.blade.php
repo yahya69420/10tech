@@ -179,8 +179,8 @@
         <li class="dropdown"><button class="dropbtn"><img src="https://cdn.icon-icons.com/icons2/1795/PNG/512/shoppingbasket_114841.png" class="account"></button>
           <div class="dropdown-content">
             <a href="{{ route('basket') }}">Basket</a>
-            <a href="http://localhost/10tech/TenTechWebsite/public/checkout">Checkout</a>
-            <a href="http://localhost/10tech/TenTechWebsite/public/wishlist">Wishlist</a>
+            <a href="{{ url('checkout') }}">Checkout</a>
+            <a href="{{ url('wishlist') }}">Wishlist</a>
           </div>
         </li>
       </ul>

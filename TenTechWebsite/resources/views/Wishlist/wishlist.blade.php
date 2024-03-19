@@ -31,7 +31,7 @@
                     <div class="alert alert-info" role="alert">
                         Your wishlist is empty.
                     </div>
-                    <a href="http://localhost/10tech/TenTechWebsite/public/shop" class="start-shopping-btn">START SHOPPING</a>
+                    <a href="{{url('/shop')}}" class="start-shopping-btn">START SHOPPING</a>
                 @else
                     @foreach ($wishlist as $item)
                     <hr>
@@ -65,14 +65,14 @@
                     <hr>
                         
                     @endforeach
-                    <a href="http://localhost/10tech/TenTechWebsite/public/shop" class="start-shopping-btn">START SHOPPING</a>
+                    <a href="{{url('/shop')}}" class="start-shopping-btn">START SHOPPING</a>
                 @endif
 
             @else
 
             <div>
                 <p>Your wishlist is currently empty</p>
-                <a href="http://localhost/10tech/TenTechWebsite/public/shop" class="start-shopping-btn">START SHOPPING</a>
+                <a href="{{url('/shop')}}" class="start-shopping-btn">START SHOPPING</a>
                 <p class="signin-prompt">
                     <div class="alert alert-info mt-5" role="alert">
                         Please<a href="{{ route('login') }}"> Login </a>  to save items to your account and access them from everywhere.
