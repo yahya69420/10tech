@@ -118,10 +118,7 @@ class AdminController extends Controller
  
     public function addNewProduct(Request $request)
     {
-        // $response = $this->securityCheck();
-        // if ($response) {
-        //     return $response;
-        // }
+        // dd($request->all());
         // we need to validate the data frist
         $request->validate([
             'productImage' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -140,7 +137,7 @@ class AdminController extends Controller
             return redirect()->back()->with('error', 'Please select a valid brand!');
         }
  
-        if ($request->yearSelection == "ReleaseYear") {
+        if ($request->yearSelection == "Release Year") {
             return redirect()->back()->with('error', 'Please select a valid release year!');
         }
  
