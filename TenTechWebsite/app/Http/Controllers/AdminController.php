@@ -21,21 +21,9 @@ class AdminController extends Controller
        
     }
  
-    public function securityCheck()
-    {
-        if (!auth()->check()) {
-            return redirect('/login')->with('error', 'You are not logged in!');
-        } else if (auth()->user()->is_admin == 0) {
-            return redirect('/shop')->with('error', 'You are not an administrator of this site!');
-        }
-    }
  
     public function admincust()
     {
-        $response = $this->securityCheck();
-        if ($response) {
-            return $response;
-        }
         $data = User::where('is_admin', 0)->get();
         $datamess = CustomerMessage::all();
         return view('layouts.admincust', ['data' => $data], ['datamess' => $datamess]);
@@ -115,13 +103,16 @@ class AdminController extends Controller
             $brands = Product::select('brand')->distinct()->get();
             // dd($brands);
             $categories = Category::all();
- 
+            // dd($categories);
+
+            $release = Product::select('release')->distinct()->get();
+            // dd($release);
             // get all of the contents of the pivot table for the category and product
             $productToCategory = DB::table('category_product')->get();
             // dd($productToCategory);
  
             // dd($categories);
-            return view('adminproducts', ['products' => $products, 'categories' => $categories, 'brands' => $brands, 'productToCategory' => $productToCategory]);
+            return view('adminproducts', ['products' => $products, 'categories' => $categories, 'brands' => $brands, 'release' => $release, 'productToCategory' => $productToCategory]);
         }
     }
  
@@ -197,11 +188,6 @@ class AdminController extends Controller
             'productStock' => 'numeric | min:0 |',
         ]);
  
-        // we need to check that an actual category is selected
- 
-        if ($request->categorySelection == "Category") {
-            return redirect()->back()->with('error', 'Please select a valid category!');
-        }
  
         if ($request->brandSelection == "Brand") {
             return redirect()->back()->with('error', 'Please select a valid brand!');
@@ -214,10 +200,21 @@ class AdminController extends Controller
  
         // lets fetch the current product form the database
         $product = Product::find($request->productID);
+
+        // we need to check if the category has been changed or not
+        // use the join method to get the category id from the pivot table
+        // we dare getting the priovt table entry for that one product that we are ""editing"" on the admin page
+        $category = DB::table('category_product')->where('product_id', $product->id)->first();
+        // dd($category);
+        // fetch the name of that categiry from the categories table, since pivots suck and dont have names
+        $category = Category::find($category->category_id);
+        $category = $category->name; 
+        // dd($category);
+
  
  
         // if nothing was changed, we dont need to update the product
-        if ($request->productName == $product->name && $request->productPrice == $product->price && $request->productDescription == $product->description && $request->productStock == $product->stock && $request->brandSelection == $product->brand && $request->yearSelection == $product->release && !$request->file('productImage')) {
+        if ($request->productName == $product->name && $request->productPrice == $product->price && $request->productDescription == $product->description && $request->productStock == $product->stock && $request->categorySelection == $category && $request->brandSelection == $product->brand && $request->yearSelection == $product->release && !$request->file('productImage')) {
             return redirect()->back()->with('error', 'No changes were made to the product!');
         }
  
