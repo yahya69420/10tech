@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('stock');
             $table->string('brand');
             $table->integer('release');
+            $table->boolean('available');
             $table->timestamps();
         });
     }

@@ -17,6 +17,7 @@ class Product extends Model
         'stock',
         'brand',
         'release',
+        'avaialble',
     ];
  
     public function categories()

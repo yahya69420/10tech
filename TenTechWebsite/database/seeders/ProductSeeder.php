@@ -67,6 +67,7 @@ class ProductSeeder extends Seeder
             'stock' => '0',
             'brand' => "Apel",
             'release' => "2022",
+            'available' => '1',
         ])->categories()->attach($laptopCategory);
  
         Product::create([
@@ -77,6 +78,7 @@ class ProductSeeder extends Seeder
             'stock' => '1',
             'brand' => "Apel",
             'release' => "2020",
+            'available' => '1',
         ])->categories()->attach($laptopCategory);
  
         Product::create([
@@ -87,6 +89,7 @@ class ProductSeeder extends Seeder
             'stock' => '2',
             'brand' => "Dell",
             'release' => "2021",
+            'available' => '1',
         ])->categories()->attach($laptopCategory);
  
         Product::create([
@@ -97,6 +100,7 @@ class ProductSeeder extends Seeder
             'stock' => '32',
             'brand' => "HP",
             'release' => "2021",
+            'available' => '1',
         ])->categories()->attach($laptopCategory);
  
         Product::create([
@@ -107,6 +111,8 @@ class ProductSeeder extends Seeder
             'stock' => '40',
             'brand' => "Lenovo",
             'release' => "2020",
+            'available' => '0',
+            'available' => '1',
         ])->categories()->attach($laptopCategory);
  
  
@@ -120,6 +126,7 @@ class ProductSeeder extends Seeder
             'stock' => '5',
             'brand' => "Apel",
             'release' => "2022",
+            'available' => '1',
         ])->categories()->attach($mobileCategory);
  
         Product::create([
@@ -130,6 +137,7 @@ class ProductSeeder extends Seeder
             'stock' => '1',
             'brand' => "Samsong",
             'release' => "2021",
+            'available' => '1',
         ])->categories()->attach($mobileCategory);
  
         Product::create([
@@ -140,6 +148,7 @@ class ProductSeeder extends Seeder
             'stock' => '4',
             'brand' => "Gugle",
             'release' => "2020",
+            'available' => '1',
         ])->categories()->attach($mobileCategory);
  
         Product::create([
@@ -150,6 +159,7 @@ class ProductSeeder extends Seeder
             'stock' => '100',
             'brand' => "1Plus",
             'release' => "2020",
+            'available' => '1',
         ])->categories()->attach($mobileCategory);
  
         Product::create([
@@ -160,6 +170,7 @@ class ProductSeeder extends Seeder
             'stock' => '6',
             'brand' => "Hawai",
             'release' => "2021",
+            'available' => '1',
         ])->categories()->attach($mobileCategory);
  
  
@@ -172,6 +183,7 @@ class ProductSeeder extends Seeder
             'stock' => '11',
             'brand' => "Dell",
             'release' => "2022",
+            'available' => '1',
         ])->categories()->attach($monitorCategory);
  
         Product::create([
@@ -182,6 +194,7 @@ class ProductSeeder extends Seeder
             'stock' => '12',
             'brand' => "LG",
             'release' => "2021",
+            'available' => '1',
         ])->categories()->attach($monitorCategory);
  
         Product::create([
@@ -192,6 +205,7 @@ class ProductSeeder extends Seeder
             'stock' => '29',
             'brand' => "Samsong",
             'release' => "2020",
+            'available' => '1',
         ])->categories()->attach($monitorCategory);
  
         Product::create([
@@ -202,6 +216,7 @@ class ProductSeeder extends Seeder
             'stock' => '36',
             'brand' => "Acer",
             'release' => "2021",
+            'available' => '1',
         ])->categories()->attach($monitorCategory);
  
         Product::create([
@@ -212,6 +227,7 @@ class ProductSeeder extends Seeder
             'stock' => '49',
             'brand' => "Asus",
             'release' => "2022",
+            'available' => '1',
         ])->categories()->attach($monitorCategory);
  
  
@@ -224,6 +240,7 @@ class ProductSeeder extends Seeder
             'stock' => '10',
             'brand' => "Apel",
             'release' => "2022",
+            'available' => '1',
         ])->categories()->attach($tabletCategory);
  
         Product::create([
@@ -234,6 +251,7 @@ class ProductSeeder extends Seeder
             'stock' => '3',
             'brand' => "Samsong",
             'release' => "2020",
+            'available' => '1',
         ])->categories()->attach($tabletCategory);
  
         Product::create([
@@ -244,6 +262,7 @@ class ProductSeeder extends Seeder
             'stock' => '2',
             'brand' => "Hawai",
             'release' => "2021",
+            'available' => '1',
         ])->categories()->attach($tabletCategory);
  
         Product::create([
@@ -254,6 +273,7 @@ class ProductSeeder extends Seeder
             'stock' => '300',
             'brand' => "Lenovo",
             'release' => "2020",
+            'available' => '1',
         ])->categories()->attach($tabletCategory);
  
         Product::create([
@@ -264,6 +284,7 @@ class ProductSeeder extends Seeder
             'stock' => '43',
             'brand' => "Samsong",
             'release' => "2021",
+            'available' => '1',
         ])->categories()->attach($tabletCategory);
  
  
@@ -279,6 +300,7 @@ class ProductSeeder extends Seeder
             'stock' => '506',
             'brand' => "Sony",
             'release' => "2022",
+            'available' => '1',
         ])->categories()->attach($consoleCategory);
  
         Product::create([
@@ -289,6 +311,7 @@ class ProductSeeder extends Seeder
             'stock' => '409',
             'brand' => "Microsoft",
             'release' => "2021",
+            'available' => '1',
         ])->categories()->attach($consoleCategory);
  
         Product::create([
@@ -299,6 +322,7 @@ class ProductSeeder extends Seeder
             'stock' => '276',
             'brand' => "Sony",
             'release' => "2020",
+            'available' => '1',
         ])->categories()->attach($consoleCategory);
  
         Product::create([
@@ -309,6 +333,7 @@ class ProductSeeder extends Seeder
             'stock' => '303',
             'brand' => "Nintendo",
             'release' => "2022",
+            'available' => '1',
         ])->categories()->attach($consoleCategory);
  
  
@@ -320,6 +345,7 @@ class ProductSeeder extends Seeder
             'stock' => '48',
             'brand' => "Nintendo",
             'release' => "2021",
+            'available' => '1',
         ])->categories()->attach($consoleCategory);
  
         // A normal discount with %
