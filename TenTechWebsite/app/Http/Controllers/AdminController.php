@@ -97,7 +97,8 @@ class AdminController extends Controller
             // // clear the session
             // session()->forget('success');
             // session()->forget('error');
-            $products = Product::simplePaginate(10);
+            $products = Product::where('available', 1)->simplePaginate(10);
+            // dd($products);
             // get all of the bransd from the porducts table
             $brands = Product::select('brand')->distinct()->get();
             // dd($brands);
@@ -277,6 +278,10 @@ class AdminController extends Controller
             $image = $request->file('productImage');
             $imageName = time() . '.' . $image->extension();
             $image->move(public_path('/'), $imageName);
+            // // delete the old image of tis product
+            // $oldImage = $product->image;
+            // unlink(public_path($oldImage));
+            // store the new image in the product object
             $product->image = $imageName;
         }
 
@@ -293,5 +298,27 @@ class AdminController extends Controller
 
         // lets redirect back with a success message
         return redirect()->back()->with('successfulEdit', $product->name . ' updated successfully!');
+    }
+
+    public function deleteProduct()
+    {
+        // show the team what happens when i delte, that it breaks the order histry
+        // dd(request()->all());
+
+        // we need to delete the data from the pivot table 
+        DB::table('category_product')->where('product_id', request()->productID)->delete();
+
+
+        // lets find the product by id
+        $product = Product::find(request()->productID);
+        // lets delete the product
+        // dd($product->available);
+
+        $product->available = 0;
+        $product->save();
+        // dd($product);
+        // $product->delete();
+        // lets redirect back with a success message
+        return redirect()->back()->with('success', $product->name . ' deleted successfully!');
     }
 }
