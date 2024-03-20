@@ -137,6 +137,11 @@ align-items: center;
             <div class="heroescontent">
               <h1>Mobile Phones</h1>
               <p>Discover the latest phones for the best prices</p>
+              @if ($mobiles->count() == 0)
+        <div class="our-product">
+            <h2>No mobiles found</h2>
+        </div>
+        @endif
             </div>
           </div>
 
