@@ -31,7 +31,7 @@
                     <div class="alert alert-info" role="alert">
                         Your wishlist is empty.
                     </div>
-                    <a href="http://localhost/10tech/TenTechWebsite/public/shop" class="start-shopping-btn">START SHOPPING</a>
+                    <a href="{{url('/shop')}}" class="start-shopping-btn">START SHOPPING</a>
                 @else
                     @foreach ($wishlist as $item)
                     <hr>
@@ -65,7 +65,7 @@
                     <hr>
                         
                     @endforeach
-                    <a href="http://localhost/10tech/TenTechWebsite/public/shop" class="start-shopping-btn">START SHOPPING</a>
+                    <a href="{{url('/shop')}}" class="start-shopping-btn">START SHOPPING</a>
                 @endif
 
             @else
