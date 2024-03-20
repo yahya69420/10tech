@@ -123,10 +123,12 @@ Route::delete('cancel-order/{id}', [App\Http\Controllers\OrdersController::class
 
 // Admin routes
 
-Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
-Route::get('/admin/adminheader', [App\Http\Controllers\AdminController::class, 'adminheader'])->name('admin.adminheader');
-Route::get('/admin/admincust', [App\Http\Controllers\AdminController::class, 'admincust'])->name('admin.admincust');
-Route::get('admin/adminproducts',[App\Http\Controllers\AdminController::class, 'adminproducts'])->name('admin.adminproducts');
-Route::post('/admin/adduser', [AdminController::class, 'addUser'])->name('admin.adduser');
-Route::delete('/admin/removeuser/{id}', [AdminController::class, 'removeUser'])->name('admin.removeuser');
-Route::put('/admin/edituser/{id}', [AdminController::class, 'editUser'])->name('admin.edituser');
+Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard')->middleware('admin');
+// Route::get('/admin/adminheader', [App\Http\Controllers\AdminController::class, 'adminheader'])->name('admin.adminheader');
+Route::get('/admin/admincust', [App\Http\Controllers\AdminController::class, 'admincust'])->name('admin.admincust')->middleware('admin');
+Route::get('admin/adminproducts',[App\Http\Controllers\AdminController::class, 'adminproducts'])->name('admin.adminproducts')->middleware('admin');
+Route::post('/admin/adduser', [AdminController::class, 'addUser'])->name('admin.adduser')->middleware('admin');
+Route::delete('/admin/removeuser/{id}', [AdminController::class, 'removeUser'])->name('admin.removeuser')->middleware('admin');
+Route::put('/admin/edituser/{id}', [AdminController::class, 'editUser'])->name('admin.edituser')->middleware('admin');
+Route::post('/admin/adminproducts/add-product', [App\Http\Controllers\AdminController::class, 'addNewProduct'])->name('add-new-product')->middleware('admin');
+Route::post('/admin/adminproducts/edit-product', [App\Http\Controllers\AdminController::class, 'editNewProduct'])->name('edit-new-product')->middleware('admin');
