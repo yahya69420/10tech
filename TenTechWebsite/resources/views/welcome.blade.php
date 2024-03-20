@@ -73,10 +73,11 @@ align-items: center;
   }
 
   .category .image {
-    position: relative;
-    width: 110%;
-    height: 200px;
-    overflow: hidden;
+    width: 100%; 
+    height: auto;
+    object-fit: contain; 
+    margin-left: 20px; 
+
   }
 
   .category .image img {

@@ -54,16 +54,16 @@ class ProductSeeder extends Seeder
         $laptopCategory = Category::create([
             'name' => 'Laptop',
             // 'image' => 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            'image' => url('10tech/TenTechWebsite/public/laptop4.png'),
+            'image' => url('10tech/TenTechWebsite/public/phone6.png'),
             'price' => '399.99',
         ]);
  
         // 5 laptops seeded
         Product::create([
-            'name' => 'Macbook Air',
+            'name' => 'Macpad Air',
             'price' => 999.00,
             'description' => 'Thin and light MacBook with M1 chip',
-            'image' => 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWFjYm9vayUyMGFpcnxlbnwwfHwwfHx8MA%3D%3D',
+            'image' => url('10tech/TenTechWebsite/public/top1.webp'),
             'stock' => '0',
             'brand' => "Apel",
             'release' => "2022",
@@ -71,10 +71,10 @@ class ProductSeeder extends Seeder
         ])->categories()->attach($laptopCategory);
  
         Product::create([
-            'name' => 'Macbook Pro',
+            'name' => 'Macpad Pro',
             'price' => 1299.00,
             'description' => 'Thin and light MacBook with M1 chip',
-            'image' => 'https://images.unsplash.com/photo-1580522154071-c6ca47a859ad?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHx8MA%3D%3D',
+            'image' => url('10tech/TenTechWebsite/public/top2.webp'),
             'stock' => '1',
             'brand' => "Apel",
             'release' => "2020",
@@ -82,10 +82,10 @@ class ProductSeeder extends Seeder
         ])->categories()->attach($laptopCategory);
  
         Product::create([
-            'name' => 'Dell XPS 13',
+            'name' => 'IDall XPS 13',
             'price' => 1399.00,
             'description' => 'Thin and light MacBook with M1 chip',
-            'image' => 'https://www.cnet.com/a/img/resize/51a1873aac8a490cfd677f524a58f6bacf53d07e/hub/2019/01/04/83703cec-9498-4543-9b1f-0a5bc0683763/dell-xps-13-07.jpg?auto=webp&width=1200',
+            'image' => url('10tech/TenTechWebsite/public/top3.webp'),
             'stock' => '2',
             'brand' => "Dell",
             'release' => "2021",
@@ -96,7 +96,7 @@ class ProductSeeder extends Seeder
             'name' => 'HP Spectre x360',
             'price' => 1499.00,
             'description' => 'Thin and light MacBook with M1 chip',
-            'image' => 'https://sm.pcmag.com/t/pcmag_uk/review/h/hp-spectre/hp-spectre-x360-135-2022_jt67.3840.jpg',
+            'image' => url('10tech/TenTechWebsite/public/top4.webp'),
             'stock' => '32',
             'brand' => "HP",
             'release' => "2021",
@@ -107,7 +107,7 @@ class ProductSeeder extends Seeder
             'name' => 'Lenovo ThinkPad X1 Carbon',
             'price' => 1599.00,
             'description' => 'Thin and light MacBook with M1 chip',
-            'image' => 'https://p4-ofp.static.pub/fes/cms/2023/02/10/7qjkk7h1a53t8jq5snivyzumxw040v193587.png',
+            'image' => url('10tech/TenTechWebsite/public/top5.webp'),
             'stock' => '40',
             'brand' => "Lenovo",
             'release' => "2020",
