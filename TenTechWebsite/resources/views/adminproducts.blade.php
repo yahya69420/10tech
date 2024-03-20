@@ -103,14 +103,14 @@
                   <img src="{{ asset($product->image) }}" alt="product image" class="img-thumbnail" style="width:300px; height:300px;">
                 </div>
                 <p class="p-3 mb-2 bg-danger text-white">Are you sure you want to remove this product?</p>
-                <!-- <form method="POST" action="{{ url('admin/adminproducts/remove-product') }}">
+                <form method="POST" action="{{ url('admin/adminproducts/remove-product') }}">
                   @csrf
                   <input hidden name="productID" value="{{ $product->id }}">
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-danger">Remove</button>
                   </div>
-                </form> -->
+                </form>
               </div>
             </div>
           </div>
