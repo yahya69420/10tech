@@ -192,6 +192,12 @@
         </a>
       </li>
 
+      <li class="sidebar-list-item">
+        <a href="{{ url('shop') }}" target="_blank">
+          <span class="material-icons-outlined">Shop view</span>
+        </a>
+      </li>
+
     </ul>
   </aside>
 

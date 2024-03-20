@@ -144,6 +144,9 @@
             <a href="{{ route('settings') }}">User Profile</a>
             <hr>
             <a href="{{ url('logout') }}">Logout</a>
+            @if (Auth::user()->is_admin == 1)
+            <a href="{{ url('admin/dashboard') }}">Admin dashboard</a>
+            @endif
           </div>
         </li>
         @else
@@ -153,6 +156,9 @@
             <a href="{{ route('settings') }}">User Profile</a>
             <hr>
             <a href="{{ url('logout') }}">Logout</a>
+            @if (Auth::user()->is_admin == 1)
+            <a href="{{ url('admin/dashboard') }}">Admin dashboard</a>
+            @endif
           </div>
         </li>
         @endif
@@ -164,6 +170,10 @@
           <!-- added user settings route to modify settings profile for user -->
           <hr>
           <a href="{{ url('logout') }}">Logout</a>
+          @if (Auth::user()->is_admin == 1)
+          <!-- if user is admin, show admin link -->
+          <a href="{{ url('admin/dashboard') }}">Admin dashboard</a>
+          @endif
           @else
           <!-- if user is not authenticated, show login and register links -->
           <li class="dropdown"><button class="dropbtn"><img src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png" class="account"></button>
