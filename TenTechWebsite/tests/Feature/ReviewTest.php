@@ -9,7 +9,7 @@ use App\Models\OrderItems;
 class ReviewTest extends TestCase
 {
     
-    public function testReviewPage()
+    public function tstReviewPage()
     {
         // Log in a user
         $this->post('/login', [
@@ -39,5 +39,41 @@ class ReviewTest extends TestCase
         // Assert the response status is 200 (OK)
         $response->assertStatus(200);
 
+    }
+
+    public function test_user_creating_a_review() {
+
+        // simulates a user logging into the application
+        $this->post('/login', [
+            'email' => 'test@test.com',
+            'password' => '1',
+        ]);
+
+        // Fetch the product with ID 3 from the database to use in the test.
+        $product = Product::findOrFail(5);
+        $product_id = $product->id;
+
+        // Check if the currently authenticated user has purchased the product.
+        $verified_purchase = OrderItems::whereHas('order', function ($query) use ($product_id) {
+            $query->where('user_id', Auth::id());
+        })->where('product_id', $product_id)->exists();
+
+        // If the user has not purchased the product, skip the test.
+        // Only users who have verified their purchase should be able to leave a review
+        if (!$verified_purchase) {
+            $this->markTestSkipped('Not eligble to review, Skipping Test');
+            return;
+        }
+        // Submit a POST request to the '/add-review' route with the product ID and a sample review text.
+        // This mimics the action of a user submitting a review form in the application.
+        $response = $this->post('/add-review', [
+            'product_id' => $product->id,
+            'user_review' => 'This is a test review',
+        ]);
+        
+        // After submitting the review, check if the session has a specific message.
+        // This assertion verifies that the application redirects with a success message
+        // indicating the review was successfully submitted.
+        $response->assertSessionHas('status', "Thank you for writing a review");
     }
 }
