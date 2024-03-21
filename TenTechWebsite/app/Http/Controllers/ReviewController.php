@@ -133,27 +133,37 @@ class ReviewController extends Controller
 
     public function update(Request $request) 
     {
+        //Retrieve the "user_review" input from request
         $user_review = $request->input('user_review');
+
+        // Check if the 'user_review' is not empty.
         if ($user_review!= '')
         { 
+            // Retrieve the 'review_id' from the request.
             $review_id = $request->input('review_id');
+            // Find the review by its ID and the ID of the currently authenticated user.
             $review = Review::where('id', $review_id)->where('user_id',Auth::id())->first();
             
+            // Check if the review exists.
             if ($review) {
+
+                // Update the 'user_review' field with the new review text.
                 $review->user_review = $request->input('user_review');
                 $review->update();
 
-                // return redirect()->route('productdetail', ['id' => $product_id])->with('status', "Thank you for writing a review");
+                // Redirect to the product detail page with a success status message.
                 return redirect()->route('productdetail', ['id' => $review->product->id])->with('status', "Thank you for writing a review");
                 
             }
             else 
                 {
+                    // Redirect back with an error status message if the review does not exist.
                     return redirect()->back()->with('status','Link is broken');
                 }
         }
         else 
         {
+            // Redirect back with an error status message if the review text is empty.
             return redirect()->back()->with('status',"You cannot subit an empty review");
         }
 

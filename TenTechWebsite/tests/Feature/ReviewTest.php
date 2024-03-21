@@ -9,7 +9,7 @@ use App\Models\OrderItems;
 class ReviewTest extends TestCase
 {
     
-    public function tstReviewPage()
+    public function testReviewPage()
     {
         // Log in a user
         $this->post('/login', [
@@ -41,7 +41,7 @@ class ReviewTest extends TestCase
 
     }
 
-    public function tst_user_creating_a_review() {
+    public function test_user_creating_a_review() {
 
         // simulates a user logging into the application
         $this->post('/login', [
