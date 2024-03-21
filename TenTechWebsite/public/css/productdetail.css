@@ -1,50 +1,44 @@
 
-.product-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 100%;
-}
-
 .solid-heading {
-    font-family: verdana; /* Change this to your desired solid font */
-    font-weight: bold; /* Ensures the font appears solid */
+    font-family: verdana; 
+    font-weight: bold; 
     
 }
 .price-head {
-    font-family: Arial, sans-serif; /* Change this to your desired font */
-    
-}
-/* Define styles for quantity select */
-#quantity {
-    margin-right: 10px; /* Adjust spacing between select and button */
-    margin-bottom: 10px; /* Add spacing below select */
+    font-family: Arial, sans-serif; 
+
 }
 
-/* Define styles for Add to Cart button */
+#quantity {
+    margin-right: 10px;
+    margin-bottom: 10px; 
+}
+
+
 .buy-btn {
-    padding: 10px 20px; /* Adjust padding to make button larger */
-    font-size: 16px; /* Adjust font size */
-    background-color: #ff7300e8; /* Button background color */
+    padding: 10px 10px; 
+    font-size: 16px;
+    background-color: #049f47; /* Button background color */
     color: #fff; /* Button text color */
-    border: none; /* Remove default button border */
+    border: 2px solid black; /* Remove default button border */
     border-radius: 5px; /* Add border radius */
 }
 
 footer {
-    margin-top: 20px; /* Adjust the value as needed */
+    margin-top: 250px; /* Adjust the value as needed */
 }
 
-/* .image-frame {
-    border: 2px solid #ccc; /* Border color */
-   /* padding: 10px;  Padding around the image */
-  /*  border-radius: 8px;  Rounded corners for the frame */
-  /*  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  Shadow effect */
-/* }  */
-
-
-@media (max-wdith:768px) {
-    .image-frame {
-        padding:5px;
-    }
+.add-to-cart {
+    margin-top:20px;
 }
+
+.star_ratings {
+    padding-left: 40px; 
+    padding-right: 15px; 
+}
+.user_ratings {
+    padding-left: 40px; 
+    padding-right: 15px; 
+}
+
+
