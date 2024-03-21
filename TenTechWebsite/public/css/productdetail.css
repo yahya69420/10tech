@@ -16,7 +16,7 @@
 
 
 .buy-btn {
-    padding: 10px 10px; 
+    padding: 10px 15px; 
     font-size: 16px;
     background-color: #049f47; /* Button background color */
     color: #fff; /* Button text color */
@@ -24,8 +24,17 @@
     border-radius: 5px; /* Add border radius */
 }
 
+.wishlist-btn {
+    padding: 10px 10px; 
+    font-size: 16px;
+    background-color: rgb(3, 131, 216); 
+    color: #fff;
+    border: 2px solid black; 
+    border-radius: 5px; 
+}
+
 footer {
-    margin-top: 250px; /* Adjust the value as needed */
+    margin-top: 250px; 
 }
 
 .add-to-cart {

@@ -105,7 +105,7 @@
                         @if ($product->stock == 0)
                         <h4><span class="badge rounded-pil bg-danger">Out of Stock</span></h4>
 
-                        <button type="submit" class="buy-btn"formaction="{{ route('add-to-wishlist') }}"><i class="fas fa-heart"></i> Add to Wishlist</button>
+                        <button type="submit" class="wishlist-btn"formaction="{{ route('add-to-wishlist') }}"><i class="fas fa-heart"></i> Add to Wishlist</button>
 
                         
                         @endif
