@@ -51,6 +51,11 @@ class ReviewController extends Controller
 
     public function create(Request $request) 
     {
+
+        $validatedData = $request->validate([
+            'product_id' => 'required|integer', // Ensure the product_id is provided and is an integer
+            'user_review' => 'required|string|min:1', // Ensure the user_review is provided, is a string, and not empty
+        ]);
         // Get the product ID from the request
         $product_id = $request->input('product_id');
 
@@ -60,7 +65,7 @@ class ReviewController extends Controller
         if ($product) 
         {
             // Get the user review from the request
-            $user_review= $request->input('user_review');
+            $user_review= $validatedData['user_review']; // Use validated data
 
             // Create a new review for the product
             $new_review = Review::create([
