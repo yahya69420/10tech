@@ -100,20 +100,25 @@ class ReviewController extends Controller
 
     public function edit($product_id) 
     {
+        // Attempt to find a product by its ID where stock is greater than 0
         $product = Product::where('id', $product_id)->where('stock','>','0')->first();
 
+        // Check if the product was found
         if ($product) 
         {
+            // Product found, now find a review by the current authenticated user for this product
             $product_id = $product->id;
             $review = Review::where('user_id',Auth::id())->where('prod_id',$product_id)->first();
 
+            // Check if a review by the current user for this product exists
             if ($review)
             {
+                // Review exists, return the edit review view with the review data
                 return view('reviews.edit', ['review' => $review,
                                             ]);
             }
             else{
-                
+                // Review does not exist, redirect back with an error status message
                 return redirect()->back()->with('status','The link you followed was broken');
             }
         }
