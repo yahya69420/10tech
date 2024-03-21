@@ -5,11 +5,6 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\Product;
-use Illuminate\Support\Facades\Auth;
-use App\Models\OrderItems;
-use App\Models\Review;
-use App\Models\User;
-use App\Models\Wishlist;
 class WishlistTest extends TestCase
 {
     // Need wishlists seeded data for this to work 
@@ -40,7 +35,7 @@ class WishlistTest extends TestCase
 
     }
 
-    public function tst_add_item_to_wishlist() {
+    public function test_add_item_to_wishlist() {
         
         
         $this->post('/login', [
@@ -62,42 +57,40 @@ class WishlistTest extends TestCase
         $response->assertRedirect()->assertSessionHas('success_wishlist', 'Product added to wishlist!');
 
         ;
-           
-    
-            
-        
     }
 
-    // Need wishlists seeded data for this to work 
+    
     public function test_delete_item_from_wishlist(){
+
+        // Log in as a user
         $this->post('/login', [
             'email' => 'test@test.com',
             'password' => '1',
         ]);
         
-        $product = Product::findOrFail(3);
+        // Get a product to add to the wishlist
+        $product = Product::findOrFail(1);
         $product_id = $product->id;
         
-        $wishlistItem = Wishlist::create([
-            'user_id' => '1',
-            'product_id' => '1', // Assuming product ID 1 exists
+        // Add the product to the wishlist
+        $response = $this->post(route('add-to-wishlist'), [
+            'product_id' => $product_id,
+            'user_id' => "1",
         ]);
     
-        // Ensure the wishlist item exists
-        $this->assertDatabaseHas('wishlist', [
-            'user_id' => '1',
-            'product_id' => $product_id,
-        ]);
-
+        // Make a request to delete the wishlist item
         $response = $this->post('delete-wishlist-item', ['product_id' => $product_id]);
+
+        // Assert that the deletion was successful
         $response->assertStatus(200)
                 ->assertJson(['status' => 'Item removed Successfully']);
 
-        // Ensure the wishlist item is deleted
-        $this->assertDatabaseMissing('wishlist', [
+        // Ensure the wishlist item is deleted from the database
+        $this->assertDatabaseMissing('wishlists', [
             'user_id' => '1',
-            'product_id' => $product_id,
+            'product_id' =>$product_id,
         ]);
+
     }
 
 }
