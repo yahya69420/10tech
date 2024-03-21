@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
+    // only authenticated users can access this controller
+    // copied from HomeController.php
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
