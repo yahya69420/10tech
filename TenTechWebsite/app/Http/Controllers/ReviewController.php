@@ -51,13 +51,18 @@ class ReviewController extends Controller
 
     public function create(Request $request) 
     {
+        // Get the product ID from the request
         $product_id = $request->input('product_id');
 
+        // Find the product with the given ID that has stock available
         $product = Product::where('id', $product_id)->where('stock','>','0')->first();
 
         if ($product) 
         {
+            // Get the user review from the request
             $user_review= $request->input('user_review');
+
+            // Create a new review for the product
             $new_review = Review::create([
                 'user_id' => Auth::id(),
                 'prod_id' => $product_id,
@@ -70,10 +75,9 @@ class ReviewController extends Controller
 
             if($firstCategory)
             { 
-                $categorySlug = $firstCategory->slug;
-                $prodId = $product->id;
                 
                 if ($new_review) { 
+                    // Redirect to the product detail page with a success message
                     return redirect()->route('productdetail', ['id' => $product_id])->with('status', "Thank you for writing a review");
                 }
 
@@ -84,6 +88,7 @@ class ReviewController extends Controller
         }
         else 
         {
+            // Handle the case where the product is not found or out of stock
             return redirect()->back()->with('status','The link you follow was broken');
         }
     }
