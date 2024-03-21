@@ -16,218 +16,227 @@
 
 <body>
     @include('header')
+    
+    <!-- Header class -->
+    <div class ="py-3 mb-4 shadow-sm bg-warning border-top">
+        <div class="container ">
+            <h6 class="mb-0">Shop /
+            @foreach ($product->categories as $category)
+                {{ $category->name }}
+                @if (!$loop->last) 
+                    /
+                @endif
+            @endforeach
+             / {{$product->name}} </h6>
+        </div>
+    </div>  
+   
+    <!-- Image and details container -->
+    <section class = "container product_page my-5 ">
+		<div class="row justify-content-center mt-5">
+            <div class = "col-lg-1 col-md-12 col-12"> </div>
+			<div class = "col-lg-5 col-md-12 col-12">
+                <img  src="{{ asset($product->image) }}" alt="{{ $product->name }}" width="100%">
+            </div>
+            <div class = "col-lg-6 col-md-12 col-12">
+                <h6> Shop / {{ $product->name }} </h6>
+                <h3 class="solid-heading"> {{ $product->name }}</h3>
+                @php $ratenum = number_format($rating_value) @endphp <!-- Format and store the average rating value -->
+                <div class="rating">
+                    <!-- Generate filled stars for the average rating -->
+                    @for($i = 1; $i<= $ratenum; $i++ ) <i class="fa fa-star checked"></i> <!-- Display a filled star for each point in the average rating -->
+                    @endfor
+                        <!-- Generate empty stars for the remainder up to 5 -->
+                    @for($j = $ratenum+1; $j <= 5; $j++ ) <i class="fa fa-star "></i> <!-- Display an empty star for each point missing to reach 5 -->
+                    @endfor
 
-    <section class="container sproduct my-5 pt-5">
-        <div class="container">
-            <div class="card shadow">
-                <div class="card-body">
-                    <div class="row mt-3 ">
-                        <div class="col-lg-5 col-md-12 col-12">
-                            <div class="image-frame">
-                                <img class="img-fluid " src="{{ asset($product->image) }}" alt="{{ $product->name }}" style="margin-bottom: 20px;">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-7 col-md-12 col-12">
-                            <div class="product-details">
-                                <h3 class="solid-heading"> {{ $product->name }}</h3>
-
-                                <!-- Displaying Star Ratings Based on Reviews -->
-                                @php $ratenum = number_format($rating_value) @endphp <!-- Format and store the average rating value -->
-                                <div class="rating">
-                                    <!-- Generate filled stars for the average rating -->
-                                    @for($i = 1; $i<= $ratenum; $i++ ) <i class="fa fa-star checked"></i> <!-- Display a filled star for each point in the average rating -->
-                                        @endfor
-                                        <!-- Generate empty stars for the remainder up to 5 -->
-                                        @for($j = $ratenum+1; $j <= 5; $j++ ) <i class="fa fa-star "></i> <!-- Display an empty star for each point missing to reach 5 -->
-                                            @endfor
-
-                                            <span>
-                                                @if($ratings -> count() > 0)
-                                                {{ $ratings -> count()}} Ratings <!-- Show the total number of ratings if available -->
-                                                @else
-                                                No Ratings <!-- Display 'No Ratings' if there are no ratings -->
-                                                @endif
-                                            </span>
-                                </div>
-
-
-                                <h5 class="price-head">Price: £{{ $product->price }}</h5>
-                                <div class="add-to-cart">
-                                    <!-- form to allow for product to be added to the cart database so it can be accessed
-                        and manipulated later -->
-                                    <form action="{{ route('add_to_basket') }}" method="POST">
-                                        <!-- 
-                        From the Laravel documentation: Anytime you define a "POST", "PUT", "PATCH",
-                     or "DELETE" HTML form in your application, you should include a hidden 
-                     CSRF _token field in the form so that the CSRF protection middleware can 
-                     validate the request. For convenience, you may use the @csrf Blade directive 
-                     to generate the hidden token input field
-                     Reference: https://laravel.com/docs/10.x/csrf
-                 -->
-                                        @csrf
-                                        <!-- the product id  passed inas hidden input so it can be accessed in the conteoller -->
-                                        <input type="text" name="product_id" value="{{ $product->id }}" hidden>
-                                        <input type="text" name="product_name" value="{{ $product->name }}" hidden>
-                                        @if($product->stock > 0)
-
-                                        <label for="quantity">Quantity:</label>
-                                        <select id="quantity" name="quantity">
-                                            @if ($product->stock > 10)
-                                            <!-- changed to less/equal to 10 for simplicity -->
-                                            @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}">{{ $i }}</option>
-                                                @endfor
-                                                @else
-                                                @for ($i = 1; $i <= $product->stock; $i++)
-                                                    <option value="{{ $i }}">{{ $i }}</option>
-                                                    @endfor
-                                                    @endif
-
-                                        </select>
-                                        @if ($product->stock > 10)
-                                        <h4><span class="badge rounded-pil bg-success">{{ $product->stock }} In Stock</span></h4>
-                                        <button type="submit">Add to Basket</button>
-
-                                        @elseif ($product->stock <= 10 && $product->stock > 0)
-                                            <h4><span class="badge rounded-pil bg-warning">{{ $product->stock }} Products in stock</span></h4>
-                                            <h4><span class="badge rounded-pil bg-warning">Low Stock</span></h4>
-                                            <button type="submit">Add to Basket</button>
-                                            @endif
-                                            @endif
-                                            @if ($product->stock == 0)
-                                            <h4><span class="badge rounded-pil bg-danger">Out of Stock</span></h4>
-
-                                            <button type="submit" formaction="{{ route('add-to-wishlist') }}">Add to Wishlist</button>
-
-                                            
-                                            @endif
-                                    </form>    
-                                    <!-- @dump(session()->all()) -->
-                                    <!-- @dump(session()->all()) -->
-                                    @if(session('successfulladdition'))
-                                    <script>
-                                        Toast = Swal.mixin({
-                                            toast: true,
-                                            position: "top",
-                                            showConfirmButton: false,
-                                            timer: 1500,
-                                            timerProgressBar: true,
-                                            didOpen: (toast) => {
-                                                toast.onmouseenter = Swal.resumeTimer;
-                                                toast.onmouseleave = Swal.resumeTimer;
-                                            }
-                                        });
-                                        Toast.fire({
-                                            icon: "success",
-                                            title: "{{ session('successfulladdition') }}",
-                                        });
-                                    </script>
-                                    @endif
-
-                                    @if(session('error'))
-                                    <script>
-                                        Toast = Swal.mixin({
-                                            toast: true,
-                                            position: "top",
-                                            showConfirmButton: false,
-                                            timer: 1500,
-                                            timerProgressBar: true,
-                                            didOpen: (toast) => {
-                                                toast.onmouseenter = Swal.resumeTimer;
-                                                toast.onmouseleave = Swal.resumeTimer;
-                                            }
-                                        });
-                                        Toast.fire({
-                                            icon: "error",
-                                            title: "{{ session('error') }}",
-                                        });
-                                    </script>
-                                    @endif
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
+                    <span>
+                        @if($ratings -> count() > 0)
+                        {{ $ratings -> count()}} Ratings <!-- Show the total number of ratings if available -->
+                        @else
+                        No Ratings <!-- Display 'No Ratings' if there are no ratings -->
+                        @endif
+                    </span>
                 </div>
-                    <div class="card shadow">
-                        <div class="card-body">
-                            <div class="row">
-                                <h4>Product Description</h4>
-                                <p style="font-size:15px">{{ $product->description }}</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Rate this Product
-                                    </button>
+                
+                <h5 class="price-head mt-2">Price: £{{ $product->price }}</h5>
+                <hr>
+                <div class="add-to-cart">
+                    <!-- form to allow for product to be added to the cart database so it can be accessed
+                    and manipulated later -->
+                    <form action="{{ route('add_to_basket') }}" method="POST">
+                    <!-- 
+                    From the Laravel documentation: Anytime you define a "POST", "PUT", "PATCH",
+                    or "DELETE" HTML form in your application, you should include a hidden 
+                    CSRF _token field in the form so that the CSRF protection middleware can 
+                    validate the request. For convenience, you may use the @csrf Blade directive 
+                    to generate the hidden token input field
+                    Reference: https://laravel.com/docs/10.x/csrf
+                    -->
+                    @csrf
+                    <!-- the product id  passed inas hidden input so it can be accessed in the conteoller -->
+                    <input type="text" name="product_id" value="{{ $product->id }}" hidden>
+                    <input type="text" name="product_name" value="{{ $product->name }}" hidden>
+                    @if($product->stock > 0)
 
-                                    <a href="{{ url('add-review/'.$product->id.'/userreview')}}" class="btn btn-link">
-                                        Write Review
-                                    </a>
-                                         
-                                </div>
+                    <label for="quantity">Quantity:</label>
+                    <select id="quantity" name="quantity">
+                        @if ($product->stock > 10)
+                        <!-- changed to less/equal to 10 for simplicity -->
+                        @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                            @else
+                            @for ($i = 1; $i <= $product->stock; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                                @endfor
+                                @endif
 
-                                <div class="col-md-4">
-                                    @foreach($reviews as $item)
-                                    @php
-                                        $fullName = $item->user->address->full_name;                                     
-                                    @endphp
-                                    <div class="user-review">
-                                    
-                                        <!-- Display the card holder's name if available, otherwise 'anonymous' -->
-                                        <label for="">{{ $fullName ?? 'anonymous' }}</label>
-                                        
-                                        <!-- Check if the current user is the author of the review to display an edit link -->
+                    </select>
+                    @if ($product->stock > 10)
+                    <h4><span class="badge rounded-pil bg-success">{{ $product->stock }} In Stock</span></h4>
+                    <button type="submit"class="buy-btn"><i class="fas fa-shopping-cart"></i>Add to Basket</button>
 
-                                        @if($item->user_id == Auth::id())
-                                            <!-- Shows edit button if user is logged in and has wrote a review -->
-                                            <a href=" {{ url('edit-review/'.$product->id.'/userreview')}}" class="btn btn-link"> 
-                                            edit review
-                                            </a>
-                                        @endif
-                                        
-                                        <br>
-                                        <!-- retrieve rating for the product by current item's user -->
-                                        @php 
-                                            $rating = App\Models\Rating::where('prod_id',$product->id)->where('user_id', $item->user->id)->first();
-                                        @endphp 
+                    @elseif ($product->stock <= 10 && $product->stock > 0)
+                        <h4><span class="badge rounded-pil bg-warning">{{ $product->stock }} Products in stock</span></h4>
+                        <h4><span class="badge rounded-pil bg-warning">Low Stock</span></h4>
+                        <button type="submit"class="buy-btn" ><i class="fas fa-shopping-cart"></i> Add to Basket</button>
+                        @endif
+                        @endif
+                        @if ($product->stock == 0)
+                        <h4><span class="badge rounded-pil bg-danger">Out of Stock</span></h4>
 
-                                        <!-- Check if there are ratings for the review by that user -->
-                                        @if($rating)
-                                            <!-- displays user's rating as stars filled and unfilled -->
-                                            @php
-                                                $user_rated = $rating->stars_rated;
-                                            @endphp
+                        <button type="submit" class="buy-btn"formaction="{{ route('add-to-wishlist') }}"><i class="fas fa-heart"></i> Add to Wishlist</button>
 
-                                            @for($i = 1; $i<= $user_rated; $i++ ) 
-                                                <i class="fa fa-star checked"></i> 
-                                            @endfor
-                                            
-                                            @for($j = $user_rated+1; $j <= 5; $j++ ) 
-                                                <i class="fa fa-star "></i> 
-                                            @endfor
-                                
-                                        @endif
+                        
+                        @endif
+                    </form>    
+                    
+                    @if(session('successfulladdition'))
+                    <script>
+                        Toast = Swal.mixin({
+                            toast: true,
+                            position: "top",
+                            showConfirmButton: false,
+                            timer: 1500,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.onmouseenter = Swal.resumeTimer;
+                                toast.onmouseleave = Swal.resumeTimer;
+                            }
+                        });
+                        Toast.fire({
+                            icon: "success",
+                            title: "{{ session('successfulladdition') }}",
+                        });
+                    </script>
+                    @endif
 
-                                        <!-- Display the review date in "day month year" format -->
-                                        <small>Reviewed on {{ $item->created_at->format(' d M Y')}}</small>
-
-                                        <!-- Display the review text -->
-                                        <p>
-                                            {{ $item->user_review}}
-                                        </p>
-                                    @endforeach
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @if(session('error'))
+                    <script>
+                        Toast = Swal.mixin({
+                            toast: true,
+                            position: "top",
+                            showConfirmButton: false,
+                            timer: 1500,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.onmouseenter = Swal.resumeTimer;
+                                toast.onmouseleave = Swal.resumeTimer;
+                            }
+                        });
+                        Toast.fire({
+                            icon: "error",
+                            title: "{{ session('error') }}",
+                        });
+                    </script>
+                    @endif
                 </div>
+                <hr>         
+                <h4 class="mt-5 mb-2">Product Description</h4>
+                <p style="font-size:15px">{{ $product->description }}</p>
+
+
+            </div>
     </section>
+    <hr>
 
+    <!-- Reviews and ratings container -->
+    <section class="container-fluid bg">
+        <div class="row">
+            <div class="col-lg-1 col-md-12 col-12"> </div>
+            
+            <div class="col-lg-5 col-md-12 col-12">
+                <div class="star_ratings mb-3">
+                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Rate this Product
+                    </button>
 
+                    <a href="{{ url('add-review/'.$product->id.'/userreview')}}" class="btn btn-link">
+                    Write Review
+                    </a>
 
+                </div>
+                
+                <div class = "user_ratings mb-5">
+                    @if($reviews->isNotEmpty())
+                        @foreach($reviews as $item)
+                            <hr>
+                            @php
+                                $fullName = $item->user->address->full_name;                                     
+                            @endphp
+                            <div class="user-review">
+                                <!-- Display the card holder's name if available, otherwise 'anonymous' -->
+                                <label for="">{{ $fullName ?? 'anonymous' }}</label>
+                                <!-- Check if the current user is the author of the review to display an edit link -->
+                                @if($item->user_id == Auth::id())
+                                    <!-- Shows edit button if user is logged in and has wrote a review -->
+                                    <a href=" {{ url('edit-review/'.$product->id.'/userreview')}}" class="btn btn-link"> 
+                                    edit review
+                                    </a>
+                                @endif
+                                <br>
+                                <!-- retrieve rating for the product by current item's user -->
+                                @php 
+                                    $rating = App\Models\Rating::where('prod_id',$product->id)->where('user_id', $item->user->id)->first();
+                                @endphp
+                                <!-- Check if there are ratings for the review by that user -->
+                                @if($rating)
+                                    <!-- displays user's rating as stars filled and unfilled -->
+                                    @php
+                                        $user_rated = $rating->stars_rated;
+                                    @endphp
+
+                                    @for($i = 1; $i<= $user_rated; $i++ ) 
+                                        <i class="fa fa-star checked"></i> 
+                                    @endfor
+                                    
+                                    @for($j = $user_rated+1; $j <= 5; $j++ ) 
+                                        <i class="fa fa-star "></i> 
+                                    @endfor
+                                @endif
+                                <!-- Display the review date in "day month year" format -->
+                                <small>Reviewed on {{ $item->created_at->format(' d M Y')}}</small>
+                                <!-- Display the review text -->
+                                <p>
+                                    {{ $item->user_review}}
+                                </p>
+                                <hr>
+                        @endforeach
+                    @else
+                    <div class="alert alert-info mt-5 text-center" role="alert">
+                        <h4 class="alert-heading">Reviews (0)</h4>
+                    
+                    </div>
+                    <p>There are no reviews yet</p>
+                        
+                    <p class="mb-0">Only logged in customers who have purchased this product may leave a review</p>
+                    @endif
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    
     @include('layouts/footer')
 
     <!-- Modal for Rating Submission -->
