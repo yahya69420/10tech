@@ -36,12 +36,12 @@ class ReviewTest extends TestCase
         // otherwise , the user is able to review the product
         $response = $this->get(route('add-review.userreview', ['product_id' => $product_id]));
 
-        // Assert the response status is 200 (OK)
+        // Assert the response status is 200 (OK) , correct view is return
         $response->assertStatus(200);
 
     }
 
-    public function test_user_creating_a_review() {
+    public function tst_user_creating_a_review() {
 
         // simulates a user logging into the application
         $this->post('/login', [
@@ -50,7 +50,7 @@ class ReviewTest extends TestCase
         ]);
 
         // Fetch the product with ID 3 from the database to use in the test.
-        $product = Product::findOrFail(5);
+        $product = Product::findOrFail(3);
         $product_id = $product->id;
 
         // Check if the currently authenticated user has purchased the product.
@@ -75,5 +75,31 @@ class ReviewTest extends TestCase
         // This assertion verifies that the application redirects with a success message
         // indicating the review was successfully submitted.
         $response->assertSessionHas('status', "Thank you for writing a review");
+    }
+
+    public function test_edit_user_review() {
+
+        $this->post('/login', [
+            'email' => 'test@test.com',
+            'password' => '1',
+        ]);
+
+        $product = Product::findOrFail(2);
+        $product_id = $product->id;
+
+        $verified_purchase = OrderItems::whereHas('order', function ($query) use ($product_id) {
+            $query->where('user_id', Auth::id());
+        })->where('product_id', $product_id)->exists();
+
+        // If the user has not purchased the product, skip the test.
+        // Only users who have verified their purchase should be able to leave a review
+        if (!$verified_purchase) {
+            $this->markTestSkipped('Not eligble to review, Skipping Test');
+            return;
+        }
+        $response = $this->get("/edit-review/{$product->id}/userreview");
+
+        // Assert the response is OK and the correct view is returned
+        $response->assertStatus(200);
     }
 }
