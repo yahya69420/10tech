@@ -6,6 +6,7 @@ use Tests\TestCase;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Models\OrderItems;
+use App\Models\Review;
 class ReviewTest extends TestCase
 {
     
@@ -101,5 +102,40 @@ class ReviewTest extends TestCase
 
         // Assert the response is OK and the correct view is returned
         $response->assertStatus(200);
+    }
+
+    public function test_update_a_review() {
+
+        $this->post('/login', [
+            'email' => 'test@test.com',
+            'password' => '1',
+        ]);
+
+
+        //Assuming there's a product and a review for that product by the logged-in user
+        $review = Review::where('prod_id', 2)->first();
+        $originalReviewText = $review->user_review;
+        $newReviewText = 'This is an updated test review';
+
+        // Simulate submitting the review update form.
+        $response = $this->put('/update-review', [
+            'review_id' => $review->id,
+            'user_review' => $newReviewText,
+        ]);
+
+        // Retrieve the review again to ensure it has been updated.
+        $updatedReview = Review::find($review->id);
+
+        // Assert that the original review text is not the same as the updated review text.
+        // This confirms that the update operation actually changed something
+        $this->assertNotEquals($originalReviewText, $updatedReview->user_review);
+
+        // updated review text matches the new review text that was submitted.
+        // This verifies that the review was updated to what we expected.
+        $this->assertEquals($newReviewText, $updatedReview->user_review);
+
+       
+        $response->assertRedirect(route('productdetail', ['id' => $review->product->id]));
+        $response->assertSessionHas('status', "Thank you for writing a review");
     }
 }
