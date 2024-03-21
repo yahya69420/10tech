@@ -16,20 +16,17 @@
 
 <body>
     @include('header')
-    
-    <!-- Header class -->
-    <div class ="py-3 mb-4 shadow-sm bg-warning border-top">
-        <div class="container ">
-            <h6 class="mb-0">Shop /
-            @foreach ($product->categories as $category)
-                {{ $category->name }}
-                @if (!$loop->last) 
-                    /
-                @endif
-            @endforeach
-             / {{$product->name}} </h6>
-        </div>
-    </div>  
+    <div class="shadow-sm bg-secondary">
+        <nav aria-label="breadcrumb" class="px-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item text-primary fw-bold"><a href="{{ url('/') }}" class="text-dark fw-bold text-decoration-underline">Shop</a></li>
+                @foreach ($product->categories as $category)
+                <li class="breadcrumb-item"><a href="{{ url('') . '/' . $category->name }}" class="text-dark fw-bold text-decoration-underline">{{ $category->name }}</a></li>
+                @endforeach
+                <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
+            </ol>
+        </nav>
+</div>
    
     <!-- Image and details container -->
     <section class = "container product_page my-5 ">
