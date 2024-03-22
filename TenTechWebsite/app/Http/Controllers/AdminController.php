@@ -15,12 +15,6 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    // only authenticated users can access this controller
-    // copied from HomeController.php
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function index()
     {
@@ -29,11 +23,20 @@ class AdminController extends Controller
 
 
     public function admincust()
-    {
-        $data = User::where('is_admin', 0)->get();
-        $datamess = CustomerMessage::all();
-        return view('layouts.admincust', ['data' => $data], ['datamess' => $datamess]);
+{
+    $data = User::where('is_admin', 0)->get();
+    $datamess = CustomerMessage::all();
+
+    // Fetch UserAddress data for each user
+    $userAddresses = [];
+    foreach ($data as $user) {
+        $userAddress = UserAddress::where('user_id', $user->id)->first();
+        $userAddresses[$user->id] = $userAddress;
     }
+
+    return view('layouts.admincust', ['data' => $data, 'datamess' => $datamess, 'userAddresses' => $userAddresses]);
+}
+
 
     /**
      * Add a new user.
@@ -99,13 +102,41 @@ class AdminController extends Controller
         return Redirect::back()->with('success', 'User email updated successfully!');
     }
 
+    public function editUserAddress(Request $request, $id)
+{
+    // Find the user address by id
+    $userAddress = UserAddress::where('user_id', $id)->first();
+
+    // Validate the incoming request data
+    $validator = Validator::make($request->all(), [
+        'edit_full_name' => ['required', 'string', 'max:255'],
+        'edit_address_line_1' => ['required', 'string', 'max:255'],
+        'edit_city' => ['required', 'string', 'max:255'],
+        'edit_post_code' => ['required', 'string', 'max:255'],
+    ]);
+
+    // If validation fails, redirect back with errors
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
+
+    // Update the user's address fields
+    $userAddress->full_name = $request->input('edit_full_name');
+    $userAddress->address_line_1 = $request->input('edit_address_line_1');
+    $userAddress->city = $request->input('edit_city');
+    $userAddress->post_code = $request->input('edit_post_code');
+    $userAddress->save();
+
+    // Redirect back with success message
+    return Redirect::back()->with('success', 'User address updated successfully!');
+}
+
     public function adminproducts()
     { {
             // // clear the session
             // session()->forget('success');
             // session()->forget('error');
-            $products = Product::where('available', 1)->simplePaginate(10);
-            // dd($products);
+            $products = Product::simplePaginate(10);
             // get all of the bransd from the porducts table
             $brands = Product::select('brand')->distinct()->get();
             // dd($brands);
@@ -285,10 +316,6 @@ class AdminController extends Controller
             $image = $request->file('productImage');
             $imageName = time() . '.' . $image->extension();
             $image->move(public_path('/'), $imageName);
-            // // delete the old image of tis product
-            // $oldImage = $product->image;
-            // unlink(public_path($oldImage));
-            // store the new image in the product object
             $product->image = $imageName;
         }
 
@@ -305,27 +332,5 @@ class AdminController extends Controller
 
         // lets redirect back with a success message
         return redirect()->back()->with('successfulEdit', $product->name . ' updated successfully!');
-    }
-
-    public function deleteProduct()
-    {
-        // show the team what happens when i delte, that it breaks the order histry
-        // dd(request()->all());
-
-        // we need to delete the data from the pivot table 
-        DB::table('category_product')->where('product_id', request()->productID)->delete();
-
-
-        // lets find the product by id
-        $product = Product::find(request()->productID);
-        // lets delete the product
-        // dd($product->available);
-
-        $product->available = 0;
-        $product->save();
-        // dd($product);
-        // $product->delete();
-        // lets redirect back with a success message
-        return redirect()->back()->with('success', $product->name . ' deleted successfully!');
     }
 }

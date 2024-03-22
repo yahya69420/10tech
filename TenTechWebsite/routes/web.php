@@ -130,6 +130,8 @@ Route::get('admin/adminproducts',[App\Http\Controllers\AdminController::class, '
 Route::post('/admin/adduser', [AdminController::class, 'addUser'])->name('admin.adduser')->middleware('admin');
 Route::delete('/admin/removeuser/{id}', [AdminController::class, 'removeUser'])->name('admin.removeuser')->middleware('admin');
 Route::put('/admin/edituser/{id}', [AdminController::class, 'editUser'])->name('admin.edituser')->middleware('admin');
+Route::put('/admin/edituseraddress/{id}', [AdminController::class, 'editUserAddress'])->name('admin.edituseraddress');
+Route::get('/admin/viewUser/{id}', [AdminController::class, 'viewUser'] )->name('user.viewuser');
 Route::post('/admin/adminproducts/add-product', [App\Http\Controllers\AdminController::class, 'addNewProduct'])->name('add-new-product')->middleware('admin');
 Route::post('/admin/adminproducts/edit-product', [App\Http\Controllers\AdminController::class, 'editNewProduct'])->name('edit-new-product')->middleware('admin');
 Route::post('/admin/adminproducts/remove-product', [App\Http\Controllers\AdminController::class, 'deleteProduct'])->name('delete-product')->middleware('admin');
