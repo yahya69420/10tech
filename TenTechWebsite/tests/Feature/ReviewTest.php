@@ -7,42 +7,67 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Models\OrderItems;
 use App\Models\Review;
+use Illuminate\Support\Facades\DB;
 class ReviewTest extends TestCase
 {
-    
-    public function testReviewPage()
+
+    public function test_can_we_see_a_review()
     {
         // Log in a user
-        $this->post('/login', [
-            'email' => 'test@test.com',
-            'password' => '1',
+        $this->post('/register', [
+            'email' => 'canweseeareview@test.com',
+            'password' => 'TestTest1',
         ]);
 
         // Fetch a product from the database
         $product = Product::findOrFail(3);
+        $response = $this->get('productdetail/3');
 
-        // Mock route parameters
-        $product_id = $product->id;
-
-        $verified_purchase = OrderItems::whereHas('order', function ($query) use ($product_id) {
-            $query->where('user_id', Auth::id());
-        })->where('product_id', $product_id)->exists();
-        // Hit the route
-
-        // If user has not purchased the item, return early with message
-        if (!$verified_purchase) {
-            $this->markTestSkipped('User  not eligible to review this product, Error Message is displayed, skipping review test.');
-            return;
-        }
-        // otherwise , the user is able to review the product
-        $response = $this->get(route('add-review.userreview', ['product_id' => $product_id]));
-
-        // Assert the response status is 200 (OK) , correct view is return
         $response->assertStatus(200);
 
+        
+        $response->assertSee("Admin Admin");
+        $response->assertSee("Seriously impressed with this machine. The spec is no surprise, it's what I ordered");
+        
+        $response = $this->post('/delete-account');
+        // the session for the success message
+        $response->assertSessionHas('success', 'Account deleted successfully');
+        // clear the session data
+        session()->forget('success');
+        // did we get redirected?
+        $response->assertStatus(302);
     }
 
-    public function test_user_creating_a_review() {
+    public function test_user_is_not_allowed_to_create_a_review() {
+
+        $this->post('/register', [
+            'email' => 'userisnotallowedtoreview@test.com',
+            'password' => 'TestTest1',
+        ]);
+
+        $response = $this->get('productdetail/3');
+        $response->assertStatus(200);
+
+        $response = $this->get('add-review/3/userreview');
+        $response->assertStatus(200);
+
+            
+        $response->assertViewHas('verified_purchase', false);
+        $response->assertSee("You are not eligible to review this product");
+        $response->assertSee("Only verified purchasers can submit reviews to ensure authenticity. Thank you for understanding");
+        $response->assertSee('<div class="alert alert-danger"', false);
+
+        $response = $this->post('/delete-account');
+        // the session for the success message
+        $response->assertSessionHas('success', 'Account deleted successfully');
+        // clear the session data
+        session()->forget('success');
+        // did we get redirected?
+        $response->assertStatus(302);
+    
+    }
+    public function test_user_creating_a_review()
+    {
 
         // simulates a user logging into the application
         $this->post('/login', [
@@ -50,92 +75,52 @@ class ReviewTest extends TestCase
             'password' => '1',
         ]);
 
+        $response = $this->get('productdetail/2');
+        $response->assertStatus(200);
+
+        $response = $this->get('add-review/2/userreview');
+        $response->assertStatus(200);
+
         // Fetch the product with ID 3 from the database to use in the test.
-        $product = Product::findOrFail(3);
-        $product_id = $product->id;
-
-        // Check if the currently authenticated user has purchased the product.
-        $verified_purchase = OrderItems::whereHas('order', function ($query) use ($product_id) {
-            $query->where('user_id', Auth::id());
-        })->where('product_id', $product_id)->exists();
-
-        // If the user has not purchased the product, skip the test.
-        // Only users who have verified their purchase should be able to leave a review
-        if (!$verified_purchase) {
-            $this->markTestSkipped('Not eligble to review, Skipping Test');
-            return;
-        }
-        // Submit a POST request to the '/add-review' route with the product ID and a sample review text.
-        // This mimics the action of a user submitting a review form in the application.
-        $response = $this->post('/add-review', [
-            'product_id' => $product->id,
-            'user_review' => 'This is a test review',
-        ]);
-        
-        // After submitting the review, check if the session has a specific message.
-        // This assertion verifies that the application redirects with a success message
-        // indicating the review was successfully submitted.
-        $response->assertSessionHas('status', "Thank you for writing a review");
-    }
-
-    public function test_edit_user_review() {
-
-        $this->post('/login', [
-            'email' => 'test@test.com',
-            'password' => '1',
-        ]);
-
         $product = Product::findOrFail(2);
         $product_id = $product->id;
 
-        $verified_purchase = OrderItems::whereHas('order', function ($query) use ($product_id) {
-            $query->where('user_id', Auth::id());
-        })->where('product_id', $product_id)->exists();
+        $response = $this->post("add-review",[ 
+            'product_id'=> '2',
+            'user_review' => 'Unit test review',
+        ]);
 
-        // If the user has not purchased the product, skip the test.
-        // Only users who have verified their purchase should be able to leave a review
-        if (!$verified_purchase) {
-            $this->markTestSkipped('Not eligble to review, Skipping Test');
-            return;
-        }
-        $response = $this->get("/edit-review/{$product->id}/userreview");
+        $response->assertSessionHas('status', "Thank you for writing a review");
 
-        // Assert the response is OK and the correct view is returned
-        $response->assertStatus(200);
+        DB::table('reviews')->where('id', 7)->delete();
+
     }
 
-    public function test_update_a_review() {
+    public function test_edit_user_review()
+    {
 
         $this->post('/login', [
             'email' => 'test@test.com',
             'password' => '1',
         ]);
 
+        $response = $this->get('productdetail/2');
+        $response->assertStatus(200);
+        $response->assertSee("Great condition! Really happy with my Mac book pro! Highly recommend this website for quality products.");
+        $response = $this->get('edit-review/2/userreview');
+        $response->assertStatus(200);
 
-        //Assuming there's a product and a review for that product by the logged-in user
-        $review = Review::where('prod_id', 2)->first();
-        $originalReviewText = $review->user_review;
-        $newReviewText = 'This is an updated test review';
-
-        // Simulate submitting the review update form.
-        $response = $this->put('/update-review', [
-            'review_id' => $review->id,
-            'user_review' => $newReviewText,
+        $response = $this->post("update-review",[ 
+            'review_id'=> '4',
+            'user_review' => 'Unit test update',
         ]);
-
-        // Retrieve the review again to ensure it has been updated.
-        $updatedReview = Review::find($review->id);
-
-        // Assert that the original review text is not the same as the updated review text.
-        // This confirms that the update operation actually changed something
-        $this->assertNotEquals($originalReviewText, $updatedReview->user_review);
-
-        // updated review text matches the new review text that was submitted.
-        // This verifies that the review was updated to what we expected.
-        $this->assertEquals($newReviewText, $updatedReview->user_review);
-
-       
-        $response->assertRedirect(route('productdetail', ['id' => $review->product->id]));
+        
         $response->assertSessionHas('status', "Thank you for writing a review");
+        $response = $this->get('productdetail/2');
+        $response->assertStatus(200);
+        
+        $response->assertSee("Unit test update");
+    
     }
+
 }
