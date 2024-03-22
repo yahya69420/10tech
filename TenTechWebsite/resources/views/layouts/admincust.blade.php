@@ -376,6 +376,7 @@
         <input type="email" id="email" name="email" required>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
+        <hr>
         <button class="addbutton" type="submit">Add User</button>
     </form>
   </div>
@@ -414,10 +415,12 @@
         <input type="text" id="edit_full_name" name="edit_full_name" required>
         <label for="edit_address_line_1">Address Line 1:</label>
         <input type="text" id="edit_address_line_1" name="edit_address_line_1" required>
+        <hr>
         <label for="edit_city">City:</label>
         <input type="text" id="edit_city" name="edit_city" required>
         <label for="edit_post_code">Post Code:</label>
         <input type="text" id="edit_post_code" name="edit_post_code" required>
+        <hr>
         <button class="editbutton" type="submit">Save</button> 
 
     </form>
