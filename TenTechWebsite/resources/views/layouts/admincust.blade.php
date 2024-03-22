@@ -144,7 +144,7 @@
 }
 
 .viewbutton{
-  background-color: #E74C3C; /* Red color for remove button */
+  background-color: #0f8db8; 
   border: none;
   color: black;
   padding: 15px 16px;
@@ -156,7 +156,7 @@
 }
 
 .viewbutton:hover {
-  background-color: #C0392B; /* Darker red color on hover */
+  background-color: #0a5e7a; /* Darker red color on hover */
   cursor: pointer;
 }
 
