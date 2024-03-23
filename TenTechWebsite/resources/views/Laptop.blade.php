@@ -210,7 +210,7 @@ align-items: center;
           </div>
 
 
-          <div class="categories-section">
+          <div class="categories-section" style="flex-wrap: wrap; justify-content:flex-start">
         @foreach ($laptops as $laptop)
         <div class="category">
             <a class="link2" href="{{ route('productdetail', ['id' => $laptop->id]) }}">
