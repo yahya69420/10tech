@@ -114,6 +114,295 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($laptopCategory);
 
+        Product::create([
+            'name' => 'NeuroPad X',
+            'price' => 2499.99,
+            'description' => 'Advanced NeuroPad with AI-enhanced neural processor',
+            'image' => 'WpO0in1e.jpg',
+            'stock' => '10',
+            'brand' => "Apel",
+            'release' => "2024",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'NeuroPad X: Business Edition V2 2023',
+            'price' => 2499.99,
+            'description' => 'Introducing the NeuroPad X: Business Edition V2 2023, a quantum leap in computing technology. Equipped with an AI-enhanced neural processor, it redefines productivity and innovation. Seamlessly blending elegance with power, it\'s the ultimate tool for professionals navigating the digital landscape of tomorrow.',
+            'image' => 'YKMCT0uu.jpg',
+            'stock' => '15',
+            'brand' => "NeuroPad",
+            'release' => "2023",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'NeuroPad X: Collector\'s Edition',
+            'price' => 2499.99,
+            'description' => 'Introducing the NeuroPad X: Collector\'s Edition, a timeless masterpiece for enthusiasts and collectors. With its vintage-inspired design and cutting-edge technology, this laptop pays homage to the golden era of computing. Experience the nostalgia of yesteryears while enjoying modern functionality. Limited edition, seize the opportunity to own a piece of history.',
+            'image' => 'fb-5UF6k.jpg',
+            'stock' => '3',
+            'brand' => "NeuroPad",
+            'release' => "2023",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'SleekBook Pro X1',
+            'price' => 2799.99,
+            'description' => 'Introducing the SleekBook Pro X1, the epitome of elegance and performance. Crafted with precision engineering and advanced materials, this slim and sleek laptop sets a new standard for high-performance computing. With lightning-fast processing power and stunning visuals, it\'s designed to empower you in every task. Elevate your productivity and style with the SleekBook Pro X1.',
+            'image' => 'wqNcH9TY.jpg',
+            'stock' => 19,
+            'brand' => "TechGenius",
+            'release' => "2024",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'GamerXtreme RGB 5000',
+            'price' => 3299.99,
+            'description' => 'Introducing the GamerXtreme RGB 5000, the ultimate gaming powerhouse with mesmerizing RGB lighting. Engineered for extreme performance, this laptop is equipped with cutting-edge hardware to handle the most demanding games with ease. Immerse yourself in stunning visuals and lightning-fast gameplay. Dominate the competition and unleash your full gaming potential with the GamerXtreme RGB 5000.',
+            'image' => 'zWtNvp1t.jpg',
+            'stock' => 15,
+            'brand' => "GamingTech",
+            'release' => "2024",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'Futurix Quantum X1',
+            'price' => 3599.99,
+            'description' => 'Introducing the Futurix Quantum X1, a glimpse into the future of computing. With its avant-garde design and state-of-the-art technology, this laptop pushes the boundaries of innovation. Experience unparalleled performance and efficiency with quantum computing capabilities. Immerse yourself in a world where science fiction becomes reality. Embrace the future today with the Futurix Quantum X1.',
+            'image' => 'KzuO4ruv.jpg',
+            'stock' => 20,
+            'brand' => "Futurix",
+            'release' => "2025",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'Intelissence Quantum Fusion X1',
+            'price' => 3899.99,
+            'description' => 'Introducing the Intelissence Quantum Fusion X1, a paradigm shift in computing technology. With its sleek design and cutting-edge Intelissence processor, this laptop redefines the boundaries of high-tech innovation. Experience unparalleled speed and efficiency, powered by Intelissence\'s latest advancements. Immerse yourself in a futuristic computing experience, where every task is executed with precision and speed. Embrace the power of Intelissence and step into the future with the Quantum Fusion X1.',
+            'image' => '1rFbFQXc.jpg',
+            'stock' => 25,
+            'brand' => "Intelissence",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+
+        Product::create([
+            'name' => 'Dall HyperXcel X1',
+            'price' => 3899.99,
+            'description' => 'Introducing the Dall HyperXcel X1, a cutting-edge marvel in computing technology. With its sleek design and powerful Intel processor, this laptop sets the standard for high-tech innovation. Experience lightning-fast performance and seamless multitasking, powered by Dall\'s latest advancements. Immerse yourself in a futuristic computing experience where every task is executed with precision and speed. Elevate your productivity and embrace the future with the Dall HyperXcel X1.',
+            'image' => 'PwXt_i_a.jpg',
+            'stock' => 25,
+            'brand' => "Dall",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+
+        Product::create([
+            'name' => 'Minimalist Pro X1',
+            'price' => 2899.99,
+            'description' => 'Introducing the Minimalist Pro X1, a sleek and understated masterpiece in computing. With its minimalist design and powerful Intel processor, this laptop embodies simplicity and elegance. Experience seamless performance and effortless multitasking, powered by the latest advancements in computing technology. Dive into a distraction-free computing experience where every interaction is intuitive and clutter-free. Embrace the essence of minimalism and elevate your productivity with the Minimalist Pro X1.',
+            'image' => 'VE8CNdqS.jpg',
+            'stock' => 30,
+            'brand' => "MinimalTech",
+            'release' => "2025",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'Executive GlassBook X1',
+            'price' => 3299.99,
+            'description' => 'Introducing the Executive GlassBook X1, a sophisticated companion for professionals in modern glass apartments. With its sleek design and premium craftsmanship, this laptop seamlessly blends into your upscale workspace. Powered by cutting-edge technology, it ensures smooth multitasking and efficient workflow management. Elevate your productivity with its intuitive interface and crystal-clear display. Make a statement of elegance and professionalism with the Executive GlassBook X1.',
+            'image' => 'KHopzK0D.jpg',
+            'stock' => 25,
+            'brand' => "ExecuTech",
+            'release' => "2024",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'GlassMate Pro X2',
+            'price' => 3499.99,
+            'description' => 'Introducing the GlassMate Pro X2, an elegant solution for professionals in contemporary glass apartments. With its refined aesthetics and superior craftsmanship, this laptop seamlessly integrates into your upscale workspace. Powered by advanced technology, it delivers seamless performance and efficient multitasking. Elevate your productivity with its intuitive interface and crystal-clear display. Redefine elegance and professionalism with the GlassMate Pro X2.',
+            'image' => 'Ngo0A37F.jpg',
+            'stock' => 30,
+            'brand' => "ExecuTech",
+            'release' => "2025",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'CrystalEdge Elite X3',
+            'price' => 3699.99,
+            'description' => 'Introducing the CrystalEdge Elite X3, an exquisite choice for professionals seeking sophistication in contemporary glass apartments. With its impeccable design and top-tier craftsmanship, this laptop seamlessly enhances your upscale workspace. Powered by cutting-edge technology, it delivers exceptional performance and seamless multitasking. Elevate your productivity with its intuitive interface and crystal-clear display. Redefine elegance and professionalism with the CrystalEdge Elite X3.',
+            'image' => 'k48JcywU.jpg',
+            'stock' => 35,
+            'brand' => "ExecuTech",
+            'release' => "2025",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'ApexX Pro Gaming Beast',
+            'price' => 3999.99,
+            'description' => 'Introducing the ApexX Pro Gaming Beast, the ultimate choice for gamers seeking unparalleled performance and immersive gaming experiences. With its sleek design and cutting-edge components, this laptop takes gaming to new heights. Powered by the latest technology and high-performance hardware, it delivers blistering speeds and seamless gameplay. Dominate the competition with lightning-fast response times and crystal-clear visuals. Elevate your gaming prowess with the ApexX Pro Gaming Beast.',
+            'image' => 'fJXrjE3e.jpg',
+            'stock' => 40,
+            'brand' => "ApexTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'ApexX Pro Performance Laptop',
+            'price' => 3999.99,
+            'description' => 'Introducing the ApexX Pro Performance Laptop, a versatile powerhouse designed for gamers who demand top-tier performance and professionals who require productivity on-the-go. With its sleek and professional design, this laptop seamlessly transitions from intense gaming sessions to productive work environments. Powered by cutting-edge components and the latest technology, it delivers blistering speeds, seamless multitasking, and crystal-clear visuals. Elevate your gaming prowess and productivity with the ApexX Pro Performance Laptop.',
+            'image' => 'fbyvwJU.jpg',
+            'stock' => 40,
+            'brand' => "ApexTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'EverGreen Executive Notebook',
+            'price' => 4299.99,
+            'description' => 'Introducing the EverGreen Executive Notebook, a harmonious blend of nature-inspired aesthetics and professional functionality. Crafted with sustainability in mind, this laptop embodies the tranquility of nature while catering to the demands of modern professionals. With its sleek design and eco-friendly materials, it seamlessly integrates into any business environment. Powered by cutting-edge components and innovative technology, it delivers exceptional performance, seamless multitasking, and stunning visuals. Embrace the synergy of nature and productivity with the EverGreen Executive Notebook.',
+            'image' => 'znDHq5Y4.jpg',
+            'stock' => 50,
+            'brand' => "EcoTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'EcoSavvy Executive Laptop',
+            'price' => 4499.99,
+            'description' => 'Introducing the EcoSavvy Executive Laptop, a symbol of eco-consciousness and professional excellence. Crafted with sustainability at its core, this laptop blends nature-inspired aesthetics with high-performance functionality. Its sleek design and eco-friendly materials resonate with modern professionals seeking harmony with nature. Powered by cutting-edge components and innovative technology, it ensures seamless multitasking and delivers stunning visuals for productivity-driven tasks. Embrace sustainability without compromising on performance with the EcoSavvy Executive Laptop.',
+            'image' => '0u8xw80S.jpg',
+            'stock' => 60,
+            'brand' => "EcoTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'GreenHarmony Business Notebook',
+            'price' => 4599.99,
+            'description' => 'Introducing the GreenHarmony Business Notebook, a testament to eco-consciousness and professional refinement. Crafted with sustainability in focus, this laptop seamlessly merges nature-inspired aesthetics with high-performance functionality. Its sleek and eco-friendly design resonates with modern professionals seeking harmony with the environment. Powered by cutting-edge components and innovative technology, it ensures seamless multitasking and delivers stunning visuals for productivity-driven tasks. Embrace sustainability while achieving peak performance with the GreenHarmony Business Notebook.',
+            'image' => 'zoLCiGzf.jpg',
+            'stock' => 70,
+            'brand' => "EcoTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'FusionSpark Spectra Notebook',
+            'price' => 4699.99,
+            'description' => 'Introducing the FusionSpark Spectra Notebook, an embodiment of dynamic energy and vibrant aesthetics. Crafted to ignite creativity and excitement, this laptop features a sleek and modern design with mesmerizing colors and captivating patterns. Its lively appearance evokes a sense of inspiration and enthusiasm, making it the perfect companion for those who seek to stand out and embrace innovation. Powered by cutting-edge technology, it ensures seamless performance and delivers stunning visuals for both work and play. Unleash your creativity and ignite your passion with the FusionSpark Spectra Notebook.',
+            'image' => 'l8TYzzKP.jpg',
+            'stock' => 80,
+            'brand' => "SparkTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+        
+
+        
+        Product::create([
+            'name' => 'CaféElite Business Laptop',
+            'price' => 4999.99,
+            'description' => 'Introducing the CaféElite Business Laptop, designed for professionals seeking sophistication in a coffee shop setting. With its sleek and minimalist design, this laptop exudes elegance and professionalism, making it the perfect companion for entrepreneurs and freelancers alike. Crafted with precision and attention to detail, it seamlessly integrates into any business environment, providing the power and performance needed to tackle demanding tasks. Powered by cutting-edge technology, it ensures seamless multitasking and delivers crisp visuals for productivity-driven work. Elevate your business experience with the CaféElite Business Laptop.',
+            'image' => 'NuvsXmI1.jpg',
+            'stock' => 60,
+            'brand' => "EliteTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+        Product::create([
+            'name' => 'MetroPro Executive Laptop',
+            'price' => 5299.99,
+            'description' => 'Introducing the MetroPro Executive Laptop, meticulously crafted for professionals navigating the bustling streets of New York City. With its sleek and urban design, this laptop exudes sophistication and versatility, making it the perfect companion for entrepreneurs and executives on the go. Engineered with precision and attention to detail, it seamlessly integrates into the dynamic business landscape of the city, providing the power and performance needed to excel in demanding environments. Powered by cutting-edge technology, it ensures seamless multitasking and delivers crisp visuals for productivity-driven work. Elevate your business experience with the MetroPro Executive Laptop.',
+            'image' => 'TvMAI08O.jpg',
+            'stock' => 70,
+            'brand' => "MetroTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'EcoVintage Collectivers Laptop',
+            'price' => 6999.99,
+            'description' => 'Introducing the EcoVintage Collector\'s Laptop, a timeless piece meticulously curated for enthusiasts in the green eco space. Inspired by minimalist design principles of bygone eras, this laptop embodies simplicity and elegance. Crafted with reclaimed materials and eco-friendly components, it reflects a commitment to sustainability and environmental consciousness. A true collector\'s item, it carries the charm of yesteryears while embracing modern eco-technology. Limited in availability, seize the opportunity to own a piece of sustainable computing history with the EcoVintage Collector\'s Laptop.',
+            'image' => 'TARX4DA_.jpg',
+            'stock' => 5,
+            'brand' => "EcoTech",
+            'release' => "2025",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'NeoGamer RGB Pro Laptop',
+            'price' => 7999.99,
+            'description' => 'Introducing the NeoGamer RGB Pro Laptop, a cutting-edge gaming machine designed for enthusiasts seeking the ultimate gaming experience. With its sleek and modern design, this laptop combines high-performance gaming capabilities with mesmerizing RGB backlighting. Crafted with the latest technology and premium components, it delivers blistering speeds and immersive visuals, ensuring you stay ahead of the competition. Customize the RGB lighting to match your gaming setup and elevate your gaming experience to new heights with the NeoGamer RGB Pro Laptop.',
+            'image' => 'cQ5MI5tq.jpg',
+            'stock' => 10,
+            'brand' => "GamerTech",
+            'release' => "2025",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'SummitElegance Hiker\'s Laptop',
+            'price' => 7999.99,
+            'description' => 'Introducing the SummitElegance Hiker\'s Laptop, a sleek and beautiful companion designed for adventurers seeking inspiration in the hills. With its elegant and minimalist design, this laptop blends seamlessly into nature, offering a perfect balance between style and functionality. Crafted with premium materials and cutting-edge technology, it delivers exceptional performance and stunning visuals, ensuring you stay connected and productive even in remote locations. Take your creativity to new heights and capture the essence of the outdoors with the SummitElegance Hiker\'s Laptop.',
+            'image' => 'yosJ27lB.jpg',
+            'stock' => 10,
+            'brand' => "SummitTech",
+            'release' => "2025",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        
+        Product::create([
+            'name' => 'UrbanEdge Modern Laptop',
+            'price' => 8999.99,
+            'description' => 'Introducing the UrbanEdge Modern Laptop, a sleek and stylish companion designed for contemporary professionals with discerning tastes. With its cutting-edge design and minimalist aesthetics, this laptop exudes sophistication and elegance. Crafted with premium materials and state-of-the-art technology, it seamlessly integrates into modern urban lifestyles, offering unparalleled performance and stunning visuals. Whether you\'re in the office or on the go, elevate your productivity and style with the UrbanEdge Modern Laptop.',
+            'image' => 'MJRVNKwH.jpg',
+            'stock' => 15,
+            'brand' => "UrbanTech",
+            'release' => "2025",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'CaféLawyer HyperModern Laptop',
+            'price' => 9999.99,
+            'description' => 'Introducing the CaféLawyer HyperModern Laptop, a cutting-edge device crafted for the modern professional in the bustling coffee shops of urban landscapes. With its hyper-modern design and sleek aesthetics, this laptop seamlessly blends into the fast-paced environment of a coffee-loving lawyer. Crafted with premium materials and the latest advancements in technology, it offers unparalleled performance and realism, empowering you to handle legal matters with precision and efficiency. Whether you\'re drafting contracts or meeting clients, elevate your productivity and professionalism with the CaféLawyer HyperModern Laptop.',
+            'image' => 'NAwJcvL1.jpg',
+            'stock' => 20,
+            'brand' => "TechLaw",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'EcoRustic Nature Laptop',
+            'price' => 8999.99,
+            'description' => 'Introducing the EcoRustic Nature Laptop, a harmonious blend of modern technology and natural inspiration for the eco-conscious hipster. With its rustic design elements and nature-inspired aesthetics, this laptop brings a touch of the outdoors to your digital experience. Crafted with sustainable materials and eco-friendly components, it embodies the essence of eco-living while offering powerful performance and reliability. Whether you\'re working from a cozy café or exploring the great outdoors, let the EcoRustic Nature Laptop be your companion on your hipster adventures.',
+            'image' => 'ixdf1gor.jpg',
+            'stock' => 15,
+            'brand' => "EcoTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
 
         // 5 mobiles seeded
         Product::create([
