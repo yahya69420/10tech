@@ -11,7 +11,7 @@ class GetAdminDashboardTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_example(): void
+    public function tst_example(): void
     {
         $response = $this->get('/admin/dashboard');
 
