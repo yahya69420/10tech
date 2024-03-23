@@ -464,6 +464,130 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($mobileCategory);
 
+        Product::create([
+            'name' => 'EcoVibe GreenPhone',
+            'price' => round(rand(50000, 140000) / 100), 
+            'description' => 'Embrace sustainability with the EcoVibe GreenPhone, the environmentally conscious choice for your communication needs. Made from recycled materials and designed for minimal environmental impact, this phone lets you stay connected while reducing your carbon footprint. Join the eco-friendly revolution and make a positive impact on the planet with the EcoVibe GreenPhone.',
+            'image' => 'NgyDh7u2.jpg',
+            'stock' => 10,
+            'brand' => "EcoTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'TacticalSurvivor EcoPhone',
+            'price' => round(rand(50000, 140000) / 100), 
+            'description' => 'Conquer the wild with the TacticalSurvivor EcoPhone, built to withstand the toughest environments and accompany you on your boldest adventures. Engineered for durability and resilience, this rugged phone is designed to thrive in extreme conditions, from the depths of the jungle to the peaks of the mountains. With its military-grade construction and eco-friendly features, including recycled materials and minimal environmental impact, the TacticalSurvivor EcoPhone is your ultimate companion for off-grid exploration and eco-conscious living.',
+            'image' => 'RPhoIXhD.jpg',
+            'stock' => 15,
+            'brand' => "TacticalTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'ExecuCafé BusinessPhone',
+            'price' => round(rand(50000, 140000) / 100), 
+            'description' => 'Elevate your business conversations with the ExecutiveCafé BusinessPhone, designed for professionals who demand style and functionality in their communication devices. Crafted with sleek lines and premium materials, this phone blends seamlessly into the sophisticated ambiance of coffee shops and boardrooms alike. Whether you\'re sealing deals over lattes or brainstorming ideas with colleagues, the ExecutiveCafé BusinessPhone ensures crystal-clear communication and effortless multitasking. Stay connected and make a statement of professionalism with the ExecutiveCafé BusinessPhone.',
+            'image' => 'sdsd.jpg',
+            'stock' => 20,
+            'brand' => "ExecuTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'SurvivalSatellite TacticalPhone',
+            'price' => round(rand(50000, 140000) / 100), 
+            'description' => 'Conquer the wilderness with the SurvivalSatellite TacticalPhone, your ultimate companion for outdoor adventures. Built to military specifications and designed for extreme durability, this rugged phone is ready to withstand the harshest conditions, from rugged terrain to inclement weather. Equipped with satellite communication capabilities, it ensures reliable connectivity even in remote areas where traditional networks fail. Whether you\'re camping, hunting, or facing survival challenges, the SurvivalSatellite TacticalPhone keeps you connected and safe. Embrace the spirit of adventure with confidence and stay prepared for anything with the SurvivalSatellite TacticalPhone.',
+            'image' => 'hjkjek3.jpg',
+            'stock' => 15,
+            'brand' => "TacticalTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'CapturePro CameraPhone',
+            'price' => round(rand(50000, 140000) / 100), 
+            'description' => 'Introducing the CapturePro CameraPhone, your go-to companion for capturing life\'s precious moments with stunning clarity and detail. Designed with photography enthusiasts in mind, this smartphone features a high-quality camera system that excels in any lighting condition, from bright daylight to low-light environments. With advanced imaging technology and image stabilization features, it ensures every shot is crisp, vibrant, and Instagram-worthy. Whether you\'re snapping landscapes, portraits, or selfies, the CapturePro CameraPhone delivers professional-grade results that will impress even the most discerning photographers. Elevate your photography game and document your adventures with the CapturePro CameraPhone.',
+            'image' => 'j2lj33.jpg',
+            'stock' => 20,
+            'brand' => "TechVision",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'TechVision Mobile',
+            'price' => round(rand(50000, 140000) / 100), 
+            'description' => 'Introducing the TechVision Mobile, a versatile smartphone designed to meet all your communication and entertainment needs. With its sleek design and powerful performance, this smartphone offers a seamless user experience for browsing the web, streaming videos, gaming, and staying connected on social media. Equipped with advanced features and cutting-edge technology, it ensures smooth multitasking and responsiveness for all your everyday tasks. Whether you’re working, playing, or capturing memories, the TechVision Mobile is your reliable companion for every moment.',
+            'image' => 'jlkkj3jj34.jpg',
+            'stock' => 20,
+            'brand' => "TechVision",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'Visionaire SleekStyle Phone',
+            'price' => round(rand(50000, 140000) / 100), 
+            'description' => 'Introducing the Visionaire SleekStyle Phone, a stunning masterpiece of design and innovation that transcends ordinary smartphones. With its mesmerizing beauty and sleek, minimalist contours, this phone exudes elegance and sophistication. Crafted with precision and attention to detail, it captivates the eye and delights the senses. Equipped with advanced technology and seamless functionality, it offers a seamless user experience for all your communication and entertainment needs. Whether you’re browsing the web, streaming videos, or capturing memories, the Visionaire SleekStyle Phone combines style and substance in perfect harmony.',
+            'image' => 'jlkj23.jpg',
+            'stock' => 20,
+            'brand' => "Visionaire",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'StyloTech Lumina Smartphone',
+            'price' => round(rand(50000, 140000) / 100), 
+            'description' => 'Introducing the StyloTech Lumina Smartphone, a sleek and sophisticated device that redefines the boundaries of elegance and innovation in the smartphone industry. With its captivating design and minimalist aesthetic, this phone stands as a symbol of modern style and technological prowess. Crafted with meticulous attention to detail, it seamlessly combines beauty and functionality, offering a delightful user experience for everyday communication and entertainment needs. Elevate your mobile experience with the StyloTech Lumina Smartphone, where sophistication meets performance in perfect harmony.',
+            'image' => 'hj2332.jpg',
+            'stock' => 20,
+            'brand' => "StyloTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'StyloTech SoundMaster Smartphone',
+            'price' => round(rand(50000, 140000) / 100), 
+            'description' => 'Introducing the StyloTech SoundMaster Smartphone, a cutting-edge device engineered for audio enthusiasts who demand the highest quality sound on the go. With its sleek design and advanced audio features, this smartphone delivers an immersive listening experience like no other. Equipped with premium audio components and advanced sound processing technology, it ensures crystal-clear audio reproduction and rich, dynamic soundscapes. Whether you\'re streaming music, watching videos, or taking calls, the StyloTech SoundMaster Smartphone takes your audio experience to the next level.',
+            'image' => 'jg2hj3.jpg',
+            'stock' => 20,
+            'brand' => "StyloTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'NeonTech SonicVision Smartphone',
+            'price' => round(rand(50000, 140000) / 100), 
+            'description' => 'Introducing the NeonTech SonicVision Smartphone, a visionary marvel of modern technology designed to propel you into the future. With its sleek, aerodynamic design and advanced holographic display, this smartphone offers a glimpse into tomorrow\'s world. Equipped with state-of-the-art sonic processing technology and neural interface capabilities, it delivers an unparalleled audiovisual experience that transcends reality. Whether you\'re navigating augmented realities, communicating via neural networks, or immersing yourself in immersive sonic landscapes, the NeonTech SonicVision Smartphone is your gateway to the future.',
+            'image' => 'hhj34h34.jpg',
+            'stock' => 20,
+            'brand' => "NeonTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'NeonTech Bespoke Edition Smartphone',
+            'price' => round(rand(50000, 140000) / 100), 
+            'description' => 'Introducing the NeonTech Bespoke Edition Smartphone, a collector\'s item crafted with exquisite attention to detail and bespoke style. Each unit of this limited edition smartphone is meticulously handcrafted to perfection, featuring unique design elements and premium materials that set it apart from mass-produced devices. With its sleek, aerodynamic silhouette and luxurious finish, this smartphone is a statement of refined taste and sophistication. Whether displayed in a collection or used as a symbol of exclusivity, the NeonTech Bespoke Edition Smartphone is a true masterpiece that transcends ordinary technology.',
+            'image' => 'hkjj3k34.jpg',
+            'stock' => 10,
+            'brand' => "NeonTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+
+        
+        
 
         // 5 monitors seeded
         Product::create([
