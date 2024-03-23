@@ -25,7 +25,7 @@
 
   <div class="container-fluid">
     <table class="table caption-top table-bordered mb-4">
-      <caption>List of products</caption>
+      <caption>List of products <strong>({{ $productsCount }} fetched)</strong></caption>
       <thead>
         <tr>
           <th scope="col" class="table-dark">ID</th>

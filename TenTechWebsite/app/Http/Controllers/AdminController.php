@@ -137,6 +137,8 @@ class AdminController extends Controller
             // session()->forget('success');
             // session()->forget('error');
             $products = Product::simplePaginate(10);
+            $productsCount = Product::count();
+            // dd($productsCount);
             // get all of the bransd from the porducts table
             $brands = Product::select('brand')->distinct()->get();
             // dd($brands);
@@ -150,7 +152,7 @@ class AdminController extends Controller
             // dd($productToCategory);
 
             // dd($categories);
-            return view('adminproducts', ['products' => $products, 'categories' => $categories, 'brands' => $brands, 'release' => $release, 'productToCategory' => $productToCategory]);
+            return view('adminproducts', ['products' => $products, 'categories' => $categories, 'brands' => $brands, 'release' => $release, 'productToCategory' => $productToCategory, 'productsCount' => $productsCount]);
         }
     }
 
