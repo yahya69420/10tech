@@ -152,7 +152,9 @@ class AdminController extends Controller
             // dd($productToCategory);
 
             // dd($categories);
-            return view('adminproducts', ['products' => $products, 'categories' => $categories, 'brands' => $brands, 'release' => $release, 'productToCategory' => $productToCategory, 'productsCount' => $productsCount]);
+            $unavailableProducts = Product::where('available', 0)->paginate(20);
+            // dd($unavailableProducts);
+            return view('adminproducts', ['products' => $products, 'categories' => $categories, 'brands' => $brands, 'release' => $release, 'productToCategory' => $productToCategory, 'productsCount' => $productsCount, 'unavailableProducts' => $unavailableProducts]);
         }
     }
 
@@ -341,7 +343,7 @@ class AdminController extends Controller
         // dd(request()->all());
 
         // we need to delete the data from the pivot table 
-        DB::table('category_product')->where('product_id', request()->productID)->delete();
+        // DB::table('category_product')->where('product_id', request()->productID)->delete();
 
 
         // lets find the product by id
@@ -355,5 +357,27 @@ class AdminController extends Controller
         // $product->delete();
         // lets redirect back with a success message
         return redirect()->back()->with('success', $product->name . ' deleted successfully!');
+    }
+
+    public function makeAvailable()
+    {
+        // show the team what happens when i delte, that it breaks the order histry
+        // dd(request()->all());
+
+        // we need to delete the data from the pivot table 
+        // DB::table('category_product')->where('product_id', request()->productID)->delete();
+
+
+        // lets find the product by id
+        $product = Product::find(request()->productID);
+        // lets delete the product
+        // dd($product->available);
+
+        $product->available = 1;
+        $product->save();
+        // dd($product);
+        // $product->delete();
+        // lets redirect back with a success message
+        return redirect()->back()->with('success', $product->name . ' made available successfully!');
     }
 }

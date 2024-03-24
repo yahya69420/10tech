@@ -68,7 +68,7 @@ class ProductSeeder extends Seeder
             'stock' => '0',
             'brand' => "Apel",
             'release' => "2022",
-            'available' => '1',
+            'available' => '0',
         ])->categories()->attach($laptopCategory);
 
         Product::create([
@@ -79,7 +79,7 @@ class ProductSeeder extends Seeder
             'stock' => '1',
             'brand' => "Apel",
             'release' => "2020",
-            'available' => '1',
+            'available' => '0',
         ])->categories()->attach($laptopCategory);
 
         Product::create([
@@ -112,7 +112,7 @@ class ProductSeeder extends Seeder
             'stock' => '35',
             'brand' => "Aurora",
             'release' => "2023",
-            'available' => '1',
+            'available' => '0',
         ])->categories()->attach($laptopCategory);
 
         Product::create([
@@ -201,7 +201,7 @@ class ProductSeeder extends Seeder
             'stock' => 25,
             'brand' => "Dall",
             'release' => "2026",
-            'available' => '1',
+            'available' => '0',
         ])->categories()->attach($laptopCategory);
 
 

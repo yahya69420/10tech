@@ -135,3 +135,4 @@ Route::get('/admin/viewUser/{id}', [AdminController::class, 'viewUser'] )->name(
 Route::post('/admin/adminproducts/add-product', [App\Http\Controllers\AdminController::class, 'addNewProduct'])->name('add-new-product')->middleware('admin');
 Route::post('/admin/adminproducts/edit-product', [App\Http\Controllers\AdminController::class, 'editNewProduct'])->name('edit-new-product')->middleware('admin');
 Route::post('/admin/adminproducts/remove-product', [App\Http\Controllers\AdminController::class, 'deleteProduct'])->name('delete-product')->middleware('admin');
+Route::post('/admin/adminproducts/make-available', [App\Http\Controllers\AdminController::class, 'makeAvailable'])->name('delete-product')->middleware('admin');
