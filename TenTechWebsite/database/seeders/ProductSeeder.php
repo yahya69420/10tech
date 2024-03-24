@@ -645,6 +645,252 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($monitorCategory);
 
+        Product::create([
+            'name' => 'DreamTech Elite Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience the epitome of productivity with the DreamTech Elite Monitor, meticulously engineered for the modern business professional. With its sleek design and advanced features, including ultra-high definition resolution and HDR support, this 27-inch monitor ensures crystal-clear visuals and exceptional performance. Whether you\'re analyzing data, creating presentations, or multitasking with multiple windows, the DreamTech Elite Monitor elevates your workspace to new heights of efficiency and style.',
+            'image' => 'kjsdhksdds4ds.jpg',
+            'stock' => '49',
+            'brand' => "DreamTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+        
+        Product::create([
+            'name' => 'VisionaryUltra Ultrawide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Enter a world of unparalleled productivity with the VisionaryUltra Ultrawide Monitor, meticulously crafted to meet the demands of the modern business environment. With its expansive 34-inch ultrawide display, this monitor offers an immersive viewing experience that enhances multitasking and boosts efficiency. Featuring ultra-high definition resolution and HDR support, the VisionaryUltra ensures stunning visuals with vibrant colors and sharp details. Whether you\'re analyzing data, editing multimedia content, or collaborating with colleagues, this ultrawide monitor empowers you to achieve more with its spacious workspace and exceptional performance.',
+            'image' => 'kjjkdkk34jkssd.jpg',
+            'stock' => '49',
+            'brand' => "VisionaryTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        
+        Product::create([
+            'name' => 'ElevatePlus Ultrawide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Transform your workspace into a productivity powerhouse with the ElevatePlus Ultrawide Monitor, meticulously engineered to meet the dynamic needs of modern professionals. Boasting a spacious 34-inch ultrawide display, this monitor provides an immersive viewing experience that enhances multitasking and boosts efficiency. With ultra-high definition resolution and HDR support, the ElevatePlus delivers stunning visuals characterized by vibrant colors and crisp details. Whether you\'re analyzing complex data, editing multimedia projects, or collaborating with colleagues, this ultrawide monitor empowers you to accomplish more with its expansive workspace and exceptional performance.',
+            'image' => 'jdfhhjkdf5f.jpg',
+            'stock' => '49',
+            'brand' => "ElevateTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'GameMaster UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience gaming like never before with the GameMaster UltraWide Monitor, designed to elevate your gaming experience to new heights. Featuring a spacious 34-inch ultrawide display, this monitor immerses you in every gaming world, providing a panoramic view that enhances your gameplay. With ultra-high definition resolution and HDR support, the GameMaster delivers stunning visuals with vibrant colors and sharp details, bringing games to life with unprecedented realism. Whether you\'re exploring vast virtual landscapes, engaging in intense battles, or diving into immersive storylines, this ultrawide monitor ensures you never miss a moment of action.',
+            'image' => 'jksdhjkj34jfd.jpg',
+            'stock' => '49',
+            'brand' => "GameMaster",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'ImmerseXtreme Gaming Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Dive into the heart of gaming excitement with the ImmerseXtreme Gaming Monitor, meticulously crafted to revolutionize your gaming experience. Featuring a spacious 34-inch ultrawide display, this monitor envelops you in every gaming world, offering a panoramic view that amplifies your gameplay. With ultra-high definition resolution and HDR support, the ImmerseXtreme delivers breathtaking visuals with vibrant colors and razor-sharp details, immersing you in games with unparalleled realism. Whether you\'re exploring expansive virtual landscapes, engaging in adrenaline-pumping battles, or unraveling immersive storylines, this ultrawide monitor ensures you stay at the edge of your seat, never missing a moment of action.',
+            'image' => 'jksksd34dkfdf.jpg',
+            'stock' => '49',
+            'brand' => "ImmerseXtreme",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'PivotPro Gaming Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in gaming excellence with the PivotPro Gaming Monitor, engineered to redefine your gaming experience. Equipped with a spacious 34-inch ultrawide display, this monitor surrounds you with every gaming world, providing a panoramic view that enhances your gameplay. With ultra-high definition resolution and HDR support, the PivotPro delivers stunning visuals characterized by vibrant colors and sharp details, plunging you into games with unparalleled realism. What sets the PivotPro apart is its exceptional pivot capability, allowing you to effortlessly adjust the monitor\'s orientation for optimal viewing angles and ergonomic comfort. Whether you\'re exploring vast virtual landscapes, engaging in intense battles, or unraveling immersive storylines, the PivotPro Gaming Monitor ensures you\'re always in control, maximizing your gaming performance and enjoyment.',
+            'image' => 'skdjsdjk34f.webp',
+            'stock' => '49',
+            'brand' => "PivotPro",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        
+        Product::create([
+            'name' => 'FuturisTech Gaming Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Step into the future of gaming with the FuturisTech Gaming Monitor, designed to elevate your gaming experience to new heights of innovation and immersion. Featuring a spacious 34-inch ultrawide display, this monitor envelops you in every gaming world, offering a panoramic view that amplifies your gameplay. With ultra-high definition resolution and HDR support, the FuturisTech delivers breathtaking visuals with vibrant colors and razor-sharp details, immersing you in games with unparalleled realism. What sets the FuturisTech apart is its futuristic design and advanced features, including intuitive gesture controls and AI-powered enhancements, allowing you to interact with games in ways you\'ve never imagined. Whether you\'re exploring expansive virtual landscapes, engaging in adrenaline-pumping battles, or unraveling immersive storylines, the FuturisTech Gaming Monitor ensures you\'re at the forefront of gaming innovation, pushing the boundaries of what\'s possible.',
+            'image' => 'jkjsdhjsj3jkjsdkjsdsd.jpg',
+            'stock' => '49',
+            'brand' => "FuturisTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'DualViewXtreme Gaming Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience gaming like never before with the DualViewXtreme Gaming Monitor, a revolutionary dual-monitor system designed to take your gaming experience to the next level. Consisting of two 27-inch displays seamlessly integrated into one sleek setup, this monitor offers a panoramic view that immerses you in every gaming world. With ultra-high definition resolution and HDR support on both screens, the DualViewXtreme delivers breathtaking visuals with vibrant colors and razor-sharp details, ensuring an unparalleled gaming experience. Whether you\'re exploring vast virtual landscapes, engaging in intense battles, or diving into immersive storylines, this dual-monitor system ensures you never miss a moment of action. Take your gaming setup to new heights of innovation and immersion with the DualViewXtreme Gaming Monitor.',
+            'image' => 'hjdskdjj3khejsdds.jpg',
+            'stock' => '49',
+            'brand' => "DualViewXtreme",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        
+        Product::create([
+            'name' => 'HDRMaster Gaming Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in stunning visuals with the HDRMaster Gaming Monitor, meticulously engineered to elevate your gaming experience to new heights. Featuring a 27-inch display with ultra-high definition resolution and HDR support, this monitor delivers breathtaking visuals characterized by vibrant colors and razor-sharp details. Whether you\'re exploring vast virtual landscapes, engaging in intense battles, or diving into immersive storylines, the HDRMaster ensures you never miss a moment of action. Take your gaming to the next level with the HDRMaster Gaming Monitor.',
+            'image' => 'kjsdksdkj3eskjdjsd.jpg',
+            'stock' => '49',
+            'brand' => "HDRMaster",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'UltimateVision HDR Gaming Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in stunning visuals with the UltimateVision HDR Gaming Monitor, meticulously engineered to elevate your gaming experience to new heights. Featuring a 27-inch display with ultra-high definition resolution and HDR support, this monitor delivers breathtaking visuals characterized by vibrant colors and razor-sharp details. Whether you\'re exploring vast virtual landscapes, engaging in intense battles, or diving into immersive storylines, the UltimateVision ensures you never miss a moment of action. Take your gaming to the next level with the UltimateVision HDR Gaming Monitor.',
+            'image' => 'jkdjd34jksdkjdjskd.jpg',
+            'stock' => '49',
+            'brand' => "UltimateVision",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'GamerPro HDR Gaming Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Elevate your gaming experience to new heights with the GamerPro HDR Gaming Monitor. Boasting a 27-inch display with ultra-high definition resolution and HDR support, this monitor delivers stunning visuals with vibrant colors and sharp details. Immerse yourself in the action as you explore vast virtual landscapes, engage in intense battles, or dive into immersive storylines. With the GamerPro, every moment of gaming comes to life with unparalleled realism and excitement. Take your gaming to the next level and unleash your full potential with the GamerPro HDR Gaming Monitor.',
+            'image' => 'kjdfhkdjfk43jkjdjff.jpg',
+            'stock' => '49',
+            'brand' => "GamerPro",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'OfficeMaster HDR Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Enhance your productivity with the OfficeMaster HDR Monitor. Featuring a 27-inch display with ultra-high definition resolution and HDR support, this monitor delivers stunning visuals for your office tasks. Whether you\'re creating presentations, analyzing data, or multitasking with multiple applications, the OfficeMaster ensures crisp details and vibrant colors for an immersive work experience. Elevate your office setup with the OfficeMaster HDR Monitor and unlock new levels of efficiency and performance.',
+            'image' => 'jsdsjdkhk43kjhdfkjfd.jpg',
+            'stock' => '49',
+            'brand' => "OfficeMaster",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'WorkPro HDR Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Maximize your productivity with the WorkPro HDR Monitor. Boasting a 27-inch display with ultra-high definition resolution and HDR support, this monitor delivers stunning visuals tailored for your office needs. Whether you\'re crafting presentations, analyzing data, or managing multiple tasks simultaneously, the WorkPro ensures crystal-clear details and vibrant colors, providing an immersive work experience. Elevate your workspace with the WorkPro HDR Monitor and unlock new levels of efficiency and performance.',
+            'image' => 'jdfjdjfjdf3kjdf.jpg',
+            'stock' => '49',
+            'brand' => "WorkPro",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'WorkPro HDR Widescreen Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in productivity with the WorkPro HDR Widescreen Monitor. Featuring a spacious 27-inch widescreen display with ultra-high definition resolution and HDR support, this monitor delivers stunning visuals tailored for your office needs. Whether you\'re crafting presentations, analyzing data, or managing multiple tasks simultaneously, the WorkPro ensures crystal-clear details and vibrant colors, providing an immersive work experience. Elevate your workspace with the WorkPro HDR Widescreen Monitor and unlock new levels of efficiency and performance.',
+            'image' => 'jkfdfhjk34kdhkdfjdfkfd.jpg',
+            'stock' => '49',
+            'brand' => "WorkPro",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'ProductivityMaster UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Transform your workspace into a productivity powerhouse with the ProductivityMaster UltraWide Monitor. Boasting a spacious 34-inch ultrawide display, this monitor provides an immersive viewing experience that enhances multitasking and boosts efficiency. With ultra-high definition resolution and HDR support, the ProductivityMaster ensures stunning visuals with vibrant colors and sharp details. Whether you\'re analyzing data, creating presentations, or multitasking with multiple windows, this ultrawide monitor empowers you to achieve more with its expansive workspace and exceptional performance.',
+            'image' => 'jkkjhkjjjkhjkjdf3j4k.jpg',
+            'stock' => '230',
+            'brand' => "ProductivityMaster",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'OfficePro UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Maximize productivity in your office with the OfficePro UltraWide Monitor. Featuring a spacious 34-inch ultrawide display, this monitor provides an immersive viewing experience that enhances multitasking and boosts efficiency. With ultra-high definition resolution and HDR support, the OfficePro ensures stunning visuals with vibrant colors and sharp details, perfect for analyzing data, creating presentations, or multitasking with multiple windows. Elevate your workspace with the OfficePro UltraWide Monitor and empower your team to achieve more with its expansive workspace and exceptional performance.',
+            'image' => 'kjsdj3kj4jjfdd.jpg',
+            'stock' => '230',
+            'brand' => "OfficePro",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'OfficePro UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Maximize productivity in your office with the OfficePro UltraWide Monitor. Featuring a spacious 34-inch ultrawide display, this monitor provides an immersive viewing experience that enhances multitasking and boosts efficiency. With ultra-high definition resolution and HDR support, the OfficePro ensures stunning visuals with vibrant colors and sharp details, perfect for analyzing data, creating presentations, or multitasking with multiple windows. Elevate your workspace with the OfficePro UltraWide Monitor and empower your team to achieve more with its expansive workspace and exceptional performance.',
+            'image' => 'kjsdk3jjkfd.jpg',
+            'stock' => '230',
+            'brand' => "OfficePro",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        
+        Product::create([
+            'name' => 'GamingElite HDR UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience gaming excellence and stunning visuals with the GamingElite HDR UltraWide Monitor. Featuring a spacious 34-inch ultrawide display, this monitor provides an immersive gaming experience that transports you into virtual worlds with vibrant colors and razor-sharp details. With ultra-high definition resolution and HDR support, the GamingElite ensures breathtaking visuals, making it perfect for gaming enthusiasts who demand the best. Whether you’re exploring vast landscapes, engaging in intense battles, or immersing yourself in captivating storylines, the GamingElite HDR UltraWide Monitor takes your gaming to the next level.',
+            'image' => 'jsdk43jfdk.jpg',
+            'stock' => '230',
+            'brand' => "GamingElite",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'HDRGamer Pro UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in gaming excellence with the HDRGamer Pro UltraWide Monitor. Boasting a spacious 34-inch ultrawide display, this monitor provides an immersive gaming experience that transports you into virtual worlds with vibrant colors and razor-sharp details. With ultra-high definition resolution and HDR support, the HDRGamer Pro ensures breathtaking visuals, making it perfect for gaming enthusiasts who demand the best. Whether you’re exploring vast landscapes, engaging in intense battles, or immersing yourself in captivating storylines, the HDRGamer Pro UltraWide Monitor takes your gaming to the next level.',
+            'image' => 'sakjdl43jkklfd.jpg',
+            'stock' => '230',
+            'brand' => "HDRGamer",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        
+        Product::create([
+            'name' => 'GamingMaster UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience gaming excellence with the GamingMaster UltraWide Monitor. Featuring a spacious 34-inch ultrawide display, this monitor provides an immersive gaming experience that transports you into virtual worlds with vibrant colors and razor-sharp details. With ultra-high definition resolution and HDR support, the GamingMaster ensures breathtaking visuals, making it perfect for gaming enthusiasts who demand the best. Whether you’re exploring vast landscapes, engaging in intense battles, or immersing yourself in captivating storylines, the GamingMaster UltraWide Monitor takes your gaming to the next level.',
+            'image' => 'kjdkfkdfljkdjf.jpg',
+            'stock' => '230',
+            'brand' => "GamingMaster",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+        
+        Product::create([
+            'name' => 'UltimateGamer HDR UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience gaming excellence with the UltimateGamer HDR UltraWide Monitor. Featuring a spacious 34-inch ultrawide display, this monitor provides an immersive gaming experience that transports you into virtual worlds with vibrant colors and razor-sharp details. With ultra-high definition resolution and HDR support, the UltimateGamer HDR ensures breathtaking visuals, making it perfect for gaming enthusiasts who demand the best. Whether you’re exploring vast landscapes, engaging in intense battles, or immersing yourself in captivating storylines, the UltimateGamer HDR UltraWide Monitor takes your gaming to the next level.',
+            'image' => 'jkskjsdj3jksd.jpg',
+            'stock' => '230',
+            'brand' => "UltimateGamer",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'HDR Pro UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in gaming excellence with the HDR Pro UltraWide Monitor. Featuring a spacious 34-inch ultrawide display, this monitor provides an immersive gaming experience that transports you into virtual worlds with vibrant colors and razor-sharp details. With ultra-high definition resolution and HDR support, the HDR Pro ensures breathtaking visuals, making it perfect for gaming enthusiasts who demand the best. Whether you’re exploring vast landscapes, engaging in intense battles, or immersing yourself in captivating storylines, the HDR Pro UltraWide Monitor takes your gaming to the next level.',
+            'image' => 'jksdj.jpg',
+            'stock' => '230',
+            'brand' => "HDR Pro",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
 
         // 5 tablets seeded
         Product::create([
