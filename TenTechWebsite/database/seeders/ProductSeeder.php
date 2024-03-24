@@ -14,6 +14,7 @@ use App\Models\UserAddress;
 use App\Models\UserPayments;
 use App\Models\Review;
 use App\Models\Rating;
+use Faker\Factory as Faker;
 
 class ProductSeeder extends Seeder
 {
@@ -586,8 +587,8 @@ class ProductSeeder extends Seeder
         ])->categories()->attach($mobileCategory);
 
 
-        
-        
+
+
 
         // 5 monitors seeded
         Product::create([
@@ -655,7 +656,7 @@ class ProductSeeder extends Seeder
             'release' => "2022",
             'available' => '1',
         ])->categories()->attach($monitorCategory);
-        
+
         Product::create([
             'name' => 'VisionaryUltra Ultrawide Monitor',
             'price' => round(rand(50000, 140000) / 100),
@@ -667,7 +668,7 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($monitorCategory);
 
-        
+
         Product::create([
             'name' => 'ElevatePlus Ultrawide Monitor',
             'price' => round(rand(50000, 140000) / 100),
@@ -712,7 +713,7 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($monitorCategory);
 
-        
+
         Product::create([
             'name' => 'FuturisTech Gaming Monitor',
             'price' => round(rand(50000, 140000) / 100),
@@ -735,7 +736,7 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($monitorCategory);
 
-        
+
         Product::create([
             'name' => 'HDRMaster Gaming Monitor',
             'price' => round(rand(50000, 140000) / 100),
@@ -835,7 +836,7 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($monitorCategory);
 
-        
+
         Product::create([
             'name' => 'GamingElite HDR UltraWide Monitor',
             'price' => round(rand(50000, 140000) / 100),
@@ -858,7 +859,7 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($monitorCategory);
 
-        
+
         Product::create([
             'name' => 'GamingMaster UltraWide Monitor',
             'price' => round(rand(50000, 140000) / 100),
@@ -869,7 +870,7 @@ class ProductSeeder extends Seeder
             'release' => "2022",
             'available' => '1',
         ])->categories()->attach($monitorCategory);
-        
+
         Product::create([
             'name' => 'UltimateGamer HDR UltraWide Monitor',
             'price' => round(rand(50000, 140000) / 100),
@@ -1147,7 +1148,7 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($consoleCategory);
 
-        
+
         Product::create([
             'name' => 'RetroJoy Portable Console',
             'price' => round(rand(50000, 140000) / 100),
@@ -1158,7 +1159,7 @@ class ProductSeeder extends Seeder
             'release' => "2021",
             'available' => '1',
         ])->categories()->attach($consoleCategory);
-        
+
         Product::create([
             'name' => 'LuxuryGold Retro Console',
             'price' => round(rand(50000, 140000) / 100),
@@ -1181,7 +1182,7 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($consoleCategory);
 
-        
+
         Product::create([
             'name' => 'NeoLux Futuristic Console',
             'price' => round(rand(50000, 140000) / 100),
@@ -1215,7 +1216,7 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($consoleCategory);
 
-        
+
         Product::create([
             'name' => 'NanoVision Compact Console',
             'price' => round(rand(50000, 140000) / 100),
@@ -1336,7 +1337,7 @@ class ProductSeeder extends Seeder
             'release' => "2021",
             'available' => '1',
         ])->categories()->attach($consoleCategory);
-        
+
         // A normal discount with %
         Discount::create([
             'code' => '10POFF',
@@ -1689,5 +1690,29 @@ class ProductSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        $faker = Faker::create();
+        $productIds = range(1, 113); // Array containing all product IDs
+        foreach ($productIds as $productId) {
+            for ($i = 0; $i < 1; $i++) {
+                $stars = $faker->numberBetween(1, 5); // Generate a random star rating between 1 and 5
+                $review = $faker->paragraph(); // Generate a random review
+
+                Rating::create([
+                    'user_id' => '1',
+                    'prod_id' => $productId, // Use the current product ID from the outer loop
+                    'stars_rated' => $stars,
+                    'updated_at' => now()->subDays(2)->subHours(random_int(1, 23))->subMinutes(random_int(1, 59)),
+                    'created_at' => now(),
+                ]);
+                Review::create([
+                    'user_id' => '1',
+                    'prod_id' => $productId, // Use the current product ID from the outer loop
+                    'user_review' => $review,
+                    'updated_at' => now()->subDays(2)->subHours(random_int(1, 23))->subMinutes(random_int(1, 59)),
+                    'created_at' => now(),
+                ]);
+            }
+        }
     }
 }
