@@ -136,7 +136,7 @@ class AdminController extends Controller
             // // clear the session
             // session()->forget('success');
             // session()->forget('error');
-            $products = Product::paginate(20);
+            $products = Product::where('available', 1)->paginate(20);
             $productsCount = Product::count();
             // dd($productsCount);
             // get all of the bransd from the porducts table
@@ -334,5 +334,26 @@ class AdminController extends Controller
 
         // lets redirect back with a success message
         return redirect()->back()->with('successfulEdit', $product->name . ' updated successfully!');
+    }
+    public function deleteProduct()
+    {
+        // show the team what happens when i delte, that it breaks the order histry
+        // dd(request()->all());
+
+        // we need to delete the data from the pivot table 
+        DB::table('category_product')->where('product_id', request()->productID)->delete();
+
+
+        // lets find the product by id
+        $product = Product::find(request()->productID);
+        // lets delete the product
+        // dd($product->available);
+
+        $product->available = 0;
+        $product->save();
+        // dd($product);
+        // $product->delete();
+        // lets redirect back with a success message
+        return redirect()->back()->with('success', $product->name . ' deleted successfully!');
     }
 }
