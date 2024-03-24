@@ -301,6 +301,7 @@
       <thead>
         <tr>
           <th scope="col" class="table-dark">ID</th>
+          <th scope="col" class="table-dark">Availability in store?</th>
           <th scope="col" class="table-dark">Image</th>
           <th scope="col" class="table-dark">Name</th>
           <th scope="col" class="table-dark">Price</th>
@@ -313,6 +314,11 @@
         @foreach($products as $product)
         <tr class="table-dark">
           <th scope="row">{{ $product->id }}</th>
+          <td>
+            <span class="badge bg-success" style="font-size: 15px; color:black;">
+              <i class="fas fa-thumbs-up"></i> Available in store
+            </span>
+          </td>
           <td style="height: 100px; width:100px;"><img src="{{ asset($product->image) }}" alt="product image" class="img-fluid" style="width: 100%; height: 100%;"></td>
           <td><strong><a href="{{ url('productdetail/'.$product->id) }}">{{ $product->name }}</a></strong></td>
           <td><strong>£{{ $product->price }}</strong></td>
