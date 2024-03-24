@@ -99,7 +99,7 @@ class ProductController extends Controller
             $consoles  = $consoles->orderBy('price', "desc");
         }
 
-        $consoles = $consoles->get();
+        $consoles = $consoles->where('available', 1)->get();
 
         return view('Console', [
             'consoles' => $consoles,
@@ -138,7 +138,7 @@ class ProductController extends Controller
             $mobiles = $mobiles->orderBy('price', "desc");
         }
 
-        $mobiles = $mobiles->get();
+        $mobiles = $mobiles->where('available', 1)->get();
 
         $uniqueBrands = Product::distinct()->pluck('brand')->sort();
         $uniqueReleases = Product::distinct()->pluck('release')->sort();
@@ -176,7 +176,7 @@ class ProductController extends Controller
             $consoles  = $monitors->orderBy('price', "desc");
         }
 
-        $monitors = $monitors->get();
+        $monitors = $monitors->where('available', 1)->get();
 
         return view('Monitor', [
             'monitors' => $monitors,
@@ -211,7 +211,7 @@ class ProductController extends Controller
             $tablets  = $tablets->orderBy('price', "desc");
         }
 
-        $tablets = $tablets->get();
+        $tablets = $tablets->where('available', 1)->get();
 
         return view('Tablet', [
             'tablets' => $tablets,
@@ -246,7 +246,8 @@ class ProductController extends Controller
             $laptops  = $laptops->orderBy('price', "desc");
         }
 
-        $laptops = $laptops->get();
+        $laptops = $laptops->where('available', 1)->get();
+        // dd($laptops);
 
         return view('Laptop', [
             'laptops' => $laptops,
