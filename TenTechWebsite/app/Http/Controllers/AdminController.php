@@ -152,7 +152,7 @@ class AdminController extends Controller
             // dd($productToCategory);
 
             // dd($categories);
-            $unavailableProducts = Product::where('available', 0)->paginate(20);
+            $unavailableProducts = Product::where('available', 0)->get();
             // dd($unavailableProducts);
             return view('adminproducts', ['products' => $products, 'categories' => $categories, 'brands' => $brands, 'release' => $release, 'productToCategory' => $productToCategory, 'productsCount' => $productsCount, 'unavailableProducts' => $unavailableProducts]);
         }
