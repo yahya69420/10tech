@@ -313,9 +313,9 @@ class ProductSeeder extends Seeder
             'release' => "2026",
             'available' => '1',
         ])->categories()->attach($laptopCategory);
-        
 
-        
+
+
         Product::create([
             'name' => 'CaféElite Business Laptop',
             'price' => 4999.99,
@@ -370,7 +370,7 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($laptopCategory);
 
-        
+
         Product::create([
             'name' => 'UrbanEdge Modern Laptop',
             'price' => 8999.99,
@@ -466,7 +466,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'EcoVibe GreenPhone',
-            'price' => round(rand(50000, 140000) / 100), 
+            'price' => round(rand(50000, 140000) / 100),
             'description' => 'Embrace sustainability with the EcoVibe GreenPhone, the environmentally conscious choice for your communication needs. Made from recycled materials and designed for minimal environmental impact, this phone lets you stay connected while reducing your carbon footprint. Join the eco-friendly revolution and make a positive impact on the planet with the EcoVibe GreenPhone.',
             'image' => 'NgyDh7u2.jpg',
             'stock' => 10,
@@ -477,7 +477,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'TacticalSurvivor EcoPhone',
-            'price' => round(rand(50000, 140000) / 100), 
+            'price' => round(rand(50000, 140000) / 100),
             'description' => 'Conquer the wild with the TacticalSurvivor EcoPhone, built to withstand the toughest environments and accompany you on your boldest adventures. Engineered for durability and resilience, this rugged phone is designed to thrive in extreme conditions, from the depths of the jungle to the peaks of the mountains. With its military-grade construction and eco-friendly features, including recycled materials and minimal environmental impact, the TacticalSurvivor EcoPhone is your ultimate companion for off-grid exploration and eco-conscious living.',
             'image' => 'RPhoIXhD.jpg',
             'stock' => 15,
@@ -488,7 +488,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'ExecuCafé BusinessPhone',
-            'price' => round(rand(50000, 140000) / 100), 
+            'price' => round(rand(50000, 140000) / 100),
             'description' => 'Elevate your business conversations with the ExecutiveCafé BusinessPhone, designed for professionals who demand style and functionality in their communication devices. Crafted with sleek lines and premium materials, this phone blends seamlessly into the sophisticated ambiance of coffee shops and boardrooms alike. Whether you\'re sealing deals over lattes or brainstorming ideas with colleagues, the ExecutiveCafé BusinessPhone ensures crystal-clear communication and effortless multitasking. Stay connected and make a statement of professionalism with the ExecutiveCafé BusinessPhone.',
             'image' => 'sdsd.jpg',
             'stock' => 20,
@@ -499,7 +499,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'SurvivalSatellite TacticalPhone',
-            'price' => round(rand(50000, 140000) / 100), 
+            'price' => round(rand(50000, 140000) / 100),
             'description' => 'Conquer the wilderness with the SurvivalSatellite TacticalPhone, your ultimate companion for outdoor adventures. Built to military specifications and designed for extreme durability, this rugged phone is ready to withstand the harshest conditions, from rugged terrain to inclement weather. Equipped with satellite communication capabilities, it ensures reliable connectivity even in remote areas where traditional networks fail. Whether you\'re camping, hunting, or facing survival challenges, the SurvivalSatellite TacticalPhone keeps you connected and safe. Embrace the spirit of adventure with confidence and stay prepared for anything with the SurvivalSatellite TacticalPhone.',
             'image' => 'hjkjek3.jpg',
             'stock' => 15,
@@ -510,7 +510,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'CapturePro CameraPhone',
-            'price' => round(rand(50000, 140000) / 100), 
+            'price' => round(rand(50000, 140000) / 100),
             'description' => 'Introducing the CapturePro CameraPhone, your go-to companion for capturing life\'s precious moments with stunning clarity and detail. Designed with photography enthusiasts in mind, this smartphone features a high-quality camera system that excels in any lighting condition, from bright daylight to low-light environments. With advanced imaging technology and image stabilization features, it ensures every shot is crisp, vibrant, and Instagram-worthy. Whether you\'re snapping landscapes, portraits, or selfies, the CapturePro CameraPhone delivers professional-grade results that will impress even the most discerning photographers. Elevate your photography game and document your adventures with the CapturePro CameraPhone.',
             'image' => 'j2lj33.jpg',
             'stock' => 20,
@@ -521,7 +521,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'TechVision Mobile',
-            'price' => round(rand(50000, 140000) / 100), 
+            'price' => round(rand(50000, 140000) / 100),
             'description' => 'Introducing the TechVision Mobile, a versatile smartphone designed to meet all your communication and entertainment needs. With its sleek design and powerful performance, this smartphone offers a seamless user experience for browsing the web, streaming videos, gaming, and staying connected on social media. Equipped with advanced features and cutting-edge technology, it ensures smooth multitasking and responsiveness for all your everyday tasks. Whether you’re working, playing, or capturing memories, the TechVision Mobile is your reliable companion for every moment.',
             'image' => 'jlkkj3jj34.jpg',
             'stock' => 20,
@@ -532,7 +532,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Visionaire SleekStyle Phone',
-            'price' => round(rand(50000, 140000) / 100), 
+            'price' => round(rand(50000, 140000) / 100),
             'description' => 'Introducing the Visionaire SleekStyle Phone, a stunning masterpiece of design and innovation that transcends ordinary smartphones. With its mesmerizing beauty and sleek, minimalist contours, this phone exudes elegance and sophistication. Crafted with precision and attention to detail, it captivates the eye and delights the senses. Equipped with advanced technology and seamless functionality, it offers a seamless user experience for all your communication and entertainment needs. Whether you’re browsing the web, streaming videos, or capturing memories, the Visionaire SleekStyle Phone combines style and substance in perfect harmony.',
             'image' => 'jlkj23.jpg',
             'stock' => 20,
@@ -543,7 +543,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'StyloTech Lumina Smartphone',
-            'price' => round(rand(50000, 140000) / 100), 
+            'price' => round(rand(50000, 140000) / 100),
             'description' => 'Introducing the StyloTech Lumina Smartphone, a sleek and sophisticated device that redefines the boundaries of elegance and innovation in the smartphone industry. With its captivating design and minimalist aesthetic, this phone stands as a symbol of modern style and technological prowess. Crafted with meticulous attention to detail, it seamlessly combines beauty and functionality, offering a delightful user experience for everyday communication and entertainment needs. Elevate your mobile experience with the StyloTech Lumina Smartphone, where sophistication meets performance in perfect harmony.',
             'image' => 'hj2332.jpg',
             'stock' => 20,
@@ -554,7 +554,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'StyloTech SoundMaster Smartphone',
-            'price' => round(rand(50000, 140000) / 100), 
+            'price' => round(rand(50000, 140000) / 100),
             'description' => 'Introducing the StyloTech SoundMaster Smartphone, a cutting-edge device engineered for audio enthusiasts who demand the highest quality sound on the go. With its sleek design and advanced audio features, this smartphone delivers an immersive listening experience like no other. Equipped with premium audio components and advanced sound processing technology, it ensures crystal-clear audio reproduction and rich, dynamic soundscapes. Whether you\'re streaming music, watching videos, or taking calls, the StyloTech SoundMaster Smartphone takes your audio experience to the next level.',
             'image' => 'jg2hj3.jpg',
             'stock' => 20,
@@ -565,7 +565,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'NeonTech SonicVision Smartphone',
-            'price' => round(rand(50000, 140000) / 100), 
+            'price' => round(rand(50000, 140000) / 100),
             'description' => 'Introducing the NeonTech SonicVision Smartphone, a visionary marvel of modern technology designed to propel you into the future. With its sleek, aerodynamic design and advanced holographic display, this smartphone offers a glimpse into tomorrow\'s world. Equipped with state-of-the-art sonic processing technology and neural interface capabilities, it delivers an unparalleled audiovisual experience that transcends reality. Whether you\'re navigating augmented realities, communicating via neural networks, or immersing yourself in immersive sonic landscapes, the NeonTech SonicVision Smartphone is your gateway to the future.',
             'image' => 'hhj34h34.jpg',
             'stock' => 20,
@@ -576,7 +576,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'NeonTech Bespoke Edition Smartphone',
-            'price' => round(rand(50000, 140000) / 100), 
+            'price' => round(rand(50000, 140000) / 100),
             'description' => 'Introducing the NeonTech Bespoke Edition Smartphone, a collector\'s item crafted with exquisite attention to detail and bespoke style. Each unit of this limited edition smartphone is meticulously handcrafted to perfection, featuring unique design elements and premium materials that set it apart from mass-produced devices. With its sleek, aerodynamic silhouette and luxurious finish, this smartphone is a statement of refined taste and sophistication. Whether displayed in a collection or used as a symbol of exclusivity, the NeonTech Bespoke Edition Smartphone is a true masterpiece that transcends ordinary technology.',
             'image' => 'hkjj3k34.jpg',
             'stock' => 10,
@@ -707,6 +707,140 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($tabletCategory);
 
+        // credit: https://perchance.org/gmg64zkuoc
+
+        Product::create([
+            'name' => 'BizScribe Pro Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Elevate your business productivity with the BizScribe Pro Tablet. This tablet is meticulously crafted to meet the demands of modern professionals, offering seamless note-taking, document annotation, and sketching capabilities with its advanced stylus. Its slim and lightweight design ensures easy portability, while the powerful A14 Bionic chip guarantees fast and responsive performance for all your business needs. Stay organized and efficient with the BizScribe Pro Tablet.',
+            'image' => 'skdjskdj34.jpg',
+            'stock' => 43,
+            'brand' => "BizTech",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'NatureScribe Elite Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in the natural beauty of productivity with the NatureScribe Elite Tablet. Meticulously designed to harmonize with nature, this tablet combines professional-grade functionality with the serenity of the outdoors. Its advanced stylus allows for seamless note-taking, document annotation, and sketching, empowering you to capture your ideas with precision and clarity. With its sleek and lightweight design, the NatureScribe Elite Tablet is the perfect companion for professionals seeking inspiration from the world around them. Experience the tranquility of nature while staying organized and efficient with the NatureScribe Elite Tablet.',
+            'image' => 'jlksdlsk23.jpg',
+            'stock' => 43,
+            'brand' => "EnviroTech",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'TerraTough Tactical Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on your professional missions with the TerraTough Tactical Tablet, an indispensable tool designed to thrive in the harshest environments. Engineered with military-grade ruggedness, this tablet combines the rugged durability of tactical gear with the versatility of professional-grade functionality. Its advanced stylus allows for seamless note-taking, document annotation, and sketching, even in extreme conditions. With its reinforced construction and waterproof design, the TerraTough Tactical Tablet withstands the rigors of fieldwork, ensuring reliability and performance in any situation. Stay connected and productive amidst nature\'s challenges with the TerraTough Tactical Tablet.',
+            'image' => 'jlklj34.jpg',
+            'stock' => 43,
+            'brand' => "TerraTech",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'AquaShield Tactical Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Conquer the elements with the AquaShield Tactical Tablet, a rugged companion engineered to withstand the toughest conditions. Built with military-grade waterproofing technology, this tablet ensures uncompromised performance even in the most challenging environments. Its advanced stylus allows for seamless note-taking, document annotation, and sketching, regardless of weather conditions. With reinforced construction and a waterproof design, the AquaShield Tactical Tablet offers peace of mind, knowing your device can handle any water-related task. Stay connected and productive in wet environments with the AquaShield Tactical Tablet.',
+            'image' => 'jklsddskj23w.jpg',
+            'stock' => 43,
+            'brand' => "TerraTech",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'BizConnect Pro Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Optimize your business connectivity with the BizConnect Pro Tablet, meticulously crafted for seamless integration into professional environments. This tablet offers advanced features and intuitive functionality to streamline your workflow and enhance productivity. With its sleek design and versatile capabilities, including note-taking and document management, the BizConnect Pro Tablet is the perfect tool for busy professionals. Stay organized and efficient with this business-focused tablet that keeps you connected and productive wherever you go.',
+            'image' => 'lksdjksldj3.jpg',
+            'stock' => 43,
+            'brand' => "BizTech",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'ColorVivid Elite Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in a world of vibrant colors and stunning visuals with the ColorVivid Elite Tablet. Boasting cutting-edge OLED display technology, this tablet delivers unparalleled color accuracy, contrast, and clarity, bringing your content to life like never before. Meticulously crafted with high-tech precision, its sleek and modern design enhances the viewing experience while reflecting the epitome of sophistication. With advanced features and intuitive functionality, including seamless note-taking and document management, the ColorVivid Elite Tablet is the ultimate companion for professionals who demand the best in both performance and aesthetics. Elevate your productivity and creativity with this breathtakingly beautiful tablet that redefines the standards of excellence.',
+            'image' => 'jdkfjk4.jpg',
+            'stock' => 43,
+            'brand' => "TechVision",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'NanoVision Pro Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience the future of compact productivity with the NanoVision Pro Tablet. Despite its small size, this tablet packs a punch with its cutting-edge features and powerful performance. Equipped with a vibrant OLED display, it offers stunning visuals and crisp clarity for immersive viewing. Its sleek and modern design makes it the perfect companion for professionals on the go, seamlessly fitting into your lifestyle with its compact form factor. Whether you\'re taking notes, managing documents, or staying connected, the NanoVision Pro Tablet delivers exceptional performance in a compact package. Elevate your productivity and efficiency with this pocket-sized powerhouse from NanoTech.',
+            'image' => 'hjkjdkj4.webp',
+            'stock' => 43,
+            'brand' => "NanoVision",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'CaféBiz Compact Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Enhance your business productivity with the CaféBiz Compact Tablet, designed to seamlessly integrate into your busy coffee shop work environment. This tablet combines compact convenience with powerful performance, offering a perfect solution for professionals on the go. With its sleek design and portable form factor, it\'s the ideal companion for entrepreneurs, freelancers, and remote workers seeking productivity outside the office. Whether you\'re drafting proposals, conducting virtual meetings, or managing your tasks, the CaféBiz Compact Tablet ensures efficiency and reliability. Elevate your coffee shop work experience with this business-oriented tablet from NanoTech.',
+            'image' => 'kjsldkjsdl.jpg',
+            'stock' => 43,
+            'brand' => "CaféBiz",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'NatureGlow Slim Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in the beauty of nature with the NatureGlow Slim Tablet, crafted to complement your serene surroundings with its sleek and minimalist design. This tablet embodies the harmony between technology and nature, offering a slim and lightweight profile that effortlessly blends into any outdoor setting. Whether you\'re capturing the breathtaking scenery, sketching your creative ideas, or simply enjoying a moment of tranquility, the NatureGlow Slim Tablet provides a perfect canvas for your inspirations. Elevate your connection with nature and experience the essence of beauty with this slim and elegant tablet.',
+            'image' => 'jhjsd23wewe.jpg',
+            'stock' => 12,
+            'brand' => "NatureGlow",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'BizHorizon Pro Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Stay ahead in the business world with the BizHorizon Pro Tablet, designed to enhance your professional productivity and efficiency. With its powerful performance and intuitive features, this tablet is tailored for the demands of modern business environments. Its sleek and sophisticated design exudes professionalism, making it the perfect companion for meetings, presentations, and on-the-go productivity tasks. Whether you\'re managing projects, collaborating with colleagues, or staying organized with your tasks, the BizHorizon Pro Tablet empowers you to achieve more in your business endeavors. Elevate your business capabilities and streamline your workflow with this versatile and reliable tablet.',
+            'image' => 'hdfkjedfkj34.jpg',
+            'stock' => 12,
+            'brand' => "BizHorizon",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'ProfessionaLink Elite Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Step into the future of professional productivity with the ProfessionaLink Elite Tablet, meticulously crafted to elevate your business performance to new heights. Designed with cutting-edge technology and innovative features, this tablet is tailored to meet the unique demands of modern professionals. Its sleek and modern design exudes sophistication, making it the ultimate statement piece for executives and entrepreneurs alike. Whether you\'re leading meetings, collaborating with teams, or managing projects, the ProfessionaLink Elite Tablet empowers you to work smarter and achieve your goals with precision and efficiency. Revolutionize your business workflow and stay ahead of the curve with this premium and versatile tablet.',
+            'image' => 'lkjsdkl34.jpg',
+            'stock' => 12,
+            'brand' => "ProfessionaLink",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+
+        Product::create([
+            'name' => 'ExecutiveForge Pro Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Unleash the full potential of your business endeavors with the ExecutiveForge Pro Tablet, meticulously engineered to meet the demanding requirements of modern professionals. Imbued with cutting-edge technology and advanced features, this tablet redefines the standards of excellence in business productivity. Its sleek and contemporary design radiates sophistication, making it the quintessential tool for executives and entrepreneurs seeking to make a bold statement in the boardroom. Whether you\'re strategizing, collaborating, or executing tasks, the ExecutiveForge Pro Tablet empowers you to navigate the complexities of modern business with unparalleled efficiency and precision. Elevate your professional journey and stay ahead of the competition with this premium-grade tablet.',
+            'image' => 'jksdjsd34.jpg',
+            'stock' => 12,
+            'brand' => "ExecutiveForge",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
 
 
         // 5 consoles seeded
@@ -767,6 +901,196 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($consoleCategory);
 
+        
+        Product::create([
+            'name' => 'RetroJoy Portable Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Relive the nostalgia of classic gaming with the RetroJoy Portable Console, a compact and lightweight device that brings back cherished memories of your favorite retro games. With its retro-inspired design and wide selection of classic titles, it\'s the perfect companion for nostalgic gamers seeking to revisit the golden age of gaming.',
+            'image' => 'kskjkkjskljdssdlk34dflnfd.jpg',
+            'stock' => '50',
+            'brand' => "RetroJoy",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+        
+        Product::create([
+            'name' => 'LuxuryGold Retro Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Indulge in the epitome of luxury gaming with the LuxuryGold Retro Console, a lavish masterpiece crafted for discerning gamers who appreciate the finer things in life. Immerse yourself in the opulence of gaming with this exclusive gold-plated console, meticulously designed to exude sophistication and elegance. With its retro-inspired design and exquisite craftsmanship, it offers a timeless gaming experience that transcends generations. Elevate your gaming collection with the LuxuryGold Retro Console and bask in the ultimate luxury of gaming.',
+            'image' => 'kjklsdjskldksdsdj34.jpg',
+            'stock' => '50',
+            'brand' => "LuxuryGold",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'PocketLux Retro Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience luxury gaming on the go with the PocketLux Retro Console, a compact marvel designed for discerning gamers who prioritize portability without compromising on opulence. This exquisite console features a luxurious gold-plated exterior, exuding sophistication and elegance in every detail. Despite its small size, the PocketLux Retro Console delivers a timeless gaming experience with its retro-inspired design and exquisite craftsmanship. Whether you\'re commuting, traveling, or simply enjoying downtime, elevate your gaming collection with the PocketLux Retro Console and indulge in luxury gaming wherever you go.',
+            'image' => 'kjskdjdsl32erds.jpg',
+            'stock' => '50',
+            'brand' => "PocketLux",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        
+        Product::create([
+            'name' => 'NeoLux Futuristic Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Step into the future of gaming with the NeoLux Futuristic Console, a revolutionary device that combines cutting-edge technology with luxurious design. Featuring sleek lines and innovative materials, this console redefines the gaming experience with its futuristic style and unparalleled performance. The NeoLux console boasts advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, offering gamers an unprecedented level of immersion and excitement. Whether you\'re exploring virtual worlds, battling foes, or embarking on epic quests, the NeoLux Futuristic Console transports you to a gaming utopia where the possibilities are endless.',
+            'image' => 'nsdlkfdfkdkf34.jpg',
+            'stock' => '230',
+            'brand' => "NeoLux",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'NeoLux Futuristic Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Step into the future of gaming with the NeoLux Futuristic Console, a revolutionary device that combines cutting-edge technology with luxurious design. Featuring sleek lines and innovative materials, this console redefines the gaming experience with its futuristic style and unparalleled performance. The NeoLux console boasts advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, offering gamers an unprecedented level of immersion and excitement. Whether you\'re exploring virtual worlds, battling foes, or embarking on epic quests, the NeoLux Futuristic Console transports you to a gaming utopia where the possibilities are endless.',
+            'image' => 'sdkskdj34.jpg',
+            'stock' => '230',
+            'brand' => "NeoLux",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'MicroVision Futuristic Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience the future of gaming with the MicroVision Futuristic Console, a groundbreaking device that seamlessly integrates cutting-edge technology with sleek design. Crafted with compact dimensions and innovative materials, this console revolutionizes gaming with its futuristic aesthetics and exceptional performance. Featuring advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the MicroVision console offers gamers an unparalleled level of immersion and excitement. Whether you\'re navigating virtual worlds, engaging in intense battles, or embarking on epic quests, the MicroVision Futuristic Console transports you to a gaming utopia where the boundaries are limitless.',
+            'image' => 'jkkjjkjkhjkjhj43.webp',
+            'stock' => '230',
+            'brand' => "MicroVision",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        
+        Product::create([
+            'name' => 'NanoVision Compact Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in the future of gaming with the NanoVision Compact Console, a revolutionary device that packs cutting-edge technology into a compact form factor. Designed with sleek dimensions and advanced materials, this console redefines gaming with its compact size and outstanding performance. With features like holographic displays, immersive augmented reality, and lightning-fast processing power, the NanoVision console delivers an unparalleled gaming experience. Whether you\'re exploring virtual worlds, engaging in intense battles, or embarking on epic quests, the NanoVision Compact Console transports you to a gaming paradise where possibilities are limitless.',
+            'image' => 'lksdkjksdl.jpg',
+            'stock' => '230',
+            'brand' => "NanoVision",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'EleganceVision Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in the world of gaming luxury with the EleganceVision Gaming Console, a stunning masterpiece that combines cutting-edge technology with timeless beauty. Crafted with meticulous attention to detail and sleek aesthetics, this console is a symbol of sophistication and elegance. Featuring a mesmerizing design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the EleganceVision console offers an unparalleled gaming experience. Whether you\'re navigating virtual worlds, engaging in intense battles, or embarking on epic quests, the EleganceVision Gaming Console transports you to a realm of gaming beauty where every moment is a visual masterpiece.',
+            'image' => 'lkjsdjsld34.jpg',
+            'stock' => '230',
+            'brand' => "EleganceVision",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'EternalGlow Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an endless journey of gaming excellence with the EternalGlow Gaming Console, a radiant masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the EternalGlow console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the EternalGlow Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'kjsldkjsklkd23.jpg',
+            'stock' => '230',
+            'brand' => "EternalGlow",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'ElysiumArc Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an extraordinary gaming journey with the ElysiumArc Gaming Console, a sublime masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the ElysiumArc console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the ElysiumArc Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'lksjdkl23.jpg',
+            'stock' => '230',
+            'brand' => "ElysiumArc",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'CelestialSphere Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an extraordinary gaming journey with the CelestialSphere Gaming Console, a sublime masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the CelestialSphere console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the CelestialSphere Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'kljsdj34.jpg',
+            'stock' => '230',
+            'brand' => "CelestialSphere",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'StellarSphere Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an extraordinary gaming journey with the StellarSphere Gaming Console, a sublime masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the StellarSphere console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the StellarSphere Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'skjdlskjd34.jpg',
+            'stock' => '230',
+            'brand' => "StellarSphere",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'EternalSphere Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an extraordinary gaming journey with the EternalSphere Gaming Console, a sublime masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the EternalSphere console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the EternalSphere Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'kljskdkds34.jpg',
+            'stock' => '230',
+            'brand' => "EternalSphere",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'CelestialArc Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an extraordinary gaming journey with the CelestialArc Gaming Console, a sublime masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the CelestialArc console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the CelestialArc Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'kjsdsjkdk34.webp',
+            'stock' => '230',
+            'brand' => "CelestialArc",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'EternalArc Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an extraordinary gaming journey with the EternalArc Gaming Console, a sublime masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the EternalArc console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the EternalArc Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'kjlsdldslk32.jpg',
+            'stock' => '230',
+            'brand' => "EternalArc",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'CelestialGlow Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an extraordinary gaming journey with the CelestialGlow Gaming Console, a sublime masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the CelestialGlow console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the CelestialGlow Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'jksjdd34redss.jpg',
+            'stock' => '230',
+            'brand' => "CelestialGlow",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'EternalGlow Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an extraordinary gaming journey with the EternalGlow Gaming Console, a sublime masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the EternalGlow console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the EternalGlow Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'lsdkjkdj34dkdf.jpg',
+            'stock' => '230',
+            'brand' => "EternalGlow",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+        
         // A normal discount with %
         Discount::create([
             'code' => '10POFF',
