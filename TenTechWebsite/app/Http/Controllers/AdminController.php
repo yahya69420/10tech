@@ -136,7 +136,7 @@ class AdminController extends Controller
             // // clear the session
             // session()->forget('success');
             // session()->forget('error');
-            $products = Product::simplePaginate(10);
+            $products = Product::paginate(20);
             $productsCount = Product::count();
             // dd($productsCount);
             // get all of the bransd from the porducts table

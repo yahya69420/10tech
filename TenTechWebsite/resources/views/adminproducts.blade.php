@@ -284,6 +284,11 @@
     </table>
   </div>
   <!--  Pagination -->
+  <style>
+svg {
+  width: 5%;
+}
+    </style>
   <div class="text-center" style="font-size: 20px;">
     {{ $products->links() }}
   </div>
