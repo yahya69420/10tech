@@ -19,7 +19,7 @@
 
                         <form action="{{ url('/update-review') }}" method="POST">
                             @csrf
-                            @method('PUT')
+                            
                             <input type="hidden" name="review_id" value="{{ $review->id }}">
                             <textarea class="form-control" name="user_review" rows="5" placeholder="Write a review"> {{ $review->user_review}} </textarea>
                             <button type="submit" class="btn btn-primary mt-3"> Update Review</button>
