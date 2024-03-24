@@ -46,7 +46,7 @@ class ProductSeeder extends Seeder
         $tabletCategory = Category::create([
             'name' => 'Tablet',
             // 'image' => 'https://images.unsplash.com/photo-1561154464-82e9adf32764?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            'image' => 'tablet5.png',
+            'image' => 'Tablet5.png',
             'price' => '99.99',
 
         ]);
@@ -114,6 +114,295 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($laptopCategory);
 
+        Product::create([
+            'name' => 'NeuroPad X',
+            'price' => 2499.99,
+            'description' => 'Advanced NeuroPad with AI-enhanced neural processor',
+            'image' => 'WpO0in1e.jpg',
+            'stock' => '10',
+            'brand' => "Apel",
+            'release' => "2024",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'NeuroPad X: Business Edition V2 2023',
+            'price' => 2499.99,
+            'description' => 'Introducing the NeuroPad X: Business Edition V2 2023, a quantum leap in computing technology. Equipped with an AI-enhanced neural processor, it redefines productivity and innovation. Seamlessly blending elegance with power, it\'s the ultimate tool for professionals navigating the digital landscape of tomorrow.',
+            'image' => 'YKMCT0uu.jpg',
+            'stock' => '15',
+            'brand' => "NeuroPad",
+            'release' => "2023",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'NeuroPad X: Collector\'s Edition',
+            'price' => 2499.99,
+            'description' => 'Introducing the NeuroPad X: Collector\'s Edition, a timeless masterpiece for enthusiasts and collectors. With its vintage-inspired design and cutting-edge technology, this laptop pays homage to the golden era of computing. Experience the nostalgia of yesteryears while enjoying modern functionality. Limited edition, seize the opportunity to own a piece of history.',
+            'image' => 'fb-5UF6k.jpg',
+            'stock' => '3',
+            'brand' => "NeuroPad",
+            'release' => "2023",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'SleekBook Pro X1',
+            'price' => 2799.99,
+            'description' => 'Introducing the SleekBook Pro X1, the epitome of elegance and performance. Crafted with precision engineering and advanced materials, this slim and sleek laptop sets a new standard for high-performance computing. With lightning-fast processing power and stunning visuals, it\'s designed to empower you in every task. Elevate your productivity and style with the SleekBook Pro X1.',
+            'image' => 'wqNcH9TY.jpg',
+            'stock' => 19,
+            'brand' => "TechGenius",
+            'release' => "2024",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'GamerXtreme RGB 5000',
+            'price' => 3299.99,
+            'description' => 'Introducing the GamerXtreme RGB 5000, the ultimate gaming powerhouse with mesmerizing RGB lighting. Engineered for extreme performance, this laptop is equipped with cutting-edge hardware to handle the most demanding games with ease. Immerse yourself in stunning visuals and lightning-fast gameplay. Dominate the competition and unleash your full gaming potential with the GamerXtreme RGB 5000.',
+            'image' => 'zWtNvp1t.jpg',
+            'stock' => 15,
+            'brand' => "GamingTech",
+            'release' => "2024",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'Futurix Quantum X1',
+            'price' => 3599.99,
+            'description' => 'Introducing the Futurix Quantum X1, a glimpse into the future of computing. With its avant-garde design and state-of-the-art technology, this laptop pushes the boundaries of innovation. Experience unparalleled performance and efficiency with quantum computing capabilities. Immerse yourself in a world where science fiction becomes reality. Embrace the future today with the Futurix Quantum X1.',
+            'image' => 'KzuO4ruv.jpg',
+            'stock' => 20,
+            'brand' => "Futurix",
+            'release' => "2025",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'Intelissence Quantum Fusion X1',
+            'price' => 3899.99,
+            'description' => 'Introducing the Intelissence Quantum Fusion X1, a paradigm shift in computing technology. With its sleek design and cutting-edge Intelissence processor, this laptop redefines the boundaries of high-tech innovation. Experience unparalleled speed and efficiency, powered by Intelissence\'s latest advancements. Immerse yourself in a futuristic computing experience, where every task is executed with precision and speed. Embrace the power of Intelissence and step into the future with the Quantum Fusion X1.',
+            'image' => '1rFbFQXc.jpg',
+            'stock' => 25,
+            'brand' => "Intelissence",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+
+        Product::create([
+            'name' => 'Dall HyperXcel X1',
+            'price' => 3899.99,
+            'description' => 'Introducing the Dall HyperXcel X1, a cutting-edge marvel in computing technology. With its sleek design and powerful Intel processor, this laptop sets the standard for high-tech innovation. Experience lightning-fast performance and seamless multitasking, powered by Dall\'s latest advancements. Immerse yourself in a futuristic computing experience where every task is executed with precision and speed. Elevate your productivity and embrace the future with the Dall HyperXcel X1.',
+            'image' => 'PwXt_i_a.jpg',
+            'stock' => 25,
+            'brand' => "Dall",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+
+        Product::create([
+            'name' => 'Minimalist Pro X1',
+            'price' => 2899.99,
+            'description' => 'Introducing the Minimalist Pro X1, a sleek and understated masterpiece in computing. With its minimalist design and powerful Intel processor, this laptop embodies simplicity and elegance. Experience seamless performance and effortless multitasking, powered by the latest advancements in computing technology. Dive into a distraction-free computing experience where every interaction is intuitive and clutter-free. Embrace the essence of minimalism and elevate your productivity with the Minimalist Pro X1.',
+            'image' => 'VE8CNdqS.jpg',
+            'stock' => 30,
+            'brand' => "MinimalTech",
+            'release' => "2025",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'Executive GlassBook X1',
+            'price' => 3299.99,
+            'description' => 'Introducing the Executive GlassBook X1, a sophisticated companion for professionals in modern glass apartments. With its sleek design and premium craftsmanship, this laptop seamlessly blends into your upscale workspace. Powered by cutting-edge technology, it ensures smooth multitasking and efficient workflow management. Elevate your productivity with its intuitive interface and crystal-clear display. Make a statement of elegance and professionalism with the Executive GlassBook X1.',
+            'image' => 'KHopzK0D.jpg',
+            'stock' => 25,
+            'brand' => "ExecuTech",
+            'release' => "2024",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'GlassMate Pro X2',
+            'price' => 3499.99,
+            'description' => 'Introducing the GlassMate Pro X2, an elegant solution for professionals in contemporary glass apartments. With its refined aesthetics and superior craftsmanship, this laptop seamlessly integrates into your upscale workspace. Powered by advanced technology, it delivers seamless performance and efficient multitasking. Elevate your productivity with its intuitive interface and crystal-clear display. Redefine elegance and professionalism with the GlassMate Pro X2.',
+            'image' => 'Ngo0A37F.jpg',
+            'stock' => 30,
+            'brand' => "ExecuTech",
+            'release' => "2025",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'CrystalEdge Elite X3',
+            'price' => 3699.99,
+            'description' => 'Introducing the CrystalEdge Elite X3, an exquisite choice for professionals seeking sophistication in contemporary glass apartments. With its impeccable design and top-tier craftsmanship, this laptop seamlessly enhances your upscale workspace. Powered by cutting-edge technology, it delivers exceptional performance and seamless multitasking. Elevate your productivity with its intuitive interface and crystal-clear display. Redefine elegance and professionalism with the CrystalEdge Elite X3.',
+            'image' => 'k48JcywU.jpg',
+            'stock' => 35,
+            'brand' => "ExecuTech",
+            'release' => "2025",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'ApexX Pro Gaming Beast',
+            'price' => 3999.99,
+            'description' => 'Introducing the ApexX Pro Gaming Beast, the ultimate choice for gamers seeking unparalleled performance and immersive gaming experiences. With its sleek design and cutting-edge components, this laptop takes gaming to new heights. Powered by the latest technology and high-performance hardware, it delivers blistering speeds and seamless gameplay. Dominate the competition with lightning-fast response times and crystal-clear visuals. Elevate your gaming prowess with the ApexX Pro Gaming Beast.',
+            'image' => 'fJXrjE3e.jpg',
+            'stock' => 40,
+            'brand' => "ApexTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'ApexX Pro Performance Laptop',
+            'price' => 3999.99,
+            'description' => 'Introducing the ApexX Pro Performance Laptop, a versatile powerhouse designed for gamers who demand top-tier performance and professionals who require productivity on-the-go. With its sleek and professional design, this laptop seamlessly transitions from intense gaming sessions to productive work environments. Powered by cutting-edge components and the latest technology, it delivers blistering speeds, seamless multitasking, and crystal-clear visuals. Elevate your gaming prowess and productivity with the ApexX Pro Performance Laptop.',
+            'image' => 'fbyvwJU.jpg',
+            'stock' => 40,
+            'brand' => "ApexTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'EverGreen Executive Notebook',
+            'price' => 4299.99,
+            'description' => 'Introducing the EverGreen Executive Notebook, a harmonious blend of nature-inspired aesthetics and professional functionality. Crafted with sustainability in mind, this laptop embodies the tranquility of nature while catering to the demands of modern professionals. With its sleek design and eco-friendly materials, it seamlessly integrates into any business environment. Powered by cutting-edge components and innovative technology, it delivers exceptional performance, seamless multitasking, and stunning visuals. Embrace the synergy of nature and productivity with the EverGreen Executive Notebook.',
+            'image' => 'znDHq5Y4.jpg',
+            'stock' => 50,
+            'brand' => "EcoTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'EcoSavvy Executive Laptop',
+            'price' => 4499.99,
+            'description' => 'Introducing the EcoSavvy Executive Laptop, a symbol of eco-consciousness and professional excellence. Crafted with sustainability at its core, this laptop blends nature-inspired aesthetics with high-performance functionality. Its sleek design and eco-friendly materials resonate with modern professionals seeking harmony with nature. Powered by cutting-edge components and innovative technology, it ensures seamless multitasking and delivers stunning visuals for productivity-driven tasks. Embrace sustainability without compromising on performance with the EcoSavvy Executive Laptop.',
+            'image' => '0u8xw80S.jpg',
+            'stock' => 60,
+            'brand' => "EcoTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'GreenHarmony Business Notebook',
+            'price' => 4599.99,
+            'description' => 'Introducing the GreenHarmony Business Notebook, a testament to eco-consciousness and professional refinement. Crafted with sustainability in focus, this laptop seamlessly merges nature-inspired aesthetics with high-performance functionality. Its sleek and eco-friendly design resonates with modern professionals seeking harmony with the environment. Powered by cutting-edge components and innovative technology, it ensures seamless multitasking and delivers stunning visuals for productivity-driven tasks. Embrace sustainability while achieving peak performance with the GreenHarmony Business Notebook.',
+            'image' => 'zoLCiGzf.jpg',
+            'stock' => 70,
+            'brand' => "EcoTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'FusionSpark Spectra Notebook',
+            'price' => 4699.99,
+            'description' => 'Introducing the FusionSpark Spectra Notebook, an embodiment of dynamic energy and vibrant aesthetics. Crafted to ignite creativity and excitement, this laptop features a sleek and modern design with mesmerizing colors and captivating patterns. Its lively appearance evokes a sense of inspiration and enthusiasm, making it the perfect companion for those who seek to stand out and embrace innovation. Powered by cutting-edge technology, it ensures seamless performance and delivers stunning visuals for both work and play. Unleash your creativity and ignite your passion with the FusionSpark Spectra Notebook.',
+            'image' => 'l8TYzzKP.jpg',
+            'stock' => 80,
+            'brand' => "SparkTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+
+
+        Product::create([
+            'name' => 'CaféElite Business Laptop',
+            'price' => 4999.99,
+            'description' => 'Introducing the CaféElite Business Laptop, designed for professionals seeking sophistication in a coffee shop setting. With its sleek and minimalist design, this laptop exudes elegance and professionalism, making it the perfect companion for entrepreneurs and freelancers alike. Crafted with precision and attention to detail, it seamlessly integrates into any business environment, providing the power and performance needed to tackle demanding tasks. Powered by cutting-edge technology, it ensures seamless multitasking and delivers crisp visuals for productivity-driven work. Elevate your business experience with the CaféElite Business Laptop.',
+            'image' => 'NuvsXmI1.jpg',
+            'stock' => 60,
+            'brand' => "EliteTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+        Product::create([
+            'name' => 'MetroPro Executive Laptop',
+            'price' => 5299.99,
+            'description' => 'Introducing the MetroPro Executive Laptop, meticulously crafted for professionals navigating the bustling streets of New York City. With its sleek and urban design, this laptop exudes sophistication and versatility, making it the perfect companion for entrepreneurs and executives on the go. Engineered with precision and attention to detail, it seamlessly integrates into the dynamic business landscape of the city, providing the power and performance needed to excel in demanding environments. Powered by cutting-edge technology, it ensures seamless multitasking and delivers crisp visuals for productivity-driven work. Elevate your business experience with the MetroPro Executive Laptop.',
+            'image' => 'TvMAI08O.jpg',
+            'stock' => 70,
+            'brand' => "MetroTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'EcoVintage Collectivers Laptop',
+            'price' => 6999.99,
+            'description' => 'Introducing the EcoVintage Collector\'s Laptop, a timeless piece meticulously curated for enthusiasts in the green eco space. Inspired by minimalist design principles of bygone eras, this laptop embodies simplicity and elegance. Crafted with reclaimed materials and eco-friendly components, it reflects a commitment to sustainability and environmental consciousness. A true collector\'s item, it carries the charm of yesteryears while embracing modern eco-technology. Limited in availability, seize the opportunity to own a piece of sustainable computing history with the EcoVintage Collector\'s Laptop.',
+            'image' => 'TARX4DA_.jpg',
+            'stock' => 5,
+            'brand' => "EcoTech",
+            'release' => "2025",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'NeoGamer RGB Pro Laptop',
+            'price' => 7999.99,
+            'description' => 'Introducing the NeoGamer RGB Pro Laptop, a cutting-edge gaming machine designed for enthusiasts seeking the ultimate gaming experience. With its sleek and modern design, this laptop combines high-performance gaming capabilities with mesmerizing RGB backlighting. Crafted with the latest technology and premium components, it delivers blistering speeds and immersive visuals, ensuring you stay ahead of the competition. Customize the RGB lighting to match your gaming setup and elevate your gaming experience to new heights with the NeoGamer RGB Pro Laptop.',
+            'image' => 'cQ5MI5tq.jpg',
+            'stock' => 10,
+            'brand' => "GamerTech",
+            'release' => "2025",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'SummitElegance Hiker\'s Laptop',
+            'price' => 7999.99,
+            'description' => 'Introducing the SummitElegance Hiker\'s Laptop, a sleek and beautiful companion designed for adventurers seeking inspiration in the hills. With its elegant and minimalist design, this laptop blends seamlessly into nature, offering a perfect balance between style and functionality. Crafted with premium materials and cutting-edge technology, it delivers exceptional performance and stunning visuals, ensuring you stay connected and productive even in remote locations. Take your creativity to new heights and capture the essence of the outdoors with the SummitElegance Hiker\'s Laptop.',
+            'image' => 'yosJ27lB.jpg',
+            'stock' => 10,
+            'brand' => "SummitTech",
+            'release' => "2025",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+
+        Product::create([
+            'name' => 'UrbanEdge Modern Laptop',
+            'price' => 8999.99,
+            'description' => 'Introducing the UrbanEdge Modern Laptop, a sleek and stylish companion designed for contemporary professionals with discerning tastes. With its cutting-edge design and minimalist aesthetics, this laptop exudes sophistication and elegance. Crafted with premium materials and state-of-the-art technology, it seamlessly integrates into modern urban lifestyles, offering unparalleled performance and stunning visuals. Whether you\'re in the office or on the go, elevate your productivity and style with the UrbanEdge Modern Laptop.',
+            'image' => 'MJRVNKwH.jpg',
+            'stock' => 15,
+            'brand' => "UrbanTech",
+            'release' => "2025",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'CaféLawyer HyperModern Laptop',
+            'price' => 9999.99,
+            'description' => 'Introducing the CaféLawyer HyperModern Laptop, a cutting-edge device crafted for the modern professional in the bustling coffee shops of urban landscapes. With its hyper-modern design and sleek aesthetics, this laptop seamlessly blends into the fast-paced environment of a coffee-loving lawyer. Crafted with premium materials and the latest advancements in technology, it offers unparalleled performance and realism, empowering you to handle legal matters with precision and efficiency. Whether you\'re drafting contracts or meeting clients, elevate your productivity and professionalism with the CaféLawyer HyperModern Laptop.',
+            'image' => 'NAwJcvL1.jpg',
+            'stock' => 20,
+            'brand' => "TechLaw",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
+
+        Product::create([
+            'name' => 'EcoRustic Nature Laptop',
+            'price' => 8999.99,
+            'description' => 'Introducing the EcoRustic Nature Laptop, a harmonious blend of modern technology and natural inspiration for the eco-conscious hipster. With its rustic design elements and nature-inspired aesthetics, this laptop brings a touch of the outdoors to your digital experience. Crafted with sustainable materials and eco-friendly components, it embodies the essence of eco-living while offering powerful performance and reliability. Whether you\'re working from a cozy café or exploring the great outdoors, let the EcoRustic Nature Laptop be your companion on your hipster adventures.',
+            'image' => 'ixdf1gor.jpg',
+            'stock' => 15,
+            'brand' => "EcoTech",
+            'release' => "2026",
+            'available' => '1',
+        ])->categories()->attach($laptopCategory);
 
         // 5 mobiles seeded
         Product::create([
@@ -175,6 +464,130 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($mobileCategory);
 
+        Product::create([
+            'name' => 'EcoVibe GreenPhone',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embrace sustainability with the EcoVibe GreenPhone, the environmentally conscious choice for your communication needs. Made from recycled materials and designed for minimal environmental impact, this phone lets you stay connected while reducing your carbon footprint. Join the eco-friendly revolution and make a positive impact on the planet with the EcoVibe GreenPhone.',
+            'image' => 'NgyDh7u2.jpg',
+            'stock' => 10,
+            'brand' => "EcoTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'TacticalSurvivor EcoPhone',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Conquer the wild with the TacticalSurvivor EcoPhone, built to withstand the toughest environments and accompany you on your boldest adventures. Engineered for durability and resilience, this rugged phone is designed to thrive in extreme conditions, from the depths of the jungle to the peaks of the mountains. With its military-grade construction and eco-friendly features, including recycled materials and minimal environmental impact, the TacticalSurvivor EcoPhone is your ultimate companion for off-grid exploration and eco-conscious living.',
+            'image' => 'RPhoIXhD.jpg',
+            'stock' => 15,
+            'brand' => "TacticalTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'ExecuCafé BusinessPhone',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Elevate your business conversations with the ExecutiveCafé BusinessPhone, designed for professionals who demand style and functionality in their communication devices. Crafted with sleek lines and premium materials, this phone blends seamlessly into the sophisticated ambiance of coffee shops and boardrooms alike. Whether you\'re sealing deals over lattes or brainstorming ideas with colleagues, the ExecutiveCafé BusinessPhone ensures crystal-clear communication and effortless multitasking. Stay connected and make a statement of professionalism with the ExecutiveCafé BusinessPhone.',
+            'image' => 'sdsd.jpg',
+            'stock' => 20,
+            'brand' => "ExecuTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'SurvivalSatellite TacticalPhone',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Conquer the wilderness with the SurvivalSatellite TacticalPhone, your ultimate companion for outdoor adventures. Built to military specifications and designed for extreme durability, this rugged phone is ready to withstand the harshest conditions, from rugged terrain to inclement weather. Equipped with satellite communication capabilities, it ensures reliable connectivity even in remote areas where traditional networks fail. Whether you\'re camping, hunting, or facing survival challenges, the SurvivalSatellite TacticalPhone keeps you connected and safe. Embrace the spirit of adventure with confidence and stay prepared for anything with the SurvivalSatellite TacticalPhone.',
+            'image' => 'hjkjek3.jpg',
+            'stock' => 15,
+            'brand' => "TacticalTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'CapturePro CameraPhone',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Introducing the CapturePro CameraPhone, your go-to companion for capturing life\'s precious moments with stunning clarity and detail. Designed with photography enthusiasts in mind, this smartphone features a high-quality camera system that excels in any lighting condition, from bright daylight to low-light environments. With advanced imaging technology and image stabilization features, it ensures every shot is crisp, vibrant, and Instagram-worthy. Whether you\'re snapping landscapes, portraits, or selfies, the CapturePro CameraPhone delivers professional-grade results that will impress even the most discerning photographers. Elevate your photography game and document your adventures with the CapturePro CameraPhone.',
+            'image' => 'j2lj33.jpg',
+            'stock' => 20,
+            'brand' => "TechVision",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'TechVision Mobile',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Introducing the TechVision Mobile, a versatile smartphone designed to meet all your communication and entertainment needs. With its sleek design and powerful performance, this smartphone offers a seamless user experience for browsing the web, streaming videos, gaming, and staying connected on social media. Equipped with advanced features and cutting-edge technology, it ensures smooth multitasking and responsiveness for all your everyday tasks. Whether you’re working, playing, or capturing memories, the TechVision Mobile is your reliable companion for every moment.',
+            'image' => 'jlkkj3jj34.jpg',
+            'stock' => 20,
+            'brand' => "TechVision",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'Visionaire SleekStyle Phone',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Introducing the Visionaire SleekStyle Phone, a stunning masterpiece of design and innovation that transcends ordinary smartphones. With its mesmerizing beauty and sleek, minimalist contours, this phone exudes elegance and sophistication. Crafted with precision and attention to detail, it captivates the eye and delights the senses. Equipped with advanced technology and seamless functionality, it offers a seamless user experience for all your communication and entertainment needs. Whether you’re browsing the web, streaming videos, or capturing memories, the Visionaire SleekStyle Phone combines style and substance in perfect harmony.',
+            'image' => 'jlkj23.jpg',
+            'stock' => 20,
+            'brand' => "Visionaire",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'StyloTech Lumina Smartphone',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Introducing the StyloTech Lumina Smartphone, a sleek and sophisticated device that redefines the boundaries of elegance and innovation in the smartphone industry. With its captivating design and minimalist aesthetic, this phone stands as a symbol of modern style and technological prowess. Crafted with meticulous attention to detail, it seamlessly combines beauty and functionality, offering a delightful user experience for everyday communication and entertainment needs. Elevate your mobile experience with the StyloTech Lumina Smartphone, where sophistication meets performance in perfect harmony.',
+            'image' => 'hj2332.jpg',
+            'stock' => 20,
+            'brand' => "StyloTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'StyloTech SoundMaster Smartphone',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Introducing the StyloTech SoundMaster Smartphone, a cutting-edge device engineered for audio enthusiasts who demand the highest quality sound on the go. With its sleek design and advanced audio features, this smartphone delivers an immersive listening experience like no other. Equipped with premium audio components and advanced sound processing technology, it ensures crystal-clear audio reproduction and rich, dynamic soundscapes. Whether you\'re streaming music, watching videos, or taking calls, the StyloTech SoundMaster Smartphone takes your audio experience to the next level.',
+            'image' => 'jg2hj3.jpg',
+            'stock' => 20,
+            'brand' => "StyloTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'NeonTech SonicVision Smartphone',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Introducing the NeonTech SonicVision Smartphone, a visionary marvel of modern technology designed to propel you into the future. With its sleek, aerodynamic design and advanced holographic display, this smartphone offers a glimpse into tomorrow\'s world. Equipped with state-of-the-art sonic processing technology and neural interface capabilities, it delivers an unparalleled audiovisual experience that transcends reality. Whether you\'re navigating augmented realities, communicating via neural networks, or immersing yourself in immersive sonic landscapes, the NeonTech SonicVision Smartphone is your gateway to the future.',
+            'image' => 'hhj34h34.jpg',
+            'stock' => 20,
+            'brand' => "NeonTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+        Product::create([
+            'name' => 'NeonTech Bespoke Edition Smartphone',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Introducing the NeonTech Bespoke Edition Smartphone, a collector\'s item crafted with exquisite attention to detail and bespoke style. Each unit of this limited edition smartphone is meticulously handcrafted to perfection, featuring unique design elements and premium materials that set it apart from mass-produced devices. With its sleek, aerodynamic silhouette and luxurious finish, this smartphone is a statement of refined taste and sophistication. Whether displayed in a collection or used as a symbol of exclusivity, the NeonTech Bespoke Edition Smartphone is a true masterpiece that transcends ordinary technology.',
+            'image' => 'hkjj3k34.jpg',
+            'stock' => 10,
+            'brand' => "NeonTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($mobileCategory);
+
+
+        
+        
 
         // 5 monitors seeded
         Product::create([
@@ -232,6 +645,252 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($monitorCategory);
 
+        Product::create([
+            'name' => 'DreamTech Elite Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience the epitome of productivity with the DreamTech Elite Monitor, meticulously engineered for the modern business professional. With its sleek design and advanced features, including ultra-high definition resolution and HDR support, this 27-inch monitor ensures crystal-clear visuals and exceptional performance. Whether you\'re analyzing data, creating presentations, or multitasking with multiple windows, the DreamTech Elite Monitor elevates your workspace to new heights of efficiency and style.',
+            'image' => 'kjsdhksdds4ds.jpg',
+            'stock' => '49',
+            'brand' => "DreamTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+        
+        Product::create([
+            'name' => 'VisionaryUltra Ultrawide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Enter a world of unparalleled productivity with the VisionaryUltra Ultrawide Monitor, meticulously crafted to meet the demands of the modern business environment. With its expansive 34-inch ultrawide display, this monitor offers an immersive viewing experience that enhances multitasking and boosts efficiency. Featuring ultra-high definition resolution and HDR support, the VisionaryUltra ensures stunning visuals with vibrant colors and sharp details. Whether you\'re analyzing data, editing multimedia content, or collaborating with colleagues, this ultrawide monitor empowers you to achieve more with its spacious workspace and exceptional performance.',
+            'image' => 'kjjkdkk34jkssd.jpg',
+            'stock' => '49',
+            'brand' => "VisionaryTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        
+        Product::create([
+            'name' => 'ElevatePlus Ultrawide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Transform your workspace into a productivity powerhouse with the ElevatePlus Ultrawide Monitor, meticulously engineered to meet the dynamic needs of modern professionals. Boasting a spacious 34-inch ultrawide display, this monitor provides an immersive viewing experience that enhances multitasking and boosts efficiency. With ultra-high definition resolution and HDR support, the ElevatePlus delivers stunning visuals characterized by vibrant colors and crisp details. Whether you\'re analyzing complex data, editing multimedia projects, or collaborating with colleagues, this ultrawide monitor empowers you to accomplish more with its expansive workspace and exceptional performance.',
+            'image' => 'jdfhhjkdf5f.jpg',
+            'stock' => '49',
+            'brand' => "ElevateTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'GameMaster UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience gaming like never before with the GameMaster UltraWide Monitor, designed to elevate your gaming experience to new heights. Featuring a spacious 34-inch ultrawide display, this monitor immerses you in every gaming world, providing a panoramic view that enhances your gameplay. With ultra-high definition resolution and HDR support, the GameMaster delivers stunning visuals with vibrant colors and sharp details, bringing games to life with unprecedented realism. Whether you\'re exploring vast virtual landscapes, engaging in intense battles, or diving into immersive storylines, this ultrawide monitor ensures you never miss a moment of action.',
+            'image' => 'jksdhjkj34jfd.jpg',
+            'stock' => '49',
+            'brand' => "GameMaster",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'ImmerseXtreme Gaming Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Dive into the heart of gaming excitement with the ImmerseXtreme Gaming Monitor, meticulously crafted to revolutionize your gaming experience. Featuring a spacious 34-inch ultrawide display, this monitor envelops you in every gaming world, offering a panoramic view that amplifies your gameplay. With ultra-high definition resolution and HDR support, the ImmerseXtreme delivers breathtaking visuals with vibrant colors and razor-sharp details, immersing you in games with unparalleled realism. Whether you\'re exploring expansive virtual landscapes, engaging in adrenaline-pumping battles, or unraveling immersive storylines, this ultrawide monitor ensures you stay at the edge of your seat, never missing a moment of action.',
+            'image' => 'jksksd34dkfdf.jpg',
+            'stock' => '49',
+            'brand' => "ImmerseXtreme",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'PivotPro Gaming Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in gaming excellence with the PivotPro Gaming Monitor, engineered to redefine your gaming experience. Equipped with a spacious 34-inch ultrawide display, this monitor surrounds you with every gaming world, providing a panoramic view that enhances your gameplay. With ultra-high definition resolution and HDR support, the PivotPro delivers stunning visuals characterized by vibrant colors and sharp details, plunging you into games with unparalleled realism. What sets the PivotPro apart is its exceptional pivot capability, allowing you to effortlessly adjust the monitor\'s orientation for optimal viewing angles and ergonomic comfort. Whether you\'re exploring vast virtual landscapes, engaging in intense battles, or unraveling immersive storylines, the PivotPro Gaming Monitor ensures you\'re always in control, maximizing your gaming performance and enjoyment.',
+            'image' => 'skdjsdjk34f.webp',
+            'stock' => '49',
+            'brand' => "PivotPro",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        
+        Product::create([
+            'name' => 'FuturisTech Gaming Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Step into the future of gaming with the FuturisTech Gaming Monitor, designed to elevate your gaming experience to new heights of innovation and immersion. Featuring a spacious 34-inch ultrawide display, this monitor envelops you in every gaming world, offering a panoramic view that amplifies your gameplay. With ultra-high definition resolution and HDR support, the FuturisTech delivers breathtaking visuals with vibrant colors and razor-sharp details, immersing you in games with unparalleled realism. What sets the FuturisTech apart is its futuristic design and advanced features, including intuitive gesture controls and AI-powered enhancements, allowing you to interact with games in ways you\'ve never imagined. Whether you\'re exploring expansive virtual landscapes, engaging in adrenaline-pumping battles, or unraveling immersive storylines, the FuturisTech Gaming Monitor ensures you\'re at the forefront of gaming innovation, pushing the boundaries of what\'s possible.',
+            'image' => 'jkjsdhjsj3jkjsdkjsdsd.jpg',
+            'stock' => '49',
+            'brand' => "FuturisTech",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'DualViewXtreme Gaming Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience gaming like never before with the DualViewXtreme Gaming Monitor, a revolutionary dual-monitor system designed to take your gaming experience to the next level. Consisting of two 27-inch displays seamlessly integrated into one sleek setup, this monitor offers a panoramic view that immerses you in every gaming world. With ultra-high definition resolution and HDR support on both screens, the DualViewXtreme delivers breathtaking visuals with vibrant colors and razor-sharp details, ensuring an unparalleled gaming experience. Whether you\'re exploring vast virtual landscapes, engaging in intense battles, or diving into immersive storylines, this dual-monitor system ensures you never miss a moment of action. Take your gaming setup to new heights of innovation and immersion with the DualViewXtreme Gaming Monitor.',
+            'image' => 'hjdskdjj3khejsdds.jpg',
+            'stock' => '49',
+            'brand' => "DualViewXtreme",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        
+        Product::create([
+            'name' => 'HDRMaster Gaming Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in stunning visuals with the HDRMaster Gaming Monitor, meticulously engineered to elevate your gaming experience to new heights. Featuring a 27-inch display with ultra-high definition resolution and HDR support, this monitor delivers breathtaking visuals characterized by vibrant colors and razor-sharp details. Whether you\'re exploring vast virtual landscapes, engaging in intense battles, or diving into immersive storylines, the HDRMaster ensures you never miss a moment of action. Take your gaming to the next level with the HDRMaster Gaming Monitor.',
+            'image' => 'kjsdksdkj3eskjdjsd.jpg',
+            'stock' => '49',
+            'brand' => "HDRMaster",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'UltimateVision HDR Gaming Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in stunning visuals with the UltimateVision HDR Gaming Monitor, meticulously engineered to elevate your gaming experience to new heights. Featuring a 27-inch display with ultra-high definition resolution and HDR support, this monitor delivers breathtaking visuals characterized by vibrant colors and razor-sharp details. Whether you\'re exploring vast virtual landscapes, engaging in intense battles, or diving into immersive storylines, the UltimateVision ensures you never miss a moment of action. Take your gaming to the next level with the UltimateVision HDR Gaming Monitor.',
+            'image' => 'jkdjd34jksdkjdjskd.jpg',
+            'stock' => '49',
+            'brand' => "UltimateVision",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'GamerPro HDR Gaming Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Elevate your gaming experience to new heights with the GamerPro HDR Gaming Monitor. Boasting a 27-inch display with ultra-high definition resolution and HDR support, this monitor delivers stunning visuals with vibrant colors and sharp details. Immerse yourself in the action as you explore vast virtual landscapes, engage in intense battles, or dive into immersive storylines. With the GamerPro, every moment of gaming comes to life with unparalleled realism and excitement. Take your gaming to the next level and unleash your full potential with the GamerPro HDR Gaming Monitor.',
+            'image' => 'kjdfhkdjfk43jkjdjff.jpg',
+            'stock' => '49',
+            'brand' => "GamerPro",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'OfficeMaster HDR Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Enhance your productivity with the OfficeMaster HDR Monitor. Featuring a 27-inch display with ultra-high definition resolution and HDR support, this monitor delivers stunning visuals for your office tasks. Whether you\'re creating presentations, analyzing data, or multitasking with multiple applications, the OfficeMaster ensures crisp details and vibrant colors for an immersive work experience. Elevate your office setup with the OfficeMaster HDR Monitor and unlock new levels of efficiency and performance.',
+            'image' => 'jsdsjdkhk43kjhdfkjfd.jpg',
+            'stock' => '49',
+            'brand' => "OfficeMaster",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'WorkPro HDR Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Maximize your productivity with the WorkPro HDR Monitor. Boasting a 27-inch display with ultra-high definition resolution and HDR support, this monitor delivers stunning visuals tailored for your office needs. Whether you\'re crafting presentations, analyzing data, or managing multiple tasks simultaneously, the WorkPro ensures crystal-clear details and vibrant colors, providing an immersive work experience. Elevate your workspace with the WorkPro HDR Monitor and unlock new levels of efficiency and performance.',
+            'image' => 'jdfjdjfjdf3kjdf.jpg',
+            'stock' => '49',
+            'brand' => "WorkPro",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'WorkPro HDR Widescreen Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in productivity with the WorkPro HDR Widescreen Monitor. Featuring a spacious 27-inch widescreen display with ultra-high definition resolution and HDR support, this monitor delivers stunning visuals tailored for your office needs. Whether you\'re crafting presentations, analyzing data, or managing multiple tasks simultaneously, the WorkPro ensures crystal-clear details and vibrant colors, providing an immersive work experience. Elevate your workspace with the WorkPro HDR Widescreen Monitor and unlock new levels of efficiency and performance.',
+            'image' => 'jkfdfhjk34kdhkdfjdfkfd.jpg',
+            'stock' => '49',
+            'brand' => "WorkPro",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'ProductivityMaster UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Transform your workspace into a productivity powerhouse with the ProductivityMaster UltraWide Monitor. Boasting a spacious 34-inch ultrawide display, this monitor provides an immersive viewing experience that enhances multitasking and boosts efficiency. With ultra-high definition resolution and HDR support, the ProductivityMaster ensures stunning visuals with vibrant colors and sharp details. Whether you\'re analyzing data, creating presentations, or multitasking with multiple windows, this ultrawide monitor empowers you to achieve more with its expansive workspace and exceptional performance.',
+            'image' => 'jkkjhkjjjkhjkjdf3j4k.jpg',
+            'stock' => '230',
+            'brand' => "ProductivityMaster",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'OfficePro UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Maximize productivity in your office with the OfficePro UltraWide Monitor. Featuring a spacious 34-inch ultrawide display, this monitor provides an immersive viewing experience that enhances multitasking and boosts efficiency. With ultra-high definition resolution and HDR support, the OfficePro ensures stunning visuals with vibrant colors and sharp details, perfect for analyzing data, creating presentations, or multitasking with multiple windows. Elevate your workspace with the OfficePro UltraWide Monitor and empower your team to achieve more with its expansive workspace and exceptional performance.',
+            'image' => 'kjsdj3kj4jjfdd.jpg',
+            'stock' => '230',
+            'brand' => "OfficePro",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'OfficePro UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Maximize productivity in your office with the OfficePro UltraWide Monitor. Featuring a spacious 34-inch ultrawide display, this monitor provides an immersive viewing experience that enhances multitasking and boosts efficiency. With ultra-high definition resolution and HDR support, the OfficePro ensures stunning visuals with vibrant colors and sharp details, perfect for analyzing data, creating presentations, or multitasking with multiple windows. Elevate your workspace with the OfficePro UltraWide Monitor and empower your team to achieve more with its expansive workspace and exceptional performance.',
+            'image' => 'kjsdk3jjkfd.jpg',
+            'stock' => '230',
+            'brand' => "OfficePro",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        
+        Product::create([
+            'name' => 'GamingElite HDR UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience gaming excellence and stunning visuals with the GamingElite HDR UltraWide Monitor. Featuring a spacious 34-inch ultrawide display, this monitor provides an immersive gaming experience that transports you into virtual worlds with vibrant colors and razor-sharp details. With ultra-high definition resolution and HDR support, the GamingElite ensures breathtaking visuals, making it perfect for gaming enthusiasts who demand the best. Whether you’re exploring vast landscapes, engaging in intense battles, or immersing yourself in captivating storylines, the GamingElite HDR UltraWide Monitor takes your gaming to the next level.',
+            'image' => 'jsdk43jfdk.jpg',
+            'stock' => '230',
+            'brand' => "GamingElite",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'HDRGamer Pro UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in gaming excellence with the HDRGamer Pro UltraWide Monitor. Boasting a spacious 34-inch ultrawide display, this monitor provides an immersive gaming experience that transports you into virtual worlds with vibrant colors and razor-sharp details. With ultra-high definition resolution and HDR support, the HDRGamer Pro ensures breathtaking visuals, making it perfect for gaming enthusiasts who demand the best. Whether you’re exploring vast landscapes, engaging in intense battles, or immersing yourself in captivating storylines, the HDRGamer Pro UltraWide Monitor takes your gaming to the next level.',
+            'image' => 'sakjdl43jkklfd.jpg',
+            'stock' => '230',
+            'brand' => "HDRGamer",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        
+        Product::create([
+            'name' => 'GamingMaster UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience gaming excellence with the GamingMaster UltraWide Monitor. Featuring a spacious 34-inch ultrawide display, this monitor provides an immersive gaming experience that transports you into virtual worlds with vibrant colors and razor-sharp details. With ultra-high definition resolution and HDR support, the GamingMaster ensures breathtaking visuals, making it perfect for gaming enthusiasts who demand the best. Whether you’re exploring vast landscapes, engaging in intense battles, or immersing yourself in captivating storylines, the GamingMaster UltraWide Monitor takes your gaming to the next level.',
+            'image' => 'kjdkfkdfljkdjf.jpg',
+            'stock' => '230',
+            'brand' => "GamingMaster",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+        
+        Product::create([
+            'name' => 'UltimateGamer HDR UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience gaming excellence with the UltimateGamer HDR UltraWide Monitor. Featuring a spacious 34-inch ultrawide display, this monitor provides an immersive gaming experience that transports you into virtual worlds with vibrant colors and razor-sharp details. With ultra-high definition resolution and HDR support, the UltimateGamer HDR ensures breathtaking visuals, making it perfect for gaming enthusiasts who demand the best. Whether you’re exploring vast landscapes, engaging in intense battles, or immersing yourself in captivating storylines, the UltimateGamer HDR UltraWide Monitor takes your gaming to the next level.',
+            'image' => 'jkskjsdj3jksd.jpg',
+            'stock' => '230',
+            'brand' => "UltimateGamer",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
+
+        Product::create([
+            'name' => 'HDR Pro UltraWide Monitor',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in gaming excellence with the HDR Pro UltraWide Monitor. Featuring a spacious 34-inch ultrawide display, this monitor provides an immersive gaming experience that transports you into virtual worlds with vibrant colors and razor-sharp details. With ultra-high definition resolution and HDR support, the HDR Pro ensures breathtaking visuals, making it perfect for gaming enthusiasts who demand the best. Whether you’re exploring vast landscapes, engaging in intense battles, or immersing yourself in captivating storylines, the HDR Pro UltraWide Monitor takes your gaming to the next level.',
+            'image' => 'jksdj.jpg',
+            'stock' => '230',
+            'brand' => "HDR Pro",
+            'release' => "2022",
+            'available' => '1',
+        ])->categories()->attach($monitorCategory);
 
         // 5 tablets seeded
         Product::create([
@@ -294,6 +953,140 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($tabletCategory);
 
+        // credit: https://perchance.org/gmg64zkuoc
+
+        Product::create([
+            'name' => 'BizScribe Pro Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Elevate your business productivity with the BizScribe Pro Tablet. This tablet is meticulously crafted to meet the demands of modern professionals, offering seamless note-taking, document annotation, and sketching capabilities with its advanced stylus. Its slim and lightweight design ensures easy portability, while the powerful A14 Bionic chip guarantees fast and responsive performance for all your business needs. Stay organized and efficient with the BizScribe Pro Tablet.',
+            'image' => 'skdjskdj34.jpg',
+            'stock' => 43,
+            'brand' => "BizTech",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'NatureScribe Elite Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in the natural beauty of productivity with the NatureScribe Elite Tablet. Meticulously designed to harmonize with nature, this tablet combines professional-grade functionality with the serenity of the outdoors. Its advanced stylus allows for seamless note-taking, document annotation, and sketching, empowering you to capture your ideas with precision and clarity. With its sleek and lightweight design, the NatureScribe Elite Tablet is the perfect companion for professionals seeking inspiration from the world around them. Experience the tranquility of nature while staying organized and efficient with the NatureScribe Elite Tablet.',
+            'image' => 'jlksdlsk23.jpg',
+            'stock' => 43,
+            'brand' => "EnviroTech",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'TerraTough Tactical Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on your professional missions with the TerraTough Tactical Tablet, an indispensable tool designed to thrive in the harshest environments. Engineered with military-grade ruggedness, this tablet combines the rugged durability of tactical gear with the versatility of professional-grade functionality. Its advanced stylus allows for seamless note-taking, document annotation, and sketching, even in extreme conditions. With its reinforced construction and waterproof design, the TerraTough Tactical Tablet withstands the rigors of fieldwork, ensuring reliability and performance in any situation. Stay connected and productive amidst nature\'s challenges with the TerraTough Tactical Tablet.',
+            'image' => 'jlklj34.jpg',
+            'stock' => 43,
+            'brand' => "TerraTech",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'AquaShield Tactical Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Conquer the elements with the AquaShield Tactical Tablet, a rugged companion engineered to withstand the toughest conditions. Built with military-grade waterproofing technology, this tablet ensures uncompromised performance even in the most challenging environments. Its advanced stylus allows for seamless note-taking, document annotation, and sketching, regardless of weather conditions. With reinforced construction and a waterproof design, the AquaShield Tactical Tablet offers peace of mind, knowing your device can handle any water-related task. Stay connected and productive in wet environments with the AquaShield Tactical Tablet.',
+            'image' => 'jklsddskj23w.jpg',
+            'stock' => 43,
+            'brand' => "TerraTech",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'BizConnect Pro Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Optimize your business connectivity with the BizConnect Pro Tablet, meticulously crafted for seamless integration into professional environments. This tablet offers advanced features and intuitive functionality to streamline your workflow and enhance productivity. With its sleek design and versatile capabilities, including note-taking and document management, the BizConnect Pro Tablet is the perfect tool for busy professionals. Stay organized and efficient with this business-focused tablet that keeps you connected and productive wherever you go.',
+            'image' => 'lksdjksldj3.jpg',
+            'stock' => 43,
+            'brand' => "BizTech",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'ColorVivid Elite Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in a world of vibrant colors and stunning visuals with the ColorVivid Elite Tablet. Boasting cutting-edge OLED display technology, this tablet delivers unparalleled color accuracy, contrast, and clarity, bringing your content to life like never before. Meticulously crafted with high-tech precision, its sleek and modern design enhances the viewing experience while reflecting the epitome of sophistication. With advanced features and intuitive functionality, including seamless note-taking and document management, the ColorVivid Elite Tablet is the ultimate companion for professionals who demand the best in both performance and aesthetics. Elevate your productivity and creativity with this breathtakingly beautiful tablet that redefines the standards of excellence.',
+            'image' => 'jdkfjk4.jpg',
+            'stock' => 43,
+            'brand' => "TechVision",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'NanoVision Pro Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience the future of compact productivity with the NanoVision Pro Tablet. Despite its small size, this tablet packs a punch with its cutting-edge features and powerful performance. Equipped with a vibrant OLED display, it offers stunning visuals and crisp clarity for immersive viewing. Its sleek and modern design makes it the perfect companion for professionals on the go, seamlessly fitting into your lifestyle with its compact form factor. Whether you\'re taking notes, managing documents, or staying connected, the NanoVision Pro Tablet delivers exceptional performance in a compact package. Elevate your productivity and efficiency with this pocket-sized powerhouse from NanoTech.',
+            'image' => 'hjkjdkj4.webp',
+            'stock' => 43,
+            'brand' => "NanoVision",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'CaféBiz Compact Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Enhance your business productivity with the CaféBiz Compact Tablet, designed to seamlessly integrate into your busy coffee shop work environment. This tablet combines compact convenience with powerful performance, offering a perfect solution for professionals on the go. With its sleek design and portable form factor, it\'s the ideal companion for entrepreneurs, freelancers, and remote workers seeking productivity outside the office. Whether you\'re drafting proposals, conducting virtual meetings, or managing your tasks, the CaféBiz Compact Tablet ensures efficiency and reliability. Elevate your coffee shop work experience with this business-oriented tablet from NanoTech.',
+            'image' => 'kjsldkjsdl.jpg',
+            'stock' => 43,
+            'brand' => "CaféBiz",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'NatureGlow Slim Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in the beauty of nature with the NatureGlow Slim Tablet, crafted to complement your serene surroundings with its sleek and minimalist design. This tablet embodies the harmony between technology and nature, offering a slim and lightweight profile that effortlessly blends into any outdoor setting. Whether you\'re capturing the breathtaking scenery, sketching your creative ideas, or simply enjoying a moment of tranquility, the NatureGlow Slim Tablet provides a perfect canvas for your inspirations. Elevate your connection with nature and experience the essence of beauty with this slim and elegant tablet.',
+            'image' => 'jhjsd23wewe.jpg',
+            'stock' => 12,
+            'brand' => "NatureGlow",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'BizHorizon Pro Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Stay ahead in the business world with the BizHorizon Pro Tablet, designed to enhance your professional productivity and efficiency. With its powerful performance and intuitive features, this tablet is tailored for the demands of modern business environments. Its sleek and sophisticated design exudes professionalism, making it the perfect companion for meetings, presentations, and on-the-go productivity tasks. Whether you\'re managing projects, collaborating with colleagues, or staying organized with your tasks, the BizHorizon Pro Tablet empowers you to achieve more in your business endeavors. Elevate your business capabilities and streamline your workflow with this versatile and reliable tablet.',
+            'image' => 'hdfkjedfkj34.jpg',
+            'stock' => 12,
+            'brand' => "BizHorizon",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+        Product::create([
+            'name' => 'ProfessionaLink Elite Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Step into the future of professional productivity with the ProfessionaLink Elite Tablet, meticulously crafted to elevate your business performance to new heights. Designed with cutting-edge technology and innovative features, this tablet is tailored to meet the unique demands of modern professionals. Its sleek and modern design exudes sophistication, making it the ultimate statement piece for executives and entrepreneurs alike. Whether you\'re leading meetings, collaborating with teams, or managing projects, the ProfessionaLink Elite Tablet empowers you to work smarter and achieve your goals with precision and efficiency. Revolutionize your business workflow and stay ahead of the curve with this premium and versatile tablet.',
+            'image' => 'lkjsdkl34.jpg',
+            'stock' => 12,
+            'brand' => "ProfessionaLink",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
+
+
+        Product::create([
+            'name' => 'ExecutiveForge Pro Tablet',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Unleash the full potential of your business endeavors with the ExecutiveForge Pro Tablet, meticulously engineered to meet the demanding requirements of modern professionals. Imbued with cutting-edge technology and advanced features, this tablet redefines the standards of excellence in business productivity. Its sleek and contemporary design radiates sophistication, making it the quintessential tool for executives and entrepreneurs seeking to make a bold statement in the boardroom. Whether you\'re strategizing, collaborating, or executing tasks, the ExecutiveForge Pro Tablet empowers you to navigate the complexities of modern business with unparalleled efficiency and precision. Elevate your professional journey and stay ahead of the competition with this premium-grade tablet.',
+            'image' => 'jksdjsd34.jpg',
+            'stock' => 12,
+            'brand' => "ExecutiveForge",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($tabletCategory);
 
 
         // 5 consoles seeded
@@ -354,6 +1147,196 @@ class ProductSeeder extends Seeder
             'available' => '1',
         ])->categories()->attach($consoleCategory);
 
+        
+        Product::create([
+            'name' => 'RetroJoy Portable Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Relive the nostalgia of classic gaming with the RetroJoy Portable Console, a compact and lightweight device that brings back cherished memories of your favorite retro games. With its retro-inspired design and wide selection of classic titles, it\'s the perfect companion for nostalgic gamers seeking to revisit the golden age of gaming.',
+            'image' => 'kskjkkjskljdssdlk34dflnfd.jpg',
+            'stock' => '50',
+            'brand' => "RetroJoy",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+        
+        Product::create([
+            'name' => 'LuxuryGold Retro Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Indulge in the epitome of luxury gaming with the LuxuryGold Retro Console, a lavish masterpiece crafted for discerning gamers who appreciate the finer things in life. Immerse yourself in the opulence of gaming with this exclusive gold-plated console, meticulously designed to exude sophistication and elegance. With its retro-inspired design and exquisite craftsmanship, it offers a timeless gaming experience that transcends generations. Elevate your gaming collection with the LuxuryGold Retro Console and bask in the ultimate luxury of gaming.',
+            'image' => 'kjklsdjskldksdsdj34.jpg',
+            'stock' => '50',
+            'brand' => "LuxuryGold",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'PocketLux Retro Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience luxury gaming on the go with the PocketLux Retro Console, a compact marvel designed for discerning gamers who prioritize portability without compromising on opulence. This exquisite console features a luxurious gold-plated exterior, exuding sophistication and elegance in every detail. Despite its small size, the PocketLux Retro Console delivers a timeless gaming experience with its retro-inspired design and exquisite craftsmanship. Whether you\'re commuting, traveling, or simply enjoying downtime, elevate your gaming collection with the PocketLux Retro Console and indulge in luxury gaming wherever you go.',
+            'image' => 'kjskdjdsl32erds.jpg',
+            'stock' => '50',
+            'brand' => "PocketLux",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        
+        Product::create([
+            'name' => 'NeoLux Futuristic Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Step into the future of gaming with the NeoLux Futuristic Console, a revolutionary device that combines cutting-edge technology with luxurious design. Featuring sleek lines and innovative materials, this console redefines the gaming experience with its futuristic style and unparalleled performance. The NeoLux console boasts advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, offering gamers an unprecedented level of immersion and excitement. Whether you\'re exploring virtual worlds, battling foes, or embarking on epic quests, the NeoLux Futuristic Console transports you to a gaming utopia where the possibilities are endless.',
+            'image' => 'nsdlkfdfkdkf34.jpg',
+            'stock' => '230',
+            'brand' => "NeoLux",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'NeoLux Futuristic Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Step into the future of gaming with the NeoLux Futuristic Console, a revolutionary device that combines cutting-edge technology with luxurious design. Featuring sleek lines and innovative materials, this console redefines the gaming experience with its futuristic style and unparalleled performance. The NeoLux console boasts advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, offering gamers an unprecedented level of immersion and excitement. Whether you\'re exploring virtual worlds, battling foes, or embarking on epic quests, the NeoLux Futuristic Console transports you to a gaming utopia where the possibilities are endless.',
+            'image' => 'sdkskdj34.jpg',
+            'stock' => '230',
+            'brand' => "NeoLux",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'MicroVision Futuristic Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Experience the future of gaming with the MicroVision Futuristic Console, a groundbreaking device that seamlessly integrates cutting-edge technology with sleek design. Crafted with compact dimensions and innovative materials, this console revolutionizes gaming with its futuristic aesthetics and exceptional performance. Featuring advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the MicroVision console offers gamers an unparalleled level of immersion and excitement. Whether you\'re navigating virtual worlds, engaging in intense battles, or embarking on epic quests, the MicroVision Futuristic Console transports you to a gaming utopia where the boundaries are limitless.',
+            'image' => 'jkkjjkjkhjkjhj43.webp',
+            'stock' => '230',
+            'brand' => "MicroVision",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        
+        Product::create([
+            'name' => 'NanoVision Compact Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in the future of gaming with the NanoVision Compact Console, a revolutionary device that packs cutting-edge technology into a compact form factor. Designed with sleek dimensions and advanced materials, this console redefines gaming with its compact size and outstanding performance. With features like holographic displays, immersive augmented reality, and lightning-fast processing power, the NanoVision console delivers an unparalleled gaming experience. Whether you\'re exploring virtual worlds, engaging in intense battles, or embarking on epic quests, the NanoVision Compact Console transports you to a gaming paradise where possibilities are limitless.',
+            'image' => 'lksdkjksdl.jpg',
+            'stock' => '230',
+            'brand' => "NanoVision",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'EleganceVision Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Immerse yourself in the world of gaming luxury with the EleganceVision Gaming Console, a stunning masterpiece that combines cutting-edge technology with timeless beauty. Crafted with meticulous attention to detail and sleek aesthetics, this console is a symbol of sophistication and elegance. Featuring a mesmerizing design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the EleganceVision console offers an unparalleled gaming experience. Whether you\'re navigating virtual worlds, engaging in intense battles, or embarking on epic quests, the EleganceVision Gaming Console transports you to a realm of gaming beauty where every moment is a visual masterpiece.',
+            'image' => 'lkjsdjsld34.jpg',
+            'stock' => '230',
+            'brand' => "EleganceVision",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'EternalGlow Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an endless journey of gaming excellence with the EternalGlow Gaming Console, a radiant masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the EternalGlow console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the EternalGlow Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'kjsldkjsklkd23.jpg',
+            'stock' => '230',
+            'brand' => "EternalGlow",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'ElysiumArc Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an extraordinary gaming journey with the ElysiumArc Gaming Console, a sublime masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the ElysiumArc console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the ElysiumArc Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'lksjdkl23.jpg',
+            'stock' => '230',
+            'brand' => "ElysiumArc",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'CelestialSphere Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an extraordinary gaming journey with the CelestialSphere Gaming Console, a sublime masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the CelestialSphere console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the CelestialSphere Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'kljsdj34.jpg',
+            'stock' => '230',
+            'brand' => "CelestialSphere",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'StellarSphere Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an extraordinary gaming journey with the StellarSphere Gaming Console, a sublime masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the StellarSphere console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the StellarSphere Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'skjdlskjd34.jpg',
+            'stock' => '230',
+            'brand' => "StellarSphere",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'EternalSphere Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an extraordinary gaming journey with the EternalSphere Gaming Console, a sublime masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the EternalSphere console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the EternalSphere Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'kljskdkds34.jpg',
+            'stock' => '230',
+            'brand' => "EternalSphere",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'CelestialArc Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an extraordinary gaming journey with the CelestialArc Gaming Console, a sublime masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the CelestialArc console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the CelestialArc Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'kjsdsjkdk34.webp',
+            'stock' => '230',
+            'brand' => "CelestialArc",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'EternalArc Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an extraordinary gaming journey with the EternalArc Gaming Console, a sublime masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the EternalArc console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the EternalArc Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'kjlsdldslk32.jpg',
+            'stock' => '230',
+            'brand' => "EternalArc",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'CelestialGlow Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an extraordinary gaming journey with the CelestialGlow Gaming Console, a sublime masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the CelestialGlow console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the CelestialGlow Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'jksjdd34redss.jpg',
+            'stock' => '230',
+            'brand' => "CelestialGlow",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+
+        Product::create([
+            'name' => 'EternalGlow Gaming Console',
+            'price' => round(rand(50000, 140000) / 100),
+            'description' => 'Embark on an extraordinary gaming journey with the EternalGlow Gaming Console, a sublime masterpiece that seamlessly blends cutting-edge technology with timeless elegance. Crafted with meticulous attention to detail and refined aesthetics, this console sets new standards for sophistication and luxury. Boasting a captivating design and advanced features such as holographic displays, immersive augmented reality, and lightning-fast processing power, the EternalGlow console offers an unmatched gaming experience. Whether you\'re traversing virtual landscapes, engaging in thrilling battles, or embarking on epic quests, the EternalGlow Gaming Console transports you to a realm of eternal brilliance where every gaming moment shines with unparalleled beauty.',
+            'image' => 'lsdkjkdj34dkdf.jpg',
+            'stock' => '230',
+            'brand' => "EternalGlow",
+            'release' => "2021",
+            'available' => '1',
+        ])->categories()->attach($consoleCategory);
+        
         // A normal discount with %
         Discount::create([
             'code' => '10POFF',

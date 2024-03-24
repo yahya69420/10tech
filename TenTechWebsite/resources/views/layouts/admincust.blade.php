@@ -49,14 +49,18 @@
             flex-basis: 25%;
           }
           .col-3 {
-            flex-basis: 25%;
+            flex-basis: 20%;
           }
           .col-4 {
-            flex-basis: 20%;
+            flex-basis: 15%;
           }
         
           .col-5{
-            flex-basis: 20%:
+            flex-basis: 15%;
+          }
+
+          .col-6{
+            flex-basis: 15%;
           }
 
           @media all and (max-width: 767px) {
@@ -137,6 +141,23 @@
 .editbutton:hover{
     cursor: pointer;
     background-color: #1f7e50;
+}
+
+.viewbutton{
+  background-color: #0f8db8; 
+  border: none;
+  color: black;
+  padding: 15px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.viewbutton:hover {
+  background-color: #0a5e7a; /* Darker red color on hover */
+  cursor: pointer;
 }
 
 .removebutton {
@@ -278,8 +299,14 @@
         </a>
       </li>
       <li class="sidebar-list-item">
-        <a href="#" target="_blank">
+        <a href="{{ url('admin/adminproducts') }}" target="_blank">
           <span class="material-icons-outlined">Products</span> /Inventory
+        </a>
+      </li>
+
+      <li class="sidebar-list-item">
+        <a href="{{ url('shop') }}" target="_blank">
+          <span class="material-icons-outlined">Shop view</span>
         </a>
       </li>
 
@@ -304,13 +331,16 @@
       <div class="col col-2" data-label="Email">{{ $item->email }}</div>
       <div class="col col-3" data-label="Date Created">{{ $item->updated_at }}</div>
       <div class="col col-4" data-label="Actions">
+    <button class="viewbutton" onclick="document.getElementById('viewModal{{$item->id}}').style.display='block'">View More</button>
+</div>
+      <div class="col col-5" data-label="Actions">
     <form action="{{ route('admin.removeuser', ['id' => $item->id]) }}" method="POST">
         @csrf
         @method('DELETE')
         <button class="removebutton" type="submit">Remove</button>
     </form>
     </div>
-    <div class = "col col-5" data-label="Actions">
+    <div class = "col col-6" data-label="Actions">
         <button class="editbutton">Edit</button>
 </div>
     </li>
@@ -352,21 +382,53 @@
         <input type="email" id="email" name="email" required>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
+        <hr>
         <button class="addbutton" type="submit">Add User</button>
     </form>
   </div>
 </div>
 
+<div id="viewModal{{$item->id}}" class="modal viewModal">
+    <div class="container">
+        <ul class="responsive-table">
+            <li class="table-header">
+                <div class="col col-1">Full Name</div>
+                <div class="col col-2">Address Line 1</div>
+                <div class="col col-3">City</div>
+                <div class="col col-4">Post Code</div> 
+            </li>
+            <li class="table-row">
+                <div class="col col-1" data-label="Full Name">{{ $userAddresses[$item->id]->full_name }}</div>
+                <div class="col col-2" data-label="Address Line 1">{{ $userAddresses[$item->id]->address_line_1 }}</div>
+                <div class="col col-3" data-label="City">{{ $userAddresses[$item->id]->city }}</div>
+                <div class="col col-4" data-label="Post Code">{{ $userAddresses[$item->id]->post_code }}</div>
+            </li>
+        </ul>
+    </div>
+    <span class="close viewClose">&times;</span>
+</div>
+
+
+
 <div id="editModal" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <form id="editForm" action="{{ route('admin.edituser', ['id' => $item->id]) }}" method="POST">
+    <form id="editForm" action="{{ route('admin.edituseraddress', ['id' => $item->id]) }}" method="POST">
         @csrf
         @method('PUT')
-        <label for="edit_email">Email:</label>
-        <input type="email" id="edit_email" name="edit_email" required>
-        <button class="editbutton" type="submit">Save</button>
+        <label for="edit_full_name">Full Name:</label>
+        <input type="text" id="edit_full_name" name="edit_full_name" required>
+        <label for="edit_address_line_1">Address Line 1:</label>
+        <input type="text" id="edit_address_line_1" name="edit_address_line_1" required>
+        <hr>
+        <label for="edit_city">City:</label>
+        <input type="text" id="edit_city" name="edit_city" required>
+        <label for="edit_post_code">Post Code:</label>
+        <input type="text" id="edit_post_code" name="edit_post_code" required>
+        <hr>
+        <button class="editbutton" type="submit">Save</button> 
+
     </form>
   </div>
 </div>
@@ -408,41 +470,66 @@
     }
   }
 
-  // Get the edit modal
-var editModal = document.getElementById("editModal");
+  // Get all viewModals
+var viewModals = document.getElementsByClassName("viewModal");
 
-// Get the edit button
-var editButtons = document.querySelectorAll(".editbutton");
+// Loop through each viewModal and add event listener
+for (var i = 0; i < viewModals.length; i++) {
+  var viewModal = viewModals[i];
+  // Get the close button for each view modal
+  var viewCloseButton = viewModal.getElementsByClassName("close")[0];
 
-// Loop through each edit button and add event listener
-editButtons.forEach(function(button) {
-  button.onclick = function() {
-    // Get the email from the corresponding table row
-    var email = this.parentNode.parentNode.querySelector(".col-2").textContent.trim();
-    
-    // Set the value of the email input in the edit form
-    document.getElementById("edit_email").value = email;
-
-    // Display the edit modal
-    editModal.style.display = "block";
+  // When the user clicks on <span> (x), close the viewModal
+  viewCloseButton.onclick = function() {
+    viewModal.style.display = "none";
   };
-});
+}
 
-// Get the close button for the edit modal
-var editClose = editModal.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the edit modal
-editClose.onclick = function() {
-  editModal.style.display = "none";
-};
-
-// When the user clicks anywhere outside of the edit modal, close it
+// When the user clicks anywhere outside of the viewModal, close it
 window.onclick = function(event) {
-  if (event.target == editModal) {
-    editModal.style.display = "none";
+  for (var i = 0; i < viewModals.length; i++) {
+    var viewModal = viewModals[i];
+    if (event.target == viewModal) {
+      viewModal.style.display = "none";
+    }
   }
 };
+
+  // Get the edit modal for UserAddress
+  var editModal = document.getElementById("editModal");
+
+  // Get the edit button for UserAddress
+  var editButtons = document.querySelectorAll(".editbutton");
+
+  // Loop through each edit button and add event listener
+  editButtons.forEach(function(button) {
+    button.onclick = function() {
+      // Get the user ID from the corresponding table row
+      var userId = this.parentNode.parentNode.querySelector(".col-1").textContent.trim();
+      
+
+      // Display the edit modal
+      editModal.style.display = "block";
+    };
+  });
+
+  // Get the close button for the edit modal
+  var editClose = editModal.getElementsByClassName("close")[0];
+
+  // When the user clicks on <span> (x), close the edit modal
+  editClose.onclick = function() {
+    editModal.style.display = "none";
+  };
+
+  // When the user clicks anywhere outside of the edit modal, close it
+  window.onclick = function(event) {
+    if (event.target == editModal) {
+      editModal.style.display = "none";
+    }
+  };
 </script>
+
+
 
 </body>
 </html>

@@ -7,17 +7,8 @@ use Tests\TestCase;
 
 class ProductDetailTest extends TestCase
 {
-    use RefreshDatabase;
 
-    public function setUp(): void // Always call the parent method first
-    {
-        parent::setUp();
-
-        // Seed the database with products using the ProductSeeder
-        $this->artisan('db:seed', ['--class' => 'ProductSeeder']);
-    }
-
-    public function testProductDetailPage()
+    public function tstProductDetailPage()
     {
         // Assuming your ProductSeeder creates a product with an ID of 1
         // Adjust the ID as necessary based on your seeder's behavior

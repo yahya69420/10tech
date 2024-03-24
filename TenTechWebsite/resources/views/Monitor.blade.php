@@ -210,12 +210,12 @@ align-items: center;
           </div>
 
 
-          <div class="categories-section">
+          <div class="categories-section" style="flex-wrap: wrap; justify-content:flex-start">
         @foreach ($monitors as $monitor)
         <div class="category">
             <a class="link2" href="{{ route('productdetail', ['id' => $monitor->id]) }}">
             <div class="image">
-              <img src="{{ $monitor->image }}" alt="Product 1">
+              <img src="{{ $monitor->image }}" alt="{{ $monitor->image }}">
             </div>
             <div class="product-details">
                 <h3>{{ $monitor->name }}</h3>

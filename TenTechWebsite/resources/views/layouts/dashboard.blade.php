@@ -218,7 +218,7 @@
       </a>
     </div>
     <div class="card" style="background: #2ecc71;">
-      <a href="link-to-customers">
+      <a href="{{ url('admin/adminproducts') }}">
         <h3>inventory</h3>
         <p>1500</p>
       </a>
