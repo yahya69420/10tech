@@ -82,10 +82,10 @@ Route::post('/update_cart/{cart_id}', [App\Http\Controllers\BasketController::cl
 // product detail route
 Route::get('/productdetail/{id}', [App\Http\Controllers\ProductController::class, 'productDetail'])->name('productdetail');
 Route::post('add-rating',[RatingController::class,'add']);
-Route::get('add-review/{product_id}/userreview',[ReviewController::class,'add']);
+Route::get('add-review/{product_id}/userreview',[ReviewController::class,'add'])->name('add-review.userreview');
 Route::post('add-review/',[ReviewController::class,'create']);
 Route::get('edit-review/{product_id}/userreview',[ReviewController::class,'edit']);
-Route::put('update-review',[ReviewController::class,'update']);
+Route::post('update-review',[ReviewController::class,'update']);
 
 Route::post('/add-to-wishlist',[WishlistController::class,'add'])->name('add-to-wishlist');
 Route::post('delete-wishlist-item',[WishlistController::class, 'deleteitem']);
