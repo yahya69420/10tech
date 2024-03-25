@@ -35,59 +35,78 @@
             padding-top: 8vh;
         }
 
-        .contact-us {
-            display: flex;
-            background-color: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+        .contact-info {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f2f2f2;
+}
 
-        .left, .right {
-            flex: 1;
-            padding: 20px;
-        }
+.contact-info p {
+    margin: 5px 0;
+}
 
-        .left {
-            background-color: #ccc;
-        }
+.contact-us {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    max-width: 800px; /* Adjust the max-width as needed */
+    padding: 20px;
+}
 
-        .left h2 {
-            margin-top: 0;
-        }
+.left, .right {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
 
-        .right textarea {
-            width: 100%;
-            height: 150px;
-            padding: 10px;
-            box-sizing: border-box;
-            resize: none;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
+.left {
+    background-color: #ccc;
+}
 
-        input[type="text"],
-        input[type="email"] {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
+.left h2, .right h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
 
-        input[type="submit"] {
-            background-color: #7f807f;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+.right textarea {
+    width: 100%;
+    min-height: 250px;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: vertical; /* Allow vertical resizing */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background-color: #7f807f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+        
     </style>
 </head>
 <body>
