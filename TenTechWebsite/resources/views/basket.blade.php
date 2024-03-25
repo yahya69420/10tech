@@ -309,28 +309,6 @@ universally as is the case here :) */
                     </div>
                 </form>
             </div>
-            <div class="deliveryCard ">
-                <hr id="blackLine">
-
-                <div class="deliveryForm text-xl font-bold">
-                    <form action="#" method="POST">
-
-                        <label for="deliveryOption1">
-                            <input type="radio" id="deliveryOption1" name="deliveryOption" value="option1" checked>
-                            Delivery Option 1
-                        </label>
-
-                        <label for="deliveryOption2">
-                            <input type="radio" id="deliveryOption2" name="deliveryOption" value="option2">
-                            Delivery Option 2
-                        </label>
-
-                    </form>
-
-                </div>
-
-
-            </div>
 
             <div class="totalInfo">
                 <div class="leftsideInfo">
