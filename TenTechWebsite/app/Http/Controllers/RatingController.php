@@ -18,7 +18,7 @@ class RatingController extends Controller
         $product_id = $request->input('product_id');
         
         // Check if the product exists and is in stock.
-        $product_check = Product::where('id',$product_id)->where('stock','>','0')->first(); // checks if specified product exists and is active
+        $product_check = Product::where('id', $product_id)->where('available', '1')->first();
         if ($product_check) 
         { 
             // Verify if the user has purchased the product before allowing them to rate it.

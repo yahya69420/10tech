@@ -13,8 +13,9 @@ class ReviewController extends Controller
 {
     public function add($product_id) 
     {
-        // Attempt to find a product by its id with a stock > 0 
-        $product = Product::where('id', $product_id)->where('stock','>','0')->first();
+        // Retrieve the first product by ID that is marked as available
+
+        $product = Product::where('id', $product_id)->where('available', '1')->first();
 
         // Check if the product was found
         if ($product) 
@@ -60,7 +61,8 @@ class ReviewController extends Controller
         $product_id = $request->input('product_id');
 
         // Find the product with the given ID that has stock available
-        $product = Product::where('id', $product_id)->where('stock','>','0')->first();
+        $product = Product::where('id', $product_id)->where('available', '1')->first();
+
 
         if ($product) 
         {
@@ -101,7 +103,7 @@ class ReviewController extends Controller
     public function edit($product_id) 
     {
         // Attempt to find a product by its ID where stock is greater than 0
-        $product = Product::where('id', $product_id)->where('stock','>','0')->first();
+        $product = Product::where('id', $product_id)->where('available', '1')->first();
 
         // Check if the product was found
         if ($product) 
