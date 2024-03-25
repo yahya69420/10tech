@@ -12,6 +12,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\UserAddress;
 use Illuminate\Support\Facades\DB;
+use App\Models\Orders;
 
 class AdminController extends Controller
 {
@@ -379,5 +380,25 @@ class AdminController extends Controller
         // $product->delete();
         // lets redirect back with a success message
         return redirect()->back()->with('success', $product->name . ' made available successfully!');
+    }
+
+    public function adminorders() {
+        $allOrders = Orders::with('orderItems', 'userAddress', 'userPayments', 'orderItems.product', 'user')->get();
+        $pendingOrders = DB::table('orders')->where('status', 'pending')->get();
+        $processingOrders = DB::table('orders')->where('status', 'processing')->get();
+        $completedOrders = DB::table('orders')->where('status', 'completed')->get();
+        $cancelledOrders = DB::table('orders')->where('status', 'cancelled')->get();
+        // dd($pendingOrders, $processingOrders, $completedOrders, $cancelledOrders);
+        // dd($allOrders);
+        return view('adminorders', ['allOrders' => $allOrders, 'pendingOrders' => $pendingOrders, 'processingOrders' => $processingOrders, 'completedOrders' => $completedOrders, 'cancelledOrders' => $cancelledOrders]);
+    }
+
+    public function editOrder(Request $request) {
+        // dd($request->all());
+        $order = Orders::find($request->order_id);
+        // dd($order);
+        $order->status = $request->orderStatus;
+        $order->save();
+        return redirect()->back()->with('success', 'Order status updated successfully to: ' . strtoupper($request->orderStatus) . '!');
     }
 }
