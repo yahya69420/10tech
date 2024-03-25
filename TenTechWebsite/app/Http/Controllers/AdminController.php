@@ -19,7 +19,13 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('layouts.dashboard');
+        $orders = Orders::all();
+        $customers = User::where('is_admin', 0)->get();
+        $admins = User::where('is_admin', 1)->get();
+        $products = Product::all();
+        $messages = CustomerMessage::all();
+        // dd($orders, $customers, $admins, $products, $messages);
+        return view('layouts.dashboard', ['orders' => $orders, 'customers' => $customers, 'admins' => $admins, 'products' => $products, 'messages' => $messages]);
     }
 
 
